@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a routerLink="/" class="navbar-brand">
+    <img
+      src="../../../assets/icons/mk.svg"
+      width="46"
+      height="46"
+      alt="MK-Logo"
+    />
+    {{ "TRANSLATE.NAVBAR.TITLE" | translate }}
+  </a>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarToogle"
+    aria-controls="navbarToogle"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarToogle">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/"
+          >{{ "TRANSLATE.NAVBAR.HOME" | translate }}
+          <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="about">{{
+          "TRANSLATE.NAVBAR.ABOUT" | translate
+        }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled">{{
+          "TRANSLATE.NAVBAR.NAV_2" | translate
+        }}</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a routerLink="/register" class="nav-link">{{
+          "TRANSLATE.NAVBAR.REGISTER" | translate
+        }}</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/login" class="nav-link">{{
+          "TRANSLATE.NAVBAR.LOGIN" | translate
+        }}</a>
+      </li>
+      <li class="nav-item">
+        <a
+          routerLink="/home"
+          class="nav-link dropleft"
+          data-toggle="dropdown"
+          role="button"
+        >
+          <img
+            src="../../../assets/icons/more_vert-black-48dp.svg"
+            width="32"
+            height="30"
+            alt="Config"
+          />
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <!-- <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form> -->
+  </div>
+</nav>
