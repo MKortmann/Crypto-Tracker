@@ -26,8 +26,7 @@ import { CustomTranslateLoader } from 'src/customTranslateLoader';
 import { NotFoundComponent } from './components/notfound/notfound.component';
 import { TableComponent } from './components/home/table/table.component';
 import { DashboardComponent } from './components/home/dashboard/dashboard.component';
-
-// Add Service
+import { FormatCurrencyPipe } from './tools/format-currency.pipe';
 
 @NgModule({
   declarations: [
@@ -41,6 +40,7 @@ import { DashboardComponent } from './components/home/dashboard/dashboard.compon
     NotFoundComponent,
     TableComponent,
     DashboardComponent,
+    FormatCurrencyPipe,
   ],
   imports: [
     BrowserModule,

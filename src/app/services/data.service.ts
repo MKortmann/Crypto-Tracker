@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-export interface Book {
-  name;
-  price;
-  author;
-}
-
 export interface Coin {
   id;
   symbol;
@@ -32,19 +26,9 @@ export interface Coin {
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  getBooks() {
-    return this.http
-      .get<any>('assets/books.json')
-      .toPromise()
-      .then((res) => <Book[]>res.data)
-      .then((data) => {
-        return data;
-      });
-  }
-
   getGlobalCryptoData() {
     return this.http
-      .get<any>('https://api.coinlore.net/api/tickers/?start=100&limit=100')
+      .get<any>('https://api.coinlore.net/api/tickers/?start=0&limit=100')
       .toPromise()
       .then((res) => {
         return res;
