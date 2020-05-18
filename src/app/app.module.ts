@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -23,6 +24,10 @@ import {
 // our config file for ngx-translate bib
 import { CustomTranslateLoader } from 'src/customTranslateLoader';
 import { NotFoundComponent } from './components/notfound/notfound.component';
+import { TableComponent } from './components/home/table/table.component';
+import { DashboardComponent } from './components/home/dashboard/dashboard.component';
+
+// Add Service
 
 @NgModule({
   declarations: [
@@ -34,11 +39,14 @@ import { NotFoundComponent } from './components/notfound/notfound.component';
     RegisterComponent,
     LoginComponent,
     NotFoundComponent,
+    TableComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TableModule,
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
