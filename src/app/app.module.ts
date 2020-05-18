@@ -11,6 +11,9 @@ import { AboutComponent } from './components/about/about.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 
+// import the table
+import { TableModule } from 'primeng/table';
+
 // For ngx translation
 import {
   TranslateModule,
@@ -35,6 +38,7 @@ import { NotFoundComponent } from './components/notfound/notfound.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    TableModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
