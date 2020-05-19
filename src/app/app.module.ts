@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/Forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -46,6 +47,7 @@ import { FormatCurrencyPipe } from './tools/format-currency.pipe';
     BrowserModule,
     AppRoutingModule,
     TableModule,
+    FormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

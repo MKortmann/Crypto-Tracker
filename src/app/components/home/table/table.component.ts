@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class TableComponent implements OnInit {
   coins: Coin[];
+  factor: number = 1.09;
 
   constructor(
     private dataService: DataService,

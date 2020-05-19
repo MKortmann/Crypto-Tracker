@@ -1,3 +1,28 @@
 * {
   padding: 10px;
 }
+
+td,
+th {
+  font-size: 16px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+th {
+  font-size: 20px;
+}
+
+td:nth-child(odd) {
+  font-weight: bold;
+}
+
+td i {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+input {
+  max-height: 20px;
+  max-width: 85px;
+}

@@ -15,6 +15,7 @@ export const en = {
         SYMBOL: 'Symbol',
         NAME: 'Name',
         PRICE: 'Price in USD',
+        PRICE_EUR: 'Price in EUR',
         PRICE_BTC: 'Price in BTC',
         CHANGE_1H: 'Change 1h',
         CHANGE_24H: 'Change 24h',

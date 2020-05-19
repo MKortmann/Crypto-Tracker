@@ -5,6 +5,10 @@
       <th>{{ "TRANSLATE.HOME.TABLE.SYMBOL" | translate }}</th>
       <th>{{ "TRANSLATE.HOME.TABLE.NAME" | translate }}</th>
       <th>{{ "TRANSLATE.HOME.TABLE.PRICE" | translate }}</th>
+      <th>
+        {{ "TRANSLATE.HOME.TABLE.PRICE_EUR" | translate }}
+        <input type="number" step="0.01" [(ngModel)]="factor" name="factor" />
+      </th>
       <th>{{ "TRANSLATE.HOME.TABLE.PRICE_BTC" | translate }}</th>
       <th>{{ "TRANSLATE.HOME.TABLE.CHANGE_1H" | translate }}</th>
       <th>{{ "TRANSLATE.HOME.TABLE.CHANGE_24H" | translate }}</th>
@@ -20,10 +24,56 @@
       <td>{{ coin.symbol }}</td>
       <td>{{ coin.name }}</td>
       <td>{{ coin.price_usd | currency: "USD" }}</td>
+      <td>{{ coin.price_usd / factor | currency: "EUR" }}</td>
       <td>{{ coin.price_btc }}</td>
-      <td>{{ coin.percent_change_1h / 100 | percent: "2.2-2" }}</td>
-      <td>{{ coin.percent_change_24h / 100 | percent: "2.2-2" }}</td>
-      <td>{{ coin.percent_change_7d / 100 | percent: "2.2-2" }}</td>
+      <!-- change 1h -->
+      <div
+        *ngIf="coin.percent_change_1h > 0; then thenBlock; else elseBlock"
+      ></div>
+      <ng-template #thenBlock>
+        <td style="color: green;">
+          <i class="material-icons">trending_up</i>
+          {{ coin.percent_change_1h / 100 | percent: "2.2-2" }}
+        </td>
+      </ng-template>
+      <ng-template #elseBlock>
+        <td style="color: red;">
+          <i class="material-icons">trending_down</i>
+          {{ coin.percent_change_1h / 100 | percent: "2.2-2" }}
+        </td>
+      </ng-template>
+      <!-- change 24h -->
+      <div
+        *ngIf="coin.percent_change_24h > 0; then thenBlock; else elseBlock"
+      ></div>
+      <ng-template #thenBlock>
+        <td style="color: green;">
+          <i class="material-icons">trending_up</i>
+          {{ coin.percent_change_24h / 100 | percent: "2.2-2" }}
+        </td>
+      </ng-template>
+      <ng-template #elseBlock>
+        <td style="color: red;">
+          <i class="material-icons">trending_down</i>
+          {{ coin.percent_change_24h / 100 | percent: "2.2-2" }}
+        </td>
+      </ng-template>
+      <!-- change 7 Days -->
+      <div
+        *ngIf="coin.percent_change_7d > 0; then thenBlock; else elseBlock"
+      ></div>
+      <ng-template #thenBlock>
+        <td style="color: green;">
+          <i class="material-icons">trending_up</i>
+          {{ coin.percent_change_7d / 100 | percent: "2.2-2" }}
+        </td>
+      </ng-template>
+      <ng-template #elseBlock>
+        <td style="color: red;">
+          <i class="material-icons">trending_down</i>
+          {{ coin.percent_change_7d / 100 | percent: "2.2-2" }}
+        </td>
+      </ng-template>
       <td>{{ coin.market_cap_usd | formatCurrency }}</td>
       <td>{{ coin.volume24 | formatCurrency }}</td>
       <td>{{ coin.volume24a | formatCurrency }}</td>
