@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TableModule } from 'primeng/table';
 import { DataService, Coin } from '../../../services/data.service';
+
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-table',
@@ -11,7 +12,10 @@ import { DataService, Coin } from '../../../services/data.service';
 export class TableComponent implements OnInit {
   coins: Coin[];
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.dataService.getGlobalCryptoData().then((res) => {

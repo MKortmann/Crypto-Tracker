@@ -1,17 +1,17 @@
 <p-table [value]="coins">
   <ng-template pTemplate="header">
     <tr>
-      <th>Rank</th>
-      <th>Symbol</th>
-      <th>Name</th>
-      <th>USD</th>
-      <th>Bitcoin</th>
-      <th>Change 1h</th>
-      <th>Change 24h</th>
-      <th>Change 7 Days</th>
-      <th>Market Cap USD</th>
-      <th>Volume 24h</th>
-      <th>Volume 24ha</th>
+      <th>{{ "TRANSLATE.HOME.TABLE.RANK" | translate }}</th>
+      <th>{{ "TRANSLATE.HOME.TABLE.SYMBOL" | translate }}</th>
+      <th>{{ "TRANSLATE.HOME.TABLE.NAME" | translate }}</th>
+      <th>{{ "TRANSLATE.HOME.TABLE.PRICE" | translate }}</th>
+      <th>{{ "TRANSLATE.HOME.TABLE.PRICE_BTC" | translate }}</th>
+      <th>{{ "TRANSLATE.HOME.TABLE.CHANGE_1H" | translate }}</th>
+      <th>{{ "TRANSLATE.HOME.TABLE.CHANGE_24H" | translate }}</th>
+      <th>{{ "TRANSLATE.HOME.TABLE.CHANGE_7D" | translate }}</th>
+      <th>{{ "TRANSLATE.HOME.TABLE.MARKET_CAP" | translate }}</th>
+      <th>{{ "TRANSLATE.HOME.TABLE.VOLUME_24H" | translate }}</th>
+      <th>{{ "TRANSLATE.HOME.TABLE.VOLUME_24HA" | translate }}</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-coin>
@@ -19,14 +19,14 @@
       <td>{{ coin.rank }}</td>
       <td>{{ coin.symbol }}</td>
       <td>{{ coin.name }}</td>
-      <td>{{ coin.price_usd | formatCurrency }}</td>
+      <td>{{ coin.price_usd | currency: "USD" }}</td>
       <td>{{ coin.price_btc }}</td>
       <td>{{ coin.percent_change_1h / 100 | percent: "2.2-2" }}</td>
       <td>{{ coin.percent_change_24h / 100 | percent: "2.2-2" }}</td>
       <td>{{ coin.percent_change_7d / 100 | percent: "2.2-2" }}</td>
-      <td>{{ coin.market_cap_usd }}</td>
-      <td>{{ coin.volume24 }}</td>
-      <td>{{ coin.volume24a }}</td>
+      <td>{{ coin.market_cap_usd | formatCurrency }}</td>
+      <td>{{ coin.volume24 | formatCurrency }}</td>
+      <td>{{ coin.volume24a | formatCurrency }}</td>
     </tr>
   </ng-template>
 </p-table>

@@ -10,6 +10,19 @@ export const en = {
     },
     HOME: {
       TITLE: 'Home',
+      TABLE: {
+        RANK: 'Rank',
+        SYMBOL: 'Symbol',
+        NAME: 'Name',
+        PRICE: 'Price in USD',
+        PRICE_BTC: 'Price in BTC',
+        CHANGE_1H: 'Change 1h',
+        CHANGE_24H: 'Change 24h',
+        CHANGE_7D: 'Change 7 Days',
+        MARKET_CAP: 'Market Cap USD',
+        VOLUME_24H: 'Volume 24h',
+        VOLUME_24HA: 'Volume 24ha',
+      },
     },
     REGISTER: {
       TITLE: 'REGISTER',
