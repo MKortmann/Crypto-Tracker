@@ -26,3 +26,8 @@ input {
   max-height: 20px;
   max-width: 85px;
 }
+
+img {
+  max-width: 64px;
+  max-height: 64px;
+}

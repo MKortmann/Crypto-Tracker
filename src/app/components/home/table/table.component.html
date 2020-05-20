@@ -3,7 +3,9 @@
     <tr>
       <th>{{ "TRANSLATE.HOME.TABLE.RANK" | translate }}</th>
       <th>{{ "TRANSLATE.HOME.TABLE.SYMBOL" | translate }}</th>
-      <th>{{ "TRANSLATE.HOME.TABLE.NAME" | translate }}</th>
+      <th>
+        {{ "TRANSLATE.HOME.TABLE.NAME" | translate }}
+      </th>
       <th>{{ "TRANSLATE.HOME.TABLE.PRICE" | translate }}</th>
       <th>
         {{ "TRANSLATE.HOME.TABLE.PRICE_EUR" | translate }}
@@ -21,7 +23,9 @@
   <ng-template pTemplate="body" let-coin>
     <tr>
       <td>{{ coin.rank }}</td>
-      <td>{{ coin.symbol }}</td>
+      <td>
+        <img src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png" />
+      </td>
       <td>{{ coin.name }}</td>
       <td>{{ coin.price_usd | currency: "USD" }}</td>
       <td>{{ coin.price_usd / factor | currency: "EUR" }}</td>
