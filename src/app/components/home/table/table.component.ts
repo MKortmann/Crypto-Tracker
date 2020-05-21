@@ -8,6 +8,11 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { SelectItem } from 'primeng/api';
 
+interface City {
+  name: string;
+  code: string;
+}
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -18,6 +23,9 @@ export class TableComponent implements OnInit {
   factor: number = 1.09;
   exchanges: SelectItem[];
   selectRate: any;
+
+  cities1: SelectItem[];
+  selectedCity1: City;
 
   constructor(
     private dataService: DataService,
@@ -36,9 +44,22 @@ export class TableComponent implements OnInit {
       this.exchanges = array.map(([lat, lng]) => ({ label: lat, value: lng }));
       // this.exchanges = obj;
     });
+
+    this.cities1 = [
+      { label: 'Select City', value: null },
+      { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
+      { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
+      { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
+      { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
+      { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } },
+    ];
   }
 
   filterGlobal() {
     console.log('hello');
   }
+
+  // selection(event) {
+  //   console.log(event);
+  // }
 }
