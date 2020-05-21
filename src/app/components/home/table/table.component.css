@@ -28,3 +28,10 @@ img {
   max-width: 48px;
   max-height: 48px;
 }
+
+.ui-column-filter {
+  display: block;
+  min-width: 100%;
+  min-height: 32px;
+  cursor: pointer;
+}

@@ -6,18 +6,30 @@
   [rowsPerPageOptions]="[5, 10, 25, 50]"
   [showCurrentPageReport]="true"
   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} cryptos"
+  #dt
 >
   <ng-template pTemplate="caption">
-    <h2>
+    <h1>
       List of Cryptos
-    </h2>
+    </h1>
+    <div class="ui-table-globalfilter-container"></div>
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th>{{ "TRANSLATE.HOME.TABLE.RANK" | translate }}</th>
+      <th pSortableColumn="rank">
+        {{ "TRANSLATE.HOME.TABLE.RANK" | translate
+        }}<p-sortIcon field="rank"></p-sortIcon>
+      </th>
       <th>{{ "TRANSLATE.HOME.TABLE.SYMBOL" | translate }}</th>
       <th>
         {{ "TRANSLATE.HOME.TABLE.NAME" | translate }}
+        <input
+          pInputText
+          type="text"
+          (input)="dt.filter($event.target.value, 'name', 'startsWith')"
+          placeholder="Search by Name"
+          class="ui-column-filter"
+        />
       </th>
       <th>{{ "TRANSLATE.HOME.TABLE.PRICE" | translate }}</th>
       <th>

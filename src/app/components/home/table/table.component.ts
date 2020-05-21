@@ -24,4 +24,8 @@ export class TableComponent implements OnInit {
       console.log(this.coins);
     });
   }
+
+  filterGlobal() {
+    console.log('hello');
+  }
 }

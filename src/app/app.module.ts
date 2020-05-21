@@ -17,6 +17,7 @@ import { LoginComponent } from './components/login/login.component';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputTextModule } from 'primeng/inputtext';
 
 // For ngx translation
 import {
@@ -52,6 +53,7 @@ import { FormatCurrencyPipe } from './tools/format-currency.pipe';
     DropdownModule,
     FormsModule,
     BrowserAnimationsModule,
+    InputTextModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
