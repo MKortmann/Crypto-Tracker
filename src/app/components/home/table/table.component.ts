@@ -26,6 +26,7 @@ export class TableComponent implements OnInit {
 
   cities1: SelectItem[];
   selectedCity1: City;
+  name: string;
 
   constructor(
     private dataService: DataService,
@@ -59,7 +60,7 @@ export class TableComponent implements OnInit {
     console.log('hello');
   }
 
-  // selection(event) {
-  //   console.log(event);
-  // }
+  selection(event) {
+    console.log(event);
+  }
 }

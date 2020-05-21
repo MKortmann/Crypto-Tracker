@@ -1,8 +1,21 @@
 <!-- <p-dropdown [options]="exchanges"></p-dropdown> -->
 
-<p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown>
+<!-- <p-dropdown
+  ngDefaultControl
+  [options]="cities1"
+  [(ngModel)]="name"
+  name="name"
+></p-dropdown> -->
 
-<p>{{ selectedCity1 }}</p>
+<p-dropdown
+  ngDefaultControl
+  [options]="cities1"
+  (onChange)="selection($event)"
+></p-dropdown>
+
+<button (click)="hello()"></button>
+
+<p>{{ name }}</p>
 <br />
 <br />
 <br />
