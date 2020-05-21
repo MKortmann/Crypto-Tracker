@@ -6,6 +6,8 @@ import { ExchangeService } from '../../../services/exchange.service';
 
 import { TranslateService } from '@ngx-translate/core';
 
+import { SelectItem } from 'primeng/api';
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -14,7 +16,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class TableComponent implements OnInit {
   coins: Coin[];
   factor: number = 1.09;
-  rates: any;
+  exchanges: SelectItem[];
+  selectRate: any;
 
   constructor(
     private dataService: DataService,
@@ -29,8 +32,9 @@ export class TableComponent implements OnInit {
     });
 
     this.exchangeService.getMoney().then((res) => {
-      this.rates = res.rates;
-      console.log(this.rates);
+      let array = Object.entries(res.rates);
+      this.exchanges = array.map(([lat, lng]) => ({ label: lat, value: lng }));
+      // this.exchanges = obj;
     });
   }
 
