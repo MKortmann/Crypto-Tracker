@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
+import { SelectItem } from 'primeng/api';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

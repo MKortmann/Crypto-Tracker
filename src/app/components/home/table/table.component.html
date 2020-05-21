@@ -1,4 +1,17 @@
-<p-table [value]="coins" [paginator]="true" [rows]="7">
+<p-table
+  [value]="coins"
+  [paginator]="true"
+  [rows]="5"
+  [rowHover]="true"
+  [rowsPerPageOptions]="[5, 10, 25, 50]"
+  [showCurrentPageReport]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} cryptos"
+>
+  <ng-template pTemplate="caption">
+    <h2>
+      List of Cryptos
+    </h2>
+  </ng-template>
   <ng-template pTemplate="header">
     <tr>
       <th>{{ "TRANSLATE.HOME.TABLE.RANK" | translate }}</th>
@@ -21,7 +34,7 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-coin>
-    <tr>
+    <tr class="ui-selectable-row">
       <td>{{ coin.rank }}</td>
       <td>
         <img src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png" />

@@ -13,10 +13,6 @@ th {
   font-size: 20px;
 }
 
-td:nth-child(odd) {
-  font-weight: bold;
-}
-
 td i {
   display: inline-flex;
   vertical-align: middle;
