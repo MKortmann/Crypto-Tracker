@@ -20,13 +20,12 @@ interface City {
 })
 export class TableComponent implements OnInit {
   coins: Coin[];
-  factor: number = 1.09;
   exchanges: SelectItem[];
-  selectRate: any;
+  selectRate: number = 1.09;
+  name: any;
 
-  cities1: SelectItem[];
-  selectedCity1: City;
-  name: string;
+  cities: any[];
+  selectedCity: any;
 
   constructor(
     private dataService: DataService,
@@ -46,21 +45,18 @@ export class TableComponent implements OnInit {
       // this.exchanges = obj;
     });
 
-    this.cities1 = [
-      { label: 'Select City', value: null },
-      { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
-      { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
-      { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
-      { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
-      { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } },
+    this.cities = [
+      { name: 'New York', code: 'NY' },
+      { name: 'Rome', code: 'RM' },
+      { name: 'London', code: 'LDN' },
+      { name: 'Istanbul', code: 'IST' },
+      { name: 'Paris', code: 'PRS' },
     ];
   }
 
-  filterGlobal() {
-    console.log('hello');
-  }
-
   selection(event) {
-    console.log(event);
+    console.log(this.name);
+
+    this.selectRate = event.value;
   }
 }
