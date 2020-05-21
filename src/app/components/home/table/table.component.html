@@ -23,6 +23,7 @@
       <th>{{ "TRANSLATE.HOME.TABLE.SYMBOL" | translate }}</th>
       <th>
         {{ "TRANSLATE.HOME.TABLE.NAME" | translate }}
+
         <input
           pInputText
           type="text"
@@ -42,7 +43,7 @@
       <th>{{ "TRANSLATE.HOME.TABLE.CHANGE_7D" | translate }}</th>
       <th>{{ "TRANSLATE.HOME.TABLE.MARKET_CAP" | translate }}</th>
       <th>{{ "TRANSLATE.HOME.TABLE.VOLUME_24H" | translate }}</th>
-      <th>{{ "TRANSLATE.HOME.TABLE.VOLUME_24HA" | translate }}</th>
+      <!-- <th>{{ "TRANSLATE.HOME.TABLE.VOLUME_24HA" | translate }}</th> -->
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-coin>
@@ -105,7 +106,7 @@
       </ng-template>
       <td>{{ coin.market_cap_usd | formatCurrency }}</td>
       <td>{{ coin.volume24 | formatCurrency }}</td>
-      <td>{{ coin.volume24a | formatCurrency }}</td>
+      <!-- <td>{{ coin.volume24a | formatCurrency }}</td> -->
     </tr>
   </ng-template>
 </p-table>
