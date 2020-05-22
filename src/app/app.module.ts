@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/Forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -32,6 +34,9 @@ import { TableComponent } from './components/home/table/table.component';
 import { DashboardComponent } from './components/home/dashboard/dashboard.component';
 import { FormatCurrencyPipe } from './tools/format-currency.pipe';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
+import { ButtonModule } from 'primeng/button';
+
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -48,12 +53,16 @@ import { CarouselComponent } from './components/home/carousel/carousel.component
     FormatCurrencyPipe,
     CarouselComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TableModule,
     DropdownModule,
     FormsModule,
+    ButtonModule,
+    CommonModule,
+    ChartModule,
     BrowserAnimationsModule,
     InputTextModule,
     HttpClientModule,
