@@ -1,9 +1,9 @@
 <p-table
   [value]="coins"
   [paginator]="true"
-  [rows]="5"
+  [rows]="10"
   [rowHover]="true"
-  [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+  [rowsPerPageOptions]="[5, 10, 25, 50, 100, 200]"
   [showCurrentPageReport]="true"
   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} cryptos"
   #dt
@@ -130,3 +130,5 @@
     </tr>
   </ng-template>
 </p-table>
+<br />
+<hr />

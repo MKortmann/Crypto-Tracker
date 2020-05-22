@@ -28,7 +28,7 @@ export class DataService {
 
   getGlobalCryptoData() {
     return this.http
-      .get<any>('https://api.coinlore.net/api/tickers/?start=0&limit=100')
+      .get<any>('https://api.coinlore.net/api/tickers/?start=100&limit=200')
       .toPromise()
       .then((res) => {
         return res;
