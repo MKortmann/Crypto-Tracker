@@ -27,6 +27,7 @@
     "jquery": "^3.5.0",
     "material-design-icons": "^3.0.1",
     "popper.js": "^1.16.1",
+    "primeflex": "^1.1.0",
     "primeicons": "^3.0.0-rc.1",
     "primeng": "^9.0.6",
     "rxjs": "~6.5.4",
