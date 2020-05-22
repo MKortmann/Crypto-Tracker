@@ -31,6 +31,7 @@ import { NotFoundComponent } from './components/notfound/notfound.component';
 import { TableComponent } from './components/home/table/table.component';
 import { DashboardComponent } from './components/home/dashboard/dashboard.component';
 import { FormatCurrencyPipe } from './tools/format-currency.pipe';
+import { CarouselComponent } from './components/home/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { FormatCurrencyPipe } from './tools/format-currency.pipe';
     TableComponent,
     DashboardComponent,
     FormatCurrencyPipe,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
