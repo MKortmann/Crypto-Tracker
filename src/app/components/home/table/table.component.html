@@ -1,27 +1,3 @@
-<!-- <p-dropdown [options]="exchanges"></p-dropdown> -->
-
-<!-- <p-dropdown
-  ngDefaultControl
-  [options]="cities1"
-  [(ngModel)]="name"
-  name="name"
-></p-dropdown> -->
-
-<p-dropdown
-  *ngIf="selectedCity.length"
-  [options]="cities"
-  [(ngModel)]="selectedCity"
-  placeholder="Select a City"
-  optionLabel="name"
-  [showClear]="true"
-></p-dropdown>
-<p>Selected City: {{ selectedCity ? selectedCity.name : "none" }}</p>
-
-<br />
-<br />
-<br />
-<br />
-
 <p-table
   [value]="coins"
   [paginator]="true"
@@ -47,30 +23,30 @@
       <th>{{ "TRANSLATE.HOME.TABLE.SYMBOL" | translate }}</th>
       <th>
         {{ "TRANSLATE.HOME.TABLE.NAME" | translate }}
-
-        <input
-          pInputText
-          type="text"
-          (input)="dt.filter($event.target.value, 'name', 'startsWith')"
-          placeholder="Search by Name"
-          class="ui-column-filter"
-        />
+        <div class="container">
+          <div>
+            <input
+              pInputText
+              type="text"
+              (input)="dt.filter($event.target.value, 'name', 'startsWith')"
+              placeholder="Search by Name"
+              class="ui-column-filter"
+            />
+          </div>
+        </div>
       </th>
       <th>{{ "TRANSLATE.HOME.TABLE.PRICE" | translate }}</th>
       <th>
-        <p-dropdown
-          ngDefaultControl
-          [options]="exchanges"
-          (onChange)="selection($event)"
-          [(ngModel)]="name"
-          name="name"
-        ></p-dropdown>
-        <input
-          type="number"
-          step="0.01"
-          [(ngModel)]="selectRate"
-          name="selectRate"
-        />
+        Price in
+        <div class="container">
+          <p-dropdown
+            ngDefaultControl
+            [options]="exchanges"
+            (onChange)="selection($event, dd)"
+            [(ngModel)]="selectRate"
+            #dd
+          ></p-dropdown>
+        </div>
       </th>
       <th>{{ "TRANSLATE.HOME.TABLE.PRICE_BTC" | translate }}</th>
       <th>{{ "TRANSLATE.HOME.TABLE.CHANGE_1H" | translate }}</th>

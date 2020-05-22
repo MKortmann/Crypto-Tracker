@@ -8,11 +8,6 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { SelectItem } from 'primeng/api';
 
-interface City {
-  name: string;
-  code: string;
-}
-
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -21,11 +16,8 @@ interface City {
 export class TableComponent implements OnInit {
   coins: Coin[];
   exchanges: SelectItem[];
-  selectRate: number = 1.09;
-  name: any;
-
-  cities: any[];
-  selectedCity: any;
+  selectedExchange: any = 'EUR';
+  selectRate: number;
 
   constructor(
     private dataService: DataService,
@@ -41,22 +33,17 @@ export class TableComponent implements OnInit {
 
     this.exchangeService.getMoney().then((res) => {
       let array = Object.entries(res.rates);
-      this.exchanges = array.map(([lat, lng]) => ({ label: lat, value: lng }));
-      // this.exchanges = obj;
+      // doing an array of objects along with the optionLabel property to specify the field name of the option.
+      this.exchanges = array.map(([lat, lng]) => ({
+        label: lat,
+        value: lng,
+      }));
     });
-
-    this.cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' },
-    ];
   }
 
-  selection(event) {
-    console.log(this.name);
-
+  selection(event, dd) {
+    this.selectedExchange = dd.selectedOption.label;
+    console.log(dd.selectedOption.label);
     this.selectRate = event.value;
   }
 }
