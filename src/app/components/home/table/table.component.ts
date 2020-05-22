@@ -38,6 +38,9 @@ export class TableComponent implements OnInit {
         label: lat,
         value: lng,
       }));
+
+      this.selectedExchange = 'CAD';
+      this.selectRate = this.exchanges[0].value;
     });
   }
 
