@@ -18,6 +18,7 @@ export class TableComponent implements OnInit {
   exchanges: SelectItem[];
   selectedExchange: any = 'EUR';
   selectRate: number;
+  selectRateEUR: number;
 
   constructor(
     private dataService: DataService,
@@ -32,6 +33,7 @@ export class TableComponent implements OnInit {
     });
 
     this.exchangeService.getMoney().then((res) => {
+      this.selectRateEUR = res.rates['EUR'];
       let array = Object.entries(res.rates);
       // doing an array of objects along with the optionLabel property to specify the field name of the option.
       this.exchanges = array.map(([lat, lng]) => ({

@@ -45,3 +45,15 @@ img {
   align-items: center;
   padding: 5px;
 }
+
+input {
+  font-size: 14px;
+  text-align: left;
+  vertical-align: left;
+  max-width: 140px;
+}
+
+/* p-dropdown .ui-dropdown {
+  min-width: 0;
+  max-width: 3em;
+} */
