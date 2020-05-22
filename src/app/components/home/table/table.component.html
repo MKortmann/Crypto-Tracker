@@ -65,7 +65,9 @@
       </td>
       <td>{{ coin.name }}</td>
       <td>{{ coin.price_usd | currency: "USD" }}</td>
-      <td>{{ coin.price_usd * selectRate | currency: "EUR" }}</td>
+      <td>
+        {{ coin.price_usd * selectRate | currency: selectedExchange }}
+      </td>
       <td>{{ coin.price_btc }}</td>
       <!-- change 1h -->
       <div
