@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataService, Coin } from '../../../services/data.service';
+import { DataService } from '../../../services/data.service';
+
+import { Coin } from '../../../models/Coin';
 
 import { ExchangeService } from '../../../services/exchange.service';
 
@@ -27,12 +29,12 @@ export class TableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.dataService.getGlobalCryptoData().then((res) => {
+    // get the cryptocurrencies passing the rank number and the limit...
+    this.dataService.getGlobalCryptoData(0, 100).then((res) => {
       this.coins = res.data;
-      console.log(this.coins);
     });
 
-    this.exchangeService.getMoney().then((res) => {
+    this.exchangeService.getMoney('USD').then((res) => {
       this.selectRateEUR = res.rates['EUR'];
       let array = Object.entries(res.rates);
       // doing an array of objects along with the optionLabel property to specify the field name of the option.

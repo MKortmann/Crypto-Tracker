@@ -6,14 +6,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ExchangeService {
+  exchangeUrl: string = 'https://api.exchangeratesapi.io/';
   money: any;
 
   constructor(private http: HttpClient) {}
 
-  // get the exchange rates in accord to EUR
-  getMoney() {
+  // get the exchange rates in accord to the passed base that can be e.g.: EUR, USD
+  getMoney(base) {
     return this.http
-      .get<any>('https://api.exchangeratesapi.io/latest?base=USD')
+      .get<any>(`${this.exchangeUrl}latest?base=${base}`)
       .toPromise()
       .then((res) => {
         return res;
