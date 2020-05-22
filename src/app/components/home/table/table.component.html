@@ -3,7 +3,7 @@
   [paginator]="true"
   [rows]="5"
   [rowHover]="true"
-  [rowsPerPageOptions]="[5, 10, 25, 50]"
+  [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
   [showCurrentPageReport]="true"
   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} cryptos"
   #dt
@@ -40,17 +40,15 @@
       <th>
         Price in
         <div class="container">
-          <div>
-            <p-dropdown
-              ngDefaultControl
-              [options]="exchanges"
-              (onChange)="selection($event, dd)"
-              [(ngModel)]="selectRate"
-              name="selectRate"
-              #dd
-              [style]="{ width: '100%', 'min-width': '100%' }"
-            ></p-dropdown>
-          </div>
+          <p-dropdown
+            ngDefaultControl
+            [options]="exchanges"
+            (onChange)="selection($event, dd)"
+            [(ngModel)]="selectRate"
+            name="selectRate"
+            #dd
+            [style]="{ width: '100%', 'min-width': '100%' }"
+          ></p-dropdown>
         </div>
       </th>
       <th>{{ "TRANSLATE.HOME.TABLE.PRICE_BTC" | translate }}</th>
@@ -66,7 +64,10 @@
     <tr class="ui-selectable-row">
       <td>{{ coin.rank }}</td>
       <td>
-        <img src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png" />
+        <img
+          src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png"
+          alt="{{ coin.symbol | lowercase }}"
+        />
       </td>
       <td>{{ coin.name }}</td>
       <td>{{ coin.price_usd | currency: "USD" }}</td>
