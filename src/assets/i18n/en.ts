@@ -24,6 +24,12 @@ export const en = {
         VOLUME_24H: 'Volume 24h',
         VOLUME_24HA: 'Volume 24ha',
       },
+      GRAPHIC_CARD: {
+        CRYPTOS: 'Total of Cryptocurrencies',
+        ACTIVE_MARKETS: 'Active Markets',
+        TOTAL_OF_MARKET_CAP: 'Total of Market Cap',
+        TOTAL_OF_VOLUME: 'Total Volume in 24h',
+      },
     },
     REGISTER: {
       TITLE: 'REGISTER',

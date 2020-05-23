@@ -7,17 +7,31 @@
 
 <div class="p-grid">
   <div class="p-col-3">
-    <p-chart type="bar" [data]="dataBar"></p-chart>
-  </div>
-
-  <div class="p-col-3">
+    <!-- <p-chart type="bar" [data]="dataBar"></p-chart> -->
     <p-chart type="doughnut" [data]="dataDoughnut"></p-chart>
   </div>
-  <div class="p-col-3">
-    <p-chart type="polarArea" [data]="dataPolar"></p-chart>
+
+  <div class="p-col-2" *ngFor="let item of dataCard">
+    <p-card>
+      <p-header>
+        {{ item.name }}
+      </p-header>
+      <strong>
+        {{ item.value | formatCurrency }}
+      </strong>
+      <!-- <p-footer>
+        Footer content here
+      </p-footer> -->
+    </p-card>
   </div>
 
+  <!-- <div class="p-col-3">
+     <p-chart type="polarArea" [data]="dataPolar"></p-chart> -->
+  <!-- </div> -->
+  <!-- 
   <div class="p-col-3">
     <p-chart type="line" [data]="data"></p-chart>
   </div>
+</div>  
+</div>-->
 </div>

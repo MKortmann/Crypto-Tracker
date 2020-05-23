@@ -1,11 +1,13 @@
 <div class="p-grid">
   <div class="p-col-1" *ngFor="let item of data">
-    <p-card [header]="item.name" [style]="{ width: '350px' }">
+    <p-card [header]="item.name" [style]="{ width: '165px' }">
       <img
         src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
         alt="{{ item.symbol | lowercase }}"
       />
-      {{ item.price_usd | currency: "USD" }}
+      <strong style="margin-left: 8px; font-size: large;">
+        {{ item.price_usd | currency: "USD" }}
+      </strong>
       <!-- <div>{{ item.porcent_change_24h }}</div>
       <div>{{ item.porcent_change_7d }}</div> -->
       <p-footer>

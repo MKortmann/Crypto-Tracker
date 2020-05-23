@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../services/data.service';
 import { Coin } from '../../../models/Coin';
 
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './graphic-dashboard.component.html',
@@ -12,11 +14,15 @@ export class GraphicDashboardComponent implements OnInit {
   data: any;
   dataBar: any;
   dataDoughnut: any;
+  dataCard: any;
   dataPolar: any;
   labels: any;
   coins: Coin[];
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.dataPolar = {
@@ -35,18 +41,53 @@ export class GraphicDashboardComponent implements OnInit {
       ],
       labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue'],
     };
-    this.dataDoughnut = {
-      labels: ['A', 'B', 'C'],
-      datasets: [
-        {
-          data: [300, 50, 100],
-          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-          hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-        },
-      ],
-    };
 
-    this.dataService.getGlobalCryptoData(0, 3).then((res) => {});
+    this.dataService.getGlobal().then((res) => {
+      console.log('global:', res[0].btc_d);
+
+      this.dataCard = [
+        {
+          name: this.translate.instant('TRANSLATE.HOME.GRAPHIC_CARD.CRYPTOS'),
+          value: res[0].coins_count,
+        },
+        {
+          name: this.translate.instant(
+            'TRANSLATE.HOME.GRAPHIC_CARD.ACTIVE_MARKETS'
+          ),
+          value: res[0].active_markets,
+        },
+        {
+          name: this.translate.instant(
+            'TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_MARKET_CAP'
+          ),
+          value: res[0].total_mcap,
+        },
+        {
+          name: this.translate.instant(
+            'TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_VOLUME'
+          ),
+          value: res[0].total_volume,
+        },
+      ];
+
+      console.log('DataCard', this.dataCard);
+
+      this.dataDoughnut = {
+        labels: ['Bitcoin', 'Ethereum', 'Others'],
+        datasets: [
+          {
+            data: [
+              res[0].btc_d,
+              res[0].eth_d,
+              100 - res[0].btc_d - res[0].eth_d,
+            ],
+            backgroundColor: ['#FFCE56', '#FF6384', '#36A2EB'],
+            hoverBackgroundColor: ['#FFCE56', '#FF6384', '#36A2EB'],
+          },
+        ],
+      };
+    });
+
     this.dataService.getGlobalCryptoData(0, 7).then((res) => {
       this.labels = res.data.map((data) => data.name);
       console.log(this.labels);
