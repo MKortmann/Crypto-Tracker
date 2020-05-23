@@ -1,7 +1,7 @@
 export const en = {
   TRANSLATE: {
     NAVBAR: {
-      TITLE: 'Title',
+      TITLE: 'Crypto-Tracker',
       HOME: 'Home',
       ABOUT: 'About',
       NAV_2: 'Nav_2',

@@ -1,7 +1,7 @@
 export const de = {
   TRANSLATE: {
     NAVBAR: {
-      TITLE: 'Titel',
+      TITLE: 'Crypto-Tracker',
       HOME: 'Start',
       ABOUT: 'Über',
       NAV_2: 'Nav_2',
@@ -10,6 +10,20 @@ export const de = {
     },
     HOME: {
       TITLE: 'Start',
+      TABLE: {
+        RANK: 'Rang',
+        SYMBOL: 'Symbol',
+        NAME: 'Name',
+        PRICE: 'Preis in USD',
+        PRICE_EUR: 'Preis in EUR',
+        PRICE_BTC: 'Preis in BTC',
+        CHANGE_1H: 'Veränderung 1h',
+        CHANGE_24H: 'Veränderung 24h',
+        CHANGE_7D: 'Veränderung 7 Tage',
+        MARKET_CAP: 'Market Kap USD',
+        VOLUME_24H: 'Volumen 24h',
+        VOLUME_24HA: 'Volumen 24ha',
+      },
     },
     ABOUT: {
       TITLE: 'Über',

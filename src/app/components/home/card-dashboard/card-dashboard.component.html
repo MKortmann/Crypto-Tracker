@@ -1,9 +1,30 @@
 <div class="p-grid">
   <div class="p-col-1" *ngFor="let item of data">
-    <p-card [header]="item.name">
-      {{ item.price_usd | currency: "USD" }} {{ item.porcent_change_1h }}
+    <p-card [header]="item.name" [style]="{ width: '350px' }">
+      <img
+        src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
+        alt="{{ item.symbol | lowercase }}"
+      />
+      {{ item.price_usd | currency: "USD" }}
       <!-- <div>{{ item.porcent_change_24h }}</div>
       <div>{{ item.porcent_change_7d }}</div> -->
+      <p-footer>
+        <div
+          *ngIf="item.percent_change_1h > 0; then thenBlock; else elseBlock"
+        ></div>
+        <ng-template #thenBlock>
+          <td style="color: green;">
+            <i class="material-icons">trending_up</i>
+            {{ item.percent_change_1h / 100 | percent: "2.2-2" }}
+          </td>
+        </ng-template>
+        <ng-template #elseBlock>
+          <td style="color: red;">
+            <i class="material-icons">trending_down</i>
+            {{ item.percent_change_1h / 100 | percent: "2.2-2" }}
+          </td>
+        </ng-template>
+      </p-footer>
     </p-card>
   </div>
 </div>
