@@ -79,7 +79,7 @@ export class GraphicDashboardComponent implements OnInit {
             data: [
               res[0].btc_d,
               res[0].eth_d,
-              100 - res[0].btc_d - res[0].eth_d,
+              (100 - res[0].btc_d - res[0].eth_d).toFixed(2),
             ],
             backgroundColor: ['#FFCE56', '#FF6384', '#36A2EB'],
             hoverBackgroundColor: ['#FFCE56', '#FF6384', '#36A2EB'],

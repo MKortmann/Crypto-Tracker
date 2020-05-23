@@ -5,13 +5,13 @@
 
 <!-- <p-chart type="line" [data]="data"></p-chart> -->
 
-<div class="p-grid">
-  <div class="p-col-3">
+<div class="p-grid p-align-center">
+  <div class="p-col-fixed" style="width: 350px;">
     <!-- <p-chart type="bar" [data]="dataBar"></p-chart> -->
     <p-chart type="doughnut" [data]="dataDoughnut"></p-chart>
   </div>
 
-  <div class="p-col-2" *ngFor="let item of dataCard">
+  <div class="p-col" *ngFor="let item of dataCard">
     <p-card>
       <p-header>
         {{ item.name }}
