@@ -5,10 +5,10 @@ import { Coin } from '../../../models/Coin';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  templateUrl: './graphic-dashboard.component.html',
+  styleUrls: ['./graphic-dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit {
+export class GraphicDashboardComponent implements OnInit {
   data: any;
   dataBar: any;
   dataDoughnut: any;
@@ -45,6 +45,8 @@ export class DashboardComponent implements OnInit {
         },
       ],
     };
+
+    this.dataService.getGlobalCryptoData(0, 3).then((res) => {});
     this.dataService.getGlobalCryptoData(0, 7).then((res) => {
       this.labels = res.data.map((data) => data.name);
       console.log(this.labels);

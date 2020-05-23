@@ -31,12 +31,15 @@ import {
 import { CustomTranslateLoader } from 'src/customTranslateLoader';
 import { NotFoundComponent } from './components/notfound/notfound.component';
 import { TableComponent } from './components/home/table/table.component';
-import { DashboardComponent } from './components/home/dashboard/dashboard.component';
+import { GraphicDashboardComponent } from './components/home/graphic-dashboard/graphic-dashboard.component';
+import { CardDashboardComponent } from './components/home/card-dashboard/card-dashboard.component';
 import { FormatCurrencyPipe } from './tools/format-currency.pipe';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
 import { ButtonModule } from 'primeng/button';
 
 import { ChartModule } from 'primeng/chart';
+
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,8 @@ import { ChartModule } from 'primeng/chart';
     LoginComponent,
     NotFoundComponent,
     TableComponent,
-    DashboardComponent,
+    GraphicDashboardComponent,
+    CardDashboardComponent,
     FormatCurrencyPipe,
     CarouselComponent,
   ],
@@ -63,6 +67,7 @@ import { ChartModule } from 'primeng/chart';
     ButtonModule,
     CommonModule,
     ChartModule,
+    CardModule,
     BrowserAnimationsModule,
     InputTextModule,
     HttpClientModule,
