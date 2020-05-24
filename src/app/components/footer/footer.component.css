@@ -3,5 +3,6 @@
   bottom: 0;
   width: 100%;
   text-align: center;
-  /* color: dimgray; */
+  color: white;
+  background-color: rgb(56, 62, 68);
 }

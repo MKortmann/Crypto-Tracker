@@ -3,3 +3,7 @@
 /* body {
   font-size: 0rem;
 } */
+
+html {
+  overflow-x: hidden;
+}

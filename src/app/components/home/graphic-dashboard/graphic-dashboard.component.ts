@@ -81,6 +81,7 @@ export class GraphicDashboardComponent implements OnInit {
         };
 
         // this is necessary to allow the translate be called again, if not, we will need to refresh the page!
+        //.get:
         this.translate
           .stream('TRANSLATE.HOME.GRAPHIC_CARD.CRYPTOS')
           .subscribe((res: string) => {
@@ -88,19 +89,19 @@ export class GraphicDashboardComponent implements OnInit {
           });
 
         this.translate
-          .get('TRANSLATE.HOME.GRAPHIC_CARD.ACTIVE_MARKETS')
+          .stream('TRANSLATE.HOME.GRAPHIC_CARD.ACTIVE_MARKETS')
           .subscribe((res: string) => {
             this.dataCard[1].name = res;
           });
 
         this.translate
-          .get('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_MARKET_CAP')
+          .stream('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_MARKET_CAP')
           .subscribe((res: string) => {
             this.dataCard[2].name = res;
           });
 
         this.translate
-          .get('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_VOLUME')
+          .stream('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_VOLUME')
           .subscribe((res: string) => {
             this.dataCard[3].name = res;
           });
