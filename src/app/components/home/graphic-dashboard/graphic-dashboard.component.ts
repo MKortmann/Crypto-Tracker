@@ -28,22 +28,6 @@ export class GraphicDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.dataPolar = {
-    //   datasets: [
-    //     {
-    //       data: [11, 16, 7, 3, 14],
-    //       backgroundColor: [
-    //         '#FF6384',
-    //         '#4BC0C0',
-    //         '#FFCE56',
-    //         '#E7E9ED',
-    //         '#36A2EB',
-    //       ],
-    //       label: 'My dataset',
-    //     },
-    //   ],
-    //   labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue'],
-    // };
     this.exchangeService.getMoney('USD').then((res) => {
       this.selectRateEUR = res.rates['EUR'];
 
@@ -79,7 +63,7 @@ export class GraphicDashboardComponent implements OnInit {
           },
         ];
 
-        console.log('DataCard', this.dataCard);
+        console.log('DataCard', this.dataCard[0].name);
 
         this.dataDoughnut = {
           labels: ['Bitcoin', 'Ethereum', 'Others'],
@@ -95,69 +79,32 @@ export class GraphicDashboardComponent implements OnInit {
             },
           ],
         };
+
+        // this is necessary to allow the translate be called again, if not, we will need to refresh the page!
+        this.translate
+          .stream('TRANSLATE.HOME.GRAPHIC_CARD.CRYPTOS')
+          .subscribe((res: string) => {
+            this.dataCard[0].name = res;
+          });
+
+        this.translate
+          .get('TRANSLATE.HOME.GRAPHIC_CARD.ACTIVE_MARKETS')
+          .subscribe((res: string) => {
+            this.dataCard[1].name = res;
+          });
+
+        this.translate
+          .get('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_MARKET_CAP')
+          .subscribe((res: string) => {
+            this.dataCard[2].name = res;
+          });
+
+        this.translate
+          .get('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_VOLUME')
+          .subscribe((res: string) => {
+            this.dataCard[3].name = res;
+          });
       });
     });
-
-    // this.dataService.getGlobalCryptoData(0, 7).then((res) => {
-    //   this.labels = res.data.map((data) => data.name);
-    //   console.log(this.labels);
-    //   console.log(res);
-
-    //   this.dataBar = {
-    //     labels: [...this.labels],
-    //     datasets: [
-    //       {
-    //         label: 'Change 1h',
-    //         backgroundColor: '#42A5F5',
-    //         borderColor: '#1E88E5',
-    //         data: [65, 59, 80, 81, 56, 55, 40],
-    //       },
-    //       {
-    //         label: 'Change 24h',
-    //         backgroundColor: '#9CCC65',
-    //         borderColor: '#7CB342',
-    //         data: [28, 48, 40, 19, 86, 27, 90],
-    //       },
-    //       {
-    //         label: 'Change 7 days',
-    //         backgroundColor: '#9CCC65',
-    //         borderColor: '#7CB342',
-    //         data: [28, 48, 40, 19, 86, 27, 90],
-    //       },
-    //     ],
-    //   };
-    // });
-    // this.dataBar = {
-    //   labels: [this.labels],
-    //   datasets: [
-    //     {
-    //       label: 'My First dataset',
-    //       backgroundColor: '#42A5F5',
-    //       borderColor: '#1E88E5',
-    //       data: [65, 59, 80, 81, 56, 55, 40],
-    //     },
-    //     {
-    //       label: 'My Second dataset',
-    //       backgroundColor: '#9CCC65',
-    //       borderColor: '#7CB342',
-    //       data: [28, 48, 40, 19, 86, 27, 90],
-    //     },
-    //   ],
-    // };
-    // this.data = {
-    //   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    //   datasets: [
-    //     {
-    //       label: 'First Dataset',
-    //       data: [65, 59, 80, 81, 56, 55, 40],
-    //       borderColor: '#1E88E5',
-    //     },
-    //     {
-    //       label: 'Second Dataset',
-    //       data: [28, 48, 40, 19, 86, 27, 90],
-    //       borderColor: '#7CB342',
-    //     },
-    //   ],
-    // };
   }
 }
