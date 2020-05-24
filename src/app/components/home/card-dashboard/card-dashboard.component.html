@@ -2,11 +2,13 @@
   <div class="p-col-1" *ngFor="let item of data">
     <p-card [style]="{ width: '170px' }">
       <p-header style="font-size: larger; font-weight: bold;">
-        <img
-          src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
-          alt="{{ item.symbol | lowercase }}"
-        />
-        {{ item.name }}
+        <span style="padding-left: 10px;">
+          <img
+            src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
+            alt="{{ item.symbol | lowercase }}"
+          />
+          {{ item.name }}
+        </span>
       </p-header>
       <div style="font-size: large; text-align: left;">
         {{ item.price_usd | currency: "USD" }}

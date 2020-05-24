@@ -24,6 +24,13 @@ export const pt = {
         VOLUME_24H: 'Volume 24h',
         VOLUME_24HA: 'Volume 24ha',
       },
+      GRAPHIC_CARD: {
+        CRYPTOS: 'Número Total de Criptomoedas',
+        ACTIVE_MARKETS: 'Mercados Ativos',
+        TOTAL_OF_MARKET_CAP: 'Valor Total de Mercado',
+        TOTAL_OF_VOLUME: 'Volume Total em 24h ',
+        CRYPTO_DOMINANCE: 'Domínio de Criptomoedas ',
+      },
     },
     REGISTER: {
       TITLE: 'REGISTRO',

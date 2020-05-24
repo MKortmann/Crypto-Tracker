@@ -6,9 +6,18 @@
 <!-- <p-chart type="line" [data]="data"></p-chart> -->
 
 <div class="p-grid p-align-center">
-  <div class="p-col-fixed" style="width: 350px;">
+  <div class="p-col-fixed" style="width: 400px;">
     <!-- <p-chart type="bar" [data]="dataBar"></p-chart> -->
-    <p-chart type="doughnut" [data]="dataDoughnut"></p-chart>
+    <p-card
+      header="{{ 'TRANSLATE.HOME.GRAPHIC_CARD.CRYPTO_DOMINANCE' | translate }}"
+      style="padding: 0; margin: 0;"
+    >
+      <p-chart
+        type="doughnut"
+        [data]="dataDoughnut"
+        style="padding: 0; margin: 0;"
+      ></p-chart>
+    </p-card>
   </div>
 
   <div class="p-col" *ngFor="let item of dataCard">
@@ -16,9 +25,16 @@
       <p-header>
         {{ item.name }}
       </p-header>
-      <strong>
-        {{ item.value | formatCurrency }}
-      </strong>
+
+      <div>
+        <span *ngIf="item.value_usd !== undefined">$</span
+        >{{ item.value | formatCurrency }}
+      </div>
+
+      <div *ngIf="item.value_eur !== undefined">
+        <span>€</span> {{ item.value_eur | formatCurrency }}
+      </div>
+
       <!-- <p-footer>
         Footer content here
       </p-footer> -->

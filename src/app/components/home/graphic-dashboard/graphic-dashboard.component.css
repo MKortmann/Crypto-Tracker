@@ -1,8 +1,20 @@
 * {
-  padding: 10px;
+  padding: 5px;
+  padding-top: 15px;
 }
 
 p-header {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bolder;
+  padding-left: 10px;
+}
+
+:host >>> .ui-card {
+  min-height: 270px;
+  align-items: center;
+  justify-content: center;
+}
+
+:host >>> .ui-card-content {
+  font-size: 20px;
 }

@@ -24,6 +24,13 @@ export const de = {
         VOLUME_24H: 'Volumen 24h',
         VOLUME_24HA: 'Volumen 24ha',
       },
+      GRAPHIC_CARD: {
+        CRYPTOS: 'Summe der Kryptowährungen',
+        ACTIVE_MARKETS: 'Aktive Märkte',
+        TOTAL_OF_MARKET_CAP: 'Gesamtmarktkapitalisierung',
+        TOTAL_OF_VOLUME: 'Gesamtvolumen in 24h',
+        CRYPTO_DOMINANCE: 'Kryptodominanz Prozentsatz',
+      },
     },
     ABOUT: {
       TITLE: 'Über',

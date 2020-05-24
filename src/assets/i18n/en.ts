@@ -27,8 +27,9 @@ export const en = {
       GRAPHIC_CARD: {
         CRYPTOS: 'Total of Cryptocurrencies',
         ACTIVE_MARKETS: 'Active Markets',
-        TOTAL_OF_MARKET_CAP: 'Total of Market Cap (USD)',
-        TOTAL_OF_VOLUME: 'Total Volume in 24h (USD)',
+        TOTAL_OF_MARKET_CAP: 'Total of Market Cap',
+        TOTAL_OF_VOLUME: 'Total Volume in 24h ',
+        CRYPTO_DOMINANCE: 'Crypto Dominance Percentage',
       },
     },
     REGISTER: {
