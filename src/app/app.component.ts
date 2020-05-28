@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  title: 'Crypto-Tracker';
   constructor(private translate: TranslateService) {
     if (localStorage.getItem('language') == null) {
       this.translate.setDefaultLang('en');
