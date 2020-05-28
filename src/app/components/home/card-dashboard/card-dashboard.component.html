@@ -11,10 +11,10 @@
         </span>
       </p-header>
       <div style="font-size: large; text-align: left;">
-        {{ item.price_usd | currency: "USD" }}
+        {{ item.price_usd | currency: 'USD' }}
       </div>
       <div style="font-size: large; text-align: left;">
-        {{ item.price_eur | currency: "EUR" }}
+        {{ item.price_eur | currency: 'EUR' }}
       </div>
       <!-- <div>{{ item.porcent_change_24h }}</div>
       <div>{{ item.porcent_change_7d }}</div> -->
@@ -29,17 +29,17 @@
           *ngIf="item.percent_change_1h > 0; then thenBlock; else elseBlock"
         ></div>
         <ng-template #thenBlock>
-          <!-- <p>Change 1h</p> -->
+          <p>Change 1h</p>
           <td style="color: green;">
             <i class="material-icons">trending_up</i>
-            {{ item.percent_change_1h / 100 | percent: "2.2-2" }}
+            {{ item.percent_change_1h / 100 | percent: '2.2-2' }}
           </td>
         </ng-template>
         <ng-template #elseBlock>
-          <!-- <p>Change 1h</p> -->
+          <p>Change 1h</p>
           <td style="color: red;">
             <i class="material-icons">trending_down</i>
-            {{ item.percent_change_1h / 100 | percent: "2.2-2" }}
+            {{ item.percent_change_1h / 100 | percent: '2.2-2' }}
           </td>
         </ng-template>
         <!-- </p-accordionTab> -->
