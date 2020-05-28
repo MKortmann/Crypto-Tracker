@@ -19,21 +19,31 @@
       <!-- <div>{{ item.porcent_change_24h }}</div>
       <div>{{ item.porcent_change_7d }}</div> -->
       <p-footer>
+        <!-- <p-accordion> -->
+        <!-- <p-accordionTab> -->
+        <!-- <p-header> -->
+        <!-- <i class="material-C
+          icons">trending_up</i> -->
+        <!-- </p-header> -->
         <div
           *ngIf="item.percent_change_1h > 0; then thenBlock; else elseBlock"
         ></div>
         <ng-template #thenBlock>
+          <!-- <p>Change 1h</p> -->
           <td style="color: green;">
             <i class="material-icons">trending_up</i>
             {{ item.percent_change_1h / 100 | percent: "2.2-2" }}
           </td>
         </ng-template>
         <ng-template #elseBlock>
+          <!-- <p>Change 1h</p> -->
           <td style="color: red;">
             <i class="material-icons">trending_down</i>
             {{ item.percent_change_1h / 100 | percent: "2.2-2" }}
           </td>
         </ng-template>
+        <!-- </p-accordionTab> -->
+        <!-- </p-accordion> -->
       </p-footer>
     </p-card>
   </div>

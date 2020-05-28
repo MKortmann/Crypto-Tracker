@@ -8,3 +8,7 @@ img {
   color: white;
   border-color: #343a40;
 } */
+
+:host >>> .ui-accordion {
+  background-color: none;
+}
