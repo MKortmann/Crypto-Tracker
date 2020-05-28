@@ -1,28 +1,47 @@
-# Boilerplate
+# Crypto-Tracker
 
-This is a basic boilerplate for new projects.
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+This Crypto-Tracker App hat the main goal to track the development of different crypto-coins (at the moment about 200).
 
-## Development server
+## What to track
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### The idea is to track at least:
 
-## Code scaffolding
+1. +200 Crypto-Coints
+2. Global Values as:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Total of Cryptocurrencies
+- Active Markets
+- Total of Market Capital
+- Total Volume in 24h
 
-## Build
+3. For Each Crypto:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Different Price in USD, EUR ...
+- Change in 1h, 24h, 7 Days, Market Cap, Volume 24 h
 
-## Running unit tests
+## UI-Interface
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Filled with tables, graphics as bar, chart, line, pie
+- It should be completely responsive
 
-## Running end-to-end tests
+## Technologies
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+We are using:
+
+- Angular
+- Typescript
+- ngx-translator
+- API's for fetch data as: CoinLore, Exchange
+- PrimeNG for UI-Components
+- SASS
+
+And To keep the same standard code between programmers we are using:
+
+> - Prettier: for code auto formatter
+> - ESLint: to find and fix problems in the code
+> - Karma + Jasmine: to make test
+> - Travis CI: for continuous integration
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The App is in the first start phase of development. There are thousand of things to be implemented . If you want to be a part of this new project, please, do not hesitate to contact me.

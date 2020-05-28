@@ -1,0 +1,12 @@
+{
+  "trailingComma": "es5",
+  "trailingWhiteSpace": "all",
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "comment-format": [
+    true,
+    "check-lowercase",
+    { "ignore-pattern": "STD\\w{2,3}\\b" }
+  ]
+}

@@ -29,11 +29,11 @@ export class CardDashboardComponent implements OnInit {
     });
 
     this.exchangeService.getMoney('USD').then((res) => {
-      this.selectRateEUR = res.rates['EUR'];
+      this.selectRateEUR = res.rates[`EUR`];
       console.log(this.selectRateEUR);
 
       this.data.forEach((item) => {
-        item['price_eur'] = item.price_usd * res.rates['EUR'];
+        item[`price_eur`] = item.price_usd * res.rates[`price_eur`];
         // console.log(item);
       });
       console.log(this.data);

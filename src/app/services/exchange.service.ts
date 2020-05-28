@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ExchangeService {
-  exchangeUrl: string = 'https://api.exchangeratesapi.io/';
+  exchangeUrl = 'https://api.exchangeratesapi.io/';
   money: any;
 
   constructor(private http: HttpClient) {}

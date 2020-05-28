@@ -9,7 +9,7 @@ import { TranslateLoader } from '@ngx-translate/core';
 export class CustomTranslateLoader implements TranslateLoader {
   // Gets an object of translation for a give language with the current loader
   public getTranslation(lang: string): Observable<any> {
-    return Observable.create((observer) => {
+    return new Observable((observer) => {
       switch (lang) {
         case 'pt':
           observer.next(pt);

@@ -29,7 +29,7 @@ export class GraphicDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.exchangeService.getMoney('USD').then((res) => {
-      this.selectRateEUR = res.rates['EUR'];
+      this.selectRateEUR = res.rates[`EUR`];
     });
 
     this.dataService.getGlobal().then((res) => {
@@ -82,29 +82,28 @@ export class GraphicDashboardComponent implements OnInit {
       };
 
       // this is necessary to allow the translate be called again, if not, we will need to refresh the page!
-      //.get:
       this.translate
         .stream('TRANSLATE.HOME.GRAPHIC_CARD.CRYPTOS')
-        .subscribe((res: string) => {
-          this.dataCard[0].name = res;
+        .subscribe((res0: string) => {
+          this.dataCard[0].name = res0;
         });
 
       this.translate
         .stream('TRANSLATE.HOME.GRAPHIC_CARD.ACTIVE_MARKETS')
-        .subscribe((res: string) => {
-          this.dataCard[1].name = res;
+        .subscribe((res1: string) => {
+          this.dataCard[1].name = res1;
         });
 
       this.translate
         .stream('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_MARKET_CAP')
-        .subscribe((res: string) => {
-          this.dataCard[2].name = res;
+        .subscribe((res2: string) => {
+          this.dataCard[2].name = res2;
         });
 
       this.translate
         .stream('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_VOLUME')
-        .subscribe((res: string) => {
-          this.dataCard[3].name = res;
+        .subscribe((res3: string) => {
+          this.dataCard[3].name = res3;
         });
     });
   }

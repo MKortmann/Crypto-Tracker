@@ -1,0 +1,3 @@
+[0528/190358.471:ERROR:file_io_win.cc(161)] CreateFile C:\Users\Turtles\AppData\Local\Temp\karma-55725823\Crashpad\settings.dat: Das System kann den angegebenen Pfad nicht finden. (0x3)
+[0528/190358.471:ERROR:file_io_win.cc(170)] CreateFile C:\Users\Turtles\AppData\Local\Temp\karma-55725823\Crashpad\reports\05bbf29b-450e-4dcd-9b4f-fb70ed4b99e3.dmp: Das System kann den angegebenen Pfad nicht finden. (0x3)
+[0528/190358.471:ERROR:crash_report_exception_handler.cc(97)] PrepareNewCrashReport failed

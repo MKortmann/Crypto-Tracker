@@ -35,8 +35,8 @@ export class TableComponent implements OnInit {
     });
 
     this.exchangeService.getMoney('USD').then((res) => {
-      this.selectRateEUR = res.rates['EUR'];
-      let array = Object.entries(res.rates);
+      this.selectRateEUR = res.rates[`EUR`];
+      const array = Object.entries(res.rates);
       // doing an array of objects along with the optionLabel property to specify the field name of the option.
       this.exchanges = array.map(([lat, lng]) => ({
         label: lat,
