@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataService } from '../../../services/data.service';
+import { CoinLoreService } from '../../../services/coinLore.service';
 
 import { ExchangeService } from '../../../services/exchange.service';
 
@@ -16,12 +16,12 @@ export class CardDashboardComponent implements OnInit {
   selectRateEUR: number;
 
   constructor(
-    private dataService: DataService,
+    private coinLoreService: CoinLoreService,
     private exchangeService: ExchangeService
   ) {}
 
   ngOnInit(): void {
-    this.dataService.getGlobalCryptoData(0, 12).then((res) => {
+    this.coinLoreService.getGlobalCryptoData(0, 12).then((res) => {
       // this.labels = res.data.map((data) => data.name);
       // this.prices = res.data.map((data) => data.price);
       this.data = [...res.data];

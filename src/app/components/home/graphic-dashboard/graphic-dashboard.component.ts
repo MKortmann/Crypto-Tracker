@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataService } from '../../../services/data.service';
+import { CoinLoreService } from '../../../services/coinLore.service';
 import { ExchangeService } from '../../../services/exchange.service';
 import { Coin } from '../../../models/Coin';
 
@@ -22,7 +22,7 @@ export class GraphicDashboardComponent implements OnInit {
   selectRateEUR: any;
 
   constructor(
-    private dataService: DataService,
+    private coinLoreService: CoinLoreService,
     private translate: TranslateService,
     private exchangeService: ExchangeService
   ) {}
@@ -32,7 +32,7 @@ export class GraphicDashboardComponent implements OnInit {
       this.selectRateEUR = res.rates[`EUR`];
     });
 
-    this.dataService.getGlobal().then((res) => {
+    this.coinLoreService.getGlobal().then((res) => {
       console.log('global:', res[0].btc_d);
 
       this.dataCard = [

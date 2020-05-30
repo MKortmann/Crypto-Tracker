@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataService } from '../../../services/data.service';
+import { CoinLoreService } from '../../../services/coinLore.service';
 
 import { Coin } from '../../../models/Coin';
 
@@ -23,14 +23,14 @@ export class TableComponent implements OnInit {
   selectRateEUR: number;
 
   constructor(
-    private dataService: DataService,
+    private coinLoreService: CoinLoreService,
     private translate: TranslateService,
     private exchangeService: ExchangeService
   ) {}
 
   ngOnInit(): void {
     // get the cryptocurrencies passing the rank number and the limit...
-    this.dataService.getGlobalCryptoData(0, 100).then((res) => {
+    this.coinLoreService.getGlobalCryptoData(0, 100).then((res) => {
       this.coins = res.data;
     });
 
