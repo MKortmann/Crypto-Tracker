@@ -32,7 +32,7 @@ export class GraphicDashboardComponent implements OnInit {
       this.selectRateEUR = res.rates[`EUR`];
     });
 
-    this.coinLoreService.getGlobal().then((res) => {
+    this.coinLoreService.getGlobal().subscribe((res) => {
       console.log('global:', res[0].btc_d);
 
       this.dataCard = [
