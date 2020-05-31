@@ -1,6 +1,5 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { Component } from '@angular/core';
 
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 

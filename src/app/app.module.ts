@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FormsModule } from '@angular/Forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -63,7 +62,6 @@ import { AccordionModule } from 'primeng/accordion';
     AppRoutingModule,
     TableModule,
     DropdownModule,
-    FormsModule,
     ButtonModule,
     CommonModule,
     ChartModule,
