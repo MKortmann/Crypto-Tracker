@@ -1,13 +1,5 @@
-<!-- <div>
-  <p-chart type="pie" [data]="hoursByProjectChartData"></p-chart>
-  <p-chart type="doughnut" [data]="hoursByProjectChartData"></p-chart>
-</div> -->
-
-<!-- <p-chart type="line" [data]="data"></p-chart> -->
-
 <div class="p-grid p-align-center">
   <div class="p-col-fixed" style="width: 400px;">
-    <!-- <p-chart type="bar" [data]="dataBar"></p-chart> -->
     <p-card
       header="{{ 'TRANSLATE.HOME.GRAPHIC_CARD.CRYPTO_DOMINANCE' | translate }}"
     >
@@ -33,20 +25,6 @@
       <div *ngIf="item.value_eur !== undefined">
         <span>€</span> {{ item.value_eur | formatCurrency }}
       </div>
-
-      <!-- <p-footer>
-        Footer content here
-      </p-footer> -->
     </p-card>
   </div>
-
-  <!-- <div class="p-col-3">
-     <p-chart type="polarArea" [data]="dataPolar"></p-chart> -->
-  <!-- </div> -->
-  <!-- 
-  <div class="p-col-3">
-    <p-chart type="line" [data]="data"></p-chart>
-  </div>
-</div>  
-</div>-->
 </div>

@@ -40,6 +40,8 @@ export const pt = {
     },
     ABOUT: {
       TITLE: 'Sobre',
+      COMMENTS:
+        'Este aplicativo Crypto-Tracker tem o objetivo principal de acompanhar o desenvolvimento de diferentes moedas criptográficas (atualmente, cerca de 200). Espero que você goste!',
     },
     FOOTER: {
       LABEL_LEFT: 'Marcelo Kortmann',

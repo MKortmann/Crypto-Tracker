@@ -39,7 +39,9 @@ export const en = {
       TITLE: 'Anmeldung',
     },
     ABOUT: {
-      TITLE: 'Title',
+      TITLE: 'About',
+      COMMENTS:
+        'This Crypto-Tracker App has the main goal to track the development of different crypto-coins (at the moment about 200). I hope you enjoy it!',
     },
     FOOTER: {
       LABEL_LEFT: 'Marcelo Kortmann',

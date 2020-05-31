@@ -16,15 +16,8 @@
       <div style="font-size: large; text-align: left;">
         {{ item.price_eur | currency: 'EUR' }}
       </div>
-      <!-- <div>{{ item.porcent_change_24h }}</div>
-      <div>{{ item.porcent_change_7d }}</div> -->
+
       <p-footer>
-        <!-- <p-accordion> -->
-        <!-- <p-accordionTab> -->
-        <!-- <p-header> -->
-        <!-- <i class="material-C
-          icons">trending_up</i> -->
-        <!-- </p-header> -->
         <div
           *ngIf="item.percent_change_1h > 0; then thenBlock; else elseBlock"
         ></div>
@@ -42,8 +35,6 @@
             {{ item.percent_change_1h / 100 | percent: '2.2-2' }}
           </td>
         </ng-template>
-        <!-- </p-accordionTab> -->
-        <!-- </p-accordion> -->
       </p-footer>
     </p-card>
   </div>
