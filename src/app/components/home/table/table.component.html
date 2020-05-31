@@ -7,6 +7,7 @@
     [rowsPerPageOptions]="[5, 10, 25, 50, 100, 200]"
     [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} cryptos"
+    [style]="{ background: 'red' }"
     #dt
   >
     <!-- <ng-template pTemplate="caption">
@@ -18,12 +19,12 @@
     <ng-template pTemplate="header">
       <tr>
         <th pSortableColumn="rank">
-          {{ "TRANSLATE.HOME.TABLE.RANK" | translate
+          {{ 'TRANSLATE.HOME.TABLE.RANK' | translate
           }}<p-sortIcon field="rank"></p-sortIcon>
         </th>
-        <th>{{ "TRANSLATE.HOME.TABLE.SYMBOL" | translate }}</th>
+        <th>{{ 'TRANSLATE.HOME.TABLE.SYMBOL' | translate }}</th>
         <th>
-          {{ "TRANSLATE.HOME.TABLE.NAME" | translate }}
+          {{ 'TRANSLATE.HOME.TABLE.NAME' | translate }}
           <div class="container">
             <div>
               <input
@@ -36,8 +37,8 @@
             </div>
           </div>
         </th>
-        <th>{{ "TRANSLATE.HOME.TABLE.PRICE" | translate }}</th>
-        <th>{{ "TRANSLATE.HOME.TABLE.PRICE_EUR" | translate }}</th>
+        <th>{{ 'TRANSLATE.HOME.TABLE.PRICE' | translate }}</th>
+        <th>{{ 'TRANSLATE.HOME.TABLE.PRICE_EUR' | translate }}</th>
         <th>
           Price in
           <div class="container">
@@ -52,12 +53,12 @@
             ></p-dropdown>
           </div>
         </th>
-        <th>{{ "TRANSLATE.HOME.TABLE.PRICE_BTC" | translate }}</th>
-        <th>{{ "TRANSLATE.HOME.TABLE.CHANGE_1H" | translate }}</th>
-        <th>{{ "TRANSLATE.HOME.TABLE.CHANGE_24H" | translate }}</th>
-        <th>{{ "TRANSLATE.HOME.TABLE.CHANGE_7D" | translate }}</th>
-        <th>{{ "TRANSLATE.HOME.TABLE.MARKET_CAP" | translate }}</th>
-        <th>{{ "TRANSLATE.HOME.TABLE.VOLUME_24H" | translate }}</th>
+        <th>{{ 'TRANSLATE.HOME.TABLE.PRICE_BTC' | translate }}</th>
+        <th>{{ 'TRANSLATE.HOME.TABLE.CHANGE_1H' | translate }}</th>
+        <th>{{ 'TRANSLATE.HOME.TABLE.CHANGE_24H' | translate }}</th>
+        <th>{{ 'TRANSLATE.HOME.TABLE.CHANGE_7D' | translate }}</th>
+        <th>{{ 'TRANSLATE.HOME.TABLE.MARKET_CAP' | translate }}</th>
+        <th>{{ 'TRANSLATE.HOME.TABLE.VOLUME_24H' | translate }}</th>
         <!-- <th>{{ "TRANSLATE.HOME.TABLE.VOLUME_24HA" | translate }}</th> -->
       </tr>
     </ng-template>
@@ -71,8 +72,8 @@
           />
         </td>
         <td>{{ coin.name }}</td>
-        <td>{{ coin.price_usd | currency: "USD" }}</td>
-        <td>{{ coin.price_usd * selectRateEUR | currency: "EUR" }}</td>
+        <td>{{ coin.price_usd | currency: 'USD' }}</td>
+        <td>{{ coin.price_usd * selectRateEUR | currency: 'EUR' }}</td>
         <td>
           {{ coin.price_usd * selectRate | currency: selectedExchange }}
         </td>
@@ -84,13 +85,13 @@
         <ng-template #thenBlock>
           <td style="color: green;">
             <i class="material-icons">trending_up</i>
-            {{ coin.percent_change_1h / 100 | percent: "2.2-2" }}
+            {{ coin.percent_change_1h / 100 | percent: '2.2-2' }}
           </td>
         </ng-template>
         <ng-template #elseBlock>
           <td style="color: red;">
             <i class="material-icons">trending_down</i>
-            {{ coin.percent_change_1h / 100 | percent: "2.2-2" }}
+            {{ coin.percent_change_1h / 100 | percent: '2.2-2' }}
           </td>
         </ng-template>
         <!-- change 24h -->
@@ -100,13 +101,13 @@
         <ng-template #thenBlock>
           <td style="color: green;">
             <i class="material-icons">trending_up</i>
-            {{ coin.percent_change_24h / 100 | percent: "2.2-2" }}
+            {{ coin.percent_change_24h / 100 | percent: '2.2-2' }}
           </td>
         </ng-template>
         <ng-template #elseBlock>
           <td style="color: red;">
             <i class="material-icons">trending_down</i>
-            {{ coin.percent_change_24h / 100 | percent: "2.2-2" }}
+            {{ coin.percent_change_24h / 100 | percent: '2.2-2' }}
           </td>
         </ng-template>
         <!-- change 7 Days -->
@@ -116,13 +117,13 @@
         <ng-template #thenBlock>
           <td style="color: green;">
             <i class="material-icons">trending_up</i>
-            {{ coin.percent_change_7d / 100 | percent: "2.2-2" }}
+            {{ coin.percent_change_7d / 100 | percent: '2.2-2' }}
           </td>
         </ng-template>
         <ng-template #elseBlock>
           <td style="color: red;">
             <i class="material-icons">trending_down</i>
-            {{ coin.percent_change_7d / 100 | percent: "2.2-2" }}
+            {{ coin.percent_change_7d / 100 | percent: '2.2-2' }}
           </td>
         </ng-template>
         <td>{{ coin.market_cap_usd | formatCurrency }}</td>

@@ -3,6 +3,11 @@
   bottom: 0;
   width: 100%;
   text-align: center;
-  color: white;
-  background-color: rgb(56, 62, 68);
+  color: black;
+  font-size: 20px;
+  /* background-color: rgb(56, 62, 68); */
+  /* background-color: #536472; */
+  /* background-color: #ffa69e; */
+  /* background-color: #b3dec1; */
+  background-color: #e0d2c3;
 }

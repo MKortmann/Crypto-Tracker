@@ -1,8 +1,13 @@
-img {
-  max-width: 24px;
-  max-height: 24px;
+* {
+  padding: 0px;
+  cursor: default;
 }
-/* 
+
+img {
+  width: 36px;
+  height: 36px;
+}
+/*
 :host >>> .ui-card {
   background-color: #343a40;
   color: white;

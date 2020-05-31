@@ -1,5 +1,5 @@
 * {
-  padding: 10px;
+  padding: 5px;
   cursor: default;
 }
 
@@ -11,7 +11,10 @@ th {
 }
 
 th {
+  color: black !important;
   font-size: 20px;
+  /* background-color: #17a2b8 !important; */
+  background-color: #dbf9f0 !important;
 }
 
 td i {

@@ -84,8 +84,8 @@ export class GraphicDashboardComponent implements OnInit {
                   2
                 ),
               ],
-              backgroundColor: ['#FFCE56', '#FF6384', '#36A2EB'],
-              hoverBackgroundColor: ['#FFCE56', '#FF6384', '#36A2EB'],
+              backgroundColor: ['#536472', '#FFA69E', '#B3DEC1'],
+              hoverBackgroundColor: ['#536472', '#FFA69E', '#B3DEC1'],
             },
           ],
         };
