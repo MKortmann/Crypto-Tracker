@@ -1,8 +1,6 @@
 # Crypto-Tracker
 
-## [![Build Status](https://travis-ci.org/MKortmann/Crypto-Tracker.svg?branch=master)](https://travis-ci.org/MKortmann/Crypto-Tracker.svg?branch=master)
-
-[![Build Status](https://travis-ci.org/MKortmann/Crypto-Tracker.svg?branch=master)](https://travis-ci.org/MKortmann/Crypto-Tracker.svg?branch=master)
+[![Build Status](https://travis-ci.org/MKortmann/Crypto-Tracker.svg?branch=master)](https://travis-ci.org/MKortmann/Crypto-Tracker)
 
 This Crypto-Tracker App has the main goal to track the development of different crypto-coins (at the moment about 200).
 
