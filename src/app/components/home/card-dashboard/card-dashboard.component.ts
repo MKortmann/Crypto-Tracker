@@ -10,10 +10,7 @@ import { ExchangeService } from '../../../services/exchange.service';
   styleUrls: ['./card-dashboard.component.css'],
 })
 export class CardDashboardComponent implements OnInit {
-  // labels: any;
-  // prices: any;
   data: any;
-  selectRateEUR: number;
 
   constructor(
     private coinLoreService: CoinLoreService,
@@ -21,26 +18,14 @@ export class CardDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.coinLoreService.getData().subscribe((res) => {
-      console.log('done', res);
-    });
-
     this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
-      // this.labels = res.data.map((data) => data.name);
-      // this.prices = res.data.map((data) => data.price);
       this.data = [...res.data];
-      console.log(this.data);
-    });
 
-    this.exchangeService.getMoney('USD').then((res) => {
-      this.selectRateEUR = res.rates[`EUR`];
-      console.log(this.selectRateEUR);
-
-      this.data.forEach((item) => {
-        item[`price_eur`] = item.price_usd * res.rates[`price_eur`];
-        // console.log(item);
+      this.exchangeService.getMoney('USD').subscribe((res2) => {
+        this.data.forEach((item) => {
+          item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
+        });
       });
-      console.log(this.data);
     });
   }
 }

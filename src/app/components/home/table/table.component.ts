@@ -20,7 +20,7 @@ export class TableComponent implements OnInit {
   exchanges: SelectItem[];
   selectedExchange: any = 'EUR';
   selectRate: number;
-  selectRateEUR: number;
+  selectRateEUR: any;
 
   constructor(
     private coinLoreService: CoinLoreService,
@@ -30,22 +30,31 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     // get the cryptocurrencies passing the rank number and the limit...
-    this.coinLoreService.getGlobalCryptoData(0, 100).subscribe((res) => {
-      this.coins = res.data;
-    });
+    this.coinLoreService.getGlobalCryptoData(0, 100).subscribe(
+      (res) => {
+        this.coins = res.data;
 
-    this.exchangeService.getMoney('USD').then((res) => {
-      this.selectRateEUR = res.rates[`EUR`];
-      const array = Object.entries(res.rates);
-      // doing an array of objects along with the optionLabel property to specify the field name of the option.
-      this.exchanges = array.map(([lat, lng]) => ({
-        label: lat,
-        value: lng,
-      }));
-
-      this.selectedExchange = 'CAD';
-      this.selectRate = this.exchanges[0].value;
-    });
+        this.exchangeService.getMoney('USD').subscribe(
+          (res2) => {
+            const array = Object.entries(res2.rates);
+            // doing an array of objects along with the optionLabel property to specify the field name of the option.
+            this.exchanges = array.map(([lat, lng]) => ({
+              label: lat,
+              value: lng,
+            }));
+            this.selectRateEUR = res2.rates[`EUR`];
+            this.selectedExchange = 'CAD';
+            this.selectRate = this.exchanges[0].value;
+          },
+          (error2) => {
+            console.log(error2);
+          }
+        );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   selection(event, dd) {

@@ -34,7 +34,7 @@ import { TableComponent } from './components/home/table/table.component';
 import { GraphicDashboardComponent } from './components/home/graphic-dashboard/graphic-dashboard.component';
 import { CardDashboardComponent } from './components/home/card-dashboard/card-dashboard.component';
 import { FormatCurrencyPipe } from './tools/format-currency.pipe';
-import { CarouselComponent } from './components/home/carousel/carousel.component';
+
 import { ButtonModule } from 'primeng/button';
 
 import { ChartModule } from 'primeng/chart';
@@ -56,7 +56,6 @@ import { AccordionModule } from 'primeng/accordion';
     GraphicDashboardComponent,
     CardDashboardComponent,
     FormatCurrencyPipe,
-    CarouselComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
