@@ -6,8 +6,11 @@ branches:
   only:
     - master
 
+addons:
+  chrome: stable
+
 before script:
   - npm install -g @angular/cli
 
 script:
-  - ng build --prod --aot
+  - ng build --prod
