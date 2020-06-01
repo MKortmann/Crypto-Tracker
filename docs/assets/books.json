@@ -1,7 +1,0 @@
-{
-  "data": [
-    { "name": "Book 1", "price": 10, "author": "1" },
-    { "name": "Book 2", "price": 15, "author": "2" },
-    { "name": "Book 3", "price": 13, "author": "3" }
-  ]
-}

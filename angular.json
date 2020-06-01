@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "boilerplate": {
+    "crypto-tracker": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/boilerplate",
+            "outputPath": "dist/crypto-tracker",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,18 +69,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "boilerplate:build"
+            "browserTarget": "crypto-tracker:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "boilerplate:build:production"
+              "browserTarget": "crypto-tracker:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "boilerplate:build"
+            "browserTarget": "crypto-tracker:build"
           }
         },
         "test": {
@@ -110,16 +110,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "boilerplate:serve"
+            "devServerTarget": "crypto-tracker:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "boilerplate:serve:production"
+              "devServerTarget": "crypto-tracker:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "boilerplate"
+  "defaultProject": "crypto-tracker"
 }
