@@ -19,7 +19,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": ["src/assets/imgs/icons/mk.png", "src/assets"],
+            "assets": ["assets/imgs/icons/mk.svg", "src/assets"],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/primeicons/primeicons.css",
@@ -90,7 +90,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/assets/imgs/icons/mk.png", "src/assets"],
+            "assets": ["assets/imgs/icons/mk.svg", "src/assets"],
             "styles": ["src/styles.css"],
             "scripts": []
           }
