@@ -10,11 +10,13 @@ p-header {
 }
 
 :host >>> .ui-card {
-  min-height: 270px;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
 }
 
 :host >>> .ui-card-content {
   font-size: 20px;
+}
+
+p-grid {
+  padding: 0;
 }
