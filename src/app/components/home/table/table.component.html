@@ -8,6 +8,7 @@
     [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} cryptos"
     [resizableColumns]="true"
+    [responsive]="true"
     #dt
   >
     <ng-template pTemplate="header">
@@ -26,14 +27,14 @@
                 type="text"
                 (input)="dt.filter($event.target.value, 'name', 'startsWith')"
                 placeholder="Search by Name"
-                class="ui-column-filter"
+                class="ui-column-filter hideInSmallScreens"
               />
             </div>
           </div>
         </th>
         <th>{{ 'TRANSLATE.HOME.TABLE.PRICE' | translate }}</th>
         <th>{{ 'TRANSLATE.HOME.TABLE.PRICE_EUR' | translate }}</th>
-        <th>
+        <th class="hideInSmallScreens">
           Price in
           <div class="container">
             <p-dropdown
@@ -47,12 +48,24 @@
             ></p-dropdown>
           </div>
         </th>
-        <th>{{ 'TRANSLATE.HOME.TABLE.PRICE_BTC' | translate }}</th>
-        <th>{{ 'TRANSLATE.HOME.TABLE.CHANGE_1H' | translate }}</th>
-        <th>{{ 'TRANSLATE.HOME.TABLE.CHANGE_24H' | translate }}</th>
-        <th>{{ 'TRANSLATE.HOME.TABLE.CHANGE_7D' | translate }}</th>
-        <th>{{ 'TRANSLATE.HOME.TABLE.MARKET_CAP' | translate }}</th>
-        <th>{{ 'TRANSLATE.HOME.TABLE.VOLUME_24H' | translate }}</th>
+        <th class="hideInSmallScreens">
+          {{ 'TRANSLATE.HOME.TABLE.PRICE_BTC' | translate }}
+        </th>
+        <th>
+          {{ 'TRANSLATE.HOME.TABLE.CHANGE_1H' | translate }}
+        </th>
+        <th>
+          {{ 'TRANSLATE.HOME.TABLE.CHANGE_24H' | translate }}
+        </th>
+        <th>
+          {{ 'TRANSLATE.HOME.TABLE.CHANGE_7D' | translate }}
+        </th>
+        <th class="hideInSmallScreens">
+          {{ 'TRANSLATE.HOME.TABLE.MARKET_CAP' | translate }}
+        </th>
+        <th class="hideInSmallScreens">
+          {{ 'TRANSLATE.HOME.TABLE.VOLUME_24H' | translate }}
+        </th>
         <!-- <th>{{ "TRANSLATE.HOME.TABLE.VOLUME_24HA" | translate }}</th> -->
       </tr>
     </ng-template>
@@ -68,10 +81,10 @@
         <td>{{ coin.name }}</td>
         <td>{{ coin.price_usd | currency: 'USD' }}</td>
         <td>{{ coin.price_usd * selectRateEUR | currency: 'EUR' }}</td>
-        <td>
+        <td class="hideInSmallScreens">
           {{ coin.price_usd * selectRate | currency: selectedExchange }}
         </td>
-        <td>{{ coin.price_btc }}</td>
+        <td class="hideInSmallScreens">{{ coin.price_btc }}</td>
         <!-- change 1h -->
         <div
           *ngIf="coin.percent_change_1h > 0; then thenBlock; else elseBlock"
@@ -120,8 +133,10 @@
             {{ coin.percent_change_7d | percent: '2.2-2' }}
           </td>
         </ng-template>
-        <td>{{ coin.market_cap_usd | formatCurrency }}</td>
-        <td>{{ coin.volume24 | formatCurrency }}</td>
+        <td class="hideInSmallScreens">
+          {{ coin.market_cap_usd | formatCurrency }}
+        </td>
+        <td class="hideInSmallScreens">{{ coin.volume24 | formatCurrency }}</td>
         <!-- <td>{{ coin.volume24a | formatCurrency }}</td> -->
       </tr>
     </ng-template>
