@@ -12,15 +12,16 @@
     class="navbar-toggler"
     type="button"
     data-toggle="collapse"
-    data-target="#navbarToogle"
-    aria-controls="navbarToogle"
+    data-target="#navbarMain"
+    aria-controls="navbarMain"
     aria-expanded="false"
     aria-label="Toggle navigation"
   >
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarToogle">
+  <!-- Home, About...: left position -->
+  <div class="collapse navbar-collapse" id="navbarMain">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="nav-link" routerLink="/"
@@ -40,12 +41,14 @@
       </li> -->
     </ul>
 
+    <!-- Middle position -->
     <ul class="title">
       {{
         'TRANSLATE.NAVBAR.TITLE' | translate
       }}
     </ul>
 
+    <!-- Right Position -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a routerLink="/register" class="nav-link">{{
@@ -57,7 +60,7 @@
           'TRANSLATE.NAVBAR.LOGIN' | translate
         }}</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a
           routerLink="/home"
           class="nav-link dropleft"
@@ -78,7 +81,7 @@
             <a class="dropdown-item" href="#">Separated link</a>
           </div>
         </a>
-      </li>
+      </li> -->
     </ul>
     <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" />
