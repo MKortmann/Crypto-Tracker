@@ -78,13 +78,13 @@
         <ng-template #thenBlock>
           <td style="color: green;">
             <i class="material-icons">trending_up</i>
-            {{ coin.percent_change_1h / 100 | percent: '2.2-2' }}
+            {{ coin.percent_change_1h | percent: '2.2-2' }}
           </td>
         </ng-template>
         <ng-template #elseBlock>
           <td style="color: red;">
             <i class="material-icons">trending_down</i>
-            {{ coin.percent_change_1h / 100 | percent: '2.2-2' }}
+            {{ coin.percent_change_1h | percent: '2.2-2' }}
           </td>
         </ng-template>
         <!-- change 24h -->
@@ -94,13 +94,13 @@
         <ng-template #thenBlock>
           <td style="color: green;">
             <i class="material-icons">trending_up</i>
-            {{ coin.percent_change_24h / 100 | percent: '2.2-2' }}
+            {{ coin.percent_change_24h }}
           </td>
         </ng-template>
         <ng-template #elseBlock>
           <td style="color: red;">
             <i class="material-icons">trending_down</i>
-            {{ coin.percent_change_24h / 100 | percent: '2.2-2' }}
+            {{ coin.percent_change_24h }}
           </td>
         </ng-template>
         <!-- change 7 Days -->
@@ -110,13 +110,13 @@
         <ng-template #thenBlock>
           <td style="color: green;">
             <i class="material-icons">trending_up</i>
-            {{ coin.percent_change_7d / 100 | percent: '2.2-2' }}
+            {{ coin.percent_change_7d | percent: '2.2-2' }}
           </td>
         </ng-template>
         <ng-template #elseBlock>
           <td style="color: red;">
             <i class="material-icons">trending_down</i>
-            {{ coin.percent_change_7d / 100 | percent: '2.2-2' }}
+            {{ coin.percent_change_7d | percent: '2.2-2' }}
           </td>
         </ng-template>
         <td>{{ coin.market_cap_usd | formatCurrency }}</td>
