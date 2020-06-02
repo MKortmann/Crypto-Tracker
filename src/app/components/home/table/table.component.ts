@@ -33,7 +33,6 @@ export class TableComponent implements OnInit {
     this.coinLoreService.getGlobalCryptoData(0, 100).subscribe(
       (res) => {
         this.coins = res.data;
-        debugger;
 
         this.exchangeService.getMoney('USD').subscribe(
           (res2) => {
