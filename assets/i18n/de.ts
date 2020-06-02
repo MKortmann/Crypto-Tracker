@@ -11,6 +11,7 @@ export const de = {
     HOME: {
       TITLE: 'Start',
       TABLE: {
+        TITLE: 'Tabelle',
         RANK: 'Rang',
         SYMBOL: 'Symbol',
         NAME: 'Name',
@@ -29,7 +30,7 @@ export const de = {
         ACTIVE_MARKETS: 'Aktive Märkte',
         TOTAL_OF_MARKET_CAP: 'Gesamtmarktkapitalisierung',
         TOTAL_OF_VOLUME: 'Gesamtvolumen in 24h',
-        CRYPTO_DOMINANCE: 'Kryptodominanz Prozentsatz',
+        CRYPTO_DOMINANCE: 'Kryptodominanz (%)',
       },
     },
     ABOUT: {
