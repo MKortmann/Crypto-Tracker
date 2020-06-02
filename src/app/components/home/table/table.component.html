@@ -8,13 +8,12 @@
     [rowsPerPageOptions]="[5, 10, 25, 50, 100, 200]"
     [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} cryptos"
-    [resizableColumns]="true"
     [responsive]="true"
     #dt
   >
     <ng-template pTemplate="header">
       <tr>
-        <th pSortableColumn="rank" class="hideInExtraSmallScreens">
+        <th pSortableColumn="rank">
           {{ 'TRANSLATE.HOME.TABLE.RANK' | translate
           }}<p-sortIcon field="rank"></p-sortIcon>
         </th>
@@ -22,20 +21,18 @@
         <th>
           {{ 'TRANSLATE.HOME.TABLE.NAME' | translate }}
           <div class="container">
-            <div>
-              <input
-                pInputText
-                type="text"
-                (input)="dt.filter($event.target.value, 'name', 'startsWith')"
-                placeholder="Search by Name"
-                class="ui-column-filter hideInSmallScreens"
-              />
-            </div>
+            <input
+              pInputText
+              type="text"
+              (input)="dt.filter($event.target.value, 'name', 'startsWith')"
+              placeholder="search by name"
+              class="ui-column-filter hideBelow1200"
+            />
           </div>
         </th>
         <th>{{ 'TRANSLATE.HOME.TABLE.PRICE' | translate }}</th>
         <th>{{ 'TRANSLATE.HOME.TABLE.PRICE_EUR' | translate }}</th>
-        <th class="hideInSmallScreens">
+        <th class="hideBelow1200">
           Price in
           <div class="container">
             <p-dropdown
@@ -49,22 +46,22 @@
             ></p-dropdown>
           </div>
         </th>
-        <th class="hideInSmallScreens">
+        <th class="hideBelow1200">
           {{ 'TRANSLATE.HOME.TABLE.PRICE_BTC' | translate }}
         </th>
-        <th>
+        <th class="hideBelow800">
           {{ 'TRANSLATE.HOME.TABLE.CHANGE_1H' | translate }}
         </th>
-        <th>
+        <th class="hideBelow800">
           {{ 'TRANSLATE.HOME.TABLE.CHANGE_24H' | translate }}
         </th>
-        <th>
+        <th class="hideBelow800">
           {{ 'TRANSLATE.HOME.TABLE.CHANGE_7D' | translate }}
         </th>
-        <th class="hideInSmallScreens">
+        <th class="hideBelow1200">
           {{ 'TRANSLATE.HOME.TABLE.MARKET_CAP' | translate }}
         </th>
-        <th class="hideInSmallScreens">
+        <th class="hideBelow1200">
           {{ 'TRANSLATE.HOME.TABLE.VOLUME_24H' | translate }}
         </th>
         <!-- <th>{{ "TRANSLATE.HOME.TABLE.VOLUME_24HA" | translate }}</th> -->
@@ -82,22 +79,22 @@
         <td>{{ coin.name }}</td>
         <td>{{ coin.price_usd | currency: 'USD' }}</td>
         <td>{{ coin.price_usd * selectRateEUR | currency: 'EUR' }}</td>
-        <td class="hideInSmallScreens">
+        <td class="hideBelow1200">
           {{ coin.price_usd * selectRate | currency: selectedExchange }}
         </td>
-        <td class="hideInSmallScreens">{{ coin.price_btc }}</td>
+        <td class="hideBelow1200">{{ coin.price_btc }}</td>
         <!-- change 1h -->
         <div
           *ngIf="coin.percent_change_1h > 0; then thenBlock1h; else elseBlock1h"
         ></div>
         <ng-template #thenBlock1h>
-          <td style="color: green;">
+          <td style="color: green;" class="hideBelow800">
             <i class="material-icons">trending_up</i>
             {{ coin.percent_change_1h }} %
           </td>
         </ng-template>
         <ng-template #elseBlock1h>
-          <td style="color: red;">
+          <td style="color: red;" class="hideBelow800">
             <i class="material-icons">trending_down</i>
             {{ coin.percent_change_1h }} %
           </td>
@@ -111,13 +108,13 @@
           "
         ></div>
         <ng-template #thenBlock24h>
-          <td style="color: green;">
+          <td style="color: green;" class="hideBelow800">
             <i class="material-icons">trending_up</i>
             {{ coin.percent_change_24h }} %
           </td>
         </ng-template>
         <ng-template #elseBlock24h>
-          <td style="color: red;">
+          <td style="color: red;" class="hideBelow800">
             <i class="material-icons">trending_down</i>
             {{ coin.percent_change_24h }} %
           </td>
@@ -127,21 +124,21 @@
           *ngIf="coin.percent_change_7d > 0; then thenBlock7d; else elseBlock7d"
         ></div>
         <ng-template #thenBlock7d>
-          <td style="color: green;">
+          <td style="color: green;" class="hideBelow800">
             <i class="material-icons">trending_up</i>
             {{ coin.percent_change_7d }} %
           </td>
         </ng-template>
         <ng-template #elseBlock7d>
-          <td style="color: red;">
+          <td style="color: red;" class="hideBelow800">
             <i class="material-icons">trending_down</i>
             {{ coin.percent_change_7d }} %
           </td>
         </ng-template>
-        <td class="hideInSmallScreens">
+        <td class="hideBelow1200">
           {{ coin.market_cap_usd | formatCurrency }}
         </td>
-        <td class="hideInSmallScreens">{{ coin.volume24 | formatCurrency }}</td>
+        <td class="hideBelow1200">{{ coin.volume24 | formatCurrency }}</td>
       </tr>
     </ng-template>
   </p-table>

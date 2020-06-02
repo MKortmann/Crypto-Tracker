@@ -51,10 +51,10 @@ img {
 }
 
 input {
-  font-size: 14px;
+  font-size: 13px;
   text-align: left;
   vertical-align: left;
-  max-width: 160px;
+  /* max-width: 160px; */
   width: 140px;
 }
 
@@ -64,17 +64,19 @@ input {
   }
 }
 
-@media screen and (max-width: 1000px) {
-  .hideInSmallScreens {
+@media screen and (max-width: 1200px) {
+  .hideBelow1200 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .hideBelow800 {
     display: none;
   }
 }
 
 @media screen and (max-width: 640px) {
-  .hideInExtraSmallScreens {
-    display: none;
-  }
-
   tr:nth-child(odd) {
     /* border: 1px solid; */
     /* border-radius: 5px;  */
