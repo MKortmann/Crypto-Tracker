@@ -11,6 +11,7 @@ export const pt = {
     HOME: {
       TITLE: 'Início',
       TABLE: {
+        TITLE: 'Tabela',
         RANK: 'Posição',
         SYMBOL: 'Símbolo',
         NAME: 'Nome',
@@ -29,7 +30,7 @@ export const pt = {
         ACTIVE_MARKETS: 'Mercados Ativos',
         TOTAL_OF_MARKET_CAP: 'Valor Total de Mercado',
         TOTAL_OF_VOLUME: 'Volume Total em 24h ',
-        CRYPTO_DOMINANCE: 'Domínio de Criptomoedas ',
+        CRYPTO_DOMINANCE: 'Domínio de Criptomoedas (%) ',
       },
     },
     REGISTER: {

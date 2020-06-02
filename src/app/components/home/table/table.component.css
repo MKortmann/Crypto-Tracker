@@ -15,6 +15,7 @@ th {
   font-size: 20px;
   /* background-color: #17a2b8 !important; */
   background-color: #dbf9f0 !important;
+  /* background-color: red !important; */
 }
 
 td i {
@@ -57,6 +58,12 @@ input {
   width: 140px;
 }
 
+@media screen and (min-width: 641px) {
+  .hideInBigScreens {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   .hideInSmallScreens {
     display: none;
@@ -66,5 +73,18 @@ input {
 @media screen and (max-width: 640px) {
   .hideInExtraSmallScreens {
     display: none;
+  }
+
+  tr:nth-child(odd) {
+    /* border: 1px solid; */
+    /* border-radius: 5px;  */
+    /* background-color: #dbf9f0 !important; */
+    /* background-color: #21a0a0 !important; */
+    background-color: #ecebe4 !important;
+  }
+  tr:nth-child(even) {
+    /* border: 1px solid; */
+    /* border-radius: 5px;  */
+    background-color: #efd2cb !important;
   }
 }

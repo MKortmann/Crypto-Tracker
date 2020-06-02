@@ -1,6 +1,5 @@
 * {
   padding: 5px;
-  padding-top: 15px;
 }
 
 p-header {
@@ -15,4 +14,15 @@ p-header {
 
 :host >>> .ui-card-content {
   font-size: 20px;
+}
+
+@media screen and (max-width: 640px) {
+  :host >>> .ui-card {
+    /* background-color: #efd2cb; */
+    background-color: #c6dbf0;
+    /* border: 1px solid; */
+    /* padding: 10px;
+    box-shadow: 5px 10px #888888; */
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  }
 }

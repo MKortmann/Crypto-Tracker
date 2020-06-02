@@ -11,6 +11,7 @@ export const en = {
     HOME: {
       TITLE: 'Home',
       TABLE: {
+        TITLE: 'Table',
         RANK: 'Rank',
         SYMBOL: 'Symbol',
         NAME: 'Name',
@@ -29,7 +30,7 @@ export const en = {
         ACTIVE_MARKETS: 'Active Markets',
         TOTAL_OF_MARKET_CAP: 'Total of Market Cap',
         TOTAL_OF_VOLUME: 'Total Volume in 24h ',
-        CRYPTO_DOMINANCE: 'Crypto Dominance Percentage',
+        CRYPTO_DOMINANCE: 'Crypto Dominance (%)',
       },
     },
     REGISTER: {
