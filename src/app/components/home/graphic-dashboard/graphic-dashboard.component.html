@@ -1,5 +1,5 @@
 <div class="p-grid">
-  <div class="p-col-12 p-sm-12 p-lg-4">
+  <div class="p-col-3 p-col-fixed">
     <p-card
       header="{{ 'TRANSLATE.HOME.GRAPHIC_CARD.CRYPTO_DOMINANCE' | translate }}"
     >
@@ -7,7 +7,7 @@
     </p-card>
   </div>
 
-  <div class="p-col-12 p-sm-12 p-md-6 p-lg-2" *ngFor="let item of dataCard">
+  <div class="p-col" *ngFor="let item of dataCard">
     <p-card>
       <p-header>
         {{ item.name }}
