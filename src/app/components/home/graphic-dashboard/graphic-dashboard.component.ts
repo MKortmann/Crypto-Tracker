@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-graphic-dashboard',
   templateUrl: './graphic-dashboard.component.html',
-  styleUrls: ['./graphic-dashboard.component.css'],
+  styleUrls: ['./graphic-dashboard.component.scss'],
 })
 export class GraphicDashboardComponent implements OnInit {
   data: any;

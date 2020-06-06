@@ -8,16 +8,16 @@ p-header {
   padding-left: 10px;
 }
 
-:host >>> .ui-card {
+:host ::ng-deep .ui-card {
   height: 100%;
 }
 
-:host >>> .ui-card-content {
+:host ::ng-deep .ui-card-content {
   font-size: 20px;
 }
 
 @media screen and (max-width: 640px) {
-  :host >>> .ui-card {
+  :host ::ng-deep .ui-card {
     /* background-color: #efd2cb; */
     background-color: #c6dbf0;
     /* border: 1px solid; */
