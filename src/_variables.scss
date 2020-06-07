@@ -1,0 +1,11 @@
+// Variables: USED TO EDIT DEFAULT BOOTSTRAP VALUES
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+// importing everything: below there are both ways to import:
+@import 'bootstrap/scss/bootstrap';
+// @import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+// Color system
+$navbar-dark-color: rgba($white, 1);

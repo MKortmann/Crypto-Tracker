@@ -40,7 +40,6 @@ import { ChartModule } from 'primeng/chart';
 
 import { CardModule } from 'primeng/card';
 import { AccordionModule } from 'primeng/accordion';
-
 @NgModule({
   declarations: [
     AppComponent,
