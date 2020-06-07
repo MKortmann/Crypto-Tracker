@@ -1,4 +1,7 @@
+// import global styling
+@import '../../../styles';
+
 * {
-  padding: 10px;
+  padding: $ss-padding;
   font-size: 0;
 }

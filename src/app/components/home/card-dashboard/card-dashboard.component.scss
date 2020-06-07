@@ -1,16 +1,23 @@
+// import global styling
+@import '../../../../styles';
+
 * {
-  padding: 2px;
+  padding: $es-padding;
   cursor: default;
 }
 
 img {
-  width: 36px;
-  height: 36px;
+  width: $m-imgWidth;
+  height: $m-imgHeight;
 }
 
 :host ::ng-deep .ui-card {
   /* min-height: inherit; */
   min-height: 100%;
+  &:hover {
+    background-color: $bg2;
+    cursor: pointer;
+  }
 }
 
 :host ::ng-deep .ui-accordion {

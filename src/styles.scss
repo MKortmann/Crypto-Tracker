@@ -14,3 +14,39 @@
 html {
   overflow-x: hidden;
 }
+
+//spacing
+$es-padding: 2px;
+$s-padding: 5px;
+$ss-padding: 10px;
+$m-padding: 15px;
+$mm-padding: 20px;
+$b-padding: 25px;
+$bb-padding: 30px;
+
+//font-size
+
+$ss-fontSize: 15px;
+$m-fontSize: 20px;
+
+//colors for background
+$bg1: #e0d2c3;
+$bg2: #c6dbf0;
+
+//colors:
+$color1: #dbf9f0;
+
+//images width and height
+$m-imgWidth: 36px;
+$m-imgHeight: 36px;
+$mm-imgWidth: 48px;
+$mm-imgHeight: 48px;
+
+//box shadow
+$boxShadow1: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+
+//Media Queries Screen
+$ss-mediaQueriesWidth: 640px;
+$m-mediaQueriesWidth: 768px;
+$mm-mediaQueriesWidth: 100px;
+$b-mediaQueriesWidth: 1200px;

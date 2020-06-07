@@ -1,7 +1,10 @@
+// import global styling
+@import '../../../styles';
+
 nav {
   align-self: center;
-  padding-top: 7px;
-  font-size: 20px;
+  padding-top: $s-padding;
+  font-size: $m-fontSize;
   color: white;
 }
 
@@ -10,13 +13,13 @@ ul {
   margin: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $m-mediaQueriesWidth) {
   .hideInSmallScreens {
     display: none !important;
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $m-mediaQueriesWidth) {
   .showInSmallScreens {
     display: none !important;
   }

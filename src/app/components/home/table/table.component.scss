@@ -1,20 +1,23 @@
+// import global styling
+@import '../../../../styles';
+
 * {
-  padding: 5px;
+  padding: $s-padding;
   cursor: default;
 }
 
 td,
 th {
-  font-size: 16px;
+  font-size: $ss-fontSize;
   text-align: center;
   vertical-align: middle;
 }
 
 th {
   color: black !important;
-  font-size: 20px;
+  font-size: $m-fontSize;
   /* background-color: #17a2b8 !important; */
-  background-color: #dbf9f0 !important;
+  background-color: $color1 !important;
   /* background-color: red !important; */
 }
 
@@ -32,8 +35,8 @@ td {
 }
 
 img {
-  max-width: 48px;
-  max-height: 48px;
+  max-width: $mm-imgWidth;
+  max-height: $mm-imgHeight;
 }
 
 .ui-column-filter {
@@ -47,7 +50,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  padding: $s-padding;
 }
 
 input {
@@ -58,35 +61,29 @@ input {
   width: 140px;
 }
 
-@media screen and (min-width: 641px) {
+@media screen and (min-width: $ss-mediaQueriesWidth) {
   .hideInBigScreens {
     display: none;
   }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: $b-mediaQueriesWidth) {
   .hideBelow1200 {
     display: none;
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: $m-mediaQueriesWidth) {
   .hideBelow800 {
     display: none;
   }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: $ss-mediaQueriesWidth) {
   tr:nth-child(odd) {
-    /* border: 1px solid; */
-    /* border-radius: 5px;  */
-    /* background-color: #dbf9f0 !important; */
-    /* background-color: #21a0a0 !important; */
     background-color: #ecebe4 !important;
   }
   tr:nth-child(even) {
-    /* border: 1px solid; */
-    /* border-radius: 5px;  */
     background-color: #efd2cb !important;
   }
 }

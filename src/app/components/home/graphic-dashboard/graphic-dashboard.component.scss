@@ -1,28 +1,32 @@
+// import global styling
+@import '../../../../styles';
+
 * {
-  padding: 5px;
+  padding: $s-padding;
 }
 
 p-header {
-  font-size: 24px;
+  font-size: $b-padding;
   font-weight: bolder;
-  padding-left: 10px;
+  padding-left: $ss-padding;
 }
 
 :host ::ng-deep .ui-card {
   height: 100%;
+  &:hover {
+    background-color: $bg1;
+    cursor: pointer;
+  }
 }
 
 :host ::ng-deep .ui-card-content {
-  font-size: 20px;
+  font-size: $m-fontSize;
 }
 
 @media screen and (max-width: 640px) {
   :host ::ng-deep .ui-card {
     /* background-color: #efd2cb; */
-    background-color: #c6dbf0;
-    /* border: 1px solid; */
-    /* padding: 10px;
-    box-shadow: 5px 10px #888888; */
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    background-color: $bg2;
+    box-shadow: $boxShadow1;
   }
 }

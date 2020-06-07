@@ -1,14 +1,16 @@
+// import global styling
+@import '../../../styles';
+
 .footer {
   position: fixed;
   bottom: 0;
   width: 100%;
   text-align: center;
-  color: white;
   color: black;
-  font-size: 20px;
+  font-size: $m-fontSize;
   /* background-color: rgb(56, 62, 68); */
   /* background-color: #536472; */
   /* background-color: #ffa69e; */
   /* background-color: #b3dec1; */
-  background-color: #e0d2c3;
+  background-color: $bg1;
 }
