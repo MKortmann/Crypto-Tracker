@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 // Here we import the translate service
 import { TranslateService } from '@ngx-translate/core';

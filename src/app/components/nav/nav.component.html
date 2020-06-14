@@ -55,6 +55,8 @@
 
     <!-- Right Position -->
     <ul class="navbar-nav ml-auto">
+      <button type="button" (click)="loadStyle('dark')">Dark</button>
+      <button type="button" (click)="loadStyle('light')">Light</button>
       <li class="nav-item">
         <a routerLink="/register" class="nav-link">{{
           'TRANSLATE.NAVBAR.REGISTER' | translate

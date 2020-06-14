@@ -1,33 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-
-// styles.scss
-@import '_variables';
-@import '~bootstrap/scss/bootstrap.scss';
-// @import '../node_modules/bootstrap/scss/bootstrap.scss';
-
-// The _ (underscore) is a partial for scss. That means the stylesheet its going to be imported (@import) to a main stylesheet i.e. styles.scss
-// The advantage on using partials is that you can use many files to organize your code and everything will be compiled on a single file.
-
-/* body {
-  font-size: 0rem;
-} */
-html {
-  overflow-x: hidden;
+body {
+  background-color: white;
 }
-
-//spacing
-$es-padding: 2px;
-$s-padding: 5px;
-$ss-padding: 10px;
-$m-padding: 15px;
-$mm-padding: 20px;
-$b-padding: 25px;
-$bb-padding: 30px;
-
-//font-size
-
-$ss-fontSize: 15px;
-$m-fontSize: 20px;
 
 //colors for background
 $bg1: #e0d2c3;
@@ -43,15 +16,3 @@ $colorBlue: #3333a5;
 
 //box shadow
 $boxShadow1: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-
-//images width and height
-$m-imgWidth: 36px;
-$m-imgHeight: 36px;
-$mm-imgWidth: 48px;
-$mm-imgHeight: 48px;
-
-//Media Queries Screen
-$ss-mediaQueriesWidth: 640px;
-$m-mediaQueriesWidth: 768px;
-$mm-mediaQueriesWidth: 100px;
-$b-mediaQueriesWidth: 1200px;
