@@ -14,7 +14,7 @@ th {
 }
 
 th {
-  color: black !important;
+  color: $colorBlack !important;
   font-size: $m-fontSize;
   /* background-color: #17a2b8 !important; */
   background-color: $color1 !important;
@@ -27,7 +27,7 @@ td i {
 }
 
 td:nth-child(odd) {
-  color: #3333a5;
+  color: $colorBlue;
 }
 
 td {
@@ -81,9 +81,9 @@ input {
 
 @media screen and (max-width: $ss-mediaQueriesWidth) {
   tr:nth-child(odd) {
-    background-color: #ecebe4 !important;
+    background-color: $bg3 !important;
   }
   tr:nth-child(even) {
-    background-color: #efd2cb !important;
+    background-color: $bg4 !important;
   }
 }

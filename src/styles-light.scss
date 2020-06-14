@@ -2,7 +2,7 @@
 
 // styles.scss
 @import '_variables';
-// @import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap/scss/bootstrap.scss';
 // @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 // The _ (underscore) is a partial for scss. That means the stylesheet its going to be imported (@import) to a main stylesheet i.e. styles.scss
