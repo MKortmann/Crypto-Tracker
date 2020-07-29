@@ -14,8 +14,8 @@ before script:
   - npm install -g angular-cli-ghpages
 
 script:
-  # - ng lint
-  # - ng test --watch=false
+  - ng lint
+  - ng test --watch=false
   - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/ && angular-cli-ghpages --branch gh-pages"
 deploy:
   provider: pages
