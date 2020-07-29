@@ -17,4 +17,10 @@ script:
   # - ng lint
   # - ng test --watch=false
   - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/ && angular-cli-ghpages --branch gh-pages"
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: build
+  on:
+    branch: master
   - ngh --dir dist/crypto-tracker
