@@ -16,5 +16,5 @@ before script:
 script:
   - ng lint
   - ng test --watch=false
-  - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/
+  - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/ && angular-cli-ghpages --branch gh-pages"
   - ngh --dir dist/crypto-tracker --no-silent
