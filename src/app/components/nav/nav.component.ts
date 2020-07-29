@@ -18,6 +18,7 @@ export class NavComponent implements OnInit {
 
   // this would allow us to load the theme at runtime, based on users preferences
   loadStyle(styleName: string) {
+    // get the head element of the page
     const head = this.document.getElementsByTagName('head')[0];
 
     const themeLink = this.document.getElementById(

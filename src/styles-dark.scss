@@ -1,5 +1,10 @@
 body {
   background-color: black;
+  color: white;
+}
+
+h2 {
+  color: white;
 }
 
 //colors for background
@@ -14,5 +19,6 @@ $colorBlack: white;
 $colorWhite: black;
 $colorBlue: #83838f;
 
-//box shadow
-$boxShadow1: 0 2px 4px 0 rgba(255, 255, 255, 0.2);
+td:nth-child(odd) {
+  color: $colorBlue !important;
+}
