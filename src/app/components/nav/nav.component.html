@@ -55,20 +55,19 @@
 
     <!-- Right Position -->
     <ul class="navbar-nav ml-auto">
-      <div>
-        <span
-          *ngIf="darkMode; else elseBlock"
-          class="material-icons"
-          (click)="loadStyle('dark')"
-        >
-          brightness_low
+      <span
+        *ngIf="darkMode; else elseBlock"
+        class="material-icons"
+        (click)="loadStyle('dark')"
+      >
+        brightness_low
+      </span>
+      <ng-template #elseBlock>
+        <span class="material-icons" (click)="loadStyle('dark')">
+          brightness_high
         </span>
-        <ng-template #elseBlock>
-          <span class="material-icons" (click)="loadStyle('dark')">
-            brightness_high
-          </span>
-        </ng-template>
-      </div>
+      </ng-template>
+
       <!-- <button type="button" (click)="loadStyle('dark')">Dark</button>
       <button type="button" (click)="loadStyle('light')">Light</button> -->
       <li class="nav-item">
