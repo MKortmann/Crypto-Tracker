@@ -15,4 +15,5 @@ before script:
 script:
   - ng lint
   - ng test --watch=false
-  - ng build --prod
+  - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/"
+  - ngh --dir dist/crypto-tracker
