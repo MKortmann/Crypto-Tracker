@@ -17,4 +17,5 @@ script:
   - ng test --watch=false
   - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/"
   - npm install -g angular-cli-ghpages
-  - ngh --dir dist/crypto-tracker
+  - ng add angular-cli-ghpages@next
+  - ng deploy --repo=https://github.com/MKortmann/Crypto-Tracker.git
