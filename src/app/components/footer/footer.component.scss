@@ -3,16 +3,16 @@
 
 .footer {
   position: fixed;
-  padding: 2px;
+  padding: $es-padding;
   bottom: 0;
   width: 100%;
   max-height: 48px;
   text-align: center;
-  color: black;
+  color: white;
   font-size: $ss-fontSize;
-  /* background-color: rgb(56, 62, 68); */
+  background-color: rgb(56, 62, 68);
   /* background-color: #536472; */
   /* background-color: #ffa69e; */
   /* background-color: #b3dec1; */
-  background-color: $bg1;
+  // background-color: $bg1;
 }
