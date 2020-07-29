@@ -1,7 +1,6 @@
 language: node_js
 node_js:
   - '10'
-cache: npm
 
 branches:
   only:
@@ -10,7 +9,7 @@ branches:
 addons:
   chrome: stable
 
-install:
+before script:
   - npm install -g @angular/cli
   - npm install -g angular-cli-ghpages
 
@@ -18,10 +17,4 @@ script:
   - ng lint
   - ng test --watch=false
   - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/ && angular-cli-ghpages --branch gh-pages"
-
-  deploy:
-    provider: pages
-    github-token: $GITHUB_TOKEN
-    on:
-      branch: gh-pages
-
+  - ngh --dir dist/crypto-tracker --no-silent
