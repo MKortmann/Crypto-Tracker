@@ -5,6 +5,18 @@
   </div>
   <div>
     <div class="btn-group dropup dropleft">
+      <span
+        *ngIf="darkMode; else elseBlock"
+        class="material-icons"
+        (click)="loadStyle('dark')"
+      >
+        brightness_low
+      </span>
+      <ng-template #elseBlock>
+        <span class="material-icons" (click)="loadStyle('dark')">
+          brightness_high
+        </span>
+      </ng-template>
       <a type="button" data-toggle="dropdown">
         <!-- <img
           src="assets/imgs/icons/language.svg"
