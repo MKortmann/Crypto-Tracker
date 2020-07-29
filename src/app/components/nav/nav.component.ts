@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-  private darkMode = false;
+  darkMode = false;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
