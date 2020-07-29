@@ -13,9 +13,8 @@ before script:
   - npm install -g @angular/cli
 
 script:
-  - ng lint
-  - ng test --watch=false
+  # - ng lint
+  # - ng test --watch=false
   - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/"
   - npm install -g angular-cli-ghpages
-  - ng add angular-cli-ghpages@next
-  - ng deploy --repo=https://github.com/MKortmann/Crypto-Tracker.git
+  - ngh --dir dist/crypto-tracker

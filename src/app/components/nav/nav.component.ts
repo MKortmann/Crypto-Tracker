@@ -9,6 +9,8 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
+  private darkMode = false;
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private translate: TranslateService
@@ -17,7 +19,14 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {}
 
   // this would allow us to load the theme at runtime, based on users preferences
-  loadStyle(styleName: string) {
+  loadStyle(styleName: string = 'dark') {
+    if (this.darkMode === false) {
+      this.darkMode = true;
+      styleName = 'dark';
+    } else {
+      this.darkMode = false;
+      styleName = 'light';
+    }
     // get the head element of the page
     const head = this.document.getElementsByTagName('head')[0];
 
