@@ -26,7 +26,7 @@ p-header {
 @media screen and (max-width: 640px) {
   :host ::ng-deep .ui-card {
     /* background-color: #efd2cb; */
-    background-color: $bg2;
+    // background-color: $bg2;
     box-shadow: $boxShadow1;
   }
 }
