@@ -18,7 +18,7 @@ export class CardDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //filling with values
+    // filling with values
     this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
       this.data = [...res.data];
 
@@ -29,7 +29,7 @@ export class CardDashboardComponent implements OnInit {
       });
     });
 
-    //subscribe for a service that change the value without reloading the page
+    // subscribe for a service that update data
     this.coinLoreService.cast.subscribe((data) => {
       this.data = [...data];
       this.exchangeService.getMoney('USD').subscribe((res2) => {

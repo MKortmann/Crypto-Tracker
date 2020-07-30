@@ -20,51 +20,36 @@ export class SubNavComponent implements OnInit {
   showSeconds: number;
   showMinutes: number;
   interval: number;
+  timeInterval;
+  timeIntervalDecrease;
 
   ngOnInit(): void {
     this.coinLoreService.cast.subscribe((data) => {
       console.log(data);
       this.data = data;
     });
-    this.load(60000);
-    this.setTime();
-    this.interval = 60000;
+    this.load(30000);
+    this.interval = 30000;
+    this.decreaseTimeInterval();
   }
 
-  setTime() {
-    this.seconds = 0;
-    this.minutes = 0;
-
-    setInterval(() => {
-      ++this.seconds;
-      if (this.seconds > 59) {
-        this.seconds = 0;
-        ++this.minutes;
-      }
-
-      if (this.minutes > 59) {
-        this.seconds = 0;
-        this.minutes = 0;
-      }
-    }, 1000);
-  }
-
-  //decreate the count seconds and time in accord to interval
-  decreaseInterval() {
+  // decreate the count seconds and time in accord to interval
+  decreaseTimeInterval() {
     this.reset();
-    setInterval(() => {
+
+    if (this.timeIntervalDecrease) {
+      clearInterval(this.timeIntervalDecrease);
+    }
+    this.timeIntervalDecrease = setInterval(() => {
       --this.showSeconds;
       if (this.showSeconds === 0 && this.showMinutes !== 0) {
         this.showSeconds = 59;
         --this.showMinutes;
       }
-      if (this.showSeconds === 0 && this.showMinutes == 0) {
-        this.reset();
-      }
     }, 1000);
   }
 
-  //reset the show seconds and minutes in accord to interval
+  // reset the show seconds and minutes in accord to interval
   reset() {
     switch (this.interval) {
       case 30000:
@@ -92,10 +77,13 @@ export class SubNavComponent implements OnInit {
 
   load(interval) {
     this.interval = interval;
-    this.seconds = 0;
-    this.minutes = 0;
+    this.reset();
 
-    setInterval(() => {
+    if (this.timeInterval) {
+      clearInterval(this.timeInterval);
+    }
+
+    this.timeInterval = setInterval(() => {
       this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
         this.data = [...res.data];
 
@@ -105,11 +93,10 @@ export class SubNavComponent implements OnInit {
 
             this.coinLoreService.newData(this.data);
             console.log(this.data);
+            this.reset();
           });
         });
       });
-      this.seconds = 0;
-      this.minutes = 0;
     }, interval);
   }
 }
