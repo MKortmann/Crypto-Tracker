@@ -1,3 +1,5 @@
+@import 'styles';
+
 body {
   background-color: white;
 }
@@ -13,3 +15,12 @@ $color1: #dbf9f0;
 $colorBlack: black;
 $colorWhite: white;
 $colorBlue: #3333a5;
+
+@media screen and (max-width: $ss-mediaQueriesWidth) {
+  tr:nth-child(odd) {
+    background-color: $bg3 !important;
+  }
+  tr:nth-child(even) {
+    background-color: $bg4 !important;
+  }
+}
