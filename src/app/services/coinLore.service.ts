@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,11 +9,17 @@ import { Observable, of } from 'rxjs';
 export class CoinLoreService {
   globalValuesFromCoinLore: Observable<any>;
   coinsValuesFromCoinLore: any;
+  private data = new BehaviorSubject([]);
+  cast = this.data.asObservable();
 
   coinLoreGlobalUrl = 'https://api.coinlore.net/api/global/';
   coinLoreUrl = 'https://api.coinlore.net/api/tickers/';
   constructor(private http: HttpClient) {
     this.getGlobal();
+  }
+
+  newData(newData) {
+    this.data.next(newData);
   }
 
   // global market values

@@ -18,12 +18,24 @@ export class CardDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    //filling with values
     this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
       this.data = [...res.data];
 
       this.exchangeService.getMoney('USD').subscribe((res2) => {
         this.data.forEach((item) => {
           item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
+        });
+      });
+    });
+
+    //subscribe for a service that change the value without reloading the page
+    this.coinLoreService.cast.subscribe((data) => {
+      this.data = [...data];
+      this.exchangeService.getMoney('USD').subscribe((res2) => {
+        this.data.forEach((item) => {
+          item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
+          console.log(this.data);
         });
       });
     });

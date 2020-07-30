@@ -1,0 +1,61 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Feed News</a>
+  </li>
+
+  <!-- <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+      >Disabled</a
+    >
+  </li> -->
+
+  <li class="nav-item dropdown ml-auto">
+    <a
+      class="nav-link dropdown-toggle"
+      data-toggle="dropdown"
+      href="#"
+      role="button"
+      aria-haspopup="true"
+      aria-expanded="false"
+      >Update Every: {{ this.minutes }} min : {{ this.seconds }} sec
+    </a>
+
+    <div class="dropdown-menu">
+      <a
+        class="dropdown-item"
+        (click)="load(30000)"
+        [class.selected]="interval === 30000"
+        >30 sec</a
+      >
+      <a
+        class="dropdown-item"
+        (click)="load(60000)"
+        [class.selected]="interval === 60000"
+        >1 min</a
+      >
+      <a
+        class="dropdown-item"
+        (click)="load(600000)"
+        [class.selected]="interval === 600000"
+        >10 min</a
+      >
+      <a
+        class="dropdown-item"
+        (click)="load(1800000)"
+        [class.selected]="interval === 1800000"
+        >30 min</a
+      >
+      <a
+        class="dropdown-item"
+        (click)="load(3600000)"
+        [class.selected]="interval === 3600000"
+        >1 h</a
+      >
+      <!-- <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a> -->
+    </div>
+  </li>
+</ul>

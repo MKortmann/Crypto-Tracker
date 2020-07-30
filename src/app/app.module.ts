@@ -40,6 +40,7 @@ import { ChartModule } from 'primeng/chart';
 
 import { CardModule } from 'primeng/card';
 import { AccordionModule } from 'primeng/accordion';
+import { SubNavComponent } from './components/sub-nav/sub-nav.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AccordionModule } from 'primeng/accordion';
     GraphicDashboardComponent,
     CardDashboardComponent,
     FormatCurrencyPipe,
+    SubNavComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
