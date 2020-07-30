@@ -3,10 +3,10 @@
 
 .footer {
   position: fixed;
-  padding: $es-padding;
+  padding: $s-padding;
   bottom: 0;
   width: 100%;
-  max-height: 48px;
+  max-height: 64px;
   text-align: center;
   color: white;
   font-size: $ss-fontSize;
@@ -17,7 +17,14 @@
   // background-color: $bg1;
 }
 
+div {
+  align-items: center;
+}
 span {
-  padding-right: $s-padding;
+  padding-right: $ss-padding;
   cursor: pointer;
+}
+
+.material-icons.md-48 {
+  font-size: 36px;
 }
