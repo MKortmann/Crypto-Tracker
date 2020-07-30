@@ -12,7 +12,17 @@ export class FooterComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private translate: TranslateService
-  ) {}
+  ) {
+    const darkMode = localStorage.getItem('darkMode');
+    // it works as a toggle, the reason the logic is reverse!
+    if (darkMode === 'true') {
+      this.darkMode = false;
+      this.loadStyle();
+    } else {
+      this.darkMode = true;
+      this.loadStyle();
+    }
+  }
   darkMode = false;
 
   ngOnInit(): void {}
@@ -23,12 +33,15 @@ export class FooterComponent implements OnInit {
 
   // this would allow us to load the theme at runtime, based on users preferences
   loadStyle(styleName: string = 'dark') {
+    // it works as a toggle!
     if (this.darkMode === false) {
       this.darkMode = true;
       styleName = 'dark';
+      localStorage.setItem('darkMode', 'true');
     } else {
       this.darkMode = false;
       styleName = 'light';
+      localStorage.setItem('darkMode', 'false');
     }
     // get the head element of the page
     const head = this.document.getElementsByTagName('head')[0];
