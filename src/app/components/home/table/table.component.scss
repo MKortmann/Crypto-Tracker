@@ -80,10 +80,10 @@ input {
 }
 
 @media screen and (max-width: $ss-mediaQueriesWidth) {
-  tr:nth-child(odd) {
-    background-color: $bg3 !important;
-  }
-  tr:nth-child(even) {
-    background-color: $bg4 !important;
-  }
+  // tr:nth-child(odd) {
+  //   background-color: $bg3 !important;
+  // }
+  // tr:nth-child(even) {
+  //   background-color: $bg4 !important;
+  // }
 }
