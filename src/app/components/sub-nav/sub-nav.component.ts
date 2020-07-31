@@ -23,18 +23,24 @@ export class SubNavComponent implements OnInit {
   timeInterval;
   timeIntervalDecrease;
 
+  public readonly SEC_30: number = 30000;
+  public readonly MIN_1: number = 60000;
+  public readonly MIN_10: number = 600000;
+  public readonly MIN_30: number = 1800000;
+  public readonly MIN_60: number = 3600000;
+
   ngOnInit(): void {
     this.coinLoreService.cast.subscribe((data) => {
       console.log(data);
       this.data = data;
     });
-    this.load(30000);
-    this.interval = 30000;
+    this.load(this.MIN_10);
+    this.interval = this.MIN_10;
     this.decreaseTimeInterval();
   }
 
   // decreate the count seconds and time in accord to interval
-  decreaseTimeInterval() {
+  private decreaseTimeInterval() {
     this.reset();
 
     if (this.timeIntervalDecrease) {
@@ -50,25 +56,25 @@ export class SubNavComponent implements OnInit {
   }
 
   // reset the show seconds and minutes in accord to interval
-  reset() {
+  private reset() {
     switch (this.interval) {
-      case 30000:
+      case this.SEC_30:
         this.showSeconds = 30;
         this.showMinutes = 0;
         break;
-      case 60000:
+      case this.MIN_1:
         this.showSeconds = 59;
         this.showMinutes = 0;
         break;
-      case 600000:
+      case this.MIN_10:
         this.showSeconds = 59;
         this.showMinutes = 9;
         break;
-      case 1800000:
+      case this.MIN_30:
         this.showSeconds = 59;
         this.showMinutes = 29;
         break;
-      case 3600000:
+      case this.MIN_60:
         this.showSeconds = 59;
         this.showMinutes = 59;
         break;

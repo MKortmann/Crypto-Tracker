@@ -26,32 +26,32 @@
     <div class="dropdown-menu">
       <a
         class="dropdown-item"
-        (click)="load(30000)"
-        [class.selected]="interval === 30000"
+        (click)="load(SEC_30)"
+        [class.selected]="interval === SEC_30"
         >30 sec</a
       >
       <a
         class="dropdown-item"
-        (click)="load(60000)"
-        [class.selected]="interval === 60000"
+        (click)="load(MIN_1)"
+        [class.selected]="interval === MIN_1"
         >1 min</a
       >
       <a
         class="dropdown-item"
-        (click)="load(600000)"
-        [class.selected]="interval === 600000"
+        (click)="load(MIN_10)"
+        [class.selected]="interval === MIN_10"
         >10 min</a
       >
       <a
         class="dropdown-item"
-        (click)="load(1800000)"
-        [class.selected]="interval === 1800000"
+        (click)="load(MIN_30)"
+        [class.selected]="interval === MIN_30"
         >30 min</a
       >
       <a
         class="dropdown-item"
-        (click)="load(3600000)"
-        [class.selected]="interval === 3600000"
+        (click)="load(MIN_60)"
+        [class.selected]="interval === MIN_60"
         >1 h</a
       >
       <!-- <div class="dropdown-divider"></div>
