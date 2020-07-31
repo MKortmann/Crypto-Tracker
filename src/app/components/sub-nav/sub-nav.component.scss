@@ -1,5 +1,10 @@
 @import '../../../styles.scss';
 
+* {
+  padding: $es-padding;
+  margin: $es-padding;
+}
+
 a {
   cursor: pointer;
 }

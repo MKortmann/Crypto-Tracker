@@ -31,7 +31,6 @@ export class SubNavComponent implements OnInit {
 
   ngOnInit(): void {
     this.coinLoreService.cast.subscribe((data) => {
-      console.log(data);
       this.data = data;
     });
     this.load(this.MIN_10);
@@ -98,7 +97,6 @@ export class SubNavComponent implements OnInit {
             item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
 
             this.coinLoreService.newData(this.data);
-            console.log(this.data);
             this.reset();
           });
         });

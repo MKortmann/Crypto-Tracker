@@ -30,6 +30,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     // get the cryptocurrencies passing the rank number and the limit...
+    // the cast here is working just as a trigger
     this.coinLoreService.cast.subscribe((data) => {
       this.loadTable();
     });

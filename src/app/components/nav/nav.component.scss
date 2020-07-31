@@ -1,6 +1,10 @@
 // import global styling
 @import '../../../styles';
 
+* {
+  padding: $es-padding;
+}
+
 nav {
   align-self: center;
   padding: $es-padding;

@@ -35,7 +35,6 @@ export class CardDashboardComponent implements OnInit {
       this.exchangeService.getMoney('USD').subscribe((res2) => {
         this.data.forEach((item) => {
           item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
-          console.log(this.data);
         });
       });
     });
