@@ -30,6 +30,12 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     // get the cryptocurrencies passing the rank number and the limit...
+    this.coinLoreService.cast.subscribe((data) => {
+      this.loadTable();
+    });
+  }
+
+  loadTable() {
     this.coinLoreService.getGlobalCryptoData(0, 100).subscribe(
       (res) => {
         this.coins = res.data;

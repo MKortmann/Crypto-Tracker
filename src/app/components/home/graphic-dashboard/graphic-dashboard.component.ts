@@ -28,6 +28,19 @@ export class GraphicDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.coinLoreService.cast.subscribe((data) => {
+      this.data = [...data];
+
+      this.exchangeService.getMoney('USD').subscribe(
+        (res) => {
+          this.selectRateEUR = res.rates[`EUR`];
+          this.getGlobalCoinLore();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    });
     this.exchangeService.getMoney('USD').subscribe(
       (res) => {
         this.selectRateEUR = res.rates[`EUR`];
