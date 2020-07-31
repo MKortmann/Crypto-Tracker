@@ -3,7 +3,7 @@
 
 * {
   padding: $es-padding;
-  cursor: default;
+  cursor: pointer;
 }
 
 img {
@@ -14,10 +14,6 @@ img {
 :host ::ng-deep .ui-card {
   /* min-height: inherit; */
   min-height: 100%;
-  &:hover {
-    // background-color: $bg2;
-    cursor: pointer;
-  }
 }
 
 :host ::ng-deep .ui-accordion {

@@ -4,6 +4,9 @@ import { CoinLoreService } from '../../../services/coinLore.service';
 
 import { ExchangeService } from '../../../services/exchange.service';
 
+import { CoinPaprikaService } from '../../../services/coin-paprika.service';
+import { iif } from 'rxjs';
+
 @Component({
   selector: 'app-card-dashboard',
   templateUrl: './card-dashboard.component.html',
@@ -14,7 +17,8 @@ export class CardDashboardComponent implements OnInit {
 
   constructor(
     private coinLoreService: CoinLoreService,
-    private exchangeService: ExchangeService
+    private exchangeService: ExchangeService,
+    private coinPaprikaService: CoinPaprikaService
   ) {}
 
   ngOnInit(): void {
@@ -38,5 +42,16 @@ export class CardDashboardComponent implements OnInit {
         });
       });
     });
+  }
+
+  selectedCoin(name, symbol) {
+    // we are passing the coin clicked id in accord to coinPaprika
+    let clicked = `${symbol}-${name}`;
+    clicked = clicked.replace(' ', '-').toLowerCase();
+
+    if (clicked === 'bchsv-bitcoin-sv') {
+      clicked = 'bsv-bitcoin-sv';
+    }
+    this.coinPaprikaService.selectedCoinById(clicked);
   }
 }

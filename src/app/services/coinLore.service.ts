@@ -12,8 +12,9 @@ export class CoinLoreService {
   private data = new BehaviorSubject([]);
   cast = this.data.asObservable();
 
-  coinLoreGlobalUrl = 'https://api.coinlore.net/api/global/';
-  coinLoreUrl = 'https://api.coinlore.net/api/tickers/';
+  private readonly coinLoreGlobalUrl = 'https://api.coinlore.net/api/global/';
+  private readonly coinLoreUrl = 'https://api.coinlore.net/api/tickers/';
+
   constructor(private http: HttpClient) {
     this.getGlobal();
   }

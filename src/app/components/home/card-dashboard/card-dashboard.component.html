@@ -3,7 +3,7 @@
     class="p-col-6 p-sm-6 p-md-3 p-lg-2 p-xl-1 p-col-align-stretch"
     *ngFor="let item of data"
   >
-    <p-card>
+    <p-card (click)="selectedCoin(item.name, item.symbol)">
       <p-header style="font-size: larger; font-weight: bold;">
         <span style="padding-left: 10px;">
           <img

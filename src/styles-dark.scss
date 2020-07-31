@@ -29,6 +29,14 @@ td:nth-child(odd) {
   border: 0;
 }
 
+.ui-card {
+  /* min-height: inherit; */
+  min-height: 100%;
+  &:hover {
+    background-color: $bg2;
+  }
+}
+
 @media screen and (max-width: $ss-mediaQueriesWidth) {
   tr:nth-child(odd) {
     background-color: $bg3 !important;
