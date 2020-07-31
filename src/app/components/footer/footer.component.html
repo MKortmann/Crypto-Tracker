@@ -29,9 +29,27 @@
       </span>
 
       <div class="dropdown-menu">
-        <button class="dropdown-item" (click)="change('en')">EN</button>
-        <button class="dropdown-item" (click)="change('de')">DE</button>
-        <button class="dropdown-item" (click)="change('pt')">PT</button>
+        <button
+          class="dropdown-item"
+          (click)="change('en')"
+          [class.selected]="code === 'en'"
+        >
+          EN
+        </button>
+        <button
+          class="dropdown-item"
+          (click)="change('de')"
+          [class.selected]="code === 'de'"
+        >
+          DE
+        </button>
+        <button
+          class="dropdown-item"
+          (click)="change('pt')"
+          [class.selected]="code === 'pt'"
+        >
+          PT
+        </button>
       </div>
     </div>
   </div>

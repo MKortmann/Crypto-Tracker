@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { DOCUMENT } from '@angular/common';
@@ -9,6 +9,8 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
+  @Input() code: string;
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private translate: TranslateService

@@ -10,16 +10,19 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   title: 'Crypto-Tracker';
+  setLanguage = 'en';
   constructor(private translate: TranslateService) {
     if (localStorage.getItem('language') == null) {
       this.translate.setDefaultLang('en');
     } else {
-      this.translate.setDefaultLang(localStorage.getItem('language'));
+      this.setLanguage = localStorage.getItem('language');
+      this.translate.setDefaultLang(this.setLanguage);
     }
     this.translate.onLangChange.subscribe(
       (x) => {
         console.log('Language is changed to: ', x);
         localStorage.setItem('language', x.lang);
+        this.setLanguage = x.lang;
       },
       (error) => console.log('onLangChange failed')
     );
