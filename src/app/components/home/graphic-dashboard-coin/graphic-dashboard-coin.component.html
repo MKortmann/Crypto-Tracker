@@ -1,3 +1,9 @@
 <!-- <p-toast [style]="{ marginTop: '80px' }"></p-toast> -->
 
-<p-chart *ngIf="show" type="line" height="400" [data]="data"></p-chart>
+<p-chart
+  *ngIf="show"
+  type="line"
+  height="400"
+  [data]="data"
+  [options]="options"
+></p-chart>

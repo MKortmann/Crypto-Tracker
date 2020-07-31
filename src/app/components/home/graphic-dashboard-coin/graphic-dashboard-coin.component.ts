@@ -10,28 +10,50 @@ import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 export class GraphicDashboardCoinComponent implements OnInit {
   coinDataArray: any;
   data: any;
-  coinName: string;
+  coinName = 'btc-bitcoin';
   show = false;
+  options: any;
 
   constructor(private coinPaprikaService: CoinPaprikaService) {}
 
   ngOnInit(): void {
+    this.options = {
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              // Include a dollar sign in the ticks
+              callback: (value, index, values) => {
+                return '$' + value;
+              },
+            },
+          },
+        ],
+      },
+    };
+
     this.coinPaprikaService.onSelectedCoinChange.subscribe((url) => {
       this.coinPaprikaService.getData(url).subscribe((res) => {
         // adjusting the input data
-        let numbers = [];
-        let dataAverageArray = res.map((obj, index) => {
+        const numbers = [];
+        const dataAverageArray = res.map((obj, index) => {
           const average = ((obj.high + obj.low) / 2).toFixed(2);
           numbers.push(++index);
           return average;
         });
         this.coinDataArray = [...dataAverageArray];
+        this.show = true;
         this.plotGraph(dataAverageArray, numbers);
       });
     });
     this.coinPaprikaService.onSelectCoinName.subscribe((name) => {
-      this.show = true;
-      this.coinName = name;
+      const nameTemp = name.split('-');
+
+      if (nameTemp[2] !== undefined) {
+        this.coinName = `${nameTemp[1]} ${nameTemp[2]}`;
+      } else {
+        this.coinName = nameTemp[1];
+      }
     });
   }
 
@@ -39,11 +61,11 @@ export class GraphicDashboardCoinComponent implements OnInit {
     console.log(data);
     console.log(labels);
     this.data = {
-      labels: labels,
+      labels,
       datasets: [
         {
-          label: 'First Dataset',
-          data: data,
+          label: this.coinName,
+          data,
           fill: false,
           borderColor: '#4bc0c0',
         },

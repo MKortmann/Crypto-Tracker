@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
 export class CoinPaprikaService {
   public onSelectedCoinChange: EventEmitter<any> = new EventEmitter();
   public onSelectCoinName: EventEmitter<any> = new EventEmitter();
-  private _selectedCoinById;
 
   private readonly getListOfCoins = 'https://api.coinpaprika.com/v1/coins/';
 
@@ -34,12 +33,12 @@ export class CoinPaprikaService {
   constructor(private http: HttpClient) {}
 
   public selectedCoinById(value: any) {
-    this._selectedCoinById = value;
     const url = `${this.getListOfCoins}${value}/ohlcv/historical?start=2020-01-01&end=2020-07-31`;
     // Date.now()
 
     // const dataToEmit = this.getData(url);
     this.onSelectedCoinChange.emit(url);
+    this.onSelectCoinName.emit(value);
   }
 
   getData(url): Observable<any> {
