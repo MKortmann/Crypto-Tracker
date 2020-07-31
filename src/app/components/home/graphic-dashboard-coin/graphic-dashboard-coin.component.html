@@ -1,9 +1,3 @@
-<p>Coin clicked: {{ coinDataArray }}</p>
+<!-- <p-toast [style]="{ marginTop: '80px' }"></p-toast> -->
 
-<p-toast [style]="{ marginTop: '80px' }"></p-toast>
-
-<p-chart
-  type="line"
-  [data]="coinDataArray"
-  (onDataSelect)="selectData($event)"
-></p-chart>
+<p-chart *ngIf="show" type="line" height="400" [data]="data"></p-chart>

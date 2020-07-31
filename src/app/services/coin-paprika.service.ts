@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class CoinPaprikaService {
   public onSelectedCoinChange: EventEmitter<any> = new EventEmitter();
+  public onSelectCoinName: EventEmitter<any> = new EventEmitter();
   private _selectedCoinById;
 
   private readonly getListOfCoins = 'https://api.coinpaprika.com/v1/coins/';

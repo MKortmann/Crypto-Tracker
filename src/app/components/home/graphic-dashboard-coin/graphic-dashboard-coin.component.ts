@@ -10,6 +10,8 @@ import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 export class GraphicDashboardCoinComponent implements OnInit {
   coinDataArray: any;
   data: any;
+  coinName: string;
+  show = false;
 
   constructor(private coinPaprikaService: CoinPaprikaService) {}
 
@@ -17,32 +19,33 @@ export class GraphicDashboardCoinComponent implements OnInit {
     this.coinPaprikaService.onSelectedCoinChange.subscribe((url) => {
       this.coinPaprikaService.getData(url).subscribe((res) => {
         // adjusting the input data
-        let singleArray = res.map((obj) => {
+        let numbers = [];
+        let dataAverageArray = res.map((obj, index) => {
           const average = ((obj.high + obj.low) / 2).toFixed(2);
-          return [obj.time_open, average];
+          numbers.push(++index);
+          return average;
         });
-        this.coinDataArray = [...singleArray];
-        console.log(this.coinDataArray);
+        this.coinDataArray = [...dataAverageArray];
+        this.plotGraph(dataAverageArray, numbers);
       });
     });
-    this.plotGraph();
+    this.coinPaprikaService.onSelectCoinName.subscribe((name) => {
+      this.show = true;
+      this.coinName = name;
+    });
   }
 
-  plotGraph() {
+  plotGraph(data, labels) {
+    console.log(data);
+    console.log(labels);
     this.data = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: labels,
       datasets: [
         {
           label: 'First Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40],
+          data: data,
           fill: false,
           borderColor: '#4bc0c0',
-        },
-        {
-          label: 'Second Dataset',
-          data: [28, 48, 40, 19, 86, 27, 90],
-          fill: false,
-          borderColor: '#565656',
         },
       ],
     };
