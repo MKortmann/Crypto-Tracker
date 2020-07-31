@@ -20,7 +20,11 @@
       role="button"
       aria-haspopup="true"
       aria-expanded="false"
-      >Update Every: {{ this.showMinutes }} min {{ this.showSeconds }} sec
+    >
+      <span *ngIf="interval !== 0; else elseBlock">
+        Update Every: {{ this.showMinutes }} min {{ this.showSeconds }} sec
+      </span>
+      <ng-template #elseBlock>Update Stopped</ng-template>
     </a>
 
     <div class="dropdown-menu">
@@ -53,6 +57,12 @@
         (click)="load(MIN_60)"
         [class.selected]="interval === MIN_60"
         >1 h</a
+      >
+      <a
+        class="dropdown-item"
+        (click)="stop()"
+        [class.selected]="interval === 0"
+        >Stop Update</a
       >
       <!-- <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="#">Separated link</a> -->

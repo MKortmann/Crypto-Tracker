@@ -83,6 +83,7 @@ export class SubNavComponent implements OnInit {
   load(interval) {
     this.interval = interval;
     this.reset();
+    this.decreaseTimeInterval();
 
     if (this.timeInterval) {
       clearInterval(this.timeInterval);
@@ -102,5 +103,15 @@ export class SubNavComponent implements OnInit {
         });
       });
     }, interval);
+  }
+
+  stop() {
+    this.timeInterval = this.timeInterval
+      ? clearInterval(this.timeInterval)
+      : '';
+    this.timeIntervalDecrease = this.timeIntervalDecrease
+      ? clearInterval(this.timeIntervalDecrease)
+      : '';
+    this.interval = 0;
   }
 }
