@@ -25,6 +25,10 @@ td:nth-child(odd) {
   color: $colorBlue !important;
 }
 
+.nav-tabs {
+  border: 0;
+}
+
 @media screen and (max-width: $ss-mediaQueriesWidth) {
   tr:nth-child(odd) {
     background-color: $bg3 !important;
