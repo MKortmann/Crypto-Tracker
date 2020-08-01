@@ -114,31 +114,12 @@ export class GraphicDashboardCoinComponent implements OnInit {
       },
     };
 
+    this.fetchDataToPlot();
+
     this.coinPaprikaService.onSelectedCoinChange.subscribe((url) => {
-      if (this.selectedDateRange !== null) {
-        this.start = this.selectedDateRange[0].toISOString().split('T')[0];
-        this.end = this.selectedDateRange[1].toISOString().split('T')[0];
-      }
-
-      const urlRange = `${url}${this.start}&end=${this.end}`;
-      this.coinPaprikaService.getData(urlRange).subscribe((res) => {
-        // adjusting the input data
-        const labels = [];
-        const highData = [];
-        const lowData = [];
-        const dataAverageArray = res.map((obj, index) => {
-          const average = ((obj.high + obj.low) / 2).toFixed(2);
-          labels.push(obj.time_open);
-          highData.push(obj.high);
-          lowData.push(obj.low);
-          return average;
-        });
-
-        this.coinDataArray = [...dataAverageArray];
-        this.show = true;
-        this.plotGraph(dataAverageArray, lowData, highData, labels);
-      });
+      this.fetchDataToPlot(url);
     });
+
     this.coinPaprikaService.onSelectCoinName.subscribe((name) => {
       const nameTemp = name.split('-');
 
@@ -147,6 +128,34 @@ export class GraphicDashboardCoinComponent implements OnInit {
       } else {
         this.coinName = nameTemp[1];
       }
+    });
+  }
+
+  fetchDataToPlot(
+    url = `https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/historical?start=`
+  ) {
+    if (this.selectedDateRange !== null) {
+      this.start = this.selectedDateRange[0].toISOString().split('T')[0];
+      this.end = this.selectedDateRange[1].toISOString().split('T')[0];
+    }
+
+    const urlRange = `${url}${this.start}&end=${this.end}`;
+    this.coinPaprikaService.getData(urlRange).subscribe((res) => {
+      // adjusting the input data
+      const labels = [];
+      const highData = [];
+      const lowData = [];
+      const dataAverageArray = res.map((obj, index) => {
+        const average = ((obj.high + obj.low) / 2).toFixed(2);
+        labels.push(obj.time_open);
+        highData.push(obj.high);
+        lowData.push(obj.low);
+        return average;
+      });
+
+      this.coinDataArray = [...dataAverageArray];
+      this.show = true;
+      this.plotGraph(dataAverageArray, lowData, highData, labels);
     });
   }
 
