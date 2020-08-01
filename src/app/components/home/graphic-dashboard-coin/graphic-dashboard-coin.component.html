@@ -1,9 +1,30 @@
 <!-- <p-toast [style]="{ marginTop: '80px' }"></p-toast> -->
-
+<div class="containerCalendar">
+  <p-calendar
+    [(ngModel)]="selectedDateRange"
+    dateFormat="dd.mm.yy"
+    [inputStyle]="{ width: '279px' }"
+    selectionMode="range"
+    [readonlyInput]="true"
+    [numberOfMonths]="1"
+    [showIcon]="true"
+    (onClose)="replotGraph()"
+    [placeholder]="placeholder"
+  ></p-calendar>
+</div>
 <p-chart
+  type="line"
+  height="400"
+  max-width="1800"
+  [data]="data"
+  [options]="options"
+>
+</p-chart>
+
+<!-- <p-chart
   *ngIf="show"
   type="line"
   height="400"
   [data]="data"
   [options]="options"
-></p-chart>
+></p-chart> -->

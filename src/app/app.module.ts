@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { FormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -43,6 +45,8 @@ import { AccordionModule } from 'primeng/accordion';
 import { SubNavComponent } from './components/sub-nav/sub-nav.component';
 import { GraphicDashboardCoinComponent } from './components/home/graphic-dashboard-coin/graphic-dashboard-coin.component';
 
+import { CalendarModule } from 'primeng/calendar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +66,9 @@ import { GraphicDashboardCoinComponent } from './components/home/graphic-dashboa
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
+    FormsModule,
     BrowserModule,
+    CalendarModule,
     AppRoutingModule,
     TableModule,
     DropdownModule,
