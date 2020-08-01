@@ -46,12 +46,12 @@ export class CardDashboardComponent implements OnInit {
 
   selectedCoin(name, symbol) {
     // we are passing the coin clicked id in accord to coinPaprika
-    let clicked = `${symbol}-${name}`;
-    clicked = clicked.replace(' ', '-').toLowerCase();
+    let coinID = `${symbol}-${name}`;
+    coinID = coinID.replace(' ', '-').toLowerCase();
 
-    if (clicked === 'bchsv-bitcoin-sv') {
-      clicked = 'bsv-bitcoin-sv';
+    if (coinID === 'bchsv-bitcoin-sv') {
+      coinID = 'bsv-bitcoin-sv';
     }
-    this.coinPaprikaService.selectedCoinById(clicked);
+    this.coinPaprikaService.selectedCoinById(coinID);
   }
 }

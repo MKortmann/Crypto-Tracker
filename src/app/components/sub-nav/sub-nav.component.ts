@@ -30,9 +30,9 @@ export class SubNavComponent implements OnInit {
   public readonly MIN_60: number = 3600000;
 
   ngOnInit(): void {
-    this.coinLoreService.cast.subscribe((data) => {
-      this.data = data;
-    });
+    // this.coinLoreService.cast.subscribe((data) => {
+    //   this.data = data;
+    // });
     this.load(this.MIN_10);
     this.interval = this.MIN_10;
     this.decreaseTimeInterval();

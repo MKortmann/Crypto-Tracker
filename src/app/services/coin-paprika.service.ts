@@ -33,7 +33,9 @@ export class CoinPaprikaService {
   constructor(private http: HttpClient) {}
 
   public selectedCoinById(value: any) {
-    const url = `${this.getListOfCoins}${value}/ohlcv/historical?start=2020-01-01&end=2020-07-31`;
+    const start = '2020-01-01';
+    const end = '2020-07-31';
+    const url = `${this.getListOfCoins}${value}/ohlcv/historical?start=${start}&end=${end}`;
     // Date.now()
 
     // const dataToEmit = this.getData(url);
