@@ -7,7 +7,7 @@ import { ExchangeService } from '../../../services/exchange.service';
 import 'chartjs-plugin-annotation';
 
 import { options } from './graphic-options';
-// import * as ChartAnnotation from 'chartjs-plugin-annotation';
+
 import { SelectItem } from 'primeng/api';
 import { Calendar } from 'primeng/calendar';
 
@@ -19,9 +19,9 @@ import { Calendar } from 'primeng/calendar';
 export class GraphicDashboardCoinComponent implements OnInit {
   coinDataArray: any;
   data: any;
-  coinName = 'btc-bitcoin';
+  coinName = 'bitcoin';
   show = false;
-  options: any;
+  options = options;
 
   startDate = new Date().toISOString().split('T')[0];
   start = this.startDate.split('-')[0] + '-01-01';
@@ -69,7 +69,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
       },
       (error) => console.log(error)
     );
-    this.options = { ...options };
+
     this.adjustPlaceholderCalendar();
 
     this.coinPaprikaService.onSelectedCoinChange.subscribe(
@@ -192,5 +192,17 @@ export class GraphicDashboardCoinComponent implements OnInit {
         // },
       ],
     };
+    let valueAverageAnnotation = 0;
+    data.forEach((item) => {
+      valueAverageAnnotation += parseFloat(item);
+    });
+
+    valueAverageAnnotation = valueAverageAnnotation / data.length;
+    const optionsTemp = { ...this.options };
+    optionsTemp.annotation.annotations[0].label.content = `Average: ${valueAverageAnnotation.toFixed(
+      2
+    )} ${this.selectedExchange}`;
+    optionsTemp.annotation.annotations[0].value = valueAverageAnnotation;
+    this.options = optionsTemp;
   }
 }

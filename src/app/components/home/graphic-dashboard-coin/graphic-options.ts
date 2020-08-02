@@ -1,25 +1,24 @@
 export const options = {
-  maintainAspectRatio: true,
-  plugins: {
-    annotation: {
-      drawTime: 'beforeDatasetsDraw',
-      annotations: [
-        {
-          id: 'a-line-1hline',
-          type: 'line',
-          mode: 'horizontal',
-          scaleID: 'y-axis-0',
-          value: 7000,
-          borderColor: 'red',
-          borderWidth: 10,
-          label: {
-            backgroundColor: 'red',
-            content: 'Test Label',
-            enabled: true,
-          },
+  maintainAspectRatio: false,
+  annotation: {
+    drawTime: 'afterDatasetsDraw',
+    annotations: [
+      {
+        id: 'a-line-1',
+        type: 'line',
+        mode: 'horizontal',
+        scaleID: 'y-axis-0',
+        value: 7000,
+        borderColor: 'black',
+        borderWidth: 2,
+        borderDash: [10, 5],
+        label: {
+          backgroundColor: 'red',
+          content: 'Test Label',
+          enabled: true,
         },
-      ],
-    },
+      },
+    ],
   },
   tooltips: {
     titleFontSize: 18,
