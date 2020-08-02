@@ -2,7 +2,9 @@
 <!-- [inputStyle]="{ width: '279px' }" -->
 <div class="containerCalendar">
   <p-calendar
-    [touchUI]="true"
+    *ngIf="!showInSmallScreens"
+    ngDefaultControl
+    #idToClose
     [(ngModel)]="selectedDateRange"
     dateFormat="dd.mm.yy"
     selectionMode="range"
@@ -13,6 +15,26 @@
     [placeholder]="placeholder"
     [style]="{ width: '100%', 'min-width': '100%' }"
     [maxDate]="todayDate"
+    hideOnDateTimeSelect="true"
+    (onSelect)="closeCalendarDialog($event)"
+  ></p-calendar>
+  <p-calendar
+    *ngIf="showInSmallScreens"
+    [touchUI]="true"
+    ngDefaultControl
+    #idToClose
+    [(ngModel)]="selectedDateRange"
+    dateFormat="dd.mm.yy"
+    selectionMode="range"
+    [readonlyInput]="true"
+    [numberOfMonths]="1"
+    [showIcon]="true"
+    (onClose)="replotGraph()"
+    [placeholder]="placeholder"
+    [style]="{ width: '100%', 'min-width': '100%' }"
+    [maxDate]="todayDate"
+    hideOnDateTimeSelect="true"
+    (onSelect)="closeCalendarDialog($event)"
   ></p-calendar>
   <p-dropdown
     ngDefaultControl

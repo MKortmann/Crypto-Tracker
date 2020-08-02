@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 
@@ -9,6 +9,7 @@ import 'chartjs-plugin-annotation';
 import { options } from './graphic-options';
 // import * as ChartAnnotation from 'chartjs-plugin-annotation';
 import { SelectItem } from 'primeng/api';
+import { Calendar } from 'primeng/calendar';
 
 @Component({
   selector: 'app-graphic-dashboard-coin',
@@ -21,7 +22,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
   coinName = 'btc-bitcoin';
   show = false;
   options: any;
-  selectedDateRange = null;
+
   startDate = new Date().toISOString().split('T')[0];
   start = this.startDate.split('-')[0] + '-01-01';
   end = new Date().toISOString().split('T')[0];
@@ -32,12 +33,32 @@ export class GraphicDashboardCoinComponent implements OnInit {
   selectRateEUR: any;
   todayDate = new Date();
 
+  // calendar
+  selectedDateRange = null;
+  @ViewChild('idToClose') idToClose: Calendar;
+  counter = 0;
+
+  // for mobile
+  showInSmallScreens = false;
+
   constructor(
     private coinPaprikaService: CoinPaprikaService,
     private exchangeService: ExchangeService
   ) {}
 
+  // so the calendar will close automatically after select two values
+  closeCalendarDialog(event) {
+    this.counter++;
+    if (this.counter === 2) {
+      this.idToClose.hideOverlay();
+      this.counter = 0;
+    }
+  }
+
   ngOnInit(): void {
+    if (screen.width < 1500) {
+      this.showInSmallScreens = true;
+    }
     this.exchangeService.getMoney('USD').subscribe(
       (res) => {
         const array = Object.entries(res.rates);
