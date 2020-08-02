@@ -11,3 +11,13 @@
     padding-right: 5px;
   }
 }
+
+.containerGraph {
+  display: flex;
+  // justify-content: flex-start;
+  justify-content: center;
+}
+
+p-chart {
+  flex-basis: 99% !important;
+}
