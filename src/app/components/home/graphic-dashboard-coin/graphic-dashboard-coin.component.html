@@ -2,6 +2,7 @@
 <!-- [inputStyle]="{ width: '279px' }" -->
 <div class="containerCalendar">
   <p-calendar
+    [touchUI]="true"
     [(ngModel)]="selectedDateRange"
     dateFormat="dd.mm.yy"
     selectionMode="range"
@@ -10,11 +11,16 @@
     [showIcon]="true"
     (onClose)="replotGraph()"
     [placeholder]="placeholder"
+    [style]="{ width: '100%', 'min-width': '100%' }"
   ></p-calendar>
   <p-dropdown
-    [options]="value"
-    placeholder="BTC"
-    [(ngModel)]="value"
+    ngDefaultControl
+    [options]="exchanges"
+    (onChange)="selection($event, dd)"
+    [(ngModel)]="selectRate"
+    name="selectRate"
+    #dd
+    [style]="{ width: '100%', 'min-width': '100%' }"
   ></p-dropdown>
 </div>
 

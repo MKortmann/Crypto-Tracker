@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 
+import { ExchangeService } from '../../../services/exchange.service';
+
 import 'chartjs-plugin-annotation';
 
 import { options } from './graphic-options';
@@ -24,20 +26,27 @@ export class GraphicDashboardCoinComponent implements OnInit {
   start = this.startDate.split('-')[0] + '-01-01';
   end = new Date().toISOString().split('T')[0];
   placeholder: any;
-  value: SelectItem[];
+  exchanges: SelectItem[];
+  selectedExchange: any = 'USD';
+  selectRate: number;
+  selectRateEUR: any;
 
-  constructor(private coinPaprikaService: CoinPaprikaService) {
-    this.value = [
-      { label: 'Select Coin', value: null },
-      { label: 'BTC', value: { id: 1, name: 'New York', code: 'NY' } },
-      { label: 'ETH', value: { id: 2, name: 'Rome', code: 'RM' } },
-      { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
-      { label: 'Lite', value: { id: 4, name: 'Istanbul', code: 'IST' } },
-      { label: 'CXL', value: { id: 5, name: 'Paris', code: 'PRS' } },
-    ];
-  }
+  constructor(
+    private coinPaprikaService: CoinPaprikaService,
+    private exchangeService: ExchangeService
+  ) {}
 
   ngOnInit(): void {
+    this.exchangeService.getMoney('USD').subscribe(
+      (res) => {
+        const array = Object.entries(res.rates);
+        this.exchanges = array.map(([lat, lng]) => ({
+          label: lat,
+          value: lng,
+        }));
+      },
+      (error) => console.log(error)
+    );
     this.options = { ...options };
     this.adjustPlaceholderCalendar();
 
@@ -67,6 +76,13 @@ export class GraphicDashboardCoinComponent implements OnInit {
     this.fetchDataToPlot(
       'https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/historical?start='
     );
+  }
+
+  selection(event, dd) {
+    this.selectedExchange = dd.selectedOption.label;
+    console.log(dd.selectedOption.label);
+    this.selectRate = event.value;
+    console.log(this.selectRate);
   }
 
   fetchDataToPlot(url) {

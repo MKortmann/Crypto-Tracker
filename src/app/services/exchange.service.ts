@@ -16,9 +16,5 @@ export class ExchangeService {
   // get the exchange rates in accord to the passed base that can be e.g.: EUR, USD
   getMoney(base): Observable<any> {
     return this.http.get<any>(`${this.exchangeUrl}latest?base=${base}`);
-    // .toPromise()
-    // .then((res) => {
-    //   return res;
-    // });
   }
 }

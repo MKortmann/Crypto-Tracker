@@ -7,10 +7,7 @@
   display: flex;
   justify-content: flex-end;
   padding-right: 5px;
-}
-
-p-calendar {
-  .ui-datepicker {
-    right: -290px !important;
+  p-calendar {
+    padding-right: 5px;
   }
 }
