@@ -30,19 +30,29 @@ export class GraphicDashboardCoinComponent implements OnInit {
     this.options = { ...options };
     this.adjustPlaceholderCalendar();
 
-    this.coinPaprikaService.onSelectedCoinChange.subscribe((url) => {
-      this.fetchDataToPlot(url);
-    });
-
-    this.coinPaprikaService.onSelectCoinName.subscribe((name) => {
-      const nameTemp = name.split('-');
-
-      if (nameTemp[2] !== undefined) {
-        this.coinName = `${nameTemp[1]} ${nameTemp[2]}`;
-      } else {
-        this.coinName = nameTemp[1];
+    this.coinPaprikaService.onSelectedCoinChange.subscribe(
+      (url) => {
+        this.fetchDataToPlot(url);
+      },
+      (error) => {
+        console.log(error);
       }
-    });
+    );
+
+    this.coinPaprikaService.onSelectCoinName.subscribe(
+      (name) => {
+        const nameTemp = name.split('-');
+
+        if (nameTemp[2] !== undefined) {
+          this.coinName = `${nameTemp[1]} ${nameTemp[2]}`;
+        } else {
+          this.coinName = nameTemp[1];
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
     this.fetchDataToPlot(
       'https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/historical?start='
     );
@@ -55,23 +65,28 @@ export class GraphicDashboardCoinComponent implements OnInit {
     }
 
     const urlRange = `${url}${this.start}&end=${this.end}`;
-    this.coinPaprikaService.getData(urlRange).subscribe((res) => {
-      // adjusting the input data
-      const labels = [];
-      const highData = [];
-      const lowData = [];
-      const dataAverageArray = res.map((obj, index) => {
-        const average = ((obj.high + obj.low) / 2).toFixed(2);
-        labels.push(obj.time_open);
-        highData.push(obj.high);
-        lowData.push(obj.low);
-        return average;
-      });
+    this.coinPaprikaService.getData(urlRange).subscribe(
+      (res) => {
+        // adjusting the input data
+        const labels = [];
+        const highData = [];
+        const lowData = [];
+        const dataAverageArray = res.map((obj, index) => {
+          const average = ((obj.high + obj.low) / 2).toFixed(2);
+          labels.push(obj.time_open);
+          highData.push(obj.high);
+          lowData.push(obj.low);
+          return average;
+        });
 
-      this.coinDataArray = [...dataAverageArray];
-      this.show = true;
-      this.plotGraph(dataAverageArray, lowData, highData, labels);
-    });
+        this.coinDataArray = [...dataAverageArray];
+        this.show = true;
+        this.plotGraph(dataAverageArray, lowData, highData, labels);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   // adjust the calender input to show the correct data

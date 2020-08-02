@@ -73,6 +73,9 @@ export const options = {
         type: 'time',
         time: {
           unit: 'month',
+          displayFormats: {
+            month: 'MMM',
+          },
         },
       },
     ],
