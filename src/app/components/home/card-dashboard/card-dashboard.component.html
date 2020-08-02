@@ -6,6 +6,7 @@
   class="p-grid p-align-center p-col-12"
   styleClass="custom-carousel"
   [numVisible]="2"
+  [numScroll]="2"
 >
   <ng-template let-item pTemplate="item">
     <p-card (click)="selectedCoin(item.name, item.symbol)">

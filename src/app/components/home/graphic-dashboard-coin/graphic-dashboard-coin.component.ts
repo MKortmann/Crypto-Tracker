@@ -125,22 +125,22 @@ export class GraphicDashboardCoinComponent implements OnInit {
           pointHoverRadius: 10,
           pointHoverBorderWidth: 7,
         },
-        {
-          label: 'low peak values',
-          data: lowData,
-          fill: false,
-          borderColor: '#dc3545',
-          hidden: true,
-          pointRadius: 1,
-        },
-        {
-          label: 'high peak values',
-          data: highData,
-          fill: false,
-          borderColor: '#007bff',
-          hidden: true,
-          pointRadius: 1,
-        },
+        // {
+        //   label: 'low peak values',
+        //   data: lowData,
+        //   fill: false,
+        //   borderColor: '#dc3545',
+        //   hidden: true,
+        //   pointRadius: 1,
+        // },
+        // {
+        //   label: 'high peak values',
+        //   data: highData,
+        //   fill: false,
+        //   borderColor: '#007bff',
+        //   hidden: true,
+        //   pointRadius: 1,
+        // },
       ],
     };
   }
