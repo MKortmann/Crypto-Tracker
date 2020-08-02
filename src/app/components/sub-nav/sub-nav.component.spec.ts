@@ -6,6 +6,7 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 
 import { CoinLoreService } from '../../services/coinLore.service';
 import { ExchangeService } from '../../services/exchange.service';
+
 // import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('SubNavComponent', () => {

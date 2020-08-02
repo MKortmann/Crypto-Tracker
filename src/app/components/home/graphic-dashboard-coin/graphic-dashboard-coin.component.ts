@@ -17,7 +17,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
   data: any;
   coinName = 'btc-bitcoin';
   show = false;
-  options: any = options;
+  options: any;
   selectedDateRange = null;
   startDate = new Date().toISOString().split('T')[0];
   start = this.startDate.split('-')[0] + '-01-01';
@@ -27,6 +27,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
   constructor(private coinPaprikaService: CoinPaprikaService) {}
 
   ngOnInit(): void {
+    this.options = { ...options };
     this.adjustPlaceholderCalendar();
 
     this.coinPaprikaService.onSelectedCoinChange.subscribe((url) => {
@@ -43,7 +44,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
       }
     });
     this.fetchDataToPlot(
-      `https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/historical?start=`
+      'https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/historical?start='
     );
   }
 
