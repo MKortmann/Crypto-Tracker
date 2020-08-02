@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavComponent } from './nav.component';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
+// import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 describe('NavComponent', () => {
   let component: NavComponent;
   let fixture: ComponentFixture<NavComponent>;
@@ -14,6 +16,7 @@ describe('NavComponent', () => {
       imports: [TranslateModule.forRoot()],
       providers: [TranslateService],
       declarations: [NavComponent],
+      // schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 

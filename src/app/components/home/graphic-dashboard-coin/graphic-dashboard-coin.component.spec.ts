@@ -5,6 +5,7 @@ import { GraphicDashboardCoinComponent } from './graphic-dashboard-coin.componen
 import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 
 import { HttpClient, HttpHandler } from '@angular/common/http';
+// import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('GraphicDashboardCoinComponent', () => {
   let component: GraphicDashboardCoinComponent;
@@ -14,6 +15,7 @@ describe('GraphicDashboardCoinComponent', () => {
     TestBed.configureTestingModule({
       declarations: [GraphicDashboardCoinComponent],
       providers: [HttpClient, HttpHandler, CoinPaprikaService],
+      // schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 

@@ -5,6 +5,7 @@ import { GraphicDashboardComponent } from './graphic-dashboard.component';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
+// import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('GraphicDashboardComponent', () => {
   let component: GraphicDashboardComponent;
@@ -15,6 +16,7 @@ describe('GraphicDashboardComponent', () => {
       imports: [TranslateModule.forRoot()],
       providers: [HttpClient, HttpHandler, TranslateService],
       declarations: [GraphicDashboardComponent],
+      // schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 

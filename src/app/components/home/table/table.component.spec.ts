@@ -9,6 +9,7 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CoinLoreService } from '../../../services/coinLore.service';
 
 import { ExchangeService } from '../../../services/exchange.service';
+// import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('TableComponent', () => {
   let component: TableComponent;
@@ -25,6 +26,7 @@ describe('TableComponent', () => {
         ExchangeService,
       ],
       declarations: [TableComponent],
+      // schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 

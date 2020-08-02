@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
+// import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -12,6 +13,7 @@ describe('HomeComponent', () => {
       imports: [TranslateModule.forRoot()],
       providers: [TranslateService],
       declarations: [HomeComponent],
+      // schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 
