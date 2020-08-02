@@ -30,6 +30,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
   selectedExchange: any = 'USD';
   selectRate: number;
   selectRateEUR: any;
+  todayDate = new Date();
 
   constructor(
     private coinPaprikaService: CoinPaprikaService,
