@@ -15,6 +15,7 @@ import { iif } from 'rxjs';
 export class CardDashboardComponent implements OnInit {
   data: any;
   value = ['item1', 'item2', 'item3', 'item1', 'item2', 'item3'];
+  show = false;
 
   constructor(
     private coinLoreService: CoinLoreService,
@@ -23,6 +24,9 @@ export class CardDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (screen.width < 1000) {
+      this.show = true;
+    }
     // filling with values
     this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
       this.data = [...res.data];
