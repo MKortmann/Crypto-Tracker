@@ -14,6 +14,7 @@ import { iif } from 'rxjs';
 })
 export class CardDashboardComponent implements OnInit {
   data: any;
+  value = ['item1', 'item2', 'item3', 'item1', 'item2', 'item3'];
 
   constructor(
     private coinLoreService: CoinLoreService,

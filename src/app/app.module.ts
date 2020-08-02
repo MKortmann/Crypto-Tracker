@@ -46,6 +46,7 @@ import { SubNavComponent } from './components/sub-nav/sub-nav.component';
 import { GraphicDashboardCoinComponent } from './components/home/graphic-dashboard-coin/graphic-dashboard-coin.component';
 
 import { CalendarModule } from 'primeng/calendar';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { CalendarModule } from 'primeng/calendar';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
+    CarouselModule,
     FormsModule,
     BrowserModule,
     CalendarModule,
