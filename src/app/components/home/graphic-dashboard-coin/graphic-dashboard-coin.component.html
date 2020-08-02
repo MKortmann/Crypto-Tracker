@@ -11,6 +11,11 @@
     (onClose)="replotGraph()"
     [placeholder]="placeholder"
   ></p-calendar>
+  <p-dropdown
+    [options]="value"
+    placeholder="BTC"
+    [(ngModel)]="value"
+  ></p-dropdown>
 </div>
 
 <p-chart
@@ -21,11 +26,3 @@
   [options]="options"
 >
 </p-chart>
-
-<!-- <p-chart
-  *ngIf="show"
-  type="line"
-  height="400"
-  [data]="data"
-  [options]="options"
-></p-chart> -->

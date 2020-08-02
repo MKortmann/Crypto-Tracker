@@ -14,7 +14,6 @@ import { iif } from 'rxjs';
 })
 export class CardDashboardComponent implements OnInit {
   data: any;
-  value = ['item1', 'item2', 'item3', 'item1', 'item2', 'item3'];
   show = false;
 
   constructor(
@@ -24,7 +23,7 @@ export class CardDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (screen.width < 1000) {
+    if (screen.width < 1400) {
       this.show = true;
     }
     // filling with values

@@ -6,6 +6,7 @@ import 'chartjs-plugin-annotation';
 
 import { options } from './graphic-options';
 // import * as ChartAnnotation from 'chartjs-plugin-annotation';
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-graphic-dashboard-coin',
@@ -23,8 +24,18 @@ export class GraphicDashboardCoinComponent implements OnInit {
   start = this.startDate.split('-')[0] + '-01-01';
   end = new Date().toISOString().split('T')[0];
   placeholder: any;
+  value: SelectItem[];
 
-  constructor(private coinPaprikaService: CoinPaprikaService) {}
+  constructor(private coinPaprikaService: CoinPaprikaService) {
+    this.value = [
+      { label: 'Select Coin', value: null },
+      { label: 'BTC', value: { id: 1, name: 'New York', code: 'NY' } },
+      { label: 'ETH', value: { id: 2, name: 'Rome', code: 'RM' } },
+      { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
+      { label: 'Lite', value: { id: 4, name: 'Istanbul', code: 'IST' } },
+      { label: 'CXL', value: { id: 5, name: 'Paris', code: 'PRS' } },
+    ];
+  }
 
   ngOnInit(): void {
     this.options = { ...options };

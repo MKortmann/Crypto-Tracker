@@ -46,7 +46,7 @@ export const pt = {
     },
     FOOTER: {
       LABEL_LEFT: 'Marcelo Kortmann',
-      LABEL_MIDDLE: 'Versão 1.0.0',
+      LABEL_MIDDLE: 'Beta Versão 1.0.0',
     },
   },
 };
