@@ -22,6 +22,8 @@ export class GraphicDashboardCoinComponent implements OnInit {
   coinName = 'bitcoin';
   show = false;
   options = options;
+  labelsGraphX: any;
+  dataAverageArrayGraph: any;
 
   startDate = new Date().toISOString().split('T')[0];
   start = this.startDate.split('-')[0] + '-01-01';
@@ -29,9 +31,11 @@ export class GraphicDashboardCoinComponent implements OnInit {
   placeholder: any;
   exchanges: SelectItem[];
   selectedExchange: any = 'USD';
-  selectRate: number;
+  selectRate = 1;
   selectRateEUR: any;
   todayDate = new Date();
+  url =
+    'https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/historical?start=';
 
   // calendar
   selectedDateRange = null;
@@ -52,6 +56,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
     if (this.counter === 2) {
       this.idToClose.hideOverlay();
       this.counter = 0;
+      this.fetchDataToPlot(this.url);
     }
   }
 
@@ -95,16 +100,14 @@ export class GraphicDashboardCoinComponent implements OnInit {
         console.log(error);
       }
     );
-    this.fetchDataToPlot(
-      'https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/historical?start='
-    );
+    this.fetchDataToPlot(this.url);
   }
 
+  // change the coin, so we fetch the data again!
   selection(event, dd) {
     this.selectedExchange = dd.selectedOption.label;
-    console.log(dd.selectedOption.label);
     this.selectRate = event.value;
-    console.log(this.selectRate);
+    this.fetchDataToPlot(this.url);
   }
 
   fetchDataToPlot(url) {
@@ -117,20 +120,30 @@ export class GraphicDashboardCoinComponent implements OnInit {
     this.coinPaprikaService.getData(urlRange).subscribe(
       (res) => {
         // adjusting the input data
-        const labels = [];
+        this.labelsGraphX = [];
         const highData = [];
         const lowData = [];
-        const dataAverageArray = res.map((obj, index) => {
-          const average = ((obj.high + obj.low) / 2).toFixed(2);
-          labels.push(obj.time_open);
+
+        // calc the average with FIAT rate
+        this.dataAverageArrayGraph = res.map((obj, index) => {
+          const average = (
+            ((obj.high + obj.low) / 2) *
+            this.selectRate
+          ).toFixed(2);
+          this.labelsGraphX.push(obj.time_open);
           highData.push(obj.high);
           lowData.push(obj.low);
           return average;
         });
 
-        this.coinDataArray = [...dataAverageArray];
+        this.coinDataArray = [...this.dataAverageArrayGraph];
         this.show = true;
-        this.plotGraph(dataAverageArray, lowData, highData, labels);
+        this.plotGraph(
+          this.dataAverageArrayGraph,
+          lowData,
+          highData,
+          this.labelsGraphX
+        );
       },
       (error) => {
         console.log(error);

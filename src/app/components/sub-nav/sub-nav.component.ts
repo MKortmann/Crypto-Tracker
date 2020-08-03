@@ -34,7 +34,7 @@ export class SubNavComponent implements OnInit {
     //   this.data = data;
     // });
     this.load(this.MIN_10);
-    this.interval = this.MIN_10;
+    this.interval = this.MIN_60;
     this.decreaseTimeInterval();
   }
 
