@@ -19,7 +19,7 @@ import { Calendar } from 'primeng/calendar';
 export class GraphicDashboardCoinComponent implements OnInit {
   coinDataArray: any;
   data: any;
-  coinName = 'bitcoin';
+  coinName = 'btc-bitcoin';
   show = false;
   options = options;
   labelsGraphX: any;
@@ -34,8 +34,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
   selectRate = 1;
   selectRateEUR: any;
   todayDate = new Date();
-  url =
-    'https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/historical?start=';
+  url: string;
 
   // calendar
   selectedDateRange = null;
@@ -61,6 +60,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.url = `https://api.coinpaprika.com/v1/coins/${this.coinName}/ohlcv/historical?start=`;
     if (screen.width < 1500) {
       this.showInSmallScreens = true;
     }
@@ -89,6 +89,8 @@ export class GraphicDashboardCoinComponent implements OnInit {
     this.coinPaprikaService.onSelectCoinName.subscribe(
       (name) => {
         const nameTemp = name.split('-');
+        // update url in accord to the selected coin
+        this.url = `https://api.coinpaprika.com/v1/coins/${name}/ohlcv/historical?start=`;
 
         if (nameTemp[2] !== undefined) {
           this.coinName = `${nameTemp[1]} ${nameTemp[2]}`;
