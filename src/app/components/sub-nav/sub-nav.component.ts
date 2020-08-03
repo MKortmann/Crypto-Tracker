@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { CoinLoreService } from '../../services/coinLore.service';
 import { ExchangeService } from '../../services/exchange.service';
 
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-sub-nav',
   templateUrl: './sub-nav.component.html',
@@ -11,7 +13,8 @@ import { ExchangeService } from '../../services/exchange.service';
 export class SubNavComponent implements OnInit {
   constructor(
     private coinLoreService: CoinLoreService,
-    private exchangeService: ExchangeService
+    private exchangeService: ExchangeService,
+    private translateService: TranslateService
   ) {}
 
   data: any;

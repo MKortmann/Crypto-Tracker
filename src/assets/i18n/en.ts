@@ -8,6 +8,14 @@ export const en = {
       REGISTER: 'Register',
       LOGIN: 'Login',
     },
+    SUBNAV: {
+      UPDATE: 'Update Every',
+      MIN: 'min',
+      SEC: 'sec',
+    },
+    GRAPH_COIN: {
+      AVERAGE: 'Average',
+    },
     HOME: {
       TITLE: 'Home',
       TABLE: {

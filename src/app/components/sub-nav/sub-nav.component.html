@@ -22,7 +22,10 @@
       aria-expanded="false"
     >
       <span *ngIf="interval !== 0; else elseBlock">
-        Update Every: {{ this.showMinutes }} min {{ this.showSeconds }} sec
+        {{ 'TRANSLATE.SUBNAV.UPDATE' | translate }}:
+
+        {{ this.showMinutes }} {{ 'TRANSLATE.SUBNAV.MIN' | translate }}
+        {{ this.showSeconds }} {{ 'TRANSLATE.SUBNAV.SEC' | translate }}
       </span>
       <ng-template #elseBlock>Update Stopped</ng-template>
     </a>

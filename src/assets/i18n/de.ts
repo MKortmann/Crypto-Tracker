@@ -8,6 +8,14 @@ export const de = {
       REGISTER: 'Registrieren',
       LOGIN: 'Anmeldung',
     },
+    SUBNAV: {
+      UPDATE: 'Aktualisiert jede',
+      MIN: 'min',
+      SEC: 'sek',
+    },
+    GRAPH_COIN: {
+      AVERAGE: 'Durchschnittlich',
+    },
     HOME: {
       TITLE: 'Start',
       TABLE: {

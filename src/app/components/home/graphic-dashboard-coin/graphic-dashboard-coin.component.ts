@@ -4,6 +4,8 @@ import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 
 import { ExchangeService } from '../../../services/exchange.service';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import 'chartjs-plugin-annotation';
 
 import { options } from './graphic-options';
@@ -46,7 +48,8 @@ export class GraphicDashboardCoinComponent implements OnInit {
 
   constructor(
     private coinPaprikaService: CoinPaprikaService,
-    private exchangeService: ExchangeService
+    private exchangeService: ExchangeService,
+    private translateService: TranslateService
   ) {}
 
   // so the calendar will close automatically after select two values
@@ -119,6 +122,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
     }
 
     const urlRange = `${url}${this.start}&end=${this.end}`;
+    this.coinName = this.coinName.split('-')[1];
     this.coinPaprikaService.getData(urlRange).subscribe(
       (res) => {
         // adjusting the input data
@@ -214,9 +218,9 @@ export class GraphicDashboardCoinComponent implements OnInit {
 
     valueAverageAnnotation = valueAverageAnnotation / data.length;
     const optionsTemp = { ...this.options };
-    optionsTemp.annotation.annotations[0].label.content = `Average: ${valueAverageAnnotation.toFixed(
-      2
-    )} ${this.selectedExchange}`;
+    optionsTemp.annotation.annotations[0].label.content = `${this.translateService.instant(
+      'TRANSLATE.GRAPH_COIN.AVERAGE'
+    )}: ${valueAverageAnnotation.toFixed(2)} ${this.selectedExchange}`;
     optionsTemp.annotation.annotations[0].value = valueAverageAnnotation;
     this.options = optionsTemp;
   }

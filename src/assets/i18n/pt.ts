@@ -8,6 +8,14 @@ export const pt = {
       REGISTER: 'Cadastro',
       LOGIN: 'Conecte-se',
     },
+    SUBNAV: {
+      UPDATE: 'Atualiza a cada',
+      MIN: 'min',
+      SEC: 'seg',
+    },
+    GRAPH_COIN: {
+      AVERAGE: 'média',
+    },
     HOME: {
       TITLE: 'Início',
       TABLE: {

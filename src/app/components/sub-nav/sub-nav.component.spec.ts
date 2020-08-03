@@ -7,6 +7,8 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { CoinLoreService } from '../../services/coinLore.service';
 import { ExchangeService } from '../../services/exchange.service';
 
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+
 // import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('SubNavComponent', () => {
@@ -16,7 +18,14 @@ describe('SubNavComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SubNavComponent],
-      providers: [HttpClient, HttpHandler, CoinLoreService, ExchangeService],
+      imports: [TranslateModule.forRoot()],
+      providers: [
+        HttpClient,
+        HttpHandler,
+        CoinLoreService,
+        ExchangeService,
+        TranslateService,
+      ],
       // schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));

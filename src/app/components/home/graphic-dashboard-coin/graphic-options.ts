@@ -9,7 +9,7 @@ export const options = {
         mode: 'horizontal',
         scaleID: 'y-axis-0',
         value: 7000,
-        borderColor: 'black',
+        borderColor: 'red',
         borderWidth: 2,
         borderDash: [10, 5],
         label: {
