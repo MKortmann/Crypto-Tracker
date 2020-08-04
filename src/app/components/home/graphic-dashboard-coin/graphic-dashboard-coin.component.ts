@@ -122,7 +122,9 @@ export class GraphicDashboardCoinComponent implements OnInit {
     }
 
     const urlRange = `${url}${this.start}&end=${this.end}`;
-    this.coinName = this.coinName.split('-')[1];
+    if (this.coinName.split('-')[1] !== undefined) {
+      this.coinName = this.coinName.split('-')[1];
+    }
     this.coinPaprikaService.getData(urlRange).subscribe(
       (res) => {
         // adjusting the input data
