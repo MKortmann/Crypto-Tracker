@@ -35,7 +35,7 @@ export const options = {
       },
       label: (tooltipItem, data) => {
         const label = data.datasets[tooltipItem.datasetIndex].label || '';
-        return `${label}: $${tooltipItem.yLabel}`;
+        return `${label}: ${tooltipItem.yLabel}`;
       },
     },
   },
@@ -59,11 +59,16 @@ export const options = {
       {
         ticks: {
           // Include a dollar sign in the ticks
-          callback: (value, index, values) => {
-            if (value > 1000) {
-              return '$' + value / 1000 + 'k';
+          callback: (value) => {
+            if (value > 10 ** 3 && value <= 10 ** 6) {
+              return `${Math.round(value / 10 ** 3)} K `;
+            } else if (value > 10 ** 6 && value <= 10 ** 9) {
+              return `${Math.round(value / 10 ** 6)} M`;
+            } else if (value > 10 ** 9 && value <= 10 ** 12) {
+              return `${Math.round(value / 10 ** 9)} B`;
+            } else if (value > 10 ** 12 && value <= 10 ** 15) {
+              return `${Math.round(value / 10 ** 9)} T`;
             }
-            return '$' + value;
           },
         },
       },

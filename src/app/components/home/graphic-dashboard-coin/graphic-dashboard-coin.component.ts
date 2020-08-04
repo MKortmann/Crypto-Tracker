@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import 'chartjs-plugin-annotation';
 
 import { options } from './graphic-options';
+import { hash } from './currency-hash';
 
 import { SelectItem } from 'primeng/api';
 import { Calendar } from 'primeng/calendar';
@@ -37,6 +38,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
   selectRateEUR: any;
   todayDate = new Date();
   url: string;
+  // hash = hash;
 
   // calendar
   selectedDateRange = null;
@@ -224,6 +226,29 @@ export class GraphicDashboardCoinComponent implements OnInit {
       'TRANSLATE.GRAPH_COIN.AVERAGE'
     )}: ${valueAverageAnnotation.toFixed(2)} ${this.selectedExchange}`;
     optionsTemp.annotation.annotations[0].value = valueAverageAnnotation;
-    this.options = optionsTemp;
+
+    (optionsTemp.tooltips.callbacks.label = (tooltipItem, dataIn) => {
+      const label = dataIn.datasets[tooltipItem.datasetIndex].label || '';
+      return `${label}: ${tooltipItem.yLabel} ${this.selectedExchange}`;
+    }),
+      (optionsTemp.scales.yAxes[0].ticks.callback = (value) => {
+        if (value > 10 ** 3 && value <= 10 ** 6) {
+          return `${Math.round(value / 10 ** 3)} K ${
+            hash[this.selectedExchange]
+          }`;
+        } else if (value > 10 ** 6 && value <= 10 ** 9) {
+          return `${Math.round(value / 10 ** 6)} M ${
+            hash[this.selectedExchange]
+          }`;
+        } else if (value > 10 ** 9 && value <= 10 ** 12) {
+          return `${Math.round(value / 10 ** 9)} B ${
+            hash[this.selectedExchange]
+          }`;
+        } else if (value > 10 ** 12 && value <= 10 ** 15) {
+          return `${Math.round(value / 10 ** 9)} T ${
+            hash[this.selectedExchange]
+          }`;
+        }
+      })((this.options = optionsTemp));
   }
 }
