@@ -12,10 +12,9 @@ export const options = {
         borderColor: 'red',
         borderWidth: 2,
         borderDash: [10, 5],
-
         label: {
           backgroundColor: 'red',
-          content: 'Test Label',
+          content: '{{ TRANSLATE.GRAPH_COIN.AVERAGE | translate}}',
           enabled: true,
         },
       },

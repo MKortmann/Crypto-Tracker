@@ -249,7 +249,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
             value / 10 ** 9
           )} T`;
         } else {
-          return `${hash[this.selectedExchange]}${Math.round(value)}`;
+          return `${hash[this.selectedExchange]}${value}`;
         }
       })((this.options = optionsTemp));
   }
