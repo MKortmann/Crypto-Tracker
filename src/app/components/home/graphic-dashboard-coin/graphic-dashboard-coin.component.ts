@@ -65,6 +65,10 @@ export class GraphicDashboardCoinComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // localStorage Check the selectedExchange
+
+    this.selectedExchange = localStorage.getItem('selectedExchange');
+
     this.url = `https://api.coinpaprika.com/v1/coins/${this.coinName}/ohlcv/historical?start=`;
     if (screen.width < 1500) {
       this.showInSmallScreens = true;
@@ -76,6 +80,12 @@ export class GraphicDashboardCoinComponent implements OnInit {
           label: lat,
           value: lng,
         }));
+
+        // checkLocalStorage
+        if (this.selectedExchange !== null) {
+          this.selectRate = res.rates[this.selectedExchange];
+          // this.selection(this.selectedExchange, this.selectRate);
+        }
       },
       (error) => console.log(error)
     );
@@ -115,6 +125,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
     this.selectedExchange = dd.selectedOption.label;
     this.selectRate = event.value;
     this.fetchDataToPlot(this.url);
+    localStorage.setItem('selectedExchange', this.selectedExchange);
   }
 
   fetchDataToPlot(url) {
