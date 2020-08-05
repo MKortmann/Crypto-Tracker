@@ -50,8 +50,14 @@ export class TableComponent implements OnInit {
               value: lng,
             }));
             this.selectRateEUR = res2.rates[`EUR`];
-            this.selectedExchange = 'CAD';
-            this.selectRate = this.exchanges[0].value;
+            this.selectedExchange = localStorage.getItem(
+              'selectedExchangeTable'
+            );
+            if (this.selectedExchange !== null) {
+              this.selectRate = res2.rates[this.selectedExchange];
+            } else {
+              this.selectRate = this.exchanges[0].value;
+            }
           },
           (error2) => {
             console.log(error2);
@@ -68,5 +74,6 @@ export class TableComponent implements OnInit {
     this.selectedExchange = dd.selectedOption.label;
     console.log(dd.selectedOption.label);
     this.selectRate = event.value;
+    localStorage.setItem('selectedExchangeTable', this.selectedExchange);
   }
 }
