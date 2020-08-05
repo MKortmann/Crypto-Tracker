@@ -7,7 +7,9 @@
     [rowHover]="true"
     [rowsPerPageOptions]="[5, 10, 25, 50, 100, 200]"
     [showCurrentPageReport]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} cryptos"
+    currentPageReportTemplate="{{
+      'TRANSLATE.HOME.TABLE.REPORTER' | translate
+    }}"
     [responsive]="true"
     #dt
   >
