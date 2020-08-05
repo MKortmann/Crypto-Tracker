@@ -84,7 +84,8 @@ export class GraphicDashboardCoinComponent implements OnInit {
         // checkLocalStorage
         if (this.selectedExchange !== null) {
           this.selectRate = res.rates[this.selectedExchange];
-          // this.selection(this.selectedExchange, this.selectRate);
+        } else {
+          this.selectedExchange = 'USD';
         }
       },
       (error) => console.log(error)
