@@ -36,8 +36,13 @@ export class SubNavComponent implements OnInit {
     // this.coinLoreService.cast.subscribe((data) => {
     //   this.data = data;
     // });
-    this.load(this.MIN_10);
-    this.interval = this.MIN_60;
+    this.interval = JSON.parse(localStorage.getItem('interval'));
+    if (this.interval === null) {
+      this.interval = this.MIN_60;
+      this.load(this.MIN_10);
+    } else {
+      this.load(this.interval);
+    }
     this.decreaseTimeInterval();
   }
 
@@ -85,6 +90,7 @@ export class SubNavComponent implements OnInit {
 
   load(interval) {
     this.interval = interval;
+    localStorage.setItem('interval', interval);
     this.reset();
     this.decreaseTimeInterval();
 
