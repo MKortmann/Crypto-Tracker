@@ -32,6 +32,7 @@ export const de = {
         MARKET_CAP: 'Market Kap USD',
         VOLUME_24H: 'Volumen 24h',
         VOLUME_24HA: 'Volumen 24ha',
+        REPORTER: 'Zeige {first} bis {last} von {totalRecords} Kryptos',
       },
       GRAPHIC_CARD: {
         CRYPTOS: 'Summe der Kryptowährungen',
