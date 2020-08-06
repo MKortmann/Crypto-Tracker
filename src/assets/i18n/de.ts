@@ -2,7 +2,9 @@ export const de = {
   TRANSLATE: {
     NAVBAR: {
       TITLE: 'Crypto-Tracker',
-      HOME: 'Start',
+      HOME: 'Kryptos',
+      EXCHANGES: 'Börsen',
+      NEWS: 'Nachrichten',
       ABOUT: 'Über',
       NAV_2: 'Nav_2',
       REGISTER: 'Registrieren',

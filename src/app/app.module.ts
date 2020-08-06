@@ -47,6 +47,9 @@ import { GraphicDashboardCoinComponent } from './components/home/graphic-dashboa
 
 import { CalendarModule } from 'primeng/calendar';
 import { CarouselModule } from 'primeng/carousel';
+import { GraphicDashboardTickersComponent } from './components/home/graphic-dashboard-tickers/graphic-dashboard-tickers.component';
+import { ExchangesComponent } from './components/exchanges/exchanges.component';
+import { NewsComponent } from './components/news/news.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +67,9 @@ import { CarouselModule } from 'primeng/carousel';
     FormatCurrencyPipe,
     SubNavComponent,
     GraphicDashboardCoinComponent,
+    GraphicDashboardTickersComponent,
+    ExchangesComponent,
+    NewsComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
