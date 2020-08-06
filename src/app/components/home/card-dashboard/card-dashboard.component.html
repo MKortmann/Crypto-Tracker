@@ -1,32 +1,32 @@
 <!-- carousel primeng -->
-<p-carousel
-  *ngIf="show"
-  [autoplayInterval]="3000"
-  [value]="data"
-  class="p-grid p-align-center p-col-12"
-  styleClass="custom-carousel"
-  [numVisible]="2"
-  [numScroll]="2"
->
-  <ng-template let-item pTemplate="item">
-    <p-card (click)="selectedCoin(item.name, item.symbol)">
-      <p-header style="font-size: larger; font-weight: bold;">
-        <span style="padding-left: 10px;">
+<div *ngIf="show; else elseBlock">
+  <p-carousel
+    [autoplayInterval]="3000"
+    [value]="data"
+    class="p-grid p-align-center p-col-12"
+    styleClass="custom-carousel"
+    [numVisible]="2"
+    [numScroll]="2"
+  >
+    <ng-template let-item pTemplate="item">
+      <p-card (click)="selectedCoin(item.name, item.symbol)">
+        <!-- <p-header style="font-size: larger; font-weight: bold;"> -->
+        <span style="padding-left: 10px; font-size: large; font-weight: bold;">
           <img
             src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
             alt="{{ item.symbol | lowercase }}"
           />
           {{ item.name }}
         </span>
-      </p-header>
-      <div style="font-size: large; text-align: left;">
-        {{ item.price_usd | currency: 'USD' }}
-      </div>
-      <div style="font-size: large; text-align: left;">
-        {{ item.price_eur | currency: 'EUR' }}
-      </div>
+        <!-- </p-header> -->
+        <div style="font-size: large; text-align: left;">
+          {{ item.price_usd | currency: 'USD' }}
+        </div>
+        <div style="font-size: large; text-align: left;">
+          {{ item.price_eur | currency: 'EUR' }}
+        </div>
 
-      <p-footer>
+        <!-- <p-footer> -->
         <div
           *ngIf="item.percent_change_1h > 0; then thenBlock; else elseBlock"
         ></div>
@@ -44,54 +44,56 @@
             {{ item.percent_change_1h / 100 | percent: '2.2-2' }}
           </td>
         </ng-template>
-      </p-footer>
-    </p-card>
-  </ng-template>
-</p-carousel>
+        <!-- </p-footer>  -->
+      </p-card>
+    </ng-template>
+  </p-carousel>
+</div>
 
 <!-- finished carousel primeng -->
+<ng-template #elseBlock>
+  <div class="p-grid p-align-center p-justify-around">
+    <div
+      class="p-col-6 p-sm-6 p-md-3 p-lg-2 p-xl-1 p-col-align-stretch"
+      *ngFor="let item of data"
+    >
+      <p-card (click)="selectedCoin(item.name, item.symbol)">
+        <p-header style="font-size: larger; font-weight: bold;">
+          <span style="padding-left: 10px;">
+            <img
+              src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
+              alt="{{ item.symbol | lowercase }}"
+            />
+            {{ item.name }}
+          </span>
+        </p-header>
+        <div style="font-size: large; text-align: left;">
+          {{ item.price_usd | currency: 'USD' }}
+        </div>
+        <div style="font-size: large; text-align: left;">
+          {{ item.price_eur | currency: 'EUR' }}
+        </div>
 
-<div *ngIf="!show" class="p-grid p-align-center p-justify-around">
-  <div
-    class="p-col-6 p-sm-6 p-md-3 p-lg-2 p-xl-1 p-col-align-stretch"
-    *ngFor="let item of data"
-  >
-    <p-card (click)="selectedCoin(item.name, item.symbol)">
-      <p-header style="font-size: larger; font-weight: bold;">
-        <span style="padding-left: 10px;">
-          <img
-            src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
-            alt="{{ item.symbol | lowercase }}"
-          />
-          {{ item.name }}
-        </span>
-      </p-header>
-      <div style="font-size: large; text-align: left;">
-        {{ item.price_usd | currency: 'USD' }}
-      </div>
-      <div style="font-size: large; text-align: left;">
-        {{ item.price_eur | currency: 'EUR' }}
-      </div>
-
-      <p-footer>
-        <div
-          *ngIf="item.percent_change_1h > 0; then thenBlock; else elseBlock"
-        ></div>
-        <ng-template #thenBlock>
-          <p>Change 1h</p>
-          <td style="color: green;">
-            <i class="material-icons">trending_up</i>
-            {{ item.percent_change_1h / 100 | percent: '2.2-2' }}
-          </td>
-        </ng-template>
-        <ng-template #elseBlock>
-          <p>Change 1h</p>
-          <td style="color: red;">
-            <i class="material-icons">trending_down</i>
-            {{ item.percent_change_1h / 100 | percent: '2.2-2' }}
-          </td>
-        </ng-template>
-      </p-footer>
-    </p-card>
+        <p-footer>
+          <div
+            *ngIf="item.percent_change_1h > 0; then thenBlock; else elseBlock"
+          ></div>
+          <ng-template #thenBlock>
+            <p>Change 1h</p>
+            <td style="color: green;">
+              <i class="material-icons">trending_up</i>
+              {{ item.percent_change_1h / 100 | percent: '2.2-2' }}
+            </td>
+          </ng-template>
+          <ng-template #elseBlock>
+            <p>Change 1h</p>
+            <td style="color: red;">
+              <i class="material-icons">trending_down</i>
+              {{ item.percent_change_1h / 100 | percent: '2.2-2' }}
+            </td>
+          </ng-template>
+        </p-footer>
+      </p-card>
+    </div>
   </div>
-</div>
+</ng-template>

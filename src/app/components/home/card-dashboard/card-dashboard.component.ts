@@ -5,7 +5,6 @@ import { CoinLoreService } from '../../../services/coinLore.service';
 import { ExchangeService } from '../../../services/exchange.service';
 
 import { CoinPaprikaService } from '../../../services/coin-paprika.service';
-import { iif } from 'rxjs';
 
 @Component({
   selector: 'app-card-dashboard',
@@ -14,18 +13,21 @@ import { iif } from 'rxjs';
 })
 export class CardDashboardComponent implements OnInit {
   data: any;
-  show = false;
+  show = true;
 
   constructor(
     private coinLoreService: CoinLoreService,
     private exchangeService: ExchangeService,
     private coinPaprikaService: CoinPaprikaService
-  ) {}
+  ) {
+    if (window.innerWidth < 1400) {
+      this.show = true;
+    } else {
+      this.show = false;
+    }
+  }
 
   ngOnInit(): void {
-    if (screen.width < 1400) {
-      this.show = true;
-    }
     // filling with values
     this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
       this.data = [...res.data];

@@ -2,13 +2,13 @@
 
 [![Build Status](https://travis-ci.org/MKortmann/Crypto-Tracker.svg?branch=master)](https://travis-ci.org/MKortmann/Crypto-Tracker)
 
-This Crypto-Tracker App has the main goal to track the development of different crypto-coins (at the moment about 200).
+This Crypto-Tracker App has the main goal to track the development of different crypto-coins (at the moment about 100).
 
 ## What to track
 
 ### The idea is to track at least:
 
-1. +200 Crypto-Coints
+1. 100 Crypto-Coints
 2. Global Values as:
 
 - Total of Cryptocurrencies
