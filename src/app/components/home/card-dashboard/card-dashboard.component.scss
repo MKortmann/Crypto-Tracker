@@ -7,14 +7,18 @@
 }
 
 img {
-  width: $m-imgWidth;
+  max-width: $m-imgHeight;
   height: $m-imgHeight;
 }
 
-:host ::ng-deep .ui-card {
-  /* min-height: inherit; */
-  min-height: 100%;
-}
+// p-card {
+//   /* min-height: inherit; */
+//   min-height: 100%;
+// }
+// :host ::ng-deep .ui-card {
+//   /* min-height: inherit; */
+//   min-height: 100% !important;
+// }
 
 :host ::ng-deep .ui-accordion {
   background-color: none;
