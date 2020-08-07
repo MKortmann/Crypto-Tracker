@@ -7,11 +7,11 @@ import { Coin } from '../../../models/Coin';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-graphic-dashboard',
-  templateUrl: './graphic-dashboard.component.html',
-  styleUrls: ['./graphic-dashboard.component.scss'],
+  selector: 'app-card-dashboard-global',
+  templateUrl: './card-dashboard-global.component.html',
+  styleUrls: ['./card-dashboard-global.component.scss'],
 })
-export class GraphicDashboardComponent implements OnInit {
+export class CardDashboardGlobalComponent implements OnInit {
   dataCard: any;
   dataCard2: any;
 

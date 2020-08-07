@@ -32,7 +32,7 @@ import {
 import { CustomTranslateLoader } from 'src/customTranslateLoader';
 import { NotFoundComponent } from './components/notfound/notfound.component';
 import { TableComponent } from './components/home/table/table.component';
-import { GraphicDashboardComponent } from './components/home/graphic-dashboard/graphic-dashboard.component';
+
 import { CardDashboardComponent } from './components/home/card-dashboard/card-dashboard.component';
 import { FormatCurrencyPipe } from './tools/format-currency.pipe';
 
@@ -51,6 +51,8 @@ import { GraphicDashboardTickersComponent } from './components/home/graphic-dash
 import { ExchangesComponent } from './components/exchanges/exchanges.component';
 import { NewsComponent } from './components/news/news.component';
 
+import { CardDashboardGlobalComponent } from './components/home/card-dashboard-global/card-dashboard-global.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +64,7 @@ import { NewsComponent } from './components/news/news.component';
     LoginComponent,
     NotFoundComponent,
     TableComponent,
-    GraphicDashboardComponent,
+    CardDashboardGlobalComponent,
     CardDashboardComponent,
     FormatCurrencyPipe,
     SubNavComponent,

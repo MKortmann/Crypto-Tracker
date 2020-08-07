@@ -1,27 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GraphicDashboardComponent } from './graphic-dashboard.component';
+import { CardDashboardGlobalComponent } from './card-dashboard-global.component';
 
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 // import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-describe('GraphicDashboardComponent', () => {
-  let component: GraphicDashboardComponent;
-  let fixture: ComponentFixture<GraphicDashboardComponent>;
+describe('CardDashboardGlobalComponent', () => {
+  let component: CardDashboardGlobalComponent;
+  let fixture: ComponentFixture<CardDashboardGlobalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot()],
       providers: [HttpClient, HttpHandler, TranslateService],
-      declarations: [GraphicDashboardComponent],
+      declarations: [CardDashboardGlobalComponent],
       // schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GraphicDashboardComponent);
+    fixture = TestBed.createComponent(CardDashboardGlobalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
