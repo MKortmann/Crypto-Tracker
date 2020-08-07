@@ -38,7 +38,10 @@ export const pt = {
           'Mostrando {first} de {last} de um total de {totalRecords} cryptomoedas ',
       },
       GRAPHIC_CARD: {
-        CRYPTOS: 'Número Total de Criptomoedas',
+        BITCOIN: 'Bitcoin Mercado',
+        ETHEREUM: 'Ethereum Mercado',
+        OTHERS: 'Outras Moedas',
+        CRYPTOS: 'Total de Criptos',
         ACTIVE_MARKETS: 'Mercados Ativos',
         TOTAL_OF_MARKET_CAP: 'Valor Total de Mercado',
         TOTAL_OF_VOLUME: 'Volume Total em 24h ',

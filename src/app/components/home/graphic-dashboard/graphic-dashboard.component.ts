@@ -12,12 +12,9 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./graphic-dashboard.component.scss'],
 })
 export class GraphicDashboardComponent implements OnInit {
-  data: any;
-  dataBar: any;
-  dataDoughnut: any;
   dataCard: any;
-  dataPolar: any;
-  labels: any;
+  dataCard2: any;
+
   coins: Coin[];
   selectRateEUR: any;
 
@@ -28,22 +25,6 @@ export class GraphicDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // NOT NECESSARY TO UPDATE... This can be load only the first time
-
-    // this.coinLoreService.cast.subscribe((data) => {
-    //   this.data = [...data];
-
-    //   this.exchangeService.getMoney('USD').subscribe(
-    //     (res) => {
-    //       this.selectRateEUR = res.rates[`EUR`];
-    //       this.getGlobalCoinLore();
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //     }
-    //   );
-    // });
-
     this.exchangeService.getMoney('USD').subscribe(
       (res) => {
         this.selectRateEUR = res.rates[`EUR`];
@@ -59,6 +40,16 @@ export class GraphicDashboardComponent implements OnInit {
     this.coinLoreService.getGlobal().subscribe(
       (newGlobalData) => {
         this.dataCard = [
+          {
+            name: this.translate.instant('TRANSLATE.HOME.GRAPHIC_CARD.BITCOIN'),
+            value: newGlobalData[0].btc_d + '%',
+          },
+          {
+            name: this.translate.instant(
+              'TRANSLATE.HOME.GRAPHIC_CARD.ETHEREUM'
+            ),
+            value: newGlobalData[0].eth_d + '%',
+          },
           {
             name: this.translate.instant('TRANSLATE.HOME.GRAPHIC_CARD.CRYPTOS'),
             value: newGlobalData[0].coins_count,
@@ -87,49 +78,43 @@ export class GraphicDashboardComponent implements OnInit {
           },
         ];
 
-        console.log('DataCard', this.dataCard[0].name);
-
-        this.dataDoughnut = {
-          labels: ['Bitcoin', 'Ethereum', 'Others'],
-          datasets: [
-            {
-              data: [
-                newGlobalData[0].btc_d,
-                newGlobalData[0].eth_d,
-                (100 - newGlobalData[0].btc_d - newGlobalData[0].eth_d).toFixed(
-                  2
-                ),
-              ],
-              backgroundColor: ['#536472', '#FFA69E', '#B3DEC1'],
-              hoverBackgroundColor: ['#536472', '#FFA69E', '#B3DEC1'],
-            },
-          ],
-        };
-
         // this is necessary to allow the translate be called again, if not, we will need to refnewGlobalDatah the page!
         this.translate
+          .stream('TRANSLATE.HOME.GRAPHIC_CARD.BITCOIN')
+          .subscribe((res: string) => {
+            this.dataCard[0].name = res;
+          });
+        this.translate
+          .stream('TRANSLATE.HOME.GRAPHIC_CARD.ETHEREUM')
+          .subscribe((res: string) => {
+            this.dataCard[1].name = res;
+          });
+        this.translate
           .stream('TRANSLATE.HOME.GRAPHIC_CARD.CRYPTOS')
-          .subscribe((newGlobalData0: string) => {
-            this.dataCard[0].name = newGlobalData0;
+          .subscribe((res: string) => {
+            this.dataCard[2].name = res;
           });
 
         this.translate
           .stream('TRANSLATE.HOME.GRAPHIC_CARD.ACTIVE_MARKETS')
-          .subscribe((newGlobalData1: string) => {
-            this.dataCard[1].name = newGlobalData1;
+          .subscribe((res: string) => {
+            this.dataCard[3].name = res;
           });
 
         this.translate
           .stream('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_MARKET_CAP')
-          .subscribe((newGlobalData2: string) => {
-            this.dataCard[2].name = newGlobalData2;
+          .subscribe((res: string) => {
+            this.dataCard[4].name = res;
           });
 
         this.translate
           .stream('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_VOLUME')
-          .subscribe((newGlobalData3: string) => {
-            this.dataCard[3].name = newGlobalData3;
+          .subscribe((res: string) => {
+            this.dataCard[5].name = res;
           });
+
+        console.log('this.dataCard', this.dataCard);
+        this.dataCard2 = [...this.dataCard];
       },
       (error2) => {
         console.log(error2);

@@ -1,27 +1,20 @@
 <div class="p-grid">
-  <div class="p-col-12 p-xl-4 chartCSS">
-    <!-- <p-card
-      header="{{ 'TRANSLATE.HOME.GRAPHIC_CARD.CRYPTO_DOMINANCE' | translate }}"
-    > -->
-    <h2>{{ 'TRANSLATE.HOME.GRAPHIC_CARD.CRYPTO_DOMINANCE' | translate }}</h2>
-    <p-chart type="doughnut" [data]="dataDoughnut"></p-chart>
-    <!-- </p-card> -->
+  <div class="p-col-12 p-xl-2" *ngFor="let item of dataCard | slice: 0:4">
+    <p-card>
+      <span>
+        <span style="font-weight: bold;"> {{ item.name }}: </span>
+        {{ item.value }}
+      </span>
+    </p-card>
   </div>
 
-  <div class="p-col-12 p-md-6 p-xl-2" *ngFor="let item of dataCard">
+  <div class="p-col-12 p-xl-2" *ngFor="let item of dataCard | slice: 4:6">
     <p-card>
-      <p-header>
-        {{ item.name }}
-      </p-header>
-
-      <div>
-        <span *ngIf="item.value_usd !== undefined">$</span
-        >{{ item.value | formatCurrency }}
-      </div>
-
-      <div *ngIf="item.value_eur !== undefined">
-        <span>€</span> {{ item.value_eur | formatCurrency }}
-      </div>
+      <span>
+        <span style="font-weight: bold;"> {{ item.name }}: </span>
+        $ {{ item.value | formatCurrency }}, €
+        {{ item.value_eur | formatCurrency }}
+      </span>
     </p-card>
   </div>
 </div>
