@@ -28,12 +28,12 @@
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/themes/nova/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeflex/primeflex.scss",
               "src/styles-light.scss",
               {
-                "input": "node_modules/primeng/resources/themes/luna-pink/theme.css",
+                "input": "node_modules/primeng/resources/themes/luna-amber/theme.css",
                 "bundleName": "dark",
                 "inject": false
               },
@@ -48,7 +48,7 @@
                 "inject": false
               },
               {
-                "input": "node_modules/primeng/resources/themes/nova-light/theme.css",
+                "input": "node_modules/primeng/resources/themes/nova/theme.css",
                 "bundleName": "light",
                 "inject": false
               }
