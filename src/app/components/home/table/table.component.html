@@ -70,7 +70,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-coin>
-      <tr class="ui-selectable-row">
+      <tr class="ui-selectable-row" (click)="selectedCoin($event)">
         <td>{{ coin.rank }}</td>
         <td>
           <img

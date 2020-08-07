@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class CoinPaprikaService {
   public onSelectedCoinChange: EventEmitter<any> = new EventEmitter();
-  public onSelectCoinName: EventEmitter<any> = new EventEmitter();
 
   private readonly getListOfCoins = 'https://api.coinpaprika.com/v1/coins/';
 
@@ -28,17 +27,21 @@ export class CoinPaprikaService {
   private readonly getHistoricalStartEnd =
     'https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/historical?start=2019-01-01&end=2019-01-20';
 
+  // tickers: show percentage change: 15m, 30m, 1h, 6h, 12h, 24h, 7d, 30d, 1y
+  private readonly getCoinTickers = 'https://api.coinpaprika.com/v1/tickers/';
+  // private readonly getCoinTickers =
+  // 'https://api.coinpaprika.com/v1/tickers/btc-bitcoin/historical?start=2019-01-01&end=2019-01-20';
+
   /*btc: btc-bitcoin*/
 
   constructor(private http: HttpClient) {}
 
-  public selectedCoinById(value: any) {
-    const url = `${this.getListOfCoins}${value}/ohlcv/historical?start=`;
-    // Date.now()
+  public selectedCoinByTickers(coin, start, end) {
+    const url = `${this.getCoinTickers}${coin}/historical?start=${start}&end=${end}`;
+  }
 
-    // const dataToEmit = this.getData(url);
-    this.onSelectedCoinChange.emit(url);
-    this.onSelectCoinName.emit(value);
+  public selectedCoinById(value: any) {
+    this.onSelectedCoinChange.emit(value);
   }
 
   getData(url): Observable<any> {

@@ -65,14 +65,13 @@ export class GraphicDashboardCoinComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // localStorage Check the selectedExchange
-
-    this.selectedExchange = localStorage.getItem('selectedExchange');
-
-    this.url = `https://api.coinpaprika.com/v1/coins/${this.coinName}/ohlcv/historical?start=`;
     if (screen.width < 1500) {
       this.showInSmallScreens = true;
     }
+
+    // localStorage Check the selectedExchange
+    this.selectedExchange = localStorage.getItem('selectedExchange');
+
     this.exchangeService.getMoney('USD').subscribe(
       (res) => {
         const array = Object.entries(res.rates);
@@ -91,34 +90,34 @@ export class GraphicDashboardCoinComponent implements OnInit {
       (error) => console.log(error)
     );
 
+    this.url = `https://api.coinpaprika.com/v1/coins/${this.coinName}/ohlcv/historical?start=`;
+
     this.adjustPlaceholderCalendar();
 
     this.coinPaprikaService.onSelectedCoinChange.subscribe(
-      (url) => {
-        this.fetchDataToPlot(url);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-
-    this.coinPaprikaService.onSelectCoinName.subscribe(
       (name) => {
-        const nameTemp = name.split('-');
-        // update url in accord to the selected coin
-        this.url = `https://api.coinpaprika.com/v1/coins/${name}/ohlcv/historical?start=`;
+        this.setName(name);
 
-        if (nameTemp[2] !== undefined) {
-          this.coinName = `${nameTemp[1]} ${nameTemp[2]}`;
-        } else {
-          this.coinName = nameTemp[1];
-        }
+        this.fetchDataToPlot(this.url);
       },
       (error) => {
         console.log(error);
       }
     );
+
     this.fetchDataToPlot(this.url);
+  }
+
+  setName(name) {
+    const nameTemp = name.split('-');
+    // update url in accord to the selected coin
+    this.url = `https://api.coinpaprika.com/v1/coins/${name}/ohlcv/historical?start=`;
+
+    if (nameTemp[2] !== undefined) {
+      this.coinName = `${nameTemp[1]} ${nameTemp[2]}`;
+    } else {
+      this.coinName = nameTemp[1];
+    }
   }
 
   // change the coin, so we fetch the data again!
@@ -129,16 +128,23 @@ export class GraphicDashboardCoinComponent implements OnInit {
     localStorage.setItem('selectedExchange', this.selectedExchange);
   }
 
-  fetchDataToPlot(url) {
+  setURL() {
     if (this.selectedDateRange !== null) {
       this.start = this.selectedDateRange[0].toISOString().split('T')[0];
       this.end = this.selectedDateRange[1].toISOString().split('T')[0];
     }
 
-    const urlRange = `${url}${this.start}&end=${this.end}`;
+    const urlRange = `${this.url}${this.start}&end=${this.end}`;
     if (this.coinName.split('-')[1] !== undefined) {
       this.coinName = this.coinName.split('-')[1];
     }
+
+    return urlRange;
+  }
+
+  fetchDataToPlot(url) {
+    const urlRange = this.setURL();
+
     this.coinPaprikaService.getData(urlRange).subscribe(
       (res) => {
         // adjusting the input data
@@ -189,8 +195,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
   }
 
   plotGraph(data, lowData, highData, labels) {
-    console.log(data);
-    console.log(labels);
     let pointRadius = 2;
     if (screen.width >= 1900) {
       pointRadius = 7;
@@ -209,22 +213,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
           pointHoverRadius: 10,
           pointHoverBorderWidth: 7,
         },
-        // {
-        //   label: 'low peak values',
-        //   data: lowData,
-        //   fill: false,
-        //   borderColor: '#dc3545',
-        //   hidden: true,
-        //   pointRadius: 1,
-        // },
-        // {
-        //   label: 'high peak values',
-        //   data: highData,
-        //   fill: false,
-        //   borderColor: '#007bff',
-        //   hidden: true,
-        //   pointRadius: 1,
-        // },
       ],
     };
     let valueAverageAnnotation = 0;

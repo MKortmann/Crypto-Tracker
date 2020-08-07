@@ -10,6 +10,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { SelectItem } from 'primeng/api';
 
+import { CoinPaprikaService } from '../../../services/coin-paprika.service';
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -25,7 +27,8 @@ export class TableComponent implements OnInit {
   constructor(
     private coinLoreService: CoinLoreService,
     private translate: TranslateService,
-    private exchangeService: ExchangeService
+    private exchangeService: ExchangeService,
+    private coinPaprikaService: CoinPaprikaService
   ) {}
 
   ngOnInit(): void {
@@ -68,6 +71,19 @@ export class TableComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  selectedCoin(event) {
+    // we are passing the coin clicked id in accord to coinPaprika
+    const name = event.target.parentNode.cells[2].innerText;
+    const symbol = event.target.parentElement.cells[1].firstElementChild.alt;
+    let coinID = `${symbol}-${name}`;
+    coinID = coinID.replace(' ', '-').toLowerCase();
+
+    if (coinID === 'bchsv-bitcoin-sv') {
+      coinID = 'bsv-bitcoin-sv';
+    }
+    this.coinPaprikaService.selectedCoinById(coinID);
   }
 
   selection(event, dd) {
