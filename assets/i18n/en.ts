@@ -37,7 +37,10 @@ export const en = {
         REPORTER: 'Showing {first} to {last} of {totalRecords} cryptos',
       },
       GRAPHIC_CARD: {
-        CRYPTOS: 'Total of Cryptocurrencies',
+        BITCOIN: 'Bitcoin Market',
+        ETHEREUM: 'Ethereum Market',
+        OTHERS: 'Others',
+        CRYPTOS: 'Total of Cryptos',
         ACTIVE_MARKETS: 'Active Markets',
         TOTAL_OF_MARKET_CAP: 'Total of Market Cap',
         TOTAL_OF_VOLUME: 'Total Volume in 24h ',
