@@ -71,21 +71,32 @@ input {
   margin: 0 !important;
 }
 
-@media screen and (min-width: $ss-mediaQueriesWidth) {
+span {
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+@media screen and (min-width: $bb-mediaQueriesWidth) {
   .hideInBigScreens {
+    display: none;
+  }
+}
+@media screen and (max-width: $bb-mediaQueriesWidth) {
+  .hideBelow1500 {
     display: none;
   }
 }
 
 @media screen and (max-width: $b-mediaQueriesWidth) {
   .hideBelow1200 {
-    display: none;
+    display: none !important;
   }
 }
 
 @media screen and (max-width: $m-mediaQueriesWidth) {
   .hideBelow800 {
-    display: none;
+    display: none !important;
   }
 }
 

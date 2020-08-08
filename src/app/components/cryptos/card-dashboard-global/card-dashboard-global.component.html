@@ -1,4 +1,8 @@
-<p-carousel [value]="dataCard" [style]="{ 'max-height': '120px' }">
+<p-carousel
+  *ngIf="isMobile"
+  [value]="dataCard"
+  [style]="{ 'max-height': '120px' }"
+>
   <ng-template let-item pTemplate="item">
     <p-card [style]="{ 'max-height': '80px' }">
       <ng-container *ngIf="!item.value_usd">

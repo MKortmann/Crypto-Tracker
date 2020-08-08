@@ -24,7 +24,7 @@ export const en = {
         TITLE: 'Table',
         RANK: 'Rank',
         SYMBOL: 'Symbol',
-        NAME: 'Name',
+        NAME: '',
         PRICE: 'Price in USD',
         PRICE_EUR: 'Price in EUR',
         PRICE_BTC: 'Price in BTC',
