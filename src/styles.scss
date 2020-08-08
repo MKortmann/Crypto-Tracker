@@ -65,3 +65,26 @@ $bb-mediaQueriesWidth: 1500px;
 .selected {
   background-color: $bg4;
 }
+
+@media screen and (min-width: $bb-mediaQueriesWidth) {
+  .hideInBigScreens {
+    display: none;
+  }
+}
+@media screen and (max-width: $bb-mediaQueriesWidth) {
+  .hideBelow1500 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $b-mediaQueriesWidth) {
+  .hideBelow1200 {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: $m-mediaQueriesWidth) {
+  .hideBelow800 {
+    display: none !important;
+  }
+}

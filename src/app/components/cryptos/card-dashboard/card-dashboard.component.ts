@@ -13,19 +13,12 @@ import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 })
 export class CardDashboardComponent implements OnInit {
   data: any;
-  isMobile = true;
 
   constructor(
     private coinLoreService: CoinLoreService,
     private exchangeService: ExchangeService,
     private coinPaprikaService: CoinPaprikaService
-  ) {
-    if (window.innerWidth < 1400) {
-      this.isMobile = true;
-    } else {
-      this.isMobile = false;
-    }
-  }
+  ) {}
 
   ngOnInit(): void {
     // filling with values

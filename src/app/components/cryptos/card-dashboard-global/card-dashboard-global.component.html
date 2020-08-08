@@ -1,7 +1,8 @@
 <p-carousel
-  *ngIf="isMobile"
+  class="hideInBigScreens"
   [value]="dataCard"
   [style]="{ 'max-height': '120px' }"
+  [autoplayInterval]="3000"
 >
   <ng-template let-item pTemplate="item">
     <p-card [style]="{ 'max-height': '80px' }">
@@ -22,7 +23,7 @@
   </ng-template>
 </p-carousel>
 
-<div *ngIf="!isMobile" class="p-grid">
+<div class="p-grid hideBelow1500">
   <div class="p-col-12 p-xl-2" *ngFor="let item of dataCard | slice: 0:4">
     <p-card>
       <span>

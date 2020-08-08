@@ -1,6 +1,11 @@
 <!-- carousel primeng -->
-<div *ngIf="isMobile; else elseBlock">
-  <p-carousel [value]="data" [numVisible]="2" [numScroll]="2">
+<div class="hideInBigScreens">
+  <p-carousel
+    [value]="data"
+    [autoplayInterval]="3000"
+    [numVisible]="2"
+    [numScroll]="2"
+  >
     <!-- <p-carousel
     [autoplayInterval]="3000"
     [value]="data"
@@ -137,136 +142,135 @@
 </div>
 
 <!-- finished carousel primeng -->
-<ng-template #elseBlock>
-  <div class="p-grid p-align-center p-justify-around">
-    <div
-      class="p-col-6 p-sm-6 p-md-3 p-lg-2 p-xl-1 p-col-align-stretch"
-      *ngFor="let item of data"
+
+<div class="p-grid p-align-center p-justify-around hideBelow1500">
+  <div
+    class="p-col-6 p-sm-6 p-md-3 p-lg-2 p-xl-1 p-col-align-stretch"
+    *ngFor="let item of data"
+  >
+    <p-card
+      [style]="{ 'min-height': '190px' }"
+      (click)="selectedCoin(item.name, item.symbol)"
     >
-      <p-card
-        [style]="{ 'min-height': '190px' }"
-        (click)="selectedCoin(item.name, item.symbol)"
-      >
-        <p-header style="font-size: larger; font-weight: bold;">
-          <span style="padding-left: 10px;">
-            <img
-              src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
-              alt="{{ item.symbol | lowercase }}"
-            />
-            {{ item.name }}
-          </span>
-        </p-header>
-        <div style="font-size: large; text-align: left;">
-          {{ item.price_usd | currency: 'USD' }}
-        </div>
-        <div style="font-size: large; text-align: left;">
-          {{ item.price_eur | currency: 'EUR' }}
-        </div>
+      <p-header style="font-size: larger; font-weight: bold;">
+        <span style="padding-left: 10px;">
+          <img
+            src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
+            alt="{{ item.symbol | lowercase }}"
+          />
+          {{ item.name }}
+        </span>
+      </p-header>
+      <div style="font-size: large; text-align: left;">
+        {{ item.price_usd | currency: 'USD' }}
+      </div>
+      <div style="font-size: large; text-align: left;">
+        {{ item.price_eur | currency: 'EUR' }}
+      </div>
 
-        <!-- Percent Change 1h -->
-        <div
-          *ngIf="item.percent_change_1h > 0; then thenBlock; else elseBlock"
-        ></div>
-        <ng-template #thenBlock>
+      <!-- Percent Change 1h -->
+      <div
+        *ngIf="item.percent_change_1h > 0; then thenBlock; else elseBlock"
+      ></div>
+      <ng-template #thenBlock>
+        <span>
           <span>
-            <span>
-              <i class="material-icons">
-                swap_vert
-              </i>
-              1h
-            </span>
+            <i class="material-icons">
+              swap_vert
+            </i>
+            1h
+          </span>
 
-            <td style="color: green;">
-              <i class="material-icons">trending_up</i>
-              {{ item.percent_change_1h / 100 | percent: '2.2-2' }}
-            </td>
-          </span>
-        </ng-template>
-        <ng-template #elseBlock>
+          <td style="color: green;">
+            <i class="material-icons">trending_up</i>
+            {{ item.percent_change_1h / 100 | percent: '2.2-2' }}
+          </td>
+        </span>
+      </ng-template>
+      <ng-template #elseBlock>
+        <span>
           <span>
-            <span>
-              <i class="material-icons">
-                swap_vert
-              </i>
-              1h
-            </span>
-            <td style="color: red;">
-              <i class="material-icons">trending_down</i>
-              {{ item.percent_change_1h / 100 | percent: '2.2-2' }}
-            </td>
+            <i class="material-icons">
+              swap_vert
+            </i>
+            1h
           </span>
-        </ng-template>
-        <!-- Percent Change 24h -->
-        <div
-          *ngIf="
-            item.percent_change_24h > 0;
-            then thenBlock24h;
-            else elseBlock24h
-          "
-        ></div>
-        <ng-template #thenBlock24h>
+          <td style="color: red;">
+            <i class="material-icons">trending_down</i>
+            {{ item.percent_change_1h / 100 | percent: '2.2-2' }}
+          </td>
+        </span>
+      </ng-template>
+      <!-- Percent Change 24h -->
+      <div
+        *ngIf="
+          item.percent_change_24h > 0;
+          then thenBlock24h;
+          else elseBlock24h
+        "
+      ></div>
+      <ng-template #thenBlock24h>
+        <span>
           <span>
-            <span>
-              <i class="material-icons">
-                swap_vert
-              </i>
-              24h
-            </span>
+            <i class="material-icons">
+              swap_vert
+            </i>
+            24h
+          </span>
 
-            <td style="color: green;">
-              <i class="material-icons">trending_up</i>
-              {{ item.percent_change_24h / 100 | percent: '2.2-2' }}
-            </td>
-          </span>
-        </ng-template>
-        <ng-template #elseBlock24h>
+          <td style="color: green;">
+            <i class="material-icons">trending_up</i>
+            {{ item.percent_change_24h / 100 | percent: '2.2-2' }}
+          </td>
+        </span>
+      </ng-template>
+      <ng-template #elseBlock24h>
+        <span>
           <span>
-            <span>
-              <i class="material-icons">
-                swap_vert
-              </i>
-              24h
-            </span>
-            <td style="color: red;">
-              <i class="material-icons">trending_down</i>
-              {{ item.percent_change_24h / 100 | percent: '2.2-2' }}
-            </td>
+            <i class="material-icons">
+              swap_vert
+            </i>
+            24h
           </span>
-        </ng-template>
-        <!-- Percent Change 7d -->
-        <div
-          *ngIf="item.percent_change_7d > 0; then thenBlock7d; else elseBlock7d"
-        ></div>
-        <ng-template #thenBlock7d>
+          <td style="color: red;">
+            <i class="material-icons">trending_down</i>
+            {{ item.percent_change_24h / 100 | percent: '2.2-2' }}
+          </td>
+        </span>
+      </ng-template>
+      <!-- Percent Change 7d -->
+      <div
+        *ngIf="item.percent_change_7d > 0; then thenBlock7d; else elseBlock7d"
+      ></div>
+      <ng-template #thenBlock7d>
+        <span>
           <span>
-            <span>
-              <i class="material-icons">
-                swap_vert
-              </i>
-              7d
-            </span>
-            <td style="color: green;">
-              <i class="material-icons">trending_up</i>
-              {{ item.percent_change_7d / 100 | percent: '2.2-2' }}
-            </td>
+            <i class="material-icons">
+              swap_vert
+            </i>
+            7d
           </span>
-        </ng-template>
-        <ng-template #elseBlock7d>
+          <td style="color: green;">
+            <i class="material-icons">trending_up</i>
+            {{ item.percent_change_7d / 100 | percent: '2.2-2' }}
+          </td>
+        </span>
+      </ng-template>
+      <ng-template #elseBlock7d>
+        <span>
           <span>
-            <span>
-              <i class="material-icons">
-                swap_vert
-              </i>
-              7d
-            </span>
-            <td style="color: red;">
-              <i class="material-icons">trending_down</i>
-              {{ item.percent_change_7d / 100 | percent: '2.2-2' }}
-            </td>
+            <i class="material-icons">
+              swap_vert
+            </i>
+            7d
           </span>
-        </ng-template>
-        <!-- </p-footer> -->
-      </p-card>
-    </div>
+          <td style="color: red;">
+            <i class="material-icons">trending_down</i>
+            {{ item.percent_change_7d / 100 | percent: '2.2-2' }}
+          </td>
+        </span>
+      </ng-template>
+      <!-- </p-footer> -->
+    </p-card>
   </div>
-</ng-template>
+</div>

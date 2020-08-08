@@ -15,8 +15,6 @@ export class CardDashboardGlobalComponent implements OnInit {
   dataCard: any;
   dataCard2: any;
 
-  isMobile = true;
-
   coins: Coin[];
   selectRateEUR: any;
 
@@ -24,13 +22,7 @@ export class CardDashboardGlobalComponent implements OnInit {
     private coinLoreService: CoinLoreService,
     private translate: TranslateService,
     private exchangeService: ExchangeService
-  ) {
-    if (window.innerWidth < 1400) {
-      this.isMobile = true;
-    } else {
-      this.isMobile = false;
-    }
-  }
+  ) {}
 
   ngOnInit(): void {
     this.exchangeService.getMoney('USD').subscribe(
