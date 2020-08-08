@@ -12,7 +12,7 @@
       </ng-container>
 
       <ng-container *ngIf="item.value_usd">
-        <span>
+        <span class="smallFont">
           <span style="font-weight: bold;"> {{ item.name }}: </span>
           $ {{ item.value | formatCurrency }}, €
           {{ item.value_eur | formatCurrency }}

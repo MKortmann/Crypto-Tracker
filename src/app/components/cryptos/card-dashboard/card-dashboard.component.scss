@@ -45,11 +45,16 @@ td {
 
 :host ::ng-deep .p-ripple {
   margin: 0 !important;
+  margin-left: $s-padding !important;
+  margin-right: $s-padding !important;
 }
 
 @media screen and (max-width: 1500px) {
   p-carousel {
     padding-top: 2px !important;
+  }
+  .smallFont {
+    font-size: $es-fontSize;
   }
 }
 
