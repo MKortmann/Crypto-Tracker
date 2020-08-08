@@ -1,4 +1,24 @@
-<div class="p-grid">
+<p-carousel [value]="dataCard" [style]="{ 'max-height': '120px' }">
+  <ng-template let-item pTemplate="item">
+    <p-card [style]="{ 'max-height': '80px' }">
+      <ng-container *ngIf="!item.value_usd">
+        <span style="font-weight: bold;"> {{ item.name }}: </span>
+        {{ item.value }}
+      </ng-container>
+
+      <ng-container *ngIf="item.value_usd">
+        <span>
+          <span style="font-weight: bold;"> {{ item.name }}: </span>
+          $ {{ item.value | formatCurrency }}, €
+          {{ item.value_eur | formatCurrency }}
+        </span>
+      </ng-container>
+    </p-card>
+    <!-- </ng-template> -->
+  </ng-template>
+</p-carousel>
+
+<div *ngIf="!isMobile" class="p-grid">
   <div class="p-col-12 p-xl-2" *ngFor="let item of dataCard | slice: 0:4">
     <p-card>
       <span>

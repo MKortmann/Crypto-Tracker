@@ -44,6 +44,30 @@ p-header {
   font-size: $m-fontSize;
 }
 
+@media screen and (max-width: 1500px) {
+  :host ::ng-deep p-card {
+    max-height: 80px !important;
+  }
+
+  :host ::ng-deep p-carousel {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-height: 80px !important;
+  }
+
+  :host ::ng-deep .p-carousel-indicators {
+    padding: 10px !important;
+  }
+
+  :host ::ng-deep .p-carousel-container {
+    padding-top: 5px !important;
+  }
+
+  :host ::ng-deep .p-ripple {
+    margin: 0 !important;
+  }
+}
+
 @media screen and (max-width: 640px) {
   :host ::ng-deep .ui-card {
     /* background-color: #efd2cb; */
