@@ -251,6 +251,11 @@ export class GraphicDashboardCoinComponent implements OnInit {
         } else {
           return `${hash[this.selectedExchange]}${value}`;
         }
-      })((this.options = optionsTemp));
+      });
+
+    // optionsTemp.scales.xAxes[0].gridLines.color = '#4bc0c0';
+    // optionsTemp.scales.xAxes[0].gridLines.borderDash = [10, 5];
+
+    this.options = optionsTemp;
   }
 }

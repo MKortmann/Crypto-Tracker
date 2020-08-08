@@ -1,3 +1,6 @@
+// import global styling
+@import '../../../../styles';
+
 * {
   color: black;
   font-size: large;
@@ -10,6 +13,17 @@
   p-calendar {
     padding-right: 5px;
   }
+}
+
+:host ::ng-deep .p-inputtext {
+  padding: $es-padding !important;
+  padding-left: $s-padding !important;
+  margin: 0 !important;
+}
+
+:host ::ng-deep .p-datepicker-trigger {
+  padding: $es-padding !important;
+  margin: 0 !important;
 }
 
 .containerGraph {

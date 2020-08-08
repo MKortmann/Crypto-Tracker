@@ -56,7 +56,12 @@ export const options = {
   scales: {
     yAxes: [
       {
+        gridLines: {
+          color: '#4bc0c0',
+          borderDash: [10, 5],
+        },
         ticks: {
+          fontColor: '#4bc0c0',
           // Include a dollar sign in the ticks
           callback: (value) => {
             if (value > 10 ** 3 && value <= 10 ** 6) {
@@ -74,7 +79,14 @@ export const options = {
     ],
     xAxes: [
       {
+        gridLines: {
+          color: '#4bc0c0',
+          zeroLineColor: '#4bc0c0',
+        },
         type: 'time',
+        ticks: {
+          fontColor: '#4bc0c0',
+        },
         time: {
           unit: 'month',
           displayFormats: {

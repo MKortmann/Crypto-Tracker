@@ -32,3 +32,23 @@ $colorBlue: #3333a5;
   //   // background-color: $bg2;
   // }
 }
+
+th {
+  color: $colorBlack !important;
+  font-size: $ss-fontSize;
+  /* background-color: #17a2b8 !important; */
+  background-color: $color1 !important;
+  /* background-color: red !important; */
+}
+
+tr:nth-child(odd) {
+  background-color: $bg4 !important;
+  color: $colorBlue !important;
+}
+
+tr:nth-child(odd):hover {
+  background-color: $bgHover1 !important;
+}
+tr:nth-child(even):hover {
+  background-color: $bgHover1 !important;
+}

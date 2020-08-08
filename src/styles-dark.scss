@@ -16,7 +16,7 @@ $bg3: #5c5316;
 $bg4: #4e1f13;
 
 //colors:
-$color1: #b4ddd1;
+$color1: #b4c2dd;
 $colorBlack: white;
 $colorWhite: black;
 $colorBlue: #83838f;
@@ -35,6 +35,31 @@ td:nth-child(odd) {
   // &:hover {
   //   // background-color: $bg2;
   // }
+}
+
+th {
+  color: $colorBlack !important;
+  font-size: $ss-fontSize;
+  /* background-color: #17a2b8 !important; */
+  background-color: black !important;
+  /* background-color: red !important; */
+}
+
+tr:nth-child(odd) {
+  background-color: $bg4 !important;
+  color: white !important;
+}
+tr:nth-child(even) {
+  color: white !important;
+}
+
+tr:nth-child(odd):hover {
+  background-color: $bgHover1 !important;
+  color: black !important;
+}
+tr:nth-child(even):hover {
+  background-color: $bgHover1 !important;
+  color: black !important;
 }
 
 @media screen and (max-width: $ss-mediaQueriesWidth) {

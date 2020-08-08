@@ -2,7 +2,7 @@
 @import '../../../../styles';
 
 * {
-  padding: $s-padding;
+  padding: 0;
   cursor: pointer;
 }
 
@@ -14,10 +14,11 @@ th {
 }
 
 th {
-  color: $colorBlack !important;
-  font-size: $m-fontSize;
+  // color: $colorBlack !important;
+  font-size: $ss-fontSize;
   /* background-color: #17a2b8 !important; */
-  background-color: $color1 !important;
+  // background-color: $color1 !important;
+
   /* background-color: red !important; */
 }
 
@@ -26,17 +27,13 @@ td i {
   vertical-align: middle;
 }
 
-td:nth-child(odd) {
-  color: $colorBlue;
-}
-
 td {
   font-weight: 600;
 }
 
 img {
-  max-width: $mm-imgWidth;
-  max-height: $mm-imgHeight;
+  max-width: $s-imgWidth;
+  max-height: $s-imgHeight;
 }
 
 .ui-column-filter {
@@ -59,6 +56,19 @@ input {
   vertical-align: left;
   /* max-width: 160px; */
   width: 140px;
+}
+
+:host ::ng-deep th,
+:host ::ng-deep tr {
+  padding: 0 !important;
+  padding-left: $s-padding !important;
+  margin: 0 !important;
+}
+
+:host ::ng-deep .p-inputtext {
+  padding: $es-padding !important;
+  padding-left: $s-padding !important;
+  margin: 0 !important;
 }
 
 @media screen and (min-width: $ss-mediaQueriesWidth) {
