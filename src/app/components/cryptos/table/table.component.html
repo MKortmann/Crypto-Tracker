@@ -10,16 +10,21 @@
     currentPageReportTemplate="{{
       'TRANSLATE.HOME.TABLE.REPORTER' | translate
     }}"
-    [responsive]="true"
     #dt
   >
     <ng-template pTemplate="header">
       <tr>
-        <th pSortableColumn="rank">
+        <th
+          pSortableColumn="rank"
+          class="hideBelow800"
+          [style]="{ width: '80px' }"
+        >
           {{ 'TRANSLATE.HOME.TABLE.RANK' | translate
           }}<p-sortIcon field="rank"></p-sortIcon>
         </th>
-        <th>{{ 'TRANSLATE.HOME.TABLE.SYMBOL' | translate }}</th>
+        <th [style]="{ width: '80px' }">
+          {{ 'TRANSLATE.HOME.TABLE.SYMBOL' | translate }}
+        </th>
         <th>
           {{ 'TRANSLATE.HOME.TABLE.NAME' | translate }}
           <div class="container">
@@ -32,9 +37,13 @@
             />
           </div>
         </th>
-        <th>{{ 'TRANSLATE.HOME.TABLE.PRICE' | translate }}</th>
-        <th>{{ 'TRANSLATE.HOME.TABLE.PRICE_EUR' | translate }}</th>
         <th class="hideBelow1200">
+          {{ 'TRANSLATE.HOME.TABLE.PRICE' | translate }}
+        </th>
+        <th class="hideBelow1200">
+          {{ 'TRANSLATE.HOME.TABLE.PRICE_EUR' | translate }}
+        </th>
+        <th>
           Price in
           <div class="container">
             <p-dropdown
@@ -71,17 +80,21 @@
     </ng-template>
     <ng-template pTemplate="body" let-coin>
       <tr class="ui-selectable-row" (click)="selectedCoin($event)">
-        <td>{{ coin.rank }}</td>
-        <td>
+        <td class="hideBelow800" [style]="{ width: '80px' }">
+          {{ coin.rank }}
+        </td>
+        <td [style]="{ width: '80px' }">
           <img
             src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png"
             alt="{{ coin.symbol | lowercase }}"
           />
         </td>
         <td>{{ coin.name }}</td>
-        <td>{{ coin.price_usd | currency: 'USD' }}</td>
-        <td>{{ coin.price_usd * selectRateEUR | currency: 'EUR' }}</td>
+        <td class="hideBelow1200">{{ coin.price_usd | currency: 'USD' }}</td>
         <td class="hideBelow1200">
+          {{ coin.price_usd * selectRateEUR | currency: 'EUR' }}
+        </td>
+        <td>
           {{ coin.price_usd * selectRate | currency: selectedExchange }}
         </td>
         <td class="hideBelow1200">{{ coin.price_btc }}</td>
