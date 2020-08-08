@@ -20,6 +20,18 @@ p-header {
   padding-left: $ss-padding;
 }
 
+:host ::ng-deep .p-card-body {
+  padding: 0 !important;
+  padding-left: $s-padding !important;
+}
+:host ::ng-deep .p-card-body {
+  padding: 0 !important;
+  padding-left: $s-padding !important;
+}
+:host ::ng-deep .p-card-content {
+  padding: $s-padding !important;
+}
+
 :host ::ng-deep .ui-card {
   height: 100%;
   // &:hover {

@@ -2,7 +2,7 @@
 @import '../../../../styles';
 
 * {
-  padding: $es-padding;
+  padding: 0;
   cursor: pointer;
 }
 
@@ -11,17 +11,22 @@ img {
   height: $m-imgHeight;
 }
 
-// p-card {
-//   /* min-height: inherit; */
-//   min-height: 100%;
-// }
-// :host ::ng-deep .ui-card {
-//   /* min-height: inherit; */
-//   min-height: 100% !important;
-// }
+:host ::ng-deep ._ngcontent-dbo-c57 {
+  /* min-height: inherit; */
+  min-height: 100% !important;
+}
 
 :host ::ng-deep .ui-accordion {
   background-color: none;
+}
+
+:host ::ng-deep .p-card-body {
+  padding: 0 !important;
+  padding-left: $s-padding !important;
+}
+:host ::ng-deep .p-card-content {
+  padding: 0 !important;
+  padding-top: $s-padding !important;
 }
 
 @media screen and (max-width: 640px) {
