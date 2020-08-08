@@ -1,24 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
+import { CryptosComponent } from './cryptos.component';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 // import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('CryptosComponent', () => {
+  let component: CryptosComponent;
+  let fixture: ComponentFixture<CryptosComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot()],
       providers: [TranslateService],
-      declarations: [HomeComponent],
+      declarations: [CryptosComponent],
       // schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(CryptosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

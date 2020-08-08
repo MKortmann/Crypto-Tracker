@@ -11,7 +11,7 @@ import { NavComponent } from './components/nav/nav.component';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './components/home/home.component';
+import { CryptosComponent } from './components/cryptos/cryptos.component';
 import { AboutComponent } from './components/about/about.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
@@ -31,9 +31,9 @@ import {
 // our config file for ngx-translate bib
 import { CustomTranslateLoader } from 'src/customTranslateLoader';
 import { NotFoundComponent } from './components/notfound/notfound.component';
-import { TableComponent } from './components/home/table/table.component';
+import { TableComponent } from './components/cryptos/table/table.component';
 
-import { CardDashboardComponent } from './components/home/card-dashboard/card-dashboard.component';
+import { CardDashboardComponent } from './components/cryptos/card-dashboard/card-dashboard.component';
 import { FormatCurrencyPipe } from './tools/format-currency.pipe';
 
 import { ButtonModule } from 'primeng/button';
@@ -43,22 +43,22 @@ import { ChartModule } from 'primeng/chart';
 import { CardModule } from 'primeng/card';
 import { AccordionModule } from 'primeng/accordion';
 import { SubNavComponent } from './components/sub-nav/sub-nav.component';
-import { GraphicDashboardCoinComponent } from './components/home/graphic-dashboard-coin/graphic-dashboard-coin.component';
+import { GraphicDashboardCoinComponent } from './components/cryptos/graphic-dashboard-coin/graphic-dashboard-coin.component';
 
 import { CalendarModule } from 'primeng/calendar';
 import { CarouselModule } from 'primeng/carousel';
-import { GraphicDashboardTickersComponent } from './components/home/graphic-dashboard-tickers/graphic-dashboard-tickers.component';
+import { GraphicDashboardTickersComponent } from './components/cryptos/graphic-dashboard-tickers/graphic-dashboard-tickers.component';
 import { ExchangesComponent } from './components/exchanges/exchanges.component';
 import { NewsComponent } from './components/news/news.component';
 
-import { CardDashboardGlobalComponent } from './components/home/card-dashboard-global/card-dashboard-global.component';
+import { CardDashboardGlobalComponent } from './components/cryptos/card-dashboard-global/card-dashboard-global.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     FooterComponent,
-    HomeComponent,
+    CryptosComponent,
     AboutComponent,
     RegisterComponent,
     LoginComponent,

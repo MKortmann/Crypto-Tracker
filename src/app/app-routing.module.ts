@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 // It imports RouterModule and Routes so the app can have routing functionality
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
+import { CryptosComponent } from './components/cryptos/cryptos.component';
 import { AboutComponent } from './components/about/about.component';
 import { ExchangesComponent } from './components/exchanges/exchanges.component';
 import { NewsComponent } from './components/news/news.component';
@@ -21,7 +21,7 @@ the browser address bar*/
 the browser address bar*/
 /*component: the component that the router should crete when navigating to this route.*/
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: CryptosComponent },
   { path: 'about', component: AboutComponent },
   { path: 'exchanges', component: ExchangesComponent },
   { path: 'news', component: NewsComponent },
