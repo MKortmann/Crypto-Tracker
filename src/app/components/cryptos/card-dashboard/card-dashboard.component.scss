@@ -11,10 +11,6 @@ img {
   height: $m-imgHeight;
 }
 
-// :host ::ng-deep .ui-accordion {
-//   background-color: none;
-// }
-
 :host ::ng-deep .p-card-body {
   padding: 0 !important;
   padding-left: $s-padding !important;
@@ -37,6 +33,24 @@ td {
   padding: 0;
   margin: 0;
   display: flex;
+}
+
+:host ::ng-deep .p-carousel-indicators {
+  padding: 10px !important;
+}
+
+:host ::ng-deep .p-carousel-container {
+  padding-top: 5px !important;
+}
+
+:host ::ng-deep .p-ripple {
+  margin: 0 !important;
+}
+
+@media screen and (max-width: 1500px) {
+  p-carousel {
+    padding-top: 2px !important;
+  }
 }
 
 @media screen and (max-width: 640px) {

@@ -13,7 +13,7 @@ import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 })
 export class CardDashboardComponent implements OnInit {
   data: any;
-  show = true;
+  isMobile = true;
 
   constructor(
     private coinLoreService: CoinLoreService,
@@ -21,9 +21,9 @@ export class CardDashboardComponent implements OnInit {
     private coinPaprikaService: CoinPaprikaService
   ) {
     if (window.innerWidth < 1400) {
-      this.show = true;
+      this.isMobile = true;
     } else {
-      this.show = false;
+      this.isMobile = false;
     }
   }
 
