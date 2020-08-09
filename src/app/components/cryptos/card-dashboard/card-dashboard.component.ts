@@ -24,7 +24,6 @@ export class CardDashboardComponent implements OnInit {
     // filling with values
     this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
       this.data = [...res.data];
-      debugger;
 
       this.exchangeService.getMoney('USD').subscribe((res2) => {
         this.data.forEach((item) => {
