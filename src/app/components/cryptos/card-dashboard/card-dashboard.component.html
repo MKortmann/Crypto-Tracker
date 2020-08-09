@@ -15,7 +15,10 @@
     [numScroll]="2"
   > -->
     <ng-template let-item pTemplate="item">
-      <p-card [style]="{ 'min-height': '190px' }">
+      <p-card
+        [style]="{ 'min-height': '190px' }"
+        (click)="selectedCoin(item.name, item.symbol)"
+      >
         <!-- <p-card (click)="selectedCoin(item.name, item.symbol)"> -->
         <!-- <p-header style="font-size: larger; font-weight: bold;"> -->
         <span style="padding-left: 10px;">
