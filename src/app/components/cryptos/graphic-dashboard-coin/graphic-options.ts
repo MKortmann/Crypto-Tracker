@@ -39,6 +39,10 @@ export const options = {
     },
   },
   legend: {
+    labels: {
+      fontColor: '#9bc53d',
+      fontSize: 16,
+    },
     onHover: (e) => {
       e.target.style.cursor = 'pointer';
     },

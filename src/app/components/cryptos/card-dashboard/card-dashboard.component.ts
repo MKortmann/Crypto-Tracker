@@ -13,6 +13,8 @@ import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 })
 export class CardDashboardComponent implements OnInit {
   data: any;
+  classes = {};
+  symbol = 'BTC';
 
   constructor(
     private coinLoreService: CoinLoreService,
@@ -45,6 +47,7 @@ export class CardDashboardComponent implements OnInit {
 
   selectedCoin(name, symbol) {
     // we are passing the coin clicked id in accord to coinPaprika
+    this.symbol = symbol;
     let coinID = `${symbol}-${name}`;
     coinID = coinID.replace(' ', '-').toLowerCase();
 
