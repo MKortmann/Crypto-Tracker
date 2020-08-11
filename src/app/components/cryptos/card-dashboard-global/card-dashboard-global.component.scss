@@ -43,6 +43,9 @@ p-header {
 :host ::ng-deep .ui-card-content {
   font-size: $m-fontSize;
 }
+:host ::ng-deep .p-carousel-indicators {
+  display: none !important;
+}
 
 @media screen and (max-width: 1500px) {
   :host ::ng-deep p-card {
