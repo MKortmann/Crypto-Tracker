@@ -18,5 +18,6 @@ script:
   - ng test --watch=false
   - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/"
   - echo $GITHUB_SHA
-  - sed -i 's/%%VERSION%%/$GITHUB_SHA/' ./dist/crypto-tracker
+  - echo $TRAVIS_COMMIT
+  - sed -i 's/%%VERSION%%/$TRAVIS_COMMIT/' ./dist/crypto-tracker
   - ngh --dir dist/crypto-tracker --no-silent
