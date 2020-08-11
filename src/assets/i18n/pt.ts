@@ -61,7 +61,7 @@ export const pt = {
     },
     FOOTER: {
       LABEL_LEFT: 'Marcelo Kortmann',
-      LABEL_MIDDLE: 'Versão Beta',
+      LABEL_MIDDLE: 'Beta: %%VERSION%%',
     },
   },
 };
