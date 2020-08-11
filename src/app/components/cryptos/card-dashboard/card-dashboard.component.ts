@@ -43,11 +43,19 @@ export class CardDashboardComponent implements OnInit {
         });
       });
     });
+
+    this.coinPaprikaService.onSelectedCoinChange.subscribe((coin) => {
+      this.symbol = coin.split('-')[0].toUpperCase();
+      // we will have to find a better way to fix it
+      if (this.symbol === 'BSV') {
+        this.symbol = 'BCHSV';
+      }
+      console.log(this.symbol);
+    });
   }
 
   selectedCoin(name, symbol) {
     // we are passing the coin clicked id in accord to coinPaprika
-    this.symbol = symbol;
     let coinID = `${symbol}-${name}`;
     coinID = coinID.replace(' ', '-').toLowerCase();
 
