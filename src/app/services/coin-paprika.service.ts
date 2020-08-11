@@ -2,7 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -46,5 +46,39 @@ export class CoinPaprikaService {
 
   getData(url): Observable<any> {
     return this.http.get<any>(url);
+  }
+
+  // here the url1 it the data for the actual year
+  // the url2 is one year behind and the url3 2 years behind
+  getDataFromMultipleYears(
+    url,
+    urlLastYear = url,
+    urlLastTwoYears = url
+  ): Observable<any[]> {
+    const currentDate = new Date().toISOString().split('T')[0];
+    const lastYear = parseInt(currentDate.split('-')[0], 10) - 1;
+    const lastYearStartDate = lastYear.toString() + '-01-01';
+    const lastYearEndDate = lastYear.toString() + '-12-31';
+    const lastTwoYears = lastYear - 1;
+    const lastTwoYearsStartDate = lastTwoYears.toString() + '-01-01';
+    const lastTwoYearsEndDate = lastTwoYears.toString() + '-12-31';
+
+    urlLastYear =
+      urlLastYear.split('=')[0] +
+      '=' +
+      lastYearStartDate +
+      '&end=' +
+      lastYearEndDate;
+    urlLastTwoYears =
+      urlLastTwoYears.split('=')[0] +
+      '=' +
+      lastTwoYearsStartDate +
+      '&end=' +
+      lastTwoYearsEndDate;
+
+    const response1 = this.http.get(url);
+    const response2 = this.http.get(urlLastYear);
+    const response3 = this.http.get(urlLastTwoYears);
+    return forkJoin([response1, response2, response3]);
   }
 }

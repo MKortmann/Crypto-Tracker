@@ -20,15 +20,15 @@ import { Calendar } from 'primeng/calendar';
   styleUrls: ['./graphic-dashboard-coin.component.scss'],
 })
 export class GraphicDashboardCoinComponent implements OnInit {
-  coinDataArray: any;
   data: any;
   coinName = 'btc-bitcoin';
   show = false;
   options = options;
-  labelsGraphX: any;
   dataAverageArrayGraph: any;
 
-  startDate = new Date().toISOString().split('T')[0];
+  startDate: string = new Date().toISOString().split('T')[0];
+  lastYear = parseInt(this.startDate.split('-')[0], 10) - 1;
+  lastTwoYears = this.lastYear - 1;
   start = this.startDate.split('-')[0] + '-01-01';
   end = new Date().toISOString().split('T')[0];
   placeholder: any;
@@ -145,32 +145,48 @@ export class GraphicDashboardCoinComponent implements OnInit {
   fetchDataToPlot(url) {
     const urlRange = this.setURL();
 
-    this.coinPaprikaService.getData(urlRange).subscribe(
+    this.coinPaprikaService.getDataFromMultipleYears(urlRange).subscribe(
       (res) => {
         // adjusting the input data
-        this.labelsGraphX = [];
-        const highData = [];
-        const lowData = [];
+        const labelsGraphX = [];
+        const labelsFullYearGraphX = [];
+        let dataAverageArrayLastYearGraph = [];
+        let dataAverageArrayLastTwoYearsGraph = [];
 
         // calc the average with FIAT rate
-        this.dataAverageArrayGraph = res.map((obj, index) => {
+        this.dataAverageArrayGraph = res[0].map((obj, index) => {
           const average = (
             ((obj.high + obj.low) / 2) *
             this.selectRate
           ).toFixed(2);
-          this.labelsGraphX.push(obj.time_open);
-          highData.push(obj.high);
-          lowData.push(obj.low);
+          labelsGraphX.push(obj.time_open);
           return average;
         });
+        // calc the average with FIAT rate
+        dataAverageArrayLastYearGraph = res[1].map((obj, index) => {
+          const averageLastYear = (
+            ((obj.high + obj.low) / 2) *
+            this.selectRate
+          ).toFixed(2);
+          labelsFullYearGraphX.push(obj.time_open);
+          return averageLastYear;
+        });
+        // calc the average with FIAT rate
+        dataAverageArrayLastTwoYearsGraph = res[2].map((obj, index) => {
+          const averageLastTwoYears = (
+            ((obj.high + obj.low) / 2) *
+            this.selectRate
+          ).toFixed(2);
+          return averageLastTwoYears;
+        });
 
-        this.coinDataArray = [...this.dataAverageArrayGraph];
         this.show = true;
         this.plotGraph(
           this.dataAverageArrayGraph,
-          lowData,
-          highData,
-          this.labelsGraphX
+          dataAverageArrayLastYearGraph,
+          dataAverageArrayLastTwoYearsGraph,
+          labelsGraphX,
+          labelsFullYearGraphX
         );
       },
       (error) => {
@@ -194,14 +210,32 @@ export class GraphicDashboardCoinComponent implements OnInit {
     console.log(this.selectedDateRange);
   }
 
-  plotGraph(data, lowData, highData, labels) {
+  plotGraph(
+    data,
+    dataLastYear,
+    dataLastTwoYears,
+    labels,
+    labelsFullYearGraphX
+  ) {
     let pointRadius = 2;
     if (screen.width >= 1900) {
       pointRadius = 7;
     }
 
+    // let readjustLabels = [];
+    // debugger;
+    // if (this.data !== undefined) {
+    //   if (!this.data.datasets[1].hidden || !this.data.datasets[2].hidden) {
+    //     readjustLabels = [...labelsFullYearGraphX];
+    //   } else {
+    //     readjustLabels = [...labels];
+    //   }
+    // } else {
+    //   readjustLabels = labels;
+    // }
+
     this.data = {
-      labels,
+      labels: labelsFullYearGraphX,
       datasets: [
         {
           label: `${this.coinName}`,
@@ -217,6 +251,28 @@ export class GraphicDashboardCoinComponent implements OnInit {
           pointHoverBorderColor: 'red',
           pointHoverRadius: 10,
           pointHoverBorderWidth: 7,
+        },
+        {
+          label: `${this.coinName}-${this.lastYear}`,
+          data: dataLastYear,
+          fill: false,
+          borderColor: '#E0777D',
+          pointRadius,
+          pointHoverBorderColor: '#E0777D',
+          pointHoverRadius: 10,
+          pointHoverBorderWidth: 7,
+          hidden: true,
+        },
+        {
+          label: `${this.coinName}-${this.lastTwoYears}`,
+          data: dataLastTwoYears,
+          fill: false,
+          borderColor: '#97b4d8',
+          pointRadius,
+          pointHoverBorderColor: '#97b4d8',
+          pointHoverRadius: 10,
+          pointHoverBorderWidth: 7,
+          hidden: true,
         },
       ],
     };
