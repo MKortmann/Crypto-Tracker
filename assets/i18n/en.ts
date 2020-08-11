@@ -60,7 +60,7 @@ export const en = {
     },
     FOOTER: {
       LABEL_LEFT: 'Marcelo Kortmann',
-      LABEL_MIDDLE: 'Beta Version',
+      LABEL_MIDDLE: 'Beta: %%VERSION%%',
     },
   },
 };
