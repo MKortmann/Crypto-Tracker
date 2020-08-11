@@ -70,6 +70,8 @@ p-header {
     margin: 0 !important;
     margin-left: $s-padding !important;
     margin-right: $s-padding !important;
+    // display: none !important;
+    visibility: hidden !important;
   }
 }
 
