@@ -63,9 +63,9 @@ $mm-mediaQueriesWidth: 100px;
 $b-mediaQueriesWidth: 1200px;
 $bb-mediaQueriesWidth: 1500px;
 
-.selected {
-  background-color: $bg4;
-}
+// .selected {
+//   background-color: $bg4;
+// }
 
 @media screen and (min-width: $bb-mediaQueriesWidth) {
   .hideInBigScreens {

@@ -88,7 +88,11 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-coin>
-      <tr class="ui-selectable-row" (click)="selectedCoin($event)">
+      <tr
+        class="ui-selectable-row"
+        (click)="selectedCoin($event)"
+        [class.selected]="coin.symbol === symbol"
+      >
         <td class="hideBelow800" [style]="{ width: '80px' }">
           {{ coin.rank }}
         </td>

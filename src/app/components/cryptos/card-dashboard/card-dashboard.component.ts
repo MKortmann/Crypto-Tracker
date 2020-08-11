@@ -50,7 +50,6 @@ export class CardDashboardComponent implements OnInit {
       if (this.symbol === 'BSV') {
         this.symbol = 'BCHSV';
       }
-      console.log(this.symbol);
     });
   }
 

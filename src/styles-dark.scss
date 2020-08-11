@@ -70,3 +70,10 @@ tr:nth-child(even):hover {
     background-color: $bg4 !important;
   }
 }
+
+.selected {
+  // border: 2px solid red;
+  // border: 2px outset #4bc0c0;
+  border: 2px solid #9bc53d;
+  border-radius: 2px 2px 2px 2px;
+}

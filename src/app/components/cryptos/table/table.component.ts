@@ -23,6 +23,7 @@ export class TableComponent implements OnInit {
   selectedExchange: any = 'EUR';
   selectRate: number;
   selectRateEUR: any;
+  symbol = 'BTC';
 
   constructor(
     private coinLoreService: CoinLoreService,
@@ -36,6 +37,15 @@ export class TableComponent implements OnInit {
     // the cast here is working just as a trigger
     this.coinLoreService.cast.subscribe((data) => {
       this.loadTable();
+    });
+
+    this.coinPaprikaService.onSelectedCoinChange.subscribe((coin) => {
+      this.symbol = coin.split('-')[0].toUpperCase();
+      // we will have to find a better way to fix it
+      if (this.symbol === 'BSV') {
+        this.symbol = 'BCHSV';
+      }
+      console.log(this.symbol);
     });
   }
 
