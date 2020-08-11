@@ -14,11 +14,9 @@ before script:
   - npm install -g angular-cli-ghpages
 
 script:
-  - echo $GITHUB_SHA
   - echo $TRAVIS_COMMIT
-  - echo TRAVIS_COMMIT
   - ng lint
   - ng test --watch=false
   - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/"
-  - sed -i 's/%%VERSION%%/$GITHUB_SHA/' ./dist/crypto-tracker
+  - sed -i 's/%%VERSION%%/$TRAVIS_COMMIT/g ' ./dist/crypto-tracker
   - ngh --dir dist/crypto-tracker --no-silent
