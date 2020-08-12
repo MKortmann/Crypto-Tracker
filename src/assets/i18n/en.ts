@@ -16,7 +16,7 @@ export const en = {
       SEC: 'sec',
     },
     GRAPH_COIN: {
-      AVERAGE: 'Average',
+      AVERAGE: 'Av.',
     },
     HOME: {
       TITLE: 'Home',

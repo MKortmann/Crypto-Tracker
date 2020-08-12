@@ -288,10 +288,12 @@ export class GraphicDashboardCoinComponent implements OnInit {
 
     valueAverageAnnotation = valueAverageAnnotation / data.length;
     const optionsTemp = { ...this.options };
+    optionsTemp.annotation.annotations[0].label.content = `${valueAverageAnnotation.toFixed(
+      2
+    )} ${this.selectedExchange}`;
     optionsTemp.annotation.annotations[0].label.content = `${this.translateService.instant(
       'TRANSLATE.GRAPH_COIN.AVERAGE'
-    )}: ${valueAverageAnnotation.toFixed(2)} ${this.selectedExchange}`;
-    optionsTemp.annotation.annotations[0].value = valueAverageAnnotation;
+    )}: ${valueAverageAnnotation.toFixed(2)} ${hash[this.selectedExchange]}`;
 
     (optionsTemp.tooltips.callbacks.label = (tooltipItem, dataIn) => {
       const label = dataIn.datasets[tooltipItem.datasetIndex].label || '';

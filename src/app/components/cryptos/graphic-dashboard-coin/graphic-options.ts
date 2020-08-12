@@ -9,11 +9,11 @@ export const options = {
         mode: 'horizontal',
         scaleID: 'y-axis-0',
         value: 7000,
-        borderColor: 'red',
+        borderColor: 'rgba(255, 0, 0, 0.8)',
         borderWidth: 2,
         borderDash: [10, 5],
         label: {
-          backgroundColor: 'red',
+          backgroundColor: 'rgba(255, 0, 0, 0.6)',
           content: '{{ TRANSLATE.GRAPH_COIN.AVERAGE | translate}}',
           enabled: true,
         },
