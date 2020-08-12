@@ -34,37 +34,37 @@
       <a
         class="dropdown-item"
         (click)="load(SEC_30)"
-        [class.selected]="interval === SEC_30"
+        [class.selected_option]="interval === SEC_30"
         >30 sec</a
       >
       <a
         class="dropdown-item"
         (click)="load(MIN_1)"
-        [class.selected]="interval === MIN_1"
+        [class.selected_option]="interval === MIN_1"
         >1 min</a
       >
       <a
         class="dropdown-item"
         (click)="load(MIN_10)"
-        [class.selected]="interval === MIN_10"
+        [class.selected_option]="interval === MIN_10"
         >10 min</a
       >
       <a
         class="dropdown-item"
         (click)="load(MIN_30)"
-        [class.selected]="interval === MIN_30"
+        [class.selected_option]="interval === MIN_30"
         >30 min</a
       >
       <a
         class="dropdown-item"
         (click)="load(MIN_60)"
-        [class.selected]="interval === MIN_60"
+        [class.selected_option]="interval === MIN_60"
         >1 h</a
       >
       <a
         class="dropdown-item"
         (click)="stop()"
-        [class.selected]="interval === 0"
+        [class.selected_option]="interval === 0"
         >Stop Update</a
       >
       <!-- <div class="dropdown-divider"></div>

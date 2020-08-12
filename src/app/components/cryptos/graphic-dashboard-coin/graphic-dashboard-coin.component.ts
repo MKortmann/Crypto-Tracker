@@ -22,9 +22,11 @@ import { Calendar } from 'primeng/calendar';
 export class GraphicDashboardCoinComponent implements OnInit {
   data: any;
   coinName = 'btc-bitcoin';
-  show = false;
+  symbol = 'btc';
+
   options = options;
   dataAverageArrayGraph: any;
+  expandGraph = false;
 
   startDate: string = new Date().toISOString().split('T')[0];
   lastYear = parseInt(this.startDate.split('-')[0], 10) - 1;
@@ -71,6 +73,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
 
     // localStorage Check the selectedExchange
     this.selectedExchange = localStorage.getItem('selectedExchange');
+    this.expandGraph = JSON.parse(localStorage.getItem('expandGraph'));
 
     this.exchangeService.getMoney('USD').subscribe(
       (res) => {
@@ -80,7 +83,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
           value: lng,
         }));
 
-        // checkLocalStorage
         if (this.selectedExchange !== null) {
           this.selectRate = res.rates[this.selectedExchange];
         } else {
@@ -118,6 +120,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
     } else {
       this.coinName = nameTemp[1];
     }
+    this.symbol = nameTemp[0];
   }
 
   // change the coin, so we fetch the data again!
@@ -180,7 +183,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
           return averageLastTwoYears;
         });
 
-        this.show = true;
         this.plotGraph(
           this.dataAverageArrayGraph,
           dataAverageArrayLastYearGraph,
@@ -206,8 +208,10 @@ export class GraphicDashboardCoinComponent implements OnInit {
     this.placeholder = `${placeholderStart}-${placeholderEnd}`;
   }
 
-  replotGraph() {
-    console.log(this.selectedDateRange);
+  expand() {
+    this.expandGraph = !this.expandGraph;
+    localStorage.setItem('expandGraph', JSON.stringify(this.expandGraph));
+    this.fetchDataToPlot(this.url);
   }
 
   plotGraph(
@@ -222,23 +226,24 @@ export class GraphicDashboardCoinComponent implements OnInit {
       pointRadius = 7;
     }
 
-    // let readjustLabels = [];
-    // debugger;
-    // if (this.data !== undefined) {
-    //   if (!this.data.datasets[1].hidden || !this.data.datasets[2].hidden) {
-    //     readjustLabels = [...labelsFullYearGraphX];
-    //   } else {
-    //     readjustLabels = [...labels];
-    //   }
-    // } else {
-    //   readjustLabels = labels;
-    // }
+    let readjustLabels = [];
+
+    if (this.expandGraph) {
+      readjustLabels = labelsFullYearGraphX;
+    } else {
+      readjustLabels = labels;
+    }
+
+    let setActive = false;
+    if (screen.width < 1300) {
+      setActive = true;
+    }
 
     this.data = {
-      labels: labelsFullYearGraphX,
+      labels: readjustLabels,
       datasets: [
         {
-          label: `${this.coinName}`,
+          label: `${this.symbol}`,
           data,
           fill: false,
           borderColor: '#9BC53D',
@@ -253,7 +258,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
           pointHoverBorderWidth: 7,
         },
         {
-          label: `${this.coinName}-${this.lastYear}`,
+          label: `${this.symbol}-${this.lastYear}`,
           data: dataLastYear,
           fill: false,
           borderColor: '#E0777D',
@@ -261,10 +266,10 @@ export class GraphicDashboardCoinComponent implements OnInit {
           pointHoverBorderColor: '#E0777D',
           pointHoverRadius: 10,
           pointHoverBorderWidth: 7,
-          hidden: true,
+          hidden: setActive,
         },
         {
-          label: `${this.coinName}-${this.lastTwoYears}`,
+          label: `${this.symbol}-${this.lastTwoYears}`,
           data: dataLastTwoYears,
           fill: false,
           borderColor: '#97b4d8',
@@ -272,7 +277,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
           pointHoverBorderColor: '#97b4d8',
           pointHoverRadius: 10,
           pointHoverBorderWidth: 7,
-          hidden: true,
+          hidden: setActive,
         },
       ],
     };

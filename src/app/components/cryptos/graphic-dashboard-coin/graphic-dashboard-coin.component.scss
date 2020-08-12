@@ -10,7 +10,8 @@
   display: flex;
   justify-content: flex-end;
   padding-right: 5px;
-  p-calendar {
+  p-calendar,
+  p-button {
     padding-right: 5px;
   }
 }
@@ -34,4 +35,9 @@
 
 p-chart {
   flex-basis: 99% !important;
+}
+
+img {
+  min-height: 48px;
+  min-width: 48px;
 }

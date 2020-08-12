@@ -43,6 +43,11 @@ export const options = {
       fontColor: '#9bc53d',
       fontSize: 16,
     },
+    // onClick: (e, legendItem) => {
+    //   console.log(e);
+    //   console.log(legendItem);
+    //   debugger;
+    // },
     onHover: (e) => {
       e.target.style.cursor = 'pointer';
     },

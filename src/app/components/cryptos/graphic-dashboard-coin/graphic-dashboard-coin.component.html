@@ -1,6 +1,21 @@
 <!-- <p-toast [style]="{ marginTop: '80px' }"></p-toast> -->
 <!-- [inputStyle]="{ width: '279px' }" -->
 <div class="containerCalendar">
+  <p-button
+    *ngIf="expandGraph"
+    (click)="expand()"
+    [style]="{ height: '30px', width: '52px', padding: '0' }"
+  >
+    <img src="../../../assets/imgs/icons/shrink.svg" />
+  </p-button>
+  <p-button
+    *ngIf="!expandGraph"
+    (click)="expand()"
+    [style]="{ height: '30px', width: '52px', padding: '0' }"
+  >
+    <img src="../../../assets/imgs/icons/expand.svg" />
+  </p-button>
+
   <p-calendar
     *ngIf="!showInSmallScreens"
     ngDefaultControl
@@ -11,7 +26,6 @@
     [readonlyInput]="true"
     [numberOfMonths]="1"
     [showIcon]="true"
-    (onClose)="replotGraph()"
     [placeholder]="placeholder"
     [style]="{ width: '100%', 'min-width': '100%' }"
     [maxDate]="todayDate"
@@ -29,7 +43,6 @@
     [readonlyInput]="true"
     [numberOfMonths]="1"
     [showIcon]="true"
-    (onClose)="replotGraph()"
     [placeholder]="placeholder"
     [style]="{ width: '100%', 'min-width': '100%' }"
     [maxDate]="todayDate"
@@ -49,6 +62,7 @@
 
 <div class="containerGraph">
   <p-chart
+    id="lineGraph"
     type="line"
     height="320"
     max-width="1800"
