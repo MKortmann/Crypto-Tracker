@@ -22,11 +22,11 @@ import { Calendar } from 'primeng/calendar';
 export class GraphicDashboardCoinComponent implements OnInit {
   data: any;
   coinName = 'btc-bitcoin';
-  symbol = 'btc';
-
+  show = false;
   options = options;
   dataAverageArrayGraph: any;
-  expandGraph = false;
+  expandGraph = true;
+  setActive = true;
 
   startDate: string = new Date().toISOString().split('T')[0];
   lastYear = parseInt(this.startDate.split('-')[0], 10) - 1;
@@ -83,6 +83,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
           value: lng,
         }));
 
+        // checkLocalStorage
         if (this.selectedExchange !== null) {
           this.selectRate = res.rates[this.selectedExchange];
         } else {
@@ -120,7 +121,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
     } else {
       this.coinName = nameTemp[1];
     }
-    this.symbol = nameTemp[0];
   }
 
   // change the coin, so we fetch the data again!
@@ -143,6 +143,12 @@ export class GraphicDashboardCoinComponent implements OnInit {
     }
 
     return urlRange;
+  }
+
+  expand() {
+    this.expandGraph = !this.expandGraph;
+    localStorage.setItem('expandGraph', JSON.stringify(this.expandGraph));
+    this.fetchDataToPlot(this.url);
   }
 
   fetchDataToPlot(url) {
@@ -183,6 +189,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
           return averageLastTwoYears;
         });
 
+        this.show = true;
         this.plotGraph(
           this.dataAverageArrayGraph,
           dataAverageArrayLastYearGraph,
@@ -208,10 +215,8 @@ export class GraphicDashboardCoinComponent implements OnInit {
     this.placeholder = `${placeholderStart}-${placeholderEnd}`;
   }
 
-  expand() {
-    this.expandGraph = !this.expandGraph;
-    localStorage.setItem('expandGraph', JSON.stringify(this.expandGraph));
-    this.fetchDataToPlot(this.url);
+  replotGraph() {
+    console.log(this.selectedDateRange);
   }
 
   plotGraph(
@@ -222,28 +227,27 @@ export class GraphicDashboardCoinComponent implements OnInit {
     labelsFullYearGraphX
   ) {
     let pointRadius = 2;
+
     if (screen.width >= 1900) {
       pointRadius = 7;
     }
 
-    let readjustLabels = [];
-
-    if (this.expandGraph) {
-      readjustLabels = labelsFullYearGraphX;
-    } else {
-      readjustLabels = labels;
-    }
-
-    let setActive = false;
-    if (screen.width < 1300) {
-      setActive = true;
-    }
-
+    // let readjustLabels = [];
+    // debugger;
+    // if (this.data !== undefined) {
+    //   if (!this.data.datasets[1].hidden || !this.data.datasets[2].hidden) {
+    //     readjustLabels = [...labelsFullYearGraphX];
+    //   } else {
+    //     readjustLabels = [...labels];
+    //   }
+    // } else {
+    //   readjustLabels = labels;
+    // }
     this.data = {
-      labels: readjustLabels,
+      labels: labelsFullYearGraphX,
       datasets: [
         {
-          label: `${this.symbol}`,
+          label: `${this.coinName}`,
           data,
           fill: false,
           borderColor: '#9BC53D',
@@ -258,7 +262,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
           pointHoverBorderWidth: 7,
         },
         {
-          label: `${this.symbol}-${this.lastYear}`,
+          label: `${this.coinName}-${this.lastYear}`,
           data: dataLastYear,
           fill: false,
           borderColor: '#E0777D',
@@ -266,10 +270,10 @@ export class GraphicDashboardCoinComponent implements OnInit {
           pointHoverBorderColor: '#E0777D',
           pointHoverRadius: 10,
           pointHoverBorderWidth: 7,
-          hidden: setActive,
+          hidden: false,
         },
         {
-          label: `${this.symbol}-${this.lastTwoYears}`,
+          label: `${this.coinName}-${this.lastTwoYears}`,
           data: dataLastTwoYears,
           fill: false,
           borderColor: '#97b4d8',
@@ -277,7 +281,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
           pointHoverBorderColor: '#97b4d8',
           pointHoverRadius: 10,
           pointHoverBorderWidth: 7,
-          hidden: setActive,
+          hidden: true,
         },
       ],
     };
@@ -288,31 +292,29 @@ export class GraphicDashboardCoinComponent implements OnInit {
 
     valueAverageAnnotation = valueAverageAnnotation / data.length;
     const optionsTemp = { ...this.options };
-    optionsTemp.annotation.annotations[0].label.content = `${valueAverageAnnotation.toFixed(
-      2
-    )} ${this.selectedExchange}`;
     optionsTemp.annotation.annotations[0].label.content = `${this.translateService.instant(
       'TRANSLATE.GRAPH_COIN.AVERAGE'
     )}: ${valueAverageAnnotation.toFixed(2)} ${hash[this.selectedExchange]}`;
+    optionsTemp.annotation.annotations[0].value = valueAverageAnnotation;
 
     (optionsTemp.tooltips.callbacks.label = (tooltipItem, dataIn) => {
       const label = dataIn.datasets[tooltipItem.datasetIndex].label || '';
       return `${label}: ${tooltipItem.yLabel} ${this.selectedExchange}`;
     }),
       (optionsTemp.scales.yAxes[0].ticks.callback = (value) => {
-        if (value > 10 ** 3 && value <= 10 ** 6) {
+        if (value >= 10 ** 3 && value <= 10 ** 6) {
           return `${hash[this.selectedExchange]}${Math.round(
             value / 10 ** 3
           )} K`;
-        } else if (value > 10 ** 6 && value <= 10 ** 9) {
+        } else if (value >= 10 ** 6 && value <= 10 ** 9) {
           return `${hash[this.selectedExchange]}${Math.round(
             value / 10 ** 6
           )} M`;
-        } else if (value > 10 ** 9 && value <= 10 ** 12) {
+        } else if (value >= 10 ** 9 && value <= 10 ** 12) {
           return `${hash[this.selectedExchange]}${Math.round(
             value / 10 ** 9
           )} B`;
-        } else if (value > 10 ** 12 && value <= 10 ** 15) {
+        } else if (value >= 10 ** 12 && value <= 10 ** 15) {
           return `${hash[this.selectedExchange]}${Math.round(
             value / 10 ** 9
           )} T`;
