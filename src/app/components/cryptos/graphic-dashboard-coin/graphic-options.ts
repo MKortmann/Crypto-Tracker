@@ -73,13 +73,13 @@ export const options = {
           fontColor: '#4bc0c0',
           // Include a dollar sign in the ticks
           callback: (value) => {
-            if (value > 10 ** 3 && value <= 10 ** 6) {
+            if (value >= 10 ** 3 && value <= 10 ** 6) {
               return `${Math.round(value / 10 ** 3)} K `;
-            } else if (value > 10 ** 6 && value <= 10 ** 9) {
+            } else if (value >= 10 ** 6 && value <= 10 ** 9) {
               return `${Math.round(value / 10 ** 6)} M`;
-            } else if (value > 10 ** 9 && value <= 10 ** 12) {
+            } else if (value >= 10 ** 9 && value <= 10 ** 12) {
               return `${Math.round(value / 10 ** 9)} B`;
-            } else if (value > 10 ** 12 && value <= 10 ** 15) {
+            } else if (value >= 10 ** 12 && value <= 10 ** 15) {
               return `${Math.round(value / 10 ** 9)} T`;
             }
           },
