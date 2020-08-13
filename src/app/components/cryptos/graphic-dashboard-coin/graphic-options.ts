@@ -9,11 +9,11 @@ export const options = {
         mode: 'horizontal',
         scaleID: 'y-axis-0',
         value: 7000,
-        borderColor: 'rgba(255, 0, 0, 0.8)',
+        borderColor: '#9BC53D',
         borderWidth: 2,
         borderDash: [10, 5],
         label: {
-          backgroundColor: 'rgba(255, 0, 0, 0.6)',
+          backgroundColor: '#9BC53D',
           content: '{{ TRANSLATE.GRAPH_COIN.AVERAGE | translate}}',
           enabled: true,
         },
@@ -43,10 +43,8 @@ export const options = {
       fontColor: '#9bc53d',
       fontSize: 16,
     },
-    // onClick: (e, legendItem) => {
-    //   console.log(e);
-    //   console.log(legendItem);
-    //   debugger;
+    // onClick: function (evt, item) {
+    //   console.log('legend onClick', evt);
     // },
     onHover: (e) => {
       e.target.style.cursor = 'pointer';

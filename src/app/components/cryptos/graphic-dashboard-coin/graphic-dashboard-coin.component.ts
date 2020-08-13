@@ -22,6 +22,7 @@ import { Calendar } from 'primeng/calendar';
 export class GraphicDashboardCoinComponent implements OnInit {
   data: any;
   coinName = 'btc-bitcoin';
+  symbol = 'btc';
   show = false;
   options = options;
   dataAverageArrayGraph: any;
@@ -121,6 +122,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
     } else {
       this.coinName = nameTemp[1];
     }
+    this.symbol = nameTemp[0];
   }
 
   // change the coin, so we fetch the data again!
@@ -247,7 +249,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
       labels: labelsFullYearGraphX,
       datasets: [
         {
-          label: `${this.coinName}`,
+          label: `${this.symbol}`,
           data,
           fill: false,
           borderColor: '#9BC53D',
@@ -262,7 +264,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
           pointHoverBorderWidth: 7,
         },
         {
-          label: `${this.coinName}-${this.lastYear}`,
+          label: `${this.symbol}-${this.lastYear}`,
           data: dataLastYear,
           fill: false,
           borderColor: '#E0777D',
@@ -273,7 +275,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
           hidden: false,
         },
         {
-          label: `${this.coinName}-${this.lastTwoYears}`,
+          label: `${this.symbol}-${this.lastTwoYears}`,
           data: dataLastTwoYears,
           fill: false,
           borderColor: '#97b4d8',
