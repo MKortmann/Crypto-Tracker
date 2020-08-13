@@ -36,8 +36,9 @@ export class CoinPaprikaService {
 
   constructor(private http: HttpClient) {}
 
-  public selectedCoinByTickers(coin, start, end) {
+  public selectedCoinByTickers(coin, start, end): Observable<any> {
     const url = `${this.getCoinTickers}${coin}/historical?start=${start}&end=${end}`;
+    return this.http.get<any>(url);
   }
 
   public selectedCoinById(value: any) {
