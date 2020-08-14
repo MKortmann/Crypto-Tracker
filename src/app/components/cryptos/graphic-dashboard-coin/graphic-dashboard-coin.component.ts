@@ -198,6 +198,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
         });
 
         this.show = true;
+
         this.plotGraph(
           this.dataAverageArrayGraph,
           dataAverageArrayLastYearGraph,
@@ -234,6 +235,8 @@ export class GraphicDashboardCoinComponent implements OnInit {
     labels,
     labelsFullYearGraphX
   ) {
+    this.updateOptions(data);
+
     this.chartCoin = new Chart('canvasDashboardCoin', {
       type: 'line',
       data: {
@@ -275,8 +278,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
       },
       options: this.options,
     });
-
-    this.updateOptions(data);
   }
 
   updateOptions(data) {
@@ -286,17 +287,17 @@ export class GraphicDashboardCoinComponent implements OnInit {
     });
 
     valueAverageAnnotation = valueAverageAnnotation / data.length;
-    const optionsTemp = { ...this.options };
-    optionsTemp.annotation.annotations[0].label.content = `${this.translateService.instant(
+
+    this.options.annotation.annotations[0].label.content = `${this.translateService.instant(
       'TRANSLATE.GRAPH_COIN.AVERAGE'
     )}: ${valueAverageAnnotation.toFixed(2)} ${hash[this.selectedExchange]}`;
-    optionsTemp.annotation.annotations[0].value = valueAverageAnnotation;
+    this.options.annotation.annotations[0].value = valueAverageAnnotation;
 
-    (optionsTemp.tooltips.callbacks.label = (tooltipItem, dataIn) => {
+    (this.options.tooltips.callbacks.label = (tooltipItem, dataIn) => {
       const label = dataIn.datasets[tooltipItem.datasetIndex].label || '';
       return `${label}: ${tooltipItem.yLabel} ${this.selectedExchange}`;
     }),
-      (optionsTemp.scales.yAxes[0].ticks.callback = (value) => {
+      (this.options.scales.yAxes[0].ticks.callback = (value) => {
         if (value >= 10 ** 3 && value <= 10 ** 6) {
           return `${hash[this.selectedExchange]}${Math.round(
             value / 10 ** 3
@@ -317,7 +318,5 @@ export class GraphicDashboardCoinComponent implements OnInit {
           return `${hash[this.selectedExchange]}${value}`;
         }
       });
-
-    this.options = optionsTemp;
   }
 }

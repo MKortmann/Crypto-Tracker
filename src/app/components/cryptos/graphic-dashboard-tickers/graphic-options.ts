@@ -1,6 +1,5 @@
 export const options = {
   maintainAspectRatio: false,
-  responsive: true,
   drawTime: 'afterDatasetsDraw',
   annotation: {
     drawTime: 'afterDatasetsDraw',
@@ -9,14 +8,14 @@ export const options = {
         id: 'a-line-2',
         type: 'line',
         mode: 'horizontal',
-        scaleID: 'y-axis-2',
-        value: ``,
+        scaleID: 'y-axis-0',
+        value: 7000,
         borderColor: '#9BC53D',
         borderWidth: 2,
         borderDash: [10, 5],
         label: {
           backgroundColor: '#9BC53D',
-          content: ``,
+          content: `hello`,
           enabled: true,
         },
       },

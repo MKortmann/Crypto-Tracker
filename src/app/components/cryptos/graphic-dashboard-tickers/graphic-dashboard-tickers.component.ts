@@ -28,7 +28,7 @@ export class GraphicDashboardTickersComponent implements OnInit {
   chartTickers = [];
   labels = ['january', 'february', 'march'];
   data = [30, 60, 100];
-  selectedExchange: any = 'USD';
+  selectedExchange = 'USD';
   valueAverageAnnotation = 0;
 
   coinName = 'btc-bitcoin';
@@ -90,6 +90,8 @@ export class GraphicDashboardTickersComponent implements OnInit {
   }
 
   graph(labels, price, volume24h, marketCap) {
+    this.updateOptions();
+
     this.chartTickers = new Chart('canvasTickers', {
       type: 'line',
       data: {
@@ -119,26 +121,22 @@ export class GraphicDashboardTickersComponent implements OnInit {
       },
       options: this.options,
     });
-
-    this.updateOptions();
   }
 
   updateOptions() {
-    const optionsTemp = { ...this.options };
-
-    optionsTemp.annotation.annotations[0].label.content = `${this.translateService.instant(
+    this.options.annotation.annotations[0].label.content = `${this.translateService.instant(
       'TRANSLATE.GRAPH_COIN.AVERAGE'
     )}: ${this.valueAverageAnnotation.toFixed(2)} ${
       hash[this.selectedExchange]
     }`;
 
-    optionsTemp.annotation.annotations[0].value = `${this.valueAverageAnnotation}`;
+    this.options.annotation.annotations[0].value = this.valueAverageAnnotation;
 
-    (optionsTemp.tooltips.callbacks.label = (tooltipItem, dataIn) => {
+    (this.options.tooltips.callbacks.label = (tooltipItem, dataIn) => {
       const label = dataIn.datasets[tooltipItem.datasetIndex].label || '';
       return `${label}: ${tooltipItem.yLabel} ${this.selectedExchange}`;
     }),
-      (optionsTemp.scales.yAxes[0].ticks.callback = (value) => {
+      (this.options.scales.yAxes[0].ticks.callback = (value) => {
         if (value >= 10 ** 3 && value <= 10 ** 6) {
           return `${hash[this.selectedExchange]}${Math.round(
             value / 10 ** 3
@@ -159,7 +157,5 @@ export class GraphicDashboardTickersComponent implements OnInit {
           return `${hash[this.selectedExchange]}${value}`;
         }
       });
-
-    this.options = optionsTemp;
   }
 }
