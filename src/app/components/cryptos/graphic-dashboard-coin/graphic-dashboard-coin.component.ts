@@ -249,7 +249,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
       labels: labelsFullYearGraphX,
       datasets: [
         {
-          label: `${this.symbol}`,
+          label: `${this.symbol}'20`,
           data,
           fill: false,
           borderColor: '#9BC53D',
@@ -264,7 +264,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
           pointHoverBorderWidth: 7,
         },
         {
-          label: `${this.symbol}-${this.lastYear}`,
+          label: `${this.symbol}-'${this.lastYear.toString().slice(2)}`,
           data: dataLastYear,
           fill: false,
           borderColor: '#E0777D',
@@ -275,7 +275,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
           hidden: false,
         },
         {
-          label: `${this.symbol}-${this.lastTwoYears}`,
+          label: `${this.symbol}-'${this.lastTwoYears.toString().slice(2)}`,
           data: dataLastTwoYears,
           fill: false,
           borderColor: '#97b4d8',

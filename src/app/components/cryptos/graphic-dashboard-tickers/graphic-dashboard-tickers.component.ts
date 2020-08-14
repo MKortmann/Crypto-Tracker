@@ -51,7 +51,6 @@ export class GraphicDashboardTickersComponent implements OnInit {
   getCoinByTicker(coin, start, end) {
     this.coinPaprikaService.selectedCoinByTickers(coin, start, end).subscribe(
       (res) => {
-        console.log(res);
         const labels = res.map((item) => item.timestamp);
         const price = res.map((item) => item.price);
         const volume24h = res.map((item) => item.timestamp);
@@ -69,10 +68,13 @@ export class GraphicDashboardTickersComponent implements OnInit {
         labels,
         datasets: [
           {
-            label: `${this.symbol}`,
+            label: `${this.symbol}-24h`,
             data: price,
-            borderColor: 'rgba(255, 0, 0, 1)',
+            borderColor: '#9BC53D',
             fill: false,
+            pointHoverBorderColor: 'red',
+            pointHoverRadius: 10,
+            pointHoverBorderWidth: 7,
           },
           // {
           //   data: volume24h,
@@ -95,9 +97,9 @@ export class GraphicDashboardTickersComponent implements OnInit {
           backgroundColor: 'rgba(0, 0, 0, 0.8)',
           callbacks: {
             title: (tooltipItems, data) => {
-              let returnValue = tooltipItems[0].xLabel.split('T')[0];
-              returnValue = returnValue.split('-');
-              returnValue = `${returnValue[2]}-${returnValue[1]}-${returnValue[0]}`;
+              let returnValue = tooltipItems[0].xLabel;
+              // converting to our timezone!
+              returnValue = new Date(returnValue).toLocaleString().slice(0, -3);
               return returnValue;
             },
             label: (tooltipItem, data) => {
@@ -108,9 +110,48 @@ export class GraphicDashboardTickersComponent implements OnInit {
         },
         legend: {
           display: true,
-          fontSize: 16,
+          labels: {
+            fontColor: '#9bc53d',
+            fontSize: 16,
+          },
+          onHover: (e) => {
+            e.target.style.cursor = 'pointer';
+          },
+        },
+        hover: {
+          function(e) {
+            const point = this.getElementAtEvent(e);
+            if (point.length) {
+              e.target.style.cursor = 'pointer';
+            } else {
+              e.target.style.cursor = 'default';
+            }
+          },
         },
         scales: {
+          yAxes: [
+            {
+              gridLines: {
+                color: '#4bc0c0',
+                borderDash: [10, 5],
+              },
+              ticks: {
+                fontColor: '#4bc0c0',
+                // Include a dollar sign in the ticks
+                callback: (value) => {
+                  if (value >= 10 ** 3 && value <= 10 ** 6) {
+                    return `${Math.round(value / 10 ** 3)} K `;
+                  } else if (value >= 10 ** 6 && value <= 10 ** 9) {
+                    return `${Math.round(value / 10 ** 6)} M`;
+                  } else if (value >= 10 ** 9 && value <= 10 ** 12) {
+                    return `${Math.round(value / 10 ** 9)} B`;
+                  } else if (value >= 10 ** 12 && value <= 10 ** 15) {
+                    return `${Math.round(value / 10 ** 9)} T`;
+                  }
+                },
+              },
+            },
+          ],
           xAxes: [
             {
               gridLines: {
@@ -124,11 +165,6 @@ export class GraphicDashboardTickersComponent implements OnInit {
               time: {
                 unit: 'hour',
               },
-            },
-          ],
-          yAxes: [
-            {
-              display: true,
             },
           ],
         },
