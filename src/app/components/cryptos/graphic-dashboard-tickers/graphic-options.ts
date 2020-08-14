@@ -1,20 +1,21 @@
 export const options = {
   maintainAspectRatio: false,
+  drawTime: 'afterDatasetsDraw',
   annotation: {
     drawTime: 'afterDatasetsDraw',
     annotations: [
       {
-        id: 'a-line-1',
+        id: 'a-line-2',
         type: 'line',
         mode: 'horizontal',
-        scaleID: 'y-axis-1',
-        value: 7000,
+        scaleID: 'y-axis-2',
+        value: ``,
         borderColor: '#9BC53D',
         borderWidth: 2,
         borderDash: [10, 5],
         label: {
           backgroundColor: '#9BC53D',
-          content: '{{ TRANSLATE.GRAPH_COIN.AVERAGE | translate}}',
+          content: ``,
           enabled: true,
         },
       },
@@ -27,9 +28,9 @@ export const options = {
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
     callbacks: {
       title: (tooltipItems, data) => {
-        let returnValue = tooltipItems[0].xLabel.split('T')[0];
-        returnValue = returnValue.split('-');
-        returnValue = `${returnValue[2]}-${returnValue[1]}-${returnValue[0]}`;
+        let returnValue = tooltipItems[0].xLabel;
+        // converting to our timezone!
+        returnValue = new Date(returnValue).toLocaleString().slice(0, -3);
         return returnValue;
       },
       label: (tooltipItem, data) => {
@@ -39,13 +40,11 @@ export const options = {
     },
   },
   legend: {
+    display: true,
     labels: {
       fontColor: '#9bc53d',
       fontSize: 16,
     },
-    // onClick: function (evt, item) {
-    //   console.log('legend onClick', evt);
-    // },
     onHover: (e) => {
       e.target.style.cursor = 'pointer';
     },
@@ -80,7 +79,7 @@ export const options = {
             } else if (value >= 10 ** 12 && value <= 10 ** 15) {
               return `${Math.round(value / 10 ** 9)} T`;
             }
-            return value;
+            return `${value}`;
           },
         },
       },
@@ -96,10 +95,7 @@ export const options = {
           fontColor: '#4bc0c0',
         },
         time: {
-          unit: 'month',
-          displayFormats: {
-            month: 'MMM',
-          },
+          unit: 'hour',
         },
       },
     ],

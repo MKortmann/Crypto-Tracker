@@ -6,13 +6,16 @@ import { ExchangeService } from '../../../services/exchange.service';
 
 import { TranslateService } from '@ngx-translate/core';
 
-import 'chartjs-plugin-annotation';
-
 import { options } from './graphic-options';
 import { hash } from '../../../tools/currency-hash';
 
 import { SelectItem } from 'primeng/api';
 import { Calendar } from 'primeng/calendar';
+
+import { Chart } from 'chart.js';
+import 'chartjs-plugin-annotation';
+
+import { ChartModule } from 'primeng/chart';
 
 @Component({
   selector: 'app-graphic-dashboard-coin',
@@ -20,7 +23,6 @@ import { Calendar } from 'primeng/calendar';
   styleUrls: ['./graphic-dashboard-coin.component.scss'],
 })
 export class GraphicDashboardCoinComponent implements OnInit {
-  data: any;
   coinName = 'btc-bitcoin';
   symbol = 'btc';
   show = false;
@@ -28,6 +30,9 @@ export class GraphicDashboardCoinComponent implements OnInit {
   dataAverageArrayGraph: any;
   expandGraph = true;
   setActive = true;
+  chartCoin = [];
+  labels = [];
+  data = [];
 
   startDate: string = new Date().toISOString().split('T')[0];
   lastYear = parseInt(this.startDate.split('-')[0], 10) - 1;
@@ -235,59 +240,52 @@ export class GraphicDashboardCoinComponent implements OnInit {
       pointRadius = 7;
     }
 
-    // let readjustLabels = [];
-    // debugger;
-    // if (this.data !== undefined) {
-    //   if (!this.data.datasets[1].hidden || !this.data.datasets[2].hidden) {
-    //     readjustLabels = [...labelsFullYearGraphX];
-    //   } else {
-    //     readjustLabels = [...labels];
-    //   }
-    // } else {
-    //   readjustLabels = labels;
-    // }
-    this.data = {
-      labels: labelsFullYearGraphX,
-      datasets: [
-        {
-          label: `${this.symbol}'20`,
-          data,
-          fill: false,
-          borderColor: '#9BC53D',
-          // borderColor: 'red',
-          // borderColor: '#A6BFDD',
-          // borderColor: '#97b4d8',
-          // borderColor: '#7AA0CD',
-          // borderColor: '#6290C3',
-          pointRadius,
-          pointHoverBorderColor: 'red',
-          pointHoverRadius: 10,
-          pointHoverBorderWidth: 7,
-        },
-        {
-          label: `${this.symbol}'${this.lastYear.toString().slice(2)}`,
-          data: dataLastYear,
-          fill: false,
-          borderColor: '#E0777D',
-          pointRadius,
-          pointHoverBorderColor: '#E0777D',
-          pointHoverRadius: 10,
-          pointHoverBorderWidth: 7,
-          hidden: false,
-        },
-        {
-          label: `${this.symbol}'${this.lastTwoYears.toString().slice(2)}`,
-          data: dataLastTwoYears,
-          fill: false,
-          borderColor: '#97b4d8',
-          pointRadius,
-          pointHoverBorderColor: '#97b4d8',
-          pointHoverRadius: 10,
-          pointHoverBorderWidth: 7,
-          hidden: true,
-        },
-      ],
-    };
+    this.chartCoin = new Chart('canvasDashboardCoin', {
+      type: 'line',
+      data: {
+        labels: labelsFullYearGraphX,
+        datasets: [
+          {
+            label: `${this.symbol}'20`,
+            data,
+            fill: false,
+            borderColor: '#9BC53D',
+            pointRadius,
+            pointHoverBorderColor: 'red',
+            pointHoverRadius: 10,
+            pointHoverBorderWidth: 7,
+          },
+          {
+            label: `${this.symbol}'${this.lastYear.toString().slice(2)}`,
+            data: dataLastYear,
+            fill: false,
+            borderColor: '#E0777D',
+            pointRadius,
+            pointHoverBorderColor: '#E0777D',
+            pointHoverRadius: 10,
+            pointHoverBorderWidth: 7,
+            hidden: false,
+          },
+          {
+            label: `${this.symbol}'${this.lastTwoYears.toString().slice(2)}`,
+            data: dataLastTwoYears,
+            fill: false,
+            borderColor: '#97b4d8',
+            pointRadius,
+            pointHoverBorderColor: '#97b4d8',
+            pointHoverRadius: 10,
+            pointHoverBorderWidth: 7,
+            hidden: true,
+          },
+        ],
+      },
+      options: this.options,
+    });
+
+    this.updateOptions(data);
+  }
+
+  updateOptions(data) {
     let valueAverageAnnotation = 0;
     data.forEach((item) => {
       valueAverageAnnotation += parseFloat(item);
@@ -325,9 +323,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
           return `${hash[this.selectedExchange]}${value}`;
         }
       });
-
-    // optionsTemp.scales.xAxes[0].gridLines.color = '#4bc0c0';
-    // optionsTemp.scales.xAxes[0].gridLines.borderDash = [10, 5];
 
     this.options = optionsTemp;
   }

@@ -61,7 +61,7 @@
 </div>
 
 <div class="containerGraph">
-  <p-chart
+  <!-- <p-chart
     id="lineGraph"
     type="line"
     height="320"
@@ -69,5 +69,8 @@
     [data]="data"
     [options]="options"
   >
-  </p-chart>
+  </p-chart> -->
+  <canvas id="canvasDashboardCoin" height="320" width="100%">{{
+    chartCoin
+  }}</canvas>
 </div>
