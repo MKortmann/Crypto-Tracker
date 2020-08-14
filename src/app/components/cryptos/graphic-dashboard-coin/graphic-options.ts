@@ -80,6 +80,7 @@ export const options = {
             } else if (value >= 10 ** 12 && value <= 10 ** 15) {
               return `${Math.round(value / 10 ** 9)} T`;
             }
+            return value;
           },
         },
       },

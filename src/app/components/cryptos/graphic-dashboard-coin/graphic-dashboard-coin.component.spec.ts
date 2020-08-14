@@ -9,6 +9,10 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { options } from './graphic-options';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
+import { ExchangeService } from '../../../services/exchange.service';
+
+import 'chartjs-plugin-annotation';
+
 describe('GraphicDashboardCoinComponent', () => {
   let component: GraphicDashboardCoinComponent;
   let fixture: ComponentFixture<GraphicDashboardCoinComponent>;
@@ -22,6 +26,7 @@ describe('GraphicDashboardCoinComponent', () => {
         HttpHandler,
         CoinPaprikaService,
         TranslateService,
+        ExchangeService,
       ],
       // schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();

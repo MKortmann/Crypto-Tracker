@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import 'chartjs-plugin-annotation';
 
 import { options } from './graphic-options';
-import { hash } from './currency-hash';
+import { hash } from '../../../tools/currency-hash';
 
 import { SelectItem } from 'primeng/api';
 import { Calendar } from 'primeng/calendar';

@@ -5,6 +5,10 @@ import { GraphicDashboardTickersComponent } from './graphic-dashboard-tickers.co
 import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+
+import { ExchangeService } from '../../../services/exchange.service';
+
 describe('GraphicDashboardTickersComponent', () => {
   let component: GraphicDashboardTickersComponent;
   let fixture: ComponentFixture<GraphicDashboardTickersComponent>;
@@ -12,7 +16,8 @@ describe('GraphicDashboardTickersComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [GraphicDashboardTickersComponent],
-      providers: [HttpClient, HttpHandler, CoinPaprikaService],
+      imports: [TranslateModule.forRoot()],
+      providers: [HttpClient, HttpHandler, CoinPaprikaService, ExchangeService],
     }).compileComponents();
   }));
 
