@@ -131,6 +131,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
     this.selectRate = event.value;
     this.fetchDataToPlot(this.url);
     localStorage.setItem('selectedExchange', this.selectedExchange);
+    this.exchangeService.changeMoney(this.selectedExchange);
   }
 
   setURL() {
@@ -264,7 +265,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
           pointHoverBorderWidth: 7,
         },
         {
-          label: `${this.symbol}-'${this.lastYear.toString().slice(2)}`,
+          label: `${this.symbol}'${this.lastYear.toString().slice(2)}`,
           data: dataLastYear,
           fill: false,
           borderColor: '#E0777D',
@@ -275,7 +276,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
           hidden: false,
         },
         {
-          label: `${this.symbol}-'${this.lastTwoYears.toString().slice(2)}`,
+          label: `${this.symbol}'${this.lastTwoYears.toString().slice(2)}`,
           data: dataLastTwoYears,
           fill: false,
           borderColor: '#97b4d8',

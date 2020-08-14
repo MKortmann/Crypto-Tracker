@@ -41,7 +41,7 @@ export class CoinPaprikaService {
     return this.http.get<any>(url);
   }
 
-  public selectedCoinById(value: any) {
+  public selectedCoinById(value: string) {
     this.onSelectedCoinChange.emit(value);
   }
 

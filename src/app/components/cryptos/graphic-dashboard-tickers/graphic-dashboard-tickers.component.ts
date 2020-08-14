@@ -34,6 +34,14 @@ export class GraphicDashboardTickersComponent implements OnInit {
   symbol = 'btc';
 
   ngOnInit(): void {
+    // localStorage Check the selectedExchange
+    this.selectedExchange = localStorage.getItem('selectedExchange');
+
+    this.exchangeService.onSelectedMoneyChange.subscribe((res) => {
+      this.selectedExchange = res;
+      this.updateUrl();
+    });
+
     this.coinPaprikaService.onSelectedCoinChange.subscribe(
       (name) => {
         const nameTemp = name.split('-');
