@@ -1,5 +1,6 @@
 export const options = {
   maintainAspectRatio: false,
+  responsive: true,
   drawTime: 'afterDatasetsDraw',
   annotation: {
     drawTime: 'afterDatasetsDraw',

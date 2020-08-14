@@ -25,7 +25,7 @@ export class GraphicDashboardTickersComponent implements OnInit {
     private translateService: TranslateService
   ) {}
 
-  chart = [];
+  chartTickers = [];
   labels = ['january', 'february', 'march'];
   data = [30, 60, 100];
   selectedExchange: any = 'USD';
@@ -90,7 +90,7 @@ export class GraphicDashboardTickersComponent implements OnInit {
   }
 
   graph(labels, price, volume24h, marketCap) {
-    this.chart = new Chart('canvasTickers', {
+    this.chartTickers = new Chart('canvasTickers', {
       type: 'line',
       data: {
         labels,
@@ -100,6 +100,7 @@ export class GraphicDashboardTickersComponent implements OnInit {
             data: price,
             borderColor: '#9BC53D',
             fill: false,
+            pointRadius: 3,
             pointHoverBorderColor: 'red',
             pointHoverRadius: 10,
             pointHoverBorderWidth: 7,

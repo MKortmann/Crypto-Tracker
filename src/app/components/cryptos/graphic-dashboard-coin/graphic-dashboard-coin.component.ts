@@ -234,12 +234,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
     labels,
     labelsFullYearGraphX
   ) {
-    let pointRadius = 2;
-
-    if (screen.width >= 1900) {
-      pointRadius = 7;
-    }
-
     this.chartCoin = new Chart('canvasDashboardCoin', {
       type: 'line',
       data: {
@@ -250,7 +244,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
             data,
             fill: false,
             borderColor: '#9BC53D',
-            pointRadius,
+            pointRadius: 3,
             pointHoverBorderColor: 'red',
             pointHoverRadius: 10,
             pointHoverBorderWidth: 7,
@@ -260,7 +254,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
             data: dataLastYear,
             fill: false,
             borderColor: '#E0777D',
-            pointRadius,
+            pointRadius: 3,
             pointHoverBorderColor: '#E0777D',
             pointHoverRadius: 10,
             pointHoverBorderWidth: 7,
@@ -271,7 +265,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
             data: dataLastTwoYears,
             fill: false,
             borderColor: '#97b4d8',
-            pointRadius,
+            pointRadius: 3,
             pointHoverBorderColor: '#97b4d8',
             pointHoverRadius: 10,
             pointHoverBorderWidth: 7,
