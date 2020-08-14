@@ -62,6 +62,7 @@ export class GraphicDashboardTickersComponent implements OnInit {
   getCoinByTicker(coin, start, end) {
     this.coinPaprikaService.selectedCoinByTickers(coin, start, end).subscribe(
       (res) => {
+        this.valueAverageAnnotation = 0;
         const labels = res.map((item) => item.timestamp);
         const price = res.map((item) => {
           this.valueAverageAnnotation += parseFloat(item.price);
