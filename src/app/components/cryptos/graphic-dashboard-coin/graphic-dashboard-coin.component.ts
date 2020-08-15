@@ -164,7 +164,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
       this.chartCoin.data.labels = this.labelsGraphX;
     }
     this.chartCoin.update();
-
     // this.fetchDataToPlot(this.url);
   }
 

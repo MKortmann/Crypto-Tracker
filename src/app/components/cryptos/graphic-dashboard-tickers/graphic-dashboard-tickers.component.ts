@@ -38,6 +38,11 @@ export class GraphicDashboardTickersComponent implements OnInit {
   symbol = 'btc';
   options = options;
 
+  endDate: Date;
+  startDate: Date;
+  endDateStr: string;
+  startDateStr: string;
+
   ngOnInit(): void {
     // localStorage Check the selectedExchange
     this.selectedExchange = localStorage.getItem('selectedExchange');
@@ -58,42 +63,57 @@ export class GraphicDashboardTickersComponent implements OnInit {
     );
     this.updateUrl();
 
+    // here we update the graph data
     this.coinLoreService.cast.subscribe((data) => {
-      if (this.chartTickers) {
-        this.chartTickers.destroy();
-        this.updateUrl();
-      }
+      this.getCoinByTicker(
+        this.coinName,
+        this.startDateStr,
+        this.endDateStr,
+        true
+      );
     });
   }
 
   updateUrl() {
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 1);
+    this.endDate = new Date();
+    this.endDate.setDate(this.endDate.getDate() + 1);
 
-    const startDate = new Date();
+    this.startDate = new Date();
     // startDate.setDate(startDate.getDate());
 
-    const endDateStr = endDate.toISOString().split('T')[0];
-    const startDateStr = startDate.toISOString().split('T')[0];
+    this.endDateStr = this.endDate.toISOString().split('T')[0];
+    this.startDateStr = this.startDate.toISOString().split('T')[0];
 
-    this.getCoinByTicker(this.coinName, startDateStr, endDateStr);
+    this.getCoinByTicker(
+      this.coinName,
+      this.startDateStr,
+      this.endDateStr,
+      false
+    );
   }
 
-  getCoinByTicker(coin, start, end) {
+  getCoinByTicker(coin, start, end, update = false) {
     this.coinPaprikaService.selectedCoinByTickers(coin, start, end).subscribe(
       (res) => {
         this.valueAverageAnnotation = 0;
-        const labels = res.map((item) => item.timestamp);
+        this.labels = [];
+        this.labels = res.map((item) => item.timestamp);
         const price = res.map((item) => {
           this.valueAverageAnnotation += parseFloat(item.price);
           return item.price;
         });
         this.valueAverageAnnotation =
-          this.valueAverageAnnotation / labels.length;
+          this.valueAverageAnnotation / this.labels.length;
 
         const volume24h = res.map((item) => item.timestamp);
         const marketCap = res.map((item) => item.marketCap);
-        this.plotGraph(labels, price, volume24h, marketCap);
+        if (!update) {
+          this.plotGraph(this.labels, price, volume24h, marketCap);
+        } else {
+          this.chartTickers.data.datasets[0].data = price;
+          this.chartTickers.data.labels = this.labels;
+          this.chartTickers.update();
+        }
       },
       (error) => console.log(error)
     );
