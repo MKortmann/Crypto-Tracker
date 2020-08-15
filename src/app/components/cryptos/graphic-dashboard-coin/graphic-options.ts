@@ -6,7 +6,7 @@ export const options = {
     drawTime: 'afterDatasetsDraw',
     annotations: [
       {
-        id: 'a-line-1',
+        id: 'a-line-0',
         type: 'line',
         mode: 'horizontal',
         scaleID: 'y-axis-0',

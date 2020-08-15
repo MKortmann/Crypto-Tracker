@@ -30,7 +30,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
   dataAverageArrayGraph: any;
   expandGraph = true;
   setActive = true;
-  chartCoin = [];
+  public chartCoin: Chart;
   labels = [];
   data = [];
 
@@ -169,6 +169,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
         const labelsFullYearGraphX = [];
         let dataAverageArrayLastYearGraph = [];
         let dataAverageArrayLastTwoYearsGraph = [];
+        this.dataAverageArrayGraph = [];
 
         // calc the average with FIAT rate
         this.dataAverageArrayGraph = res[0].map((obj, index) => {
@@ -224,10 +225,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
     this.placeholder = `${placeholderStart}-${placeholderEnd}`;
   }
 
-  replotGraph() {
-    console.log(this.selectedDateRange);
-  }
-
   plotGraph(
     data,
     dataLastYear,
@@ -235,6 +232,9 @@ export class GraphicDashboardCoinComponent implements OnInit {
     labels,
     labelsFullYearGraphX
   ) {
+    if (this.chartCoin) {
+      this.chartCoin.destroy();
+    }
     this.updateOptions(data);
 
     this.chartCoin = new Chart('canvasDashboardCoin', {

@@ -25,7 +25,7 @@ export class GraphicDashboardTickersComponent implements OnInit {
     private translateService: TranslateService
   ) {}
 
-  chartTickers = [];
+  public chartTickers: Chart;
   labels = ['january', 'february', 'march'];
   data = [30, 60, 100];
   selectedExchange = 'USD';
@@ -83,14 +83,18 @@ export class GraphicDashboardTickersComponent implements OnInit {
 
         const volume24h = res.map((item) => item.timestamp);
         const marketCap = res.map((item) => item.marketCap);
-        this.graph(labels, price, volume24h, marketCap);
+        this.plotGraph(labels, price, volume24h, marketCap);
       },
       (error) => console.log(error)
     );
   }
 
-  graph(labels, price, volume24h, marketCap) {
+  plotGraph(labels, price, volume24h, marketCap) {
     this.updateOptions();
+
+    if (this.chartTickers) {
+      this.chartTickers.destroy();
+    }
 
     this.chartTickers = new Chart('canvasTickers', {
       type: 'line',
