@@ -25,7 +25,7 @@ export class FooterComponent implements OnInit {
       this.loadStyle();
     }
   }
-  darkMode = false;
+  darkMode = true;
 
   ngOnInit(): void {}
 

@@ -2,6 +2,20 @@
 
 <app-card-dashboard-global></app-card-dashboard-global>
 <app-card-dashboard></app-card-dashboard>
-<app-graphic-dashboard-coin></app-graphic-dashboard-coin>
-<app-graphic-dashboard-tickers></app-graphic-dashboard-tickers>
+<app-graphic-dashboard-coin
+  *ngIf="visible; else elseBlock"
+></app-graphic-dashboard-coin>
+<ng-template #elseBlock>
+  <app-graphic-dashboard-tickers></app-graphic-dashboard-tickers>
+</ng-template>
+
+<div class="graphButtons">
+  <button
+    pButton
+    type="button"
+    label="{{ label }}"
+    class="p-button-sm"
+    (click)="switchGraphs()"
+  ></button>
+</div>
 <app-table></app-table>

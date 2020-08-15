@@ -171,7 +171,7 @@ export class GraphicDashboardTickersComponent implements OnInit {
       return `${label}: ${tooltipItem.yLabel} ${this.selectedExchange}`;
     }),
       (this.options.scales.yAxes[0].ticks.callback = (value) => {
-        if (value >= 10 ** 3 && value <= 10 ** 6) {
+        if (value >= 10 ** 5 && value <= 10 ** 6) {
           return `${hash[this.selectedExchange]}${Math.round(
             value / 10 ** 3
           )} K`;
