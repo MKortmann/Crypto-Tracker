@@ -1,20 +1,20 @@
 <!-- <p-toast [style]="{ marginTop: '80px' }"></p-toast> -->
 <!-- [inputStyle]="{ width: '279px' }" -->
 <div class="containerCalendar">
-  <!-- <p-button
-    *ngIf="!expandGraph"
+  <p-button
+    *ngIf="expandGraph"
     (click)="expand()"
     [style]="{ height: '30px', width: '52px', padding: '0' }"
   >
     <img src="assets/imgs/icons/shrinkbrown.svg" />
   </p-button>
   <p-button
-    *ngIf="expandGraph"
+    *ngIf="!expandGraph"
     (click)="expand()"
     [style]="{ height: '30px', width: '52px', padding: '0' }"
   >
     <img src="assets/imgs/icons/expandbrown.svg" />
-  </p-button> -->
+  </p-button>
 
   <p-calendar
     *ngIf="!showInSmallScreens"

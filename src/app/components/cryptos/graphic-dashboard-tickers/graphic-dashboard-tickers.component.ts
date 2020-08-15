@@ -5,6 +5,8 @@ import { ChartModule } from 'primeng/chart';
 
 import { ExchangeService } from '../../../services/exchange.service';
 
+import { CoinLoreService } from '../../../services/coinLore.service';
+
 import { TranslateService } from '@ngx-translate/core';
 
 import { options } from './graphic-options';
@@ -22,7 +24,8 @@ export class GraphicDashboardTickersComponent implements OnInit {
   constructor(
     private coinPaprikaService: CoinPaprikaService,
     private exchangeService: ExchangeService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private coinLoreService: CoinLoreService
   ) {}
 
   public chartTickers: Chart;
@@ -54,6 +57,13 @@ export class GraphicDashboardTickersComponent implements OnInit {
       (error) => console.log(error)
     );
     this.updateUrl();
+
+    this.coinLoreService.cast.subscribe((data) => {
+      if (this.chartTickers) {
+        this.chartTickers.destroy();
+        this.updateUrl();
+      }
+    });
   }
 
   updateUrl() {

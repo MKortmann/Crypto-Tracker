@@ -32,6 +32,8 @@ export class GraphicDashboardCoinComponent implements OnInit {
   setActive = true;
   public chartCoin: Chart;
   labels = [];
+  labelsGraphX = [];
+  labelsFullYearGraphX = [];
   data = [];
 
   startDate: string = new Date().toISOString().split('T')[0];
@@ -156,7 +158,14 @@ export class GraphicDashboardCoinComponent implements OnInit {
   expand() {
     this.expandGraph = !this.expandGraph;
     localStorage.setItem('expandGraph', JSON.stringify(this.expandGraph));
-    this.fetchDataToPlot(this.url);
+    if (this.expandGraph) {
+      this.chartCoin.data.labels = this.labelsFullYearGraphX;
+    } else {
+      this.chartCoin.data.labels = this.labelsGraphX;
+    }
+    this.chartCoin.update();
+
+    // this.fetchDataToPlot(this.url);
   }
 
   fetchDataToPlot(url) {
@@ -165,8 +174,8 @@ export class GraphicDashboardCoinComponent implements OnInit {
     this.coinPaprikaService.getDataFromMultipleYears(urlRange).subscribe(
       (res) => {
         // adjusting the input data
-        const labelsGraphX = [];
-        const labelsFullYearGraphX = [];
+        this.labelsGraphX = [];
+        this.labelsFullYearGraphX = [];
         let dataAverageArrayLastYearGraph = [];
         let dataAverageArrayLastTwoYearsGraph = [];
         this.dataAverageArrayGraph = [];
@@ -177,7 +186,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
             ((obj.high + obj.low) / 2) *
             this.selectRate
           ).toFixed(2);
-          labelsGraphX.push(obj.time_open);
+          this.labelsGraphX.push(obj.time_open);
           return average;
         });
         // calc the average with FIAT rate
@@ -186,7 +195,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
             ((obj.high + obj.low) / 2) *
             this.selectRate
           ).toFixed(2);
-          labelsFullYearGraphX.push(obj.time_open);
+          this.labelsFullYearGraphX.push(obj.time_open);
           return averageLastYear;
         });
         // calc the average with FIAT rate
@@ -204,8 +213,8 @@ export class GraphicDashboardCoinComponent implements OnInit {
           this.dataAverageArrayGraph,
           dataAverageArrayLastYearGraph,
           dataAverageArrayLastTwoYearsGraph,
-          labelsGraphX,
-          labelsFullYearGraphX
+          this.labelsGraphX,
+          this.labelsFullYearGraphX
         );
       },
       (error) => {
@@ -240,7 +249,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
     this.chartCoin = new Chart('canvasDashboardCoin', {
       type: 'line',
       data: {
-        labels: labelsFullYearGraphX,
+        labels,
         datasets: [
           {
             label: `${this.symbol}'20`,
