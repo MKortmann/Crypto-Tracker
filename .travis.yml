@@ -15,9 +15,9 @@ before script:
 
 script:
   - echo $TRAVIS_COMMIT
-  - echo $
+  - echo $CI_COMMIT_SHORT_SHA
   - ng lint
   - ng test --watch=false
   - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/"
-  - sed -i "s/%%VERSION%%/$CI_COMMIT_SHORT_SHA/" ./index.html
+  - sed -i "s/%%version%%/$TRAVIS_COMMIT/g" ./components/footer/footer.component.ts
   - ngh --dir dist/crypto-tracker --no-silent
