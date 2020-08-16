@@ -105,8 +105,8 @@ export class GraphicDashboardTickersComponent implements OnInit {
         this.valueAverageAnnotation =
           this.valueAverageAnnotation / this.labels.length;
 
-        const volume24h = res.map((item) => item.timestamp);
-        const marketCap = res.map((item) => item.marketCap);
+        const volume24h = res.map((item) => item.volume_24h);
+        const marketCap = res.map((item) => item.market_cap);
         if (!update) {
           this.plotGraph(this.labels, price, volume24h, marketCap);
         } else {
@@ -135,22 +135,27 @@ export class GraphicDashboardTickersComponent implements OnInit {
             label: `${this.symbol}-24h`,
             data: price,
             borderColor: '#9BC53D',
-            fill: false,
+            fill: true,
             pointRadius: 3,
             pointHoverBorderColor: 'red',
             pointHoverRadius: 10,
             pointHoverBorderWidth: 7,
+            hidden: false,
           },
-          // {
-          //   data: volume24h,
-          //   borderColor: 'rgba(0, 255, 0, 1)',
-          //   fill: false,
-          // },
-          // {
-          //   data: marketCap,
-          //   borderColor: 'rgba(0, 0, 255, 1)',
-          //   fill: false,
-          // },
+          {
+            label: `Volume-24h`,
+            data: volume24h,
+            borderColor: 'rgba(0, 255, 0, 1)',
+            fill: true,
+            hidden: true,
+          },
+          {
+            label: `MarketCap-24h`,
+            data: marketCap,
+            borderColor: 'rgba(0, 0, 255, 1)',
+            fill: false,
+            hidden: true,
+          },
         ],
       },
       options: this.options,
