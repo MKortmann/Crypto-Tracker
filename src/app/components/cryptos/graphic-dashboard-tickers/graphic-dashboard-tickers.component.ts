@@ -46,6 +46,10 @@ export class GraphicDashboardTickersComponent implements OnInit {
   ngOnInit(): void {
     // localStorage Check the selectedExchange
     this.selectedExchange = localStorage.getItem('selectedExchange');
+    if (localStorage.getItem('coinName') !== null) {
+      this.coinName = localStorage.getItem('coinName');
+      this.symbol = this.coinName.split('-')[0];
+    }
 
     this.exchangeService.onSelectedMoneyChange.subscribe((res) => {
       this.selectedExchange = res;

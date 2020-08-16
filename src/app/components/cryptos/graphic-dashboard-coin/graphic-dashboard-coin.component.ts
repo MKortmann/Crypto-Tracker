@@ -82,6 +82,10 @@ export class GraphicDashboardCoinComponent implements OnInit {
     // localStorage Check the selectedExchange
     this.selectedExchange = localStorage.getItem('selectedExchange');
     this.expandGraph = JSON.parse(localStorage.getItem('expandGraph'));
+    if (localStorage.getItem('coinName') !== null) {
+      this.coinName = localStorage.getItem('coinName');
+      this.symbol = this.coinName.split('-')[0];
+    }
 
     this.exchangeService.getMoney('USD').subscribe(
       (res) => {

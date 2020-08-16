@@ -23,6 +23,13 @@ export class CardDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // localStorage
+    if (localStorage.getItem('coinName') !== null) {
+      this.symbol = localStorage
+        .getItem('coinName')
+        .split('-')[0]
+        .toUpperCase();
+    }
     // filling with values
     this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
       this.data = [...res.data];
@@ -62,5 +69,7 @@ export class CardDashboardComponent implements OnInit {
       coinID = 'bsv-bitcoin-sv';
     }
     this.coinPaprikaService.selectedCoinById(coinID);
+
+    localStorage.setItem('coinName', coinID);
   }
 }
