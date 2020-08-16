@@ -19,5 +19,5 @@ script:
   - ng lint
   - ng test --watch=false
   - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/"
-  - sed -i "s/%%version%%/$TRAVIS_COMMIT/g" ./components/footer/footer.component.ts
+  - sed -i "s/%%version%%/$TRAVIS_COMMIT/g" ./dist/crypto-tracker/index.html
   - ngh --dir dist/crypto-tracker --no-silent
