@@ -1,3 +1,5 @@
+import { ChartModule } from 'primeng/chart';
+
 export const options = {
   maintainAspectRatio: false,
   drawTime: 'afterDatasetsDraw',
@@ -40,6 +42,11 @@ export const options = {
     },
   },
   legend: {
+    // onClick: (evt, item) => {
+    //   console.log('legend onClick', evt, item);
+    //   item.hidden = !item.hidden;
+    //   return
+    // },
     display: true,
     labels: {
       fontColor: '#9bc53d',

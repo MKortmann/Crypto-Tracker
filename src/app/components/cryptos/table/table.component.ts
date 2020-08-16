@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CoinLoreService } from '../../../services/coinLore.service';
-
 import { Coin } from '../../../models/Coin';
 
-import { ExchangeService } from '../../../services/exchange.service';
-
 import { TranslateService } from '@ngx-translate/core';
+import { ExchangeService } from '../../../services/exchange.service';
+import { CoinPaprikaService } from '../../../services/coin-paprika.service';
+import { CoinLoreService } from '../../../services/coinLore.service';
 
 import { SelectItem } from 'primeng/api';
-
-import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 
 @Component({
   selector: 'app-table',

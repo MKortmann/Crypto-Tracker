@@ -52,6 +52,7 @@ import { ExchangesComponent } from './components/exchanges/exchanges.component';
 import { NewsComponent } from './components/news/news.component';
 
 import { CardDashboardGlobalComponent } from './components/cryptos/card-dashboard-global/card-dashboard-global.component';
+import { TableExchangesComponent } from './components/exchanges/table-exchanges/table-exchanges.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { CardDashboardGlobalComponent } from './components/cryptos/card-dashboar
     GraphicDashboardTickersComponent,
     ExchangesComponent,
     NewsComponent,
+    TableExchangesComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

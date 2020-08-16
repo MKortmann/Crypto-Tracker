@@ -129,6 +129,8 @@ export class GraphicDashboardTickersComponent implements OnInit {
       this.chartTickers.destroy();
     }
 
+    // let legendClick = Chart.defaults.global.legend.onClick;
+
     this.chartTickers = new Chart('canvasTickers', {
       type: 'line',
       data: {
