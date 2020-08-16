@@ -110,7 +110,10 @@ export class GraphicDashboardTickersComponent implements OnInit {
         if (!update) {
           this.plotGraph(this.labels, price, volume24h, marketCap);
         } else {
+          // updating all the graphs
           this.chartTickers.data.datasets[0].data = price;
+          this.chartTickers.data.datasets[1].data = volume24h;
+          this.chartTickers.data.datasets[2].data = marketCap;
           this.chartTickers.data.labels = this.labels;
           this.chartTickers.update();
         }
