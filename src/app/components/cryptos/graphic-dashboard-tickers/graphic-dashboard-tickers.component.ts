@@ -109,7 +109,7 @@ export class GraphicDashboardTickersComponent implements OnInit {
         this.labels = res.map((item) => item.timestamp);
         const price = res.map((item) => {
           this.valueAverageAnnotation += item.price * this.selectRate;
-          return item.price * this.selectRate;
+          return (item.price * this.selectRate).toFixed(2);
         });
         this.valueAverageAnnotation =
           this.valueAverageAnnotation / this.labels.length;
