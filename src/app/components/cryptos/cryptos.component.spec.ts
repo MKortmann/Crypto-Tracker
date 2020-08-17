@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CryptosComponent } from './cryptos.component';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
+
+import { HttpClient, HttpHandler } from '@angular/common/http';
 // import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('CryptosComponent', () => {
@@ -11,7 +13,7 @@ describe('CryptosComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot()],
-      providers: [TranslateService],
+      providers: [TranslateService, HttpClient, HttpHandler],
       declarations: [CryptosComponent],
       // schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
