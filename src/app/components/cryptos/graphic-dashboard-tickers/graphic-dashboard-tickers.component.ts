@@ -32,6 +32,7 @@ export class GraphicDashboardTickersComponent implements OnInit {
   labels = ['january', 'february', 'march'];
   data = [30, 60, 100];
   selectedExchange = 'USD';
+  selectRate = 1;
   valueAverageAnnotation = 0;
 
   coinName = 'btc-bitcoin';
@@ -44,15 +45,19 @@ export class GraphicDashboardTickersComponent implements OnInit {
   startDateStr: string;
 
   ngOnInit(): void {
-    // localStorage Check the selectedExchange
-    this.selectedExchange = localStorage.getItem('selectedExchange');
+    if (localStorage.getItem('selectRate') !== null) {
+      this.selectRate = JSON.parse(localStorage.getItem('selectRate'));
+      this.selectedExchange = localStorage.getItem('selectedExchange');
+    }
+
     if (localStorage.getItem('coinName') !== null) {
       this.coinName = localStorage.getItem('coinName');
       this.symbol = this.coinName.split('-')[0];
     }
 
     this.exchangeService.onSelectedMoneyChange.subscribe((res) => {
-      this.selectedExchange = res;
+      this.selectedExchange = res[0];
+      this.selectRate = res[1];
       this.updateUrl();
     });
 
@@ -103,8 +108,8 @@ export class GraphicDashboardTickersComponent implements OnInit {
         this.labels = [];
         this.labels = res.map((item) => item.timestamp);
         const price = res.map((item) => {
-          this.valueAverageAnnotation += parseFloat(item.price);
-          return item.price;
+          this.valueAverageAnnotation += item.price * this.selectRate;
+          return item.price * this.selectRate;
         });
         this.valueAverageAnnotation =
           this.valueAverageAnnotation / this.labels.length;

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ExchangeService {
   exchangeUrl = 'https://api.exchangeratesapi.io/';
-  money: any;
+  money: string;
 
   public onSelectedMoneyChange: EventEmitter<any> = new EventEmitter();
 
@@ -20,8 +20,8 @@ export class ExchangeService {
     return this.http.get<any>(`${this.exchangeUrl}latest?base=${base}`);
   }
 
-  changeMoney(money: string) {
+  changeMoney(money: string, selectRate: number) {
     this.money = money;
-    this.onSelectedMoneyChange.emit(money);
+    this.onSelectedMoneyChange.emit([money, selectRate]);
   }
 }

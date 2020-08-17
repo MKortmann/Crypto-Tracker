@@ -142,7 +142,8 @@ export class GraphicDashboardCoinComponent implements OnInit {
     this.selectRate = event.value;
     this.fetchDataToPlot(this.url);
     localStorage.setItem('selectedExchange', this.selectedExchange);
-    this.exchangeService.changeMoney(this.selectedExchange);
+    localStorage.setItem('selectRate', JSON.stringify(this.selectRate));
+    this.exchangeService.changeMoney(this.selectedExchange, this.selectRate);
   }
 
   setURL() {
