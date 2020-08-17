@@ -10,11 +10,19 @@
 </ng-template>
 
 <div class="graphButtons">
+  <p-dropdown
+    ngDefaultControl
+    [options]="exchanges"
+    (onChange)="selection($event, dd)"
+    [(ngModel)]="selectRate"
+    name="selectRate"
+    #dd
+  ></p-dropdown>
   <button
     pButton
     type="button"
     label="{{ label }}"
-    class="p-button-outlined p-button-rounded p-button-sm"
+    class="p-button-secondary p-button-outlined p-button-sm"
     (click)="switchGraphs()"
   ></button>
 </div>

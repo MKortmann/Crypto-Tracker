@@ -8,7 +8,15 @@
 }
 
 .graphButtons {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin: $es-padding;
   cursor: pointer;
+
+  p-dropdown {
+    // border: 1px solid rgb(33, 150, 243);
+    // box-shadow: none;
+    border-radius: 3px;
+    margin-right: $s-padding;
+  }
 }

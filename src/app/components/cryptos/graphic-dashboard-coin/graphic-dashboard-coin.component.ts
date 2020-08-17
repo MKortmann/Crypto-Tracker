@@ -45,7 +45,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
   exchanges: SelectItem[];
   selectedExchange: any = 'USD';
   selectRate = 1;
-  selectRateEUR: any;
   todayDate = new Date();
   url: string;
   // hash = hash;
@@ -87,23 +86,11 @@ export class GraphicDashboardCoinComponent implements OnInit {
       this.symbol = this.coinName.split('-')[0];
     }
 
-    this.exchangeService.getMoney('USD').subscribe(
-      (res) => {
-        const array = Object.entries(res.rates);
-        this.exchanges = array.map(([lat, lng]) => ({
-          label: lat,
-          value: lng,
-        }));
-
-        // checkLocalStorage
-        if (this.selectedExchange !== null) {
-          this.selectRate = res.rates[this.selectedExchange];
-        } else {
-          this.selectedExchange = 'USD';
-        }
-      },
-      (error) => console.log(error)
-    );
+    this.exchangeService.onSelectedMoneyChange.subscribe((res) => {
+      this.selectedExchange = res[0];
+      this.selectRate = res[1];
+      this.fetchDataToPlot(this.url);
+    });
 
     this.url = `https://api.coinpaprika.com/v1/coins/${this.coinName}/ohlcv/historical?start=`;
 
@@ -134,16 +121,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
       this.coinName = nameTemp[1];
     }
     this.symbol = nameTemp[0];
-  }
-
-  // change the coin, so we fetch the data again!
-  selection(event, dd) {
-    this.selectedExchange = dd.selectedOption.label;
-    this.selectRate = event.value;
-    this.fetchDataToPlot(this.url);
-    localStorage.setItem('selectedExchange', this.selectedExchange);
-    localStorage.setItem('selectRate', JSON.stringify(this.selectRate));
-    this.exchangeService.changeMoney(this.selectedExchange, this.selectRate);
   }
 
   setURL() {

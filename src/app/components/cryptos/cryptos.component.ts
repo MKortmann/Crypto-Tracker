@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
+import { ExchangeService } from '../../services/exchange.service';
+import { SelectItem } from 'primeng/api';
+
 @Component({
   selector: 'app-cryptos',
   templateUrl: './cryptos.component.html',
@@ -9,9 +12,34 @@ import { TranslateService } from '@ngx-translate/core';
 export class CryptosComponent implements OnInit {
   public visible = true;
   label = '24h';
-  constructor(private translate: TranslateService) {}
+  selectedExchange: any = 'USD';
+  selectRate = 1;
+  exchanges: SelectItem[];
 
-  ngOnInit(): void {}
+  constructor(
+    private translate: TranslateService,
+    private exchangeService: ExchangeService
+  ) {}
+
+  ngOnInit(): void {
+    this.exchangeService.getMoney('USD').subscribe(
+      (res) => {
+        const array = Object.entries(res.rates);
+        this.exchanges = array.map(([lat, lng]) => ({
+          label: lat,
+          value: lng,
+        }));
+
+        // checkLocalStorage
+        if (this.selectedExchange !== null) {
+          this.selectRate = res.rates[this.selectedExchange];
+        } else {
+          this.selectedExchange = 'USD';
+        }
+      },
+      (error) => console.log(error)
+    );
+  }
 
   switchGraphs() {
     this.visible = !this.visible;
@@ -20,5 +48,13 @@ export class CryptosComponent implements OnInit {
     } else {
       this.label = '24h';
     }
+  }
+  // change the coin, so we fetch the data again!
+  selection(event, dd) {
+    this.selectedExchange = dd.selectedOption.label;
+    this.selectRate = event.value;
+    localStorage.setItem('selectedExchange', this.selectedExchange);
+    localStorage.setItem('selectRate', JSON.stringify(this.selectRate));
+    this.exchangeService.changeMoney(this.selectedExchange, this.selectRate);
   }
 }
