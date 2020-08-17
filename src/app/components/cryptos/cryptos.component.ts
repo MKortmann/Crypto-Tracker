@@ -22,6 +22,10 @@ export class CryptosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // if (localStorage.getItem('selectedExchange') !== null) {
+    //   this.selectedExchange = localStorage.getItem('selectedExchange');
+    // }
+
     this.exchangeService.getMoney('USD').subscribe(
       (res) => {
         const array = Object.entries(res.rates);
@@ -29,12 +33,9 @@ export class CryptosComponent implements OnInit {
           label: lat,
           value: lng,
         }));
-
         // checkLocalStorage
         if (this.selectedExchange !== null) {
-          this.selectRate = res.rates[this.selectedExchange];
-        } else {
-          this.selectedExchange = 'USD';
+          this.selectRate = JSON.parse(localStorage.getItem('selectRate'));
         }
       },
       (error) => console.log(error)

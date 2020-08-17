@@ -14,11 +14,11 @@ before script:
   - npm install -g angular-cli-ghpages
 
 script:
-  - echo $TRAVIS_COMMIT
-  - echo $CI_COMMIT_SHORT_SHA
   - ng lint
   - ng test --watch=false
   - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/"
+  - echo $TRAVIS_COMMIT
+  - echo $CI_COMMIT_SHORT_SHA
   - sed -i "s/%%VERSION%%/$TRAVIS_COMMIT/g" ./dist/crypto-tracker/index.html
   - echo "$TRAVIS_COMMIT" >> ./dist/crypto-tracker/index.html
   - ngh --dir dist/crypto-tracker --no-silent
