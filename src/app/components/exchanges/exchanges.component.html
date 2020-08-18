@@ -1,2 +1,4 @@
-<h1>Top Crypto Exchanges By 24 Hour Volume</h1>
-<app-table-exchanges></app-table-exchanges>
+<h1>Exchanges By Rank (Total: {{ exchangesTotalNumber }})</h1>
+<app-table-exchanges
+  (totalExchangesMessageEvent)="receivedMessageFromChild($event)"
+></app-table-exchanges>

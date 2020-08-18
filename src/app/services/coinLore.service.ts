@@ -14,10 +14,16 @@ export class CoinLoreService {
 
   private readonly coinLoreGlobalUrl = 'https://api.coinlore.net/api/global/';
   private readonly coinLoreUrl = 'https://api.coinlore.net/api/tickers/';
+  private readonly coinLoreGetAllExchangesUrl =
+    'https://api.coinlore.net/api/exchanges/';
 
   constructor(private http: HttpClient) {
     this.getGlobal();
   }
+
+  // public getAllExchanges(): Observable<any> {
+  //   return this.http.get<any>('https://api.coinlore.net/api/exchanges/');
+  // }
 
   newData(newData) {
     this.data.next(newData);

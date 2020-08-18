@@ -1,175 +1,174 @@
-<div class="p-grid">
-  <p-table
-    [value]="coins"
-    [paginator]="true"
-    [rows]="8"
-    [rowHover]="true"
-    [rowsPerPageOptions]="[5, 10, 25, 50, 100, 200]"
-    [showCurrentPageReport]="false"
-    #dt
-  >
-    <ng-template pTemplate="header">
-      <tr>
-        <th
-          pSortableColumn="rank"
-          class="hideBelow800"
-          [style]="{ width: '80px' }"
-        >
-          {{ 'TRANSLATE.HOME.TABLE.RANK' | translate
-          }}<p-sortIcon field="rank"></p-sortIcon>
-        </th>
-        <th [style]="{ width: '80px' }">
-          {{ 'TRANSLATE.HOME.TABLE.SYMBOL' | translate }}
-        </th>
-        <th>
-          <div class="container">
-            <input
-              pInputText
-              type="text"
-              (input)="dt.filter($event.target.value, 'name', 'startsWith')"
-              placeholder="search by name"
-              class="ui-column-filter"
-            />
-          </div>
-        </th>
-        <th class="hideBelow1200">
-          {{ 'TRANSLATE.HOME.TABLE.PRICE' | translate }}
-        </th>
-        <th class="hideBelow1200">
-          {{ 'TRANSLATE.HOME.TABLE.PRICE_EUR' | translate }}
-        </th>
-        <th>
-          <div class="container">
-            <p-dropdown
-              ngDefaultControl
-              [options]="exchanges"
-              (onChange)="selection($event, dd)"
-              [(ngModel)]="selectRate"
-              name="selectRate"
-              #dd
-              [style]="{ width: '100%', 'min-width': '100%' }"
-            ></p-dropdown>
-          </div>
-        </th>
-        <th class="hideBelow1500">
-          {{ 'TRANSLATE.HOME.TABLE.PRICE_BTC' | translate }}
-        </th>
-        <th class="hideBelow800">
-          <span>
-            <i class="material-icons">
-              swap_vert
-            </i>
-            1h
-          </span>
-        </th>
-        <th class="hideBelow800">
-          <span>
-            <i class="material-icons">
-              swap_vert
-            </i>
-            24h
-          </span>
-        </th>
-        <th class="hideBelow800">
-          <span>
-            <i class="material-icons">
-              swap_vert
-            </i>
-            7d
-          </span>
-        </th>
-        <th class="hideBelow1200">
-          {{ 'TRANSLATE.HOME.TABLE.MARKET_CAP' | translate }}
-        </th>
-        <th class="hideBelow1200">
-          {{ 'TRANSLATE.HOME.TABLE.VOLUME_24H' | translate }}
-        </th>
-        <!-- <th>{{ "TRANSLATE.HOME.TABLE.VOLUME_24HA" | translate }}</th> -->
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-coin>
-      <tr
-        class="ui-selectable-row"
-        (click)="selectedCoin($event)"
-        [class.selected]="coin.symbol === symbol"
+<p-table
+  [value]="coins"
+  [paginator]="true"
+  [rows]="8"
+  [rowHover]="true"
+  [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+  [showCurrentPageReport]="false"
+  #dt
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th
+        pSortableColumn="rank"
+        class="hideBelow800"
+        [style]="{ width: '80px' }"
       >
-        <td class="hideBelow800" [style]="{ width: '80px' }">
-          {{ coin.rank }}
-        </td>
-        <td [style]="{ width: '80px' }">
-          <img
-            src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png"
-            alt="{{ coin.symbol | lowercase }}"
+        {{ 'TRANSLATE.HOME.TABLE.RANK' | translate
+        }}<p-sortIcon field="rank"></p-sortIcon>
+      </th>
+      <th [style]="{ width: '80px' }">
+        {{ 'TRANSLATE.HOME.TABLE.SYMBOL' | translate }}
+      </th>
+      <th>
+        <div class="container">
+          <input
+            pInputText
+            type="text"
+            (input)="dt.filter($event.target.value, 'name', 'startsWith')"
+            placeholder="search by name"
+            class="ui-column-filter"
           />
+        </div>
+      </th>
+      <th class="hideBelow1200">
+        {{ 'TRANSLATE.HOME.TABLE.PRICE' | translate }}
+      </th>
+      <th class="hideBelow1200">
+        {{ 'TRANSLATE.HOME.TABLE.PRICE_EUR' | translate }}
+      </th>
+      <th>
+        <div class="container">
+          <p-dropdown
+            ngDefaultControl
+            [options]="exchanges"
+            (onChange)="selection($event, dd)"
+            [(ngModel)]="selectRate"
+            name="selectRate"
+            #dd
+            [style]="{ width: '100%', 'min-width': '100%' }"
+          ></p-dropdown>
+        </div>
+      </th>
+      <th class="hideBelow1500">
+        {{ 'TRANSLATE.HOME.TABLE.PRICE_BTC' | translate }}
+      </th>
+      <th class="hideBelow800">
+        <span>
+          <i class="material-icons">
+            swap_vert
+          </i>
+          1h
+        </span>
+      </th>
+      <th class="hideBelow800">
+        <span>
+          <i class="material-icons">
+            swap_vert
+          </i>
+          24h
+        </span>
+      </th>
+      <th class="hideBelow800">
+        <span>
+          <i class="material-icons">
+            swap_vert
+          </i>
+          7d
+        </span>
+      </th>
+      <th class="hideBelow1200">
+        {{ 'TRANSLATE.HOME.TABLE.MARKET_CAP' | translate }}
+      </th>
+      <th class="hideBelow1200">
+        {{ 'TRANSLATE.HOME.TABLE.VOLUME_24H' | translate }}
+      </th>
+      <!-- <th>{{ "TRANSLATE.HOME.TABLE.VOLUME_24HA" | translate }}</th> -->
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-coin>
+    <tr
+      class="ui-selectable-row"
+      (click)="selectedCoin($event)"
+      [class.selected]="coin.symbol === symbol"
+    >
+      <td class="hideBelow800" [style]="{ width: '80px' }">
+        {{ coin.rank }}
+      </td>
+      <td [style]="{ width: '80px' }">
+        <img
+          src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png"
+          alt="{{ coin.symbol | lowercase }}"
+        />
+      </td>
+      <td>{{ coin.name }}</td>
+      <td class="hideBelow1200">{{ coin.price_usd | currency: 'USD' }}</td>
+      <td class="hideBelow1200">
+        {{ coin.price_usd * selectRateEUR | currency: 'EUR' }}
+      </td>
+      <td>
+        {{ coin.price_usd * selectRate | currency: selectedExchange }}
+      </td>
+      <td class="hideBelow1500">{{ coin.price_btc }}</td>
+      <!-- change 1h -->
+      <div
+        *ngIf="coin.percent_change_1h > 0; then thenBlock1h; else elseBlock1h"
+      ></div>
+      <ng-template #thenBlock1h>
+        <td style="color: green;" class="hideBelow800">
+          <i class="material-icons">trending_up</i>
+          {{ coin.percent_change_1h }} %
         </td>
-        <td>{{ coin.name }}</td>
-        <td class="hideBelow1200">{{ coin.price_usd | currency: 'USD' }}</td>
-        <td class="hideBelow1200">
-          {{ coin.price_usd * selectRateEUR | currency: 'EUR' }}
+      </ng-template>
+      <ng-template #elseBlock1h>
+        <td style="color: red;" class="hideBelow800">
+          <i class="material-icons">trending_down</i>
+          {{ coin.percent_change_1h }} %
         </td>
-        <td>
-          {{ coin.price_usd * selectRate | currency: selectedExchange }}
+      </ng-template>
+      <!-- change 24h -->
+      <div
+        *ngIf="
+          coin.percent_change_24h > 0;
+          then thenBlock24h;
+          else elseBlock24h
+        "
+      ></div>
+      <ng-template #thenBlock24h>
+        <td style="color: green;" class="hideBelow800">
+          <i class="material-icons">trending_up</i>
+          {{ coin.percent_change_24h }} %
         </td>
-        <td class="hideBelow1500">{{ coin.price_btc }}</td>
-        <!-- change 1h -->
-        <div
-          *ngIf="coin.percent_change_1h > 0; then thenBlock1h; else elseBlock1h"
-        ></div>
-        <ng-template #thenBlock1h>
-          <td style="color: green;" class="hideBelow800">
-            <i class="material-icons">trending_up</i>
-            {{ coin.percent_change_1h }} %
-          </td>
-        </ng-template>
-        <ng-template #elseBlock1h>
-          <td style="color: red;" class="hideBelow800">
-            <i class="material-icons">trending_down</i>
-            {{ coin.percent_change_1h }} %
-          </td>
-        </ng-template>
-        <!-- change 24h -->
-        <div
-          *ngIf="
-            coin.percent_change_24h > 0;
-            then thenBlock24h;
-            else elseBlock24h
-          "
-        ></div>
-        <ng-template #thenBlock24h>
-          <td style="color: green;" class="hideBelow800">
-            <i class="material-icons">trending_up</i>
-            {{ coin.percent_change_24h }} %
-          </td>
-        </ng-template>
-        <ng-template #elseBlock24h>
-          <td style="color: red;" class="hideBelow800">
-            <i class="material-icons">trending_down</i>
-            {{ coin.percent_change_24h }} %
-          </td>
-        </ng-template>
-        <!-- change 7 Days -->
-        <div
-          *ngIf="coin.percent_change_7d > 0; then thenBlock7d; else elseBlock7d"
-        ></div>
-        <ng-template #thenBlock7d>
-          <td style="color: green;" class="hideBelow800">
-            <i class="material-icons">trending_up</i>
-            {{ coin.percent_change_7d }} %
-          </td>
-        </ng-template>
-        <ng-template #elseBlock7d>
-          <td style="color: red;" class="hideBelow800">
-            <i class="material-icons">trending_down</i>
-            {{ coin.percent_change_7d }} %
-          </td>
-        </ng-template>
-        <td class="hideBelow1200">
-          {{ coin.market_cap_usd | formatCurrency }}
+      </ng-template>
+      <ng-template #elseBlock24h>
+        <td style="color: red;" class="hideBelow800">
+          <i class="material-icons">trending_down</i>
+          {{ coin.percent_change_24h }} %
         </td>
-        <td class="hideBelow1200">{{ coin.volume24 | formatCurrency }}</td>
-      </tr>
-    </ng-template>
-  </p-table>
-</div>
+      </ng-template>
+      <!-- change 7 Days -->
+      <div
+        *ngIf="coin.percent_change_7d > 0; then thenBlock7d; else elseBlock7d"
+      ></div>
+      <ng-template #thenBlock7d>
+        <td style="color: green;" class="hideBelow800">
+          <i class="material-icons">trending_up</i>
+          {{ coin.percent_change_7d }} %
+        </td>
+      </ng-template>
+      <ng-template #elseBlock7d>
+        <td style="color: red;" class="hideBelow800">
+          <i class="material-icons">trending_down</i>
+          {{ coin.percent_change_7d }} %
+        </td>
+      </ng-template>
+      <td class="hideBelow1200">
+        {{ coin.market_cap_usd | formatCurrency }}
+      </td>
+      <td class="hideBelow1200">{{ coin.volume24 | formatCurrency }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
 <br />
 <br />

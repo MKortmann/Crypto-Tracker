@@ -1,0 +1,48 @@
+// import global styling
+@import '../../../../styles';
+
+th {
+  font-size: $ms-fontSize;
+}
+
+td {
+  font-size: $ss-fontSize;
+}
+
+td {
+  li,
+  ul {
+    text-decoration: none;
+    list-style-type: none;
+    cursor: pointer;
+  }
+}
+
+input {
+  font-size: 15px;
+  text-align: left;
+  vertical-align: left;
+  padding: 0 !important;
+  margin: 0;
+  /* max-width: 160px; */
+  max-width: 120px;
+}
+
+div.container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+:host ::ng-deep th,
+:host ::ng-deep tr,
+:host ::ng-deep td {
+  padding: 0 !important;
+  padding-left: $s-padding !important;
+  margin: 0 !important;
+}
+
+:host ::ng-deep .p-inputtext {
+  padding: $es-padding !important;
+  padding-left: $s-padding !important;
+  margin: 0 !important;
+}

@@ -18,6 +18,10 @@ export class CoinPaprikaService {
   private readonly getExchangeForCoin =
     'https://api.coinpaprika.com/v1/coins/btc-bitcoin/markets';
 
+  // get all exchanges
+  private readonly getAllExchangesUrl =
+    'https://api.coinpaprika.com/v1/exchanges';
+
   private readonly getOHLCFullDayLatest =
     'https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/latest';
 
@@ -45,8 +49,12 @@ export class CoinPaprikaService {
     this.onSelectedCoinChange.emit(value);
   }
 
-  getData(url): Observable<any> {
+  public getData(url): Observable<any> {
     return this.http.get<any>(url);
+  }
+
+  public getAllExchanges(): Observable<any> {
+    return this.http.get<any>(this.getAllExchangesUrl);
   }
 
   // here the url1 it the data for the actual year

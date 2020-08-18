@@ -1,0 +1,8 @@
+// import global styling
+@import '../../../styles';
+
+@media screen and (max-width: $ss-mediaQueriesWidth) {
+  h1 {
+    font-size: $ms-fontSize;
+  }
+}

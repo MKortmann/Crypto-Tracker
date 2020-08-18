@@ -28,6 +28,7 @@ $bb-padding: 30px;
 
 $es-fontSize: 10px;
 $ss-fontSize: 15px;
+$ms-fontSize: 18px;
 $m-fontSize: 20px;
 
 // color for hover
@@ -86,6 +87,11 @@ $bb-mediaQueriesWidth: 1500px;
 
 @media screen and (max-width: $m-mediaQueriesWidth) {
   .hideBelow800 {
+    display: none !important;
+  }
+}
+@media screen and (max-width: $ss-mediaQueriesWidth) {
+  .hideBelow640 {
     display: none !important;
   }
 }

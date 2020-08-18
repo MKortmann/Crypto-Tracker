@@ -35,6 +35,7 @@ import { TableComponent } from './components/cryptos/table/table.component';
 
 import { CardDashboardComponent } from './components/cryptos/card-dashboard/card-dashboard.component';
 import { FormatCurrencyPipe } from './tools/format-currency.pipe';
+import { FormatUrlPipe } from './tools/format-url.pipe';
 
 import { ButtonModule } from 'primeng/button';
 
@@ -68,6 +69,7 @@ import { TableExchangesComponent } from './components/exchanges/table-exchanges/
     CardDashboardGlobalComponent,
     CardDashboardComponent,
     FormatCurrencyPipe,
+    FormatUrlPipe,
     SubNavComponent,
     GraphicDashboardCoinComponent,
     GraphicDashboardTickersComponent,
