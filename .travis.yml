@@ -1,26 +1,24 @@
-language: node_js
-node_js:
-  - '10'
-
-cache: npm
-
+---
+addons:
+  chrome: stable
+'before script':
+  - 'npm install -g @angular/cli'
+  - 'npm install -g angular-cli-ghpages'
 branches:
   - master
   - gh-pages
-
-addons:
-  chrome: stable
-
-before script:
-  - npm install -g @angular/cli
-  - npm install -g angular-cli-ghpages
-
+cache:
+  directories:
+    - $HOME/assets
+language: node_js
+node_js:
+  - '10'
 script:
-  - ng lint
-  - ng test --watch=false
-  - ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/"
-  - echo $TRAVIS_COMMIT
-  - echo $CI_COMMIT_SHORT_SHA
-  - sed -i "s/%%VERSION%%/$TRAVIS_COMMIT/g" ./dist/crypto-tracker/index.html
-  - echo "$TRAVIS_COMMIT" >> ./dist/crypto-tracker/index.html
-  - ngh --dir dist/crypto-tracker --no-silent
+  - 'ng lint'
+  - 'ng test --watch=false'
+  - 'ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/"'
+  - 'echo $TRAVIS_COMMIT'
+  - 'echo $CI_COMMIT_SHORT_SHA'
+  - 'sed -i "s/%%VERSION%%/$TRAVIS_COMMIT/g" ./dist/crypto-tracker/index.html'
+  - 'echo "$TRAVIS_COMMIT" >> ./dist/crypto-tracker/index.html'
+  - 'ngh --dir dist/crypto-tracker --no-silent'
