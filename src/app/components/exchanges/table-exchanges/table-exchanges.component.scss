@@ -1,6 +1,10 @@
 // import global styling
 @import '../../../../styles';
 
+h2 {
+  position: absolute;
+}
+
 th {
   font-size: $ms-fontSize;
 }
@@ -36,8 +40,8 @@ div.container {
 :host ::ng-deep th,
 :host ::ng-deep tr,
 :host ::ng-deep td {
-  padding: 0 !important;
-  padding-left: $s-padding !important;
+  // padding: 0 !important;
+  padding: $s-padding !important;
   margin: 0 !important;
 }
 
