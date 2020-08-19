@@ -50,7 +50,7 @@
       <th class="hideBelow1500">
         {{ 'TRANSLATE.HOME.TABLE.PRICE_BTC' | translate }}
       </th>
-      <th class="hideBelow800">
+      <th [style]="{ width: '115px' }">
         <span>
           <i class="material-icons">
             swap_vert
@@ -112,13 +112,13 @@
         *ngIf="coin.percent_change_1h > 0; then thenBlock1h; else elseBlock1h"
       ></div>
       <ng-template #thenBlock1h>
-        <td style="color: green;" class="hideBelow800">
+        <td style="color: green;">
           <i class="material-icons">trending_up</i>
           {{ coin.percent_change_1h }} %
         </td>
       </ng-template>
       <ng-template #elseBlock1h>
-        <td style="color: red;" class="hideBelow800">
+        <td style="color: red;">
           <i class="material-icons">trending_down</i>
           {{ coin.percent_change_1h }} %
         </td>

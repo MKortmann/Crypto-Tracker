@@ -43,7 +43,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
   end = new Date().toISOString().split('T')[0];
   placeholder: any;
   exchanges: SelectItem[];
-  selectedExchange: any = 'USD';
+  selectedExchange = 'USD';
   selectRate = 1;
   todayDate = new Date();
   url: string;
@@ -80,6 +80,9 @@ export class GraphicDashboardCoinComponent implements OnInit {
 
     // localStorage Check the selectedExchange
     this.selectedExchange = localStorage.getItem('selectedExchange');
+    if (this.selectedExchange === undefined) {
+      this.selectedExchange = 'USD';
+    }
     this.expandGraph = JSON.parse(localStorage.getItem('expandGraph'));
     if (localStorage.getItem('coinName') !== null) {
       this.coinName = localStorage.getItem('coinName');
