@@ -52,6 +52,7 @@ export class TableExchangesComponent implements OnInit {
   }
 
   onNavigate(link) {
-    window.location.href = `${link.currentTarget.innerHTML}`;
+    const temp = link.currentTarget.innerHTML.replace(' ', '');
+    window.location.href = `https://${temp}`;
   }
 }
