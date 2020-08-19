@@ -17,9 +17,6 @@
         {{ 'TRANSLATE.HOME.TABLE.RANK' | translate
         }}<p-sortIcon field="rank"></p-sortIcon>
       </th>
-      <th [style]="{ width: '80px' }">
-        {{ 'TRANSLATE.HOME.TABLE.SYMBOL' | translate }}
-      </th>
       <th>
         <div class="container">
           <input
@@ -95,13 +92,13 @@
       <td class="hideBelow800" [style]="{ width: '80px' }">
         {{ coin.rank }}
       </td>
-      <td [style]="{ width: '80px' }">
+      <td>
         <img
           src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png"
           alt="{{ coin.symbol | lowercase }}"
         />
+        {{ coin.name }}
       </td>
-      <td>{{ coin.name }}</td>
       <td class="hideBelow1200">{{ coin.price_usd | currency: 'USD' }}</td>
       <td class="hideBelow1200">
         {{ coin.price_usd * selectRateEUR | currency: 'EUR' }}
