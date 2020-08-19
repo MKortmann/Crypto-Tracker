@@ -30,6 +30,15 @@ export class TableExchangesComponent implements OnInit {
         const noRankedExchanges = [];
         for (const item of res) {
           if (item.adjusted_rank !== null && item.adjusted_rank !== undefined) {
+            if (!item.links) {
+              item.links = { website: 'website missing' };
+            } else if (item.links.website === ' ') {
+              item.links.website = 'website missing';
+            }
+
+            if (item.description === '') {
+              item.description = 'description missing, please check website';
+            }
             rankedExchanges.push(item);
           } else {
             noRankedExchanges.push(item);
