@@ -6,6 +6,13 @@ import { CoinLoreService } from '../../../services/coinLore.service';
 
 import { Exchange } from '../../../models/Exchange';
 
+import { SelectItem } from 'primeng/api';
+
+interface OptionDropDown {
+  name: string;
+  value: number;
+}
+
 @Component({
   selector: 'app-table-exchanges',
   templateUrl: './table-exchanges.component.html',
@@ -17,12 +24,37 @@ export class TableExchangesComponent implements OnInit {
   @Output() totalExchangesMessageEvent = new EventEmitter<number>();
   totalExchanges: number;
 
+  optionsDropDown: SelectItem[];
+  selectedDropDownOption: OptionDropDown;
+  selected = 4;
+  selectedName = 'Websites';
+  switchData = 'exchange.name';
+
   constructor(
     private coinPaprikaService: CoinPaprikaService,
     private coinLoreService: CoinLoreService
   ) {}
 
   ngOnInit(): void {
+    this.optionsDropDown = [
+      {
+        label: 'Vol. 24h',
+        value: 1,
+      },
+      {
+        label: 'Currencies',
+        value: 2,
+      },
+      {
+        label: 'Markets',
+        value: 3,
+      },
+      {
+        label: 'Websites',
+        value: 4,
+      },
+    ];
+
     this.coinPaprikaService.getAllExchanges().subscribe(
       (res) => {
         // necessary to remove exchanges with no rank!
@@ -63,5 +95,12 @@ export class TableExchangesComponent implements OnInit {
   onNavigate(link) {
     const temp = link.currentTarget.innerHTML.replace(' ', '');
     window.location.href = `https://${temp}`;
+  }
+
+  selection(event, dd) {
+    this.selected = event.value;
+    this.selectedName = dd.selectedOption.label;
+    console.log('this.selected', this.selected);
+    console.log('this.selectedName', this.selectedName);
   }
 }

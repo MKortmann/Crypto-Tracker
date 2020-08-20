@@ -95,3 +95,9 @@ $bb-mediaQueriesWidth: 1500px;
     display: none !important;
   }
 }
+
+@media screen and (min-width: $ss-mediaQueriesWidth) {
+  .hideAbove640 {
+    display: none;
+  }
+}
