@@ -119,7 +119,7 @@ export class TableComponent implements OnInit {
 
   selectedCoin(event) {
     // we are passing the coin clicked id in accord to coinPaprika
-    const name = event.target.parentNode.cells[2].innerText;
+    const name = event.target.parentNode.cells[1].innerText.replace(' ', '');
     const symbol = event.target.parentElement.cells[1].firstElementChild.alt;
     let coinID = `${symbol}-${name}`;
     coinID = coinID.replace(' ', '-').toLowerCase();
