@@ -1,7 +1,7 @@
 <p-table
   [value]="exchanges"
   [paginator]="true"
-  [rows]="300"
+  [rows]="15"
   [rowHover]="true"
   [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
   [showCurrentPageReport]="false"
@@ -12,10 +12,12 @@
 >
   <ng-template pTemplate="header">
     <tr>
-      <th [style]="{ width: '60px' }" pSortableColumn="adjusted_rank">
+      <th [style]="{ width: '90px' }" pSortableColumn="adjusted_rank">
         <!-- {{ 'TRANSLATE.HOME.TABLE.RANK' | translate}} -->
         Rank
+        <p-sortIcon field="adjusted_rank"></p-sortIcon>
       </th>
+
       <th class="nameExchange" [style]="{ width: '130px' }">
         <div class="container">
           <input

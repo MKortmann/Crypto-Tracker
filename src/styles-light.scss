@@ -59,3 +59,7 @@ tr:nth-child(even):hover {
   border: 2px solid red;
   border-radius: 2px 2px 2px 2px;
 }
+
+p-sortIcon {
+  filter: brightness(0) invert(0.3);
+}
