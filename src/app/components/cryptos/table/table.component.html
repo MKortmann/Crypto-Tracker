@@ -43,14 +43,22 @@
             [(ngModel)]="selectRate"
             name="selectRate"
             #dd
-            [style]="{ width: '100%', 'min-width': '100%' }"
           ></p-dropdown>
         </div>
+      </th>
+      <th class="hideAbove640">
+        <p-dropdown
+          ngDefaultControl
+          [options]="optionsDropDown"
+          (onChange)="selectionDropDownTH($event, null)"
+          [(ngModel)]="selected"
+          [style]="{ width: '148px' }"
+        ></p-dropdown>
       </th>
       <th class="hideBelow1500">
         {{ 'TRANSLATE.HOME.TABLE.PRICE_BTC' | translate }}
       </th>
-      <th [style]="{ width: '115px' }">
+      <th class="hideBelow640" [style]="{ width: '115px' }">
         <span>
           <i class="material-icons">
             swap_vert
@@ -106,19 +114,97 @@
       <td>
         {{ coin.price_usd * selectRate | currency: selectedExchange }}
       </td>
+      <td class="hideAbove640">
+        <span *ngIf="selected === 1">
+          {{ coin.price_btc }}
+        </span>
+        <span *ngIf="selected === 2">
+          <!-- change 1h -->
+          <div
+            *ngIf="
+              coin.percent_change_1h > 0;
+              then thenBlock1h;
+              else elseBlock1h
+            "
+          ></div>
+          <ng-template #thenBlock1h>
+            <td style="color: green;">
+              <i class="material-icons">trending_up</i>
+              {{ coin.percent_change_1h }} %
+            </td>
+          </ng-template>
+          <ng-template #elseBlock1h>
+            <td style="color: red;">
+              <i class="material-icons">trending_down</i>
+              {{ coin.percent_change_1h }} %
+            </td>
+          </ng-template>
+        </span>
+        <span *ngIf="selected === 3">
+          <!-- change 24h -->
+          <div
+            *ngIf="
+              coin.percent_change_24h > 0;
+              then thenBlock24h;
+              else elseBlock24h
+            "
+          ></div>
+          <ng-template #thenBlock24h>
+            <td style="color: green;">
+              <i class="material-icons">trending_up</i>
+              {{ coin.percent_change_24h }} %
+            </td>
+          </ng-template>
+          <ng-template #elseBlock24h>
+            <td style="color: red;">
+              <i class="material-icons">trending_down</i>
+              {{ coin.percent_change_24h }} %
+            </td>
+          </ng-template>
+        </span>
+        <span *ngIf="selected === 4">
+          <div
+            *ngIf="
+              coin.percent_change_7d > 0;
+              then thenBlock7d;
+              else elseBlock7d
+            "
+          ></div>
+          <ng-template #thenBlock7d>
+            <td style="color: green;">
+              <i class="material-icons">trending_up</i>
+              {{ coin.percent_change_7d }} %
+            </td>
+          </ng-template>
+          <ng-template #elseBlock7d>
+            <td style="color: red;">
+              <i class="material-icons">trending_down</i>
+              {{ coin.percent_change_7d }} %
+            </td>
+          </ng-template>
+        </span>
+        <span *ngIf="selected === 5">
+          {{ coin.market_cap_usd | formatCurrency }}
+        </span>
+        <span *ngIf="selected === 6">
+          <td>
+            {{ coin.volume24 | formatCurrency }}
+          </td></span
+        >
+      </td>
       <td class="hideBelow1500">{{ coin.price_btc }}</td>
       <!-- change 1h -->
       <div
         *ngIf="coin.percent_change_1h > 0; then thenBlock1h; else elseBlock1h"
       ></div>
       <ng-template #thenBlock1h>
-        <td style="color: green;">
+        <td style="color: green;" class="hideBelow1500">
           <i class="material-icons">trending_up</i>
           {{ coin.percent_change_1h }} %
         </td>
       </ng-template>
       <ng-template #elseBlock1h>
-        <td style="color: red;">
+        <td style="color: red;" class="hideBelow1500">
           <i class="material-icons">trending_down</i>
           {{ coin.percent_change_1h }} %
         </td>

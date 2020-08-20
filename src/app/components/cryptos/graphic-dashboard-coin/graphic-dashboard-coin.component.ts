@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 
 import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 
@@ -43,8 +43,8 @@ export class GraphicDashboardCoinComponent implements OnInit {
   end = new Date().toISOString().split('T')[0];
   placeholder: any;
   exchanges: SelectItem[];
-  selectedExchange = 'USD';
-  selectRate = 1;
+  @Input() selectedExchange;
+  @Input() selectRate;
   todayDate = new Date();
   url: string;
   // hash = hash;
@@ -78,11 +78,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
       this.showInSmallScreens = true;
     }
 
-    // localStorage Check the selectedExchange
-    this.selectedExchange = localStorage.getItem('selectedExchange');
-    if (this.selectedExchange === undefined) {
-      this.selectedExchange = 'USD';
-    }
     this.expandGraph = JSON.parse(localStorage.getItem('expandGraph'));
     if (localStorage.getItem('coinName') !== null) {
       this.coinName = localStorage.getItem('coinName');

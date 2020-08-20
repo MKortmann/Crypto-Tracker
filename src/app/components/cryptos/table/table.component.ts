@@ -9,6 +9,11 @@ import { CoinLoreService } from '../../../services/coinLore.service';
 
 import { SelectItem } from 'primeng/api';
 
+interface OptionDropDown {
+  name: string;
+  value: number;
+}
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -22,6 +27,11 @@ export class TableComponent implements OnInit {
   selectRateEUR: any;
   symbol = 'BTC';
 
+  optionsDropDown: SelectItem[];
+  selectedDropDownOption: OptionDropDown;
+  selected = 2;
+  selectedName = '1h';
+
   constructor(
     private coinLoreService: CoinLoreService,
     private translate: TranslateService,
@@ -30,6 +40,33 @@ export class TableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.optionsDropDown = [
+      {
+        label: 'Pr. in BTC',
+        value: 1,
+      },
+      {
+        label: 'Chg. 1h',
+        value: 2,
+      },
+      {
+        label: 'Chg. 24h',
+        value: 3,
+      },
+      {
+        label: 'Chg. 7d',
+        value: 4,
+      },
+      {
+        label: 'Mkt. Cap $',
+        value: 5,
+      },
+      {
+        label: 'Vol. 24h',
+        value: 6,
+      },
+    ];
+
     // get the cryptocurrencies passing the rank number and the limit...
     // the cast here is working just as a trigger
     this.coinLoreService.cast.subscribe((data) => {
@@ -98,5 +135,12 @@ export class TableComponent implements OnInit {
     console.log(dd.selectedOption.label);
     this.selectRate = event.value;
     localStorage.setItem('selectedExchangeTable', this.selectedExchange);
+  }
+
+  selectionDropDownTH(event, ff) {
+    this.selected = event.value;
+    // this.selectedName = ff.selectedOption.label;
+    console.log('this.selected', this.selected);
+    // console.log('this.selectedName', this.selectedName);
   }
 }

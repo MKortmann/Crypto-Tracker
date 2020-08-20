@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 import { ChartModule } from 'primeng/chart';
@@ -31,8 +31,9 @@ export class GraphicDashboardTickersComponent implements OnInit {
   public chartTickers: Chart;
   labels = ['january', 'february', 'march'];
   data = [30, 60, 100];
-  selectedExchange = 'USD';
-  selectRate = 1;
+  @Input() selectedExchange;
+  @Input() selectRate;
+
   valueAverageAnnotation = 0;
 
   coinName = 'btc-bitcoin';
@@ -45,11 +46,6 @@ export class GraphicDashboardTickersComponent implements OnInit {
   startDateStr: string;
 
   ngOnInit(): void {
-    if (localStorage.getItem('selectRate') !== null) {
-      this.selectRate = JSON.parse(localStorage.getItem('selectRate'));
-      this.selectedExchange = localStorage.getItem('selectedExchange');
-    }
-
     if (localStorage.getItem('coinName') !== null) {
       this.coinName = localStorage.getItem('coinName');
       this.symbol = this.coinName.split('-')[0];

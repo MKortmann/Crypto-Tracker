@@ -28,7 +28,6 @@ export class TableExchangesComponent implements OnInit {
   selectedDropDownOption: OptionDropDown;
   selected = 4;
   selectedName = 'Websites';
-  switchData = 'exchange.name';
 
   constructor(
     private coinPaprikaService: CoinPaprikaService,

@@ -22,9 +22,16 @@ export class CryptosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // if (localStorage.getItem('selectedExchange') !== null) {
-    //   this.selectedExchange = localStorage.getItem('selectedExchange');
-    // }
+    if (
+      localStorage.getItem('selectedExchange') !== null &&
+      localStorage.getItem('selectedExchange') !== undefined
+    ) {
+      this.selectedExchange = localStorage.getItem('selectedExchange');
+      this.selectRate = JSON.parse(localStorage.getItem('selectRate'));
+    } else {
+      this.selectedExchange = 'USD';
+      this.selectRate = 1;
+    }
 
     this.exchangeService.getMoney('USD').subscribe(
       (res) => {
@@ -34,9 +41,9 @@ export class CryptosComponent implements OnInit {
           value: lng,
         }));
         // checkLocalStorage
-        if (this.selectedExchange !== null) {
-          this.selectRate = JSON.parse(localStorage.getItem('selectRate'));
-        }
+        // if (this.selectedExchange !== null) {
+        //   this.selectRate = JSON.parse(localStorage.getItem('selectRate'));
+        // }
       },
       (error) => console.log(error)
     );
