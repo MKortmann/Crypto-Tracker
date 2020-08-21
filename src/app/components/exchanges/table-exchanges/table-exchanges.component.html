@@ -86,7 +86,9 @@
           {{ exchange.markets }}
         </span>
         <span *ngIf="selectedName === 'Websites'">
-          {{ exchange.links.website[0] | formatUrl }}
+          <li (click)="onNavigate($event)">
+            {{ exchange.links.website[0] | formatUrl }}
+          </li>
         </span>
       </td>
       <td class="hideBelow800">
