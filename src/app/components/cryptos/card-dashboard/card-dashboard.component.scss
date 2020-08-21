@@ -53,9 +53,17 @@ td {
 //   display: none !important;
 // }
 
+.hideInBigScreens {
+  padding-top: $ss-padding;
+  padding-bottom: $ss-padding;
+}
+
 @media screen and (max-width: 1500px) {
   p-carousel {
     padding-top: 2px !important;
+  }
+  :host ::ng-deep .p-carousel-indicators {
+    display: none !important;
   }
   .smallFont {
     font-size: $es-fontSize;

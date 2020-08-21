@@ -21,10 +21,6 @@ $colorBlack: white;
 $colorWhite: black;
 $colorBlue: #83838f;
 
-td:nth-child(odd) {
-  color: $colorBlue !important;
-}
-
 .nav-tabs {
   border: 0;
 }
@@ -51,15 +47,6 @@ tr:nth-child(odd) {
 }
 tr:nth-child(even) {
   color: white !important;
-}
-
-tr:nth-child(odd):hover {
-  background-color: $bgHover1 !important;
-  color: black !important;
-}
-tr:nth-child(even):hover {
-  background-color: $bgHover1 !important;
-  color: black !important;
 }
 
 @media screen and (max-width: $ss-mediaQueriesWidth) {

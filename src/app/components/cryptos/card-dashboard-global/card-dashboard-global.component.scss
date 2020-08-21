@@ -68,10 +68,11 @@ p-header {
 
   :host ::ng-deep .p-ripple {
     margin: 0 !important;
+    // padding: 0 !important;
     margin-left: $s-padding !important;
     margin-right: $s-padding !important;
-    // display: none !important;
-    visibility: hidden !important;
+    display: none !important;
+    // visibility: hidden !important;
   }
 }
 
