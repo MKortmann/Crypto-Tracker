@@ -286,19 +286,19 @@ export class GraphicDashboardCoinComponent implements OnInit {
       return `${label}: ${tooltipItem.yLabel} ${this.selectedExchange}`;
     }),
       (this.options.scales.yAxes[0].ticks.callback = (value) => {
-        if (value >= 10 ** 3 && value <= 10 ** 6) {
+        if (value >= 10 ** 5 && value <= 10 ** 8) {
           return `${hash[this.selectedExchange]}${Math.round(
             value / 10 ** 3
           )} K`;
-        } else if (value >= 10 ** 6 && value <= 10 ** 9) {
+        } else if (value >= 10 ** 8 && value <= 10 ** 11) {
           return `${hash[this.selectedExchange]}${Math.round(
             value / 10 ** 6
           )} M`;
-        } else if (value >= 10 ** 9 && value <= 10 ** 12) {
+        } else if (value >= 10 ** 11 && value <= 10 ** 15) {
           return `${hash[this.selectedExchange]}${Math.round(
             value / 10 ** 9
           )} B`;
-        } else if (value >= 10 ** 12 && value <= 10 ** 15) {
+        } else if (value >= 10 ** 15 && value <= 10 ** 18) {
           return `${hash[this.selectedExchange]}${Math.round(
             value / 10 ** 9
           )} T`;
