@@ -13,15 +13,6 @@ th {
   vertical-align: middle;
 }
 
-th {
-  // color: $colorBlack !important;
-  font-size: $ss-fontSize;
-  /* background-color: #17a2b8 !important; */
-  // background-color: $color1 !important;
-
-  /* background-color: red !important; */
-}
-
 td i {
   display: inline-flex;
   vertical-align: middle;
@@ -38,7 +29,7 @@ img {
 
 .ui-column-filter {
   display: block;
-  width: 100%;
+  width: 98%;
   min-height: 32px;
   cursor: pointer;
 }
@@ -71,4 +62,8 @@ span {
   padding: 0;
   margin: 0;
   display: flex;
+}
+
+th.hideAbove640 {
+  padding-left: 10px !important;
 }
