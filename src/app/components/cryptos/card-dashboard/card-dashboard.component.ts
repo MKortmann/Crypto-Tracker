@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { CoinLoreService } from '../../../services/coinLore.service';
 
@@ -14,7 +14,7 @@ import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 export class CardDashboardComponent implements OnInit {
   data: any;
   classes = {};
-  symbol = 'BTC';
+  @Input() symbol;
 
   constructor(
     private coinLoreService: CoinLoreService,
@@ -23,13 +23,6 @@ export class CardDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // localStorage
-    if (localStorage.getItem('coinName') !== null) {
-      this.symbol = localStorage
-        .getItem('coinName')
-        .split('-')[0]
-        .toUpperCase();
-    }
     // filling with values
     this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
       this.data = [...res.data];

@@ -1,7 +1,7 @@
 <!-- <h1>{{ "TRANSLATE.HOME.TITLE" | translate }}</h1> -->
 
 <app-card-dashboard-global></app-card-dashboard-global>
-<app-card-dashboard></app-card-dashboard>
+<app-card-dashboard [symbol]="symbol"></app-card-dashboard>
 <app-graphic-dashboard-coin
   [selectRate]="selectRate"
   [selectedExchange]="selectedExchange"
@@ -31,4 +31,4 @@
     (click)="switchGraphs()"
   ></button>
 </div>
-<app-table></app-table>
+<app-table [symbol]="symbol"></app-table>

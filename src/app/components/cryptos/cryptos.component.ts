@@ -15,6 +15,7 @@ export class CryptosComponent implements OnInit {
   selectedExchange: any = 'USD';
   selectRate = 1;
   exchanges: SelectItem[];
+  symbol = 'BTC';
 
   constructor(
     private translate: TranslateService,
@@ -31,6 +32,14 @@ export class CryptosComponent implements OnInit {
     } else {
       this.selectedExchange = 'USD';
       this.selectRate = 1;
+    }
+
+    // localStorage
+    if (localStorage.getItem('coinName') !== null) {
+      this.symbol = localStorage
+        .getItem('coinName')
+        .split('-')[0]
+        .toUpperCase();
     }
 
     this.exchangeService.getMoney('USD').subscribe(

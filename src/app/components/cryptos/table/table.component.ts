@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Coin } from '../../../models/Coin';
 
@@ -25,7 +25,7 @@ export class TableComponent implements OnInit {
   selectedExchange: any = 'EUR';
   selectRate: number;
   selectRateEUR: any;
-  symbol = 'BTC';
+  @Input() symbol;
 
   optionsDropDown: SelectItem[];
   selectedDropDownOption: OptionDropDown;
