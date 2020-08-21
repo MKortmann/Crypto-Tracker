@@ -1,35 +1,10 @@
-<!-- <p-toast [style]="{ marginTop: '80px' }"></p-toast> -->
-<!-- [inputStyle]="{ width: '279px' }" -->
 <div class="containerCalendar">
-  <button
-    pButton
-    type="button"
-    class="p-button-outlined p-button-sm"
-    *ngIf="expandGraph"
-    (click)="expand()"
-    [style]="{ height: '30px', width: '52px', padding: '1px' }"
-  >
+  <div *ngIf="expandGraph" (click)="expand()" class="buttonStyleDiv">
     <img src="assets/imgs/icons/shrinkgreen.svg" />
-  </button>
-
-  <button
-    pButton
-    type="button"
-    class="p-button-outlined p-button-sm"
-    *ngIf="!expandGraph"
-    (click)="expand()"
-    [style]="{ height: '30px', width: '52px', padding: '1px' }"
-  >
+  </div>
+  <div *ngIf="!expandGraph" (click)="expand()" class="buttonStyleDiv">
     <img src="assets/imgs/icons/expandgreen.svg" />
-  </button>
-
-  <!-- <p-button
-    *ngIf="!expandGraph"
-    (click)="expand()"
-    [style]="{ height: '30px', width: '52px', padding: '0' }"
-  >
-    <img src="assets/imgs/icons/expandbrown.svg" />
-  </p-button> -->
+  </div>
 
   <p-calendar
     *ngIf="!showInSmallScreens"

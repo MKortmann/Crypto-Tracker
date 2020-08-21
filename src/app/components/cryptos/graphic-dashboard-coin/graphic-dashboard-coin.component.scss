@@ -28,6 +28,16 @@
 }
 
 img {
-  min-height: 48px;
-  min-width: 48px;
+  min-height: 32px;
+  min-width: 32px;
+}
+
+.buttonStyleDiv {
+  padding: 0;
+  border: 1px solid #9bc53d;
+  border-radius: 4px;
+  max-height: 31px;
+  min-width: 42px;
+  display: flex;
+  justify-content: center;
 }
