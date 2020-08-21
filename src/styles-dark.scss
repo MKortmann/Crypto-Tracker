@@ -21,6 +21,9 @@ $colorBlack: white;
 $colorWhite: black;
 $colorBlue: #83838f;
 
+// color for hover
+$bgHover1: $bg3;
+
 .nav-tabs {
   border: 0;
 }
@@ -28,9 +31,6 @@ $colorBlue: #83838f;
 .ui-card {
   /* min-height: inherit; */
   min-height: 100%;
-  // &:hover {
-  //   // background-color: $bg2;
-  // }
 }
 
 th {
@@ -41,12 +41,11 @@ th {
   /* background-color: red !important; */
 }
 
-tr:nth-child(odd) {
-  background-color: $bg4 !important;
-  color: white !important;
+tr:nth-child(odd):hover {
+  background-color: $colorBlue !important;
 }
-tr:nth-child(even) {
-  color: white !important;
+tr:nth-child(even):hover {
+  background-color: $colorBlue !important;
 }
 
 @media screen and (max-width: $ss-mediaQueriesWidth) {

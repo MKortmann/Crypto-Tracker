@@ -16,6 +16,10 @@ $colorBlack: black;
 $colorWhite: white;
 $colorBlue: #3333a5;
 
+// table hover
+// color for hover
+$bgHover1: #ffff99;
+
 @media screen and (max-width: $ss-mediaQueriesWidth) {
   tr:nth-child(odd) {
     background-color: $bg3 !important;
@@ -43,7 +47,7 @@ th {
 
 tr:nth-child(odd) {
   background-color: $bg4 !important;
-  color: $colorBlue !important;
+  color: black !important;
 }
 
 tr:nth-child(odd):hover {
