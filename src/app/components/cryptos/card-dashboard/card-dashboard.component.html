@@ -46,14 +46,14 @@
                 </span>
               </div>
             </p-accordionTab>
-            <p-accordionTab header="{{ item.price_usd | currency: 'EUR' }}">
+            <p-accordionTab header="{{ item.price_eur | currency: 'EUR' }}">
               <!-- Low of the day -->
               <div class="highOfTheDay">
                 <span class="material-icons">
                   arrow_upward
                 </span>
                 <span>
-                  {{ item.high_usd | currency: 'EUR' }}
+                  {{ item.high_eur | currency: 'EUR' }}
                 </span>
               </div>
               <!-- High of the day -->
@@ -62,7 +62,7 @@
                   arrow_downward
                 </span>
                 <span>
-                  {{ item.low_usd | currency: 'EUR' }}
+                  {{ item.low_eur | currency: 'EUR' }}
                 </span>
               </div>
             </p-accordionTab>
@@ -221,14 +221,14 @@
               </span>
             </div>
           </p-accordionTab>
-          <p-accordionTab header="{{ item.price_usd | currency: 'EUR' }}">
+          <p-accordionTab header="{{ item.price_eur | currency: 'EUR' }}">
             <!-- Low of the day -->
             <div class="highOfTheDay">
               <span class="material-icons">
                 arrow_upward
               </span>
               <span>
-                {{ item.high_usd | currency: 'EUR' }}
+                {{ item.high_eur | currency: 'EUR' }}
               </span>
             </div>
             <!-- High of the day -->
@@ -237,7 +237,7 @@
                 arrow_downward
               </span>
               <span>
-                {{ item.low_usd | currency: 'EUR' }}
+                {{ item.low_eur | currency: 'EUR' }}
               </span>
             </div>
           </p-accordionTab>

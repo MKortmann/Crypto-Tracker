@@ -66,6 +66,8 @@ export class CardDashboardComponent implements OnInit {
       if (item.symbol === 'BCHSV') {
         fullName = 'bsv-bitcoin-sv';
       }
+      item[`price_eur`] = item.price_usd * this.rateConvertEUR;
+
       if (index < 10) {
         this.coinPaprikaService
           .getOHLCFullDayToday(fullName)
