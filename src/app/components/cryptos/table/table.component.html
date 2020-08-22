@@ -55,25 +55,13 @@
           [style]="{ width: '100px' }"
         >
           <ng-template let-item pTemplate="item">
-            <div
+            <span
               class="ui-helper-clearfix"
               style="position: relative; height: 25px;"
             >
-              <i
-                class="material-icons"
-                aria-hidden="true"
-                style="margin-top: 5px;"
-                >{{ item.icon }}</i
+              <i class="material-icons" aria-hidden="true">{{ item.icon }}</i
               >{{ item.label }}
-              <div
-                style="
-                  font-size: 14px;
-                  display: inline-block;
-                  margin-top: 4px;
-                  padding-left: 10px;
-                "
-              ></div>
-            </div>
+            </span>
           </ng-template>
         </p-dropdown>
       </th>
