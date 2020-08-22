@@ -37,7 +37,7 @@ th {
   color: $colorBlack !important;
   font-size: $ss-fontSize;
   /* background-color: #17a2b8 !important; */
-  background-color: black !important;
+  background-color: rgb(32, 30, 30) !important;
   /* background-color: red !important; */
 }
 
@@ -48,13 +48,15 @@ tr:nth-child(even):hover {
   background-color: $colorBlue !important;
 }
 
-@media screen and (max-width: $ss-mediaQueriesWidth) {
-  tr:nth-child(odd) {
-    background-color: $bg3 !important;
-  }
-  tr:nth-child(even) {
-    background-color: $bg4 !important;
-  }
+td {
+  color: white;
+}
+
+tr:nth-child(odd) {
+  background-color: $bg2 !important;
+}
+tr:nth-child(even) {
+  background-color: $bg3 !important;
 }
 
 .selected {
