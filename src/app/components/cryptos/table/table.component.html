@@ -11,11 +11,11 @@
     <tr>
       <th
         pSortableColumn="rank"
-        class="hideBelow800"
+        class="hideBelow768"
         [style]="{ width: '80px' }"
       >
         {{ 'TRANSLATE.HOME.TABLE.RANK' | translate
-        }}<p-sortIcon field="rank"></p-sortIcon>
+        }}<p-sortIcon field="rank" class="pi-sort-numeric-up"></p-sortIcon>
       </th>
       <th>
         <div class="container">
@@ -46,18 +46,41 @@
           ></p-dropdown>
         </div>
       </th>
-      <th class="hideAbove640">
+      <th class="hideAbove768">
         <p-dropdown
           ngDefaultControl
           [options]="optionsDropDown"
           (onChange)="selectionDropDownTH($event, null)"
           [(ngModel)]="selected"
-        ></p-dropdown>
+          [style]="{ width: '100px' }"
+        >
+          <ng-template let-item pTemplate="item">
+            <div
+              class="ui-helper-clearfix"
+              style="position: relative; height: 25px;"
+            >
+              <i
+                class="material-icons"
+                aria-hidden="true"
+                style="margin-top: 5px;"
+                >{{ item.icon }}</i
+              >{{ item.label }}
+              <div
+                style="
+                  font-size: 14px;
+                  display: inline-block;
+                  margin-top: 4px;
+                  padding-left: 10px;
+                "
+              ></div>
+            </div>
+          </ng-template>
+        </p-dropdown>
       </th>
-      <th class="hideBelow1500">
+      <th class="hideBelow768">
         {{ 'TRANSLATE.HOME.TABLE.PRICE_BTC' | translate }}
       </th>
-      <th class="hideBelow640" [style]="{ width: '115px' }">
+      <th class="hideBelow768" [style]="{ width: '115px' }">
         <span>
           <i class="material-icons">
             swap_vert
@@ -65,7 +88,7 @@
           1h
         </span>
       </th>
-      <th class="hideBelow800">
+      <th class="hideBelow768">
         <span>
           <i class="material-icons">
             swap_vert
@@ -73,7 +96,7 @@
           24h
         </span>
       </th>
-      <th class="hideBelow800">
+      <th class="hideBelow768">
         <span>
           <i class="material-icons">
             swap_vert
@@ -96,9 +119,7 @@
       (click)="selectedCoin($event)"
       [class.selected]="coin.symbol === symbol"
     >
-      <td class="hideBelow800" [style]="{ width: '80px' }">
-        {{ coin.rank }}
-      </td>
+      <td class="hideBelow768" [style]="{ width: '80px' }">{{ coin.rank }}</td>
       <td>
         <img
           src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png"
@@ -113,7 +134,7 @@
       <td>
         {{ coin.price_usd * selectRate | currency: selectedExchange }}
       </td>
-      <td class="hideAbove640">
+      <td class="hideAbove768">
         <span *ngIf="selected === 1">
           {{ coin.price_btc }}
         </span>
@@ -191,19 +212,19 @@
           </td></span
         >
       </td>
-      <td class="hideBelow1500">{{ coin.price_btc }}</td>
+      <td class="hideBelow768">{{ coin.price_btc }}</td>
       <!-- change 1h -->
       <div
         *ngIf="coin.percent_change_1h > 0; then thenBlock1h; else elseBlock1h"
       ></div>
       <ng-template #thenBlock1h>
-        <td style="color: green;" class="hideBelow1500">
+        <td style="color: green;" class="hideBelow768">
           <i class="material-icons">trending_up</i>
           {{ coin.percent_change_1h }} %
         </td>
       </ng-template>
       <ng-template #elseBlock1h>
-        <td style="color: red;" class="hideBelow1500">
+        <td style="color: red;" class="hideBelow768">
           <i class="material-icons">trending_down</i>
           {{ coin.percent_change_1h }} %
         </td>
@@ -217,13 +238,13 @@
         "
       ></div>
       <ng-template #thenBlock24h>
-        <td style="color: green;" class="hideBelow800">
+        <td style="color: green;" class="hideBelow768">
           <i class="material-icons">trending_up</i>
           {{ coin.percent_change_24h }} %
         </td>
       </ng-template>
       <ng-template #elseBlock24h>
-        <td style="color: red;" class="hideBelow800">
+        <td style="color: red;" class="hideBelow768">
           <i class="material-icons">trending_down</i>
           {{ coin.percent_change_24h }} %
         </td>
@@ -233,13 +254,13 @@
         *ngIf="coin.percent_change_7d > 0; then thenBlock7d; else elseBlock7d"
       ></div>
       <ng-template #thenBlock7d>
-        <td style="color: green;" class="hideBelow800">
+        <td style="color: green;" class="hideBelow768">
           <i class="material-icons">trending_up</i>
           {{ coin.percent_change_7d }} %
         </td>
       </ng-template>
       <ng-template #elseBlock7d>
-        <td style="color: red;" class="hideBelow800">
+        <td style="color: red;" class="hideBelow768">
           <i class="material-icons">trending_down</i>
           {{ coin.percent_change_7d }} %
         </td>

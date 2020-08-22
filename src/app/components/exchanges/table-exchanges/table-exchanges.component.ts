@@ -33,7 +33,7 @@ export class TableExchangesComponent implements OnInit {
     private coinPaprikaService: CoinPaprikaService,
     private coinLoreService: CoinLoreService
   ) {}
-
+  mrC9wFvrkR;
   ngOnInit(): void {
     this.optionsDropDown = [
       {
@@ -56,7 +56,7 @@ export class TableExchangesComponent implements OnInit {
 
     this.coinPaprikaService.getAllExchanges().subscribe(
       (res) => {
-        // necessary to remove exchanges with no rank!
+        // necessary to remove exchanges with no rank and website link problem!
         const rankedExchanges = [];
         const noRankedExchanges = [];
         for (const item of res) {
@@ -70,6 +70,11 @@ export class TableExchangesComponent implements OnInit {
             if (item.description === '') {
               item.description = 'description missing, please check website';
             }
+
+            if (item.id === 'yobit') {
+              item.links.website[0] = 'https://yobit.net/en/';
+            }
+
             rankedExchanges.push(item);
           } else {
             noRankedExchanges.push(item);

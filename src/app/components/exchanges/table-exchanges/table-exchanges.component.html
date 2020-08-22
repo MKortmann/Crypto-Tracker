@@ -40,24 +40,34 @@
           [style]="{ width: '100%', 'min-width': '100%' }"
         ></p-dropdown>
       </th>
-      <th class="hideBelow800" [style]="{ width: '100px' }">
+      <th class="hideBelow768" [style]="{ width: '100px' }">
         Vol. 24h $
         <!-- {{ 'TRANSLATE.HOME.TABLE.PRICE' | translate }} -->
       </th>
-      <th class="hideBelow640" [style]="{ width: '100px' }">
+      <th
+        class="hideBelow640"
+        [style]="{ width: '140px' }"
+        pSortableColumn="currencies"
+      >
         <!-- {{ 'TRANSLATE.HOME.TABLE.PRICE_EUR' | translate }} -->
         Currencies
+        <p-sortIcon field="currencies"></p-sortIcon>
       </th>
-      <th class="hideBelow640" [style]="{ width: '100px' }">
+      <th
+        class="hideBelow640"
+        [style]="{ width: '140px' }"
+        pSortableColumn="markets"
+      >
         <!-- {{ 'TRANSLATE.HOME.TABLE.PRICE_EUR' | translate }} -->
         Markets
+        <p-sortIcon field="markets"></p-sortIcon>
       </th>
       <th class="hideBelow1200">
         Description
         <!-- {{ 'TRANSLATE.HOME.TABLE.PRICE' | translate }} -->
       </th>
 
-      <th class="hideBelow800" [style]="{ width: '160px' }">
+      <th class="hideBelow768" [style]="{ width: '160px' }">
         <!-- {{ 'TRANSLATE.HOME.TABLE.PRICE_BTC' | translate }} -->
         Website
       </th>
@@ -91,7 +101,7 @@
           </li>
         </span>
       </td>
-      <td class="hideBelow800">
+      <td class="hideBelow768">
         {{ exchange.quotes.USD.adjusted_volume_24h | formatCurrency }}
         <!-- {{ exchange.price_usd | currency: 'USD' }} -->
       </td>
@@ -107,7 +117,7 @@
         {{ exchange.description }}
         <!-- {{ exchange.price_usd | currency: 'USD' }} -->
       </td>
-      <td class="hideBelow800">
+      <td class="hideBelow768">
         <li (click)="onNavigate($event)">
           {{ exchange.links.website[0] | formatUrl }}
         </li>

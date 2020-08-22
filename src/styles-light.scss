@@ -46,7 +46,12 @@ th {
 }
 
 tr:nth-child(odd) {
-  background-color: $bg4 !important;
+  background-color: white !important;
+  color: black !important;
+}
+
+tr:nth-child(even) {
+  background-color: $color1 !important;
   color: black !important;
 }
 

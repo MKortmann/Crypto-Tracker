@@ -32,6 +32,8 @@ export class TableComponent implements OnInit {
   selected = 2;
   selectedName = '1h';
 
+  customIcon = 'swap_vert';
+
   constructor(
     private coinLoreService: CoinLoreService,
     private translate: TranslateService,
@@ -42,27 +44,33 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
     this.optionsDropDown = [
       {
-        label: 'Pr. in BTC',
+        label: 'Pr. BTC',
+        icon: 'attach_money',
         value: 1,
       },
       {
-        label: 'Chg. 1h',
+        label: '1h',
+        icon: 'swap_vert',
         value: 2,
       },
       {
-        label: 'Chg. 24h',
+        label: '24h',
+        icon: 'swap_vert',
         value: 3,
       },
       {
-        label: 'Chg. 7d',
+        label: '7d',
+        icon: 'swap_vert',
         value: 4,
       },
       {
-        label: 'Mkt. Cap $',
+        label: 'Mkt. Cap',
+        icon: 'attach_money',
         value: 5,
       },
       {
         label: 'Vol. 24h',
+        icon: 'attach_money',
         value: 6,
       },
     ];

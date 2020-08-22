@@ -83,7 +83,7 @@ $bb-mediaQueriesWidth: 1500px;
 }
 
 @media screen and (max-width: $m-mediaQueriesWidth) {
-  .hideBelow800 {
+  .hideBelow768 {
     display: none !important;
   }
 }
@@ -95,6 +95,11 @@ $bb-mediaQueriesWidth: 1500px;
 
 @media screen and (min-width: $ss-mediaQueriesWidth) {
   .hideAbove640 {
+    display: none;
+  }
+}
+@media screen and (min-width: $m-mediaQueriesWidth) {
+  .hideAbove768 {
     display: none;
   }
 }
