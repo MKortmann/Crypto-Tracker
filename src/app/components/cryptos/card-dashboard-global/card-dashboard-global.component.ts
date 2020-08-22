@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CoinLoreService } from '../../../services/coinLore.service';
+import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 import { ExchangeService } from '../../../services/exchange.service';
 import { Coin } from '../../../models/Coin';
 
@@ -21,7 +22,8 @@ export class CardDashboardGlobalComponent implements OnInit {
   constructor(
     private coinLoreService: CoinLoreService,
     private translate: TranslateService,
-    private exchangeService: ExchangeService
+    private exchangeService: ExchangeService,
+    private coinPaprikaService: CoinPaprikaService
   ) {}
 
   ngOnInit(): void {
