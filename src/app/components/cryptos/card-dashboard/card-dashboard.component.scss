@@ -3,12 +3,20 @@
 
 * {
   padding: 0;
-  cursor: pointer;
 }
 
 img {
-  max-width: $m-imgHeight;
-  height: $m-imgHeight;
+  max-width: $s-imgHeight;
+  height: $s-imgHeight;
+}
+
+::ng-deep p-header {
+  cursor: pointer;
+}
+
+::ng-deep p-accordion {
+  background-color: white !important;
+  border: 0;
 }
 
 :host ::ng-deep .p-card-body {
@@ -56,6 +64,30 @@ td {
 .hideInBigScreens {
   padding-top: $ss-padding;
   padding-bottom: $ss-padding;
+}
+
+:host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
+  padding: 1px !important;
+  background-color: white;
+  border: 0;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+}
+
+:host ::ng-deep .p-accordion .p-accordion-content {
+  padding: 1px !important;
+}
+
+.highOfTheDay {
+  display: flex;
+  justify-content: space-between;
+  color: blue;
+}
+.lowOfTheDay {
+  display: flex;
+  justify-content: space-between;
+  color: red;
 }
 
 @media screen and (max-width: 1500px) {

@@ -15,6 +15,7 @@ export class CardDashboardComponent implements OnInit {
   data: any;
   classes = {};
   @Input() symbol;
+  rateConvertEUR = 0;
 
   constructor(
     private coinLoreService: CoinLoreService,
@@ -26,12 +27,14 @@ export class CardDashboardComponent implements OnInit {
     // filling with values
     this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
       this.data = [...res.data];
+      this.lowHighFetch();
+    });
 
-      this.exchangeService.getMoney('USD').subscribe((res2) => {
+    this.exchangeService.getMoney('USD').subscribe((res2) => {
+      (this.rateConvertEUR = res2.rates[`EUR`]),
         this.data.forEach((item) => {
           item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
         });
-      });
     });
 
     // subscribe for a service that update data
@@ -42,6 +45,7 @@ export class CardDashboardComponent implements OnInit {
           item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
         });
       });
+      this.lowHighFetch();
     });
 
     this.coinPaprikaService.onSelectedCoinChange.subscribe((coin) => {
@@ -53,16 +57,48 @@ export class CardDashboardComponent implements OnInit {
     });
   }
 
+  lowHighFetch() {
+    this.data.forEach((item, index) => {
+      let fullName = item.symbol.toLowerCase() + '-' + item.nameid;
+      if (item.symbol === 'BCH') {
+        fullName = 'bch-bitcoin-cash';
+      }
+      if (item.symbol === 'BCHSV') {
+        fullName = 'bsv-bitcoin-sv';
+      }
+      if (index < 10) {
+        this.coinPaprikaService
+          .getOHLCFullDayToday(fullName)
+          .subscribe((res) => {
+            item[`high_usd`] = res[0].high.toFixed(2);
+            item[`low_usd`] = res[0].low.toFixed(2);
+            item[`high_eur`] = res[0].high.toFixed(2) * this.rateConvertEUR;
+            item[`low_eur`] = res[0].low.toFixed(2) * this.rateConvertEUR;
+          });
+      } else {
+        // necessary because of API fetch limitation!!
+        setTimeout(() => {
+          this.coinPaprikaService
+            .getOHLCFullDayToday(fullName)
+            .subscribe((res) => {
+              item[`high_usd`] = res[0].high.toFixed(2);
+              item[`low_usd`] = res[0].low.toFixed(2);
+              item[`high_eur`] = res[0].high.toFixed(2) * this.rateConvertEUR;
+              item[`low_eur`] = res[0].low.toFixed(2) * this.rateConvertEUR;
+            });
+        }, 1100);
+      }
+    });
+  }
+
   selectedCoin(name, symbol) {
     // we are passing the coin clicked id in accord to coinPaprika
     let coinID = `${symbol}-${name}`;
     coinID = coinID.replace(' ', '-').toLowerCase();
-
     if (coinID === 'bchsv-bitcoin-sv') {
       coinID = 'bsv-bitcoin-sv';
     }
     this.coinPaprikaService.selectedCoinById(coinID);
-
     localStorage.setItem('coinName', coinID);
   }
 }

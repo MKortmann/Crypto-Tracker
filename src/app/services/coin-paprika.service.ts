@@ -10,7 +10,7 @@ import { Observable, forkJoin } from 'rxjs';
 export class CoinPaprikaService {
   public onSelectedCoinChange: EventEmitter<any> = new EventEmitter();
 
-  private readonly getListOfCoins = 'https://api.coinpaprika.com/v1/coins/';
+  private readonly getListOfCoinsUrl = 'https://api.coinpaprika.com/v1/coins/';
 
   private readonly getSingleCoin =
     'https://api.coinpaprika.com/v1/coins/btc-bitcoin';
@@ -25,8 +25,8 @@ export class CoinPaprikaService {
   private readonly getOHLCFullDayLatest =
     'https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/latest';
 
-  private readonly getOHLCFullDayToday =
-    'https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/today';
+  // private readonly getOHLCFullDayTodayUrl =
+  //   `https://api.coinpaprika.com/v1/coins/${{coinName}}/ohlcv/today`;
 
   private readonly getHistoricalStartEnd =
     'https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/historical?start=2019-01-01&end=2019-01-20';
@@ -55,6 +55,18 @@ export class CoinPaprikaService {
 
   public getAllExchanges(): Observable<any> {
     return this.http.get<any>(this.getAllExchangesUrl);
+  }
+
+  // not in use but get a list of more 1000 coins! Amazing!
+  public getListOfCoins(): Observable<any> {
+    return this.http.get<any>(this.getListOfCoinsUrl);
+  }
+
+  public getOHLCFullDayToday(coinName: string): Observable<any> {
+    const url =
+      'https://api.coinpaprika.com/v1/coins/' + coinName + '/ohlcv/today';
+    console.log(url);
+    return this.http.get<any>(url);
   }
 
   // here the url1 it the data for the actual year

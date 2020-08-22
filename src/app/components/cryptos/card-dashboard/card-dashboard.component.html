@@ -11,13 +11,13 @@
   > -->
     <ng-template let-item pTemplate="item">
       <div [class.selected]="item.symbol === symbol">
-        <p-card
-          [style]="{ 'min-height': '190px' }"
-          (click)="selectedCoin(item.name, item.symbol)"
-        >
+        <p-card [style]="{ 'min-height': '190px' }">
           <!-- <p-card (click)="selectedCoin(item.name, item.symbol)"> -->
           <!-- <p-header style="font-size: larger; font-weight: bold;"> -->
-          <span style="padding-left: 10px;">
+          <span
+            style="padding-left: 10px;"
+            (click)="selectedCoin(item.name, item.symbol)"
+          >
             <img
               src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
               alt="{{ item.symbol | lowercase }}"
@@ -148,17 +148,14 @@
 <!-- finished carousel primeng -->
 
 <div class="p-grid p-align-center p-justify-around hideBelow1500">
-  <div
-    class="p-col-6 p-sm-6 p-md-3 p-lg-2 p-xl-1 p-col-align-stretch"
-    *ngFor="let item of data"
-  >
+  <div class="p-col p-col-align-stretch" *ngFor="let item of data">
     <div [class.selected]="item.symbol === symbol">
-      <p-card
-        [style]="{ 'min-height': '190px' }"
-        (click)="selectedCoin(item.name, item.symbol)"
-      >
-        <p-header style="font-size: larger; font-weight: bold;">
-          <span style="padding-left: 10px;">
+      <p-card [style]="{ 'min-height': '160px' }">
+        <p-header style="font-size: medium; font-weight: bold;">
+          <span
+            style="padding-left: 10px;"
+            (click)="selectedCoin(item.name, item.symbol)"
+          >
             <img
               src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
               alt="{{ item.symbol | lowercase }}"
@@ -166,12 +163,65 @@
             {{ item.name }}
           </span>
         </p-header>
-        <div style="font-size: large; text-align: left;">
+
+        <p-accordion>
+          <p-accordionTab header="{{ item.price_usd | currency: 'USD' }}">
+            <!-- Low of the day -->
+            <div class="highOfTheDay">
+              <span class="material-icons">
+                arrow_upward
+              </span>
+              <span>
+                {{ item.high_usd | currency: 'USD' }}
+              </span>
+            </div>
+            <!-- High of the day -->
+            <div class="lowOfTheDay">
+              <span class="material-icons">
+                arrow_downward
+              </span>
+              <span>
+                {{ item.low_usd | currency: 'USD' }}
+              </span>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{ item.price_usd | currency: 'EUR' }}">
+            <!-- Low of the day -->
+            <div class="highOfTheDay">
+              <span class="material-icons">
+                arrow_upward
+              </span>
+              <span>
+                {{ item.high_usd | currency: 'EUR' }}
+              </span>
+            </div>
+            <!-- High of the day -->
+            <div class="lowOfTheDay">
+              <span class="material-icons">
+                arrow_downward
+              </span>
+              <span>
+                {{ item.low_usd | currency: 'EUR' }}
+              </span>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+
+        <!-- <div style="font-size: large; text-align: left;">
           {{ item.price_usd | currency: 'USD' }}
+        </div> -->
+        <!-- Low of the day
+        <div style="font-size: medium; text-align: right;">
+          {{ item.high_usd | currency: 'USD' }}
         </div>
-        <div style="font-size: large; text-align: left;">
-          {{ item.price_eur | currency: 'EUR' }}
-        </div>
+        High of the day
+        <div style="font-size: medium; text-align: right;">
+          {{ item.low_usd | currency: 'USD' }}
+        </div> -->
+
+        <!-- <div style="font-size: large; text-align: left;">
+          {{ item.price_usd | currency: 'EUR' }}
+        </div> -->
 
         <!-- Percent Change 1h -->
         <div
