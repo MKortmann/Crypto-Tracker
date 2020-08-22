@@ -67,3 +67,11 @@ tr:nth-child(even):hover {
 p-sortIcon {
   filter: brightness(0) invert(1);
 }
+
+// for dashboard-cards
+.highOfTheDay {
+  color: #9bc53d;
+}
+.lowOfTheDay {
+  color: white;
+}

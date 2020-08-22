@@ -68,8 +68,8 @@ td {
 
 :host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
   padding: 1px !important;
-  background-color: white;
   border: 0;
+  background-color: transparent;
   display: flex;
   justify-content: space-between;
   font-weight: 400;
@@ -82,12 +82,10 @@ td {
 .highOfTheDay {
   display: flex;
   justify-content: space-between;
-  color: blue;
 }
 .lowOfTheDay {
   display: flex;
   justify-content: space-between;
-  color: red;
 }
 
 @media screen and (max-width: 1500px) {

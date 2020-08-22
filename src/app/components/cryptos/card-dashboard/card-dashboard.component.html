@@ -11,7 +11,7 @@
   > -->
     <ng-template let-item pTemplate="item">
       <div [class.selected]="item.symbol === symbol">
-        <p-card [style]="{ 'min-height': '190px' }">
+        <p-card [style]="{ 'min-height': '150px' }">
           <!-- <p-card (click)="selectedCoin(item.name, item.symbol)"> -->
           <!-- <p-header style="font-size: larger; font-weight: bold;"> -->
           <span
@@ -25,12 +25,48 @@
             {{ item.name }}
           </span>
           <!-- </p-header> -->
-          <div style="font-size: large; text-align: left;">
-            {{ item.price_usd | currency: 'USD' }}
-          </div>
-          <div style="font-size: large; text-align: left;">
-            {{ item.price_eur | currency: 'EUR' }}
-          </div>
+          <p-accordion>
+            <p-accordionTab header="{{ item.price_usd | currency: 'USD' }}">
+              <!-- Low of the day -->
+              <div class="highOfTheDay">
+                <span class="material-icons">
+                  arrow_upward
+                </span>
+                <span>
+                  {{ item.high_usd | currency: 'USD' }}
+                </span>
+              </div>
+              <!-- High of the day -->
+              <div class="lowOfTheDay">
+                <span class="material-icons">
+                  arrow_downward
+                </span>
+                <span>
+                  {{ item.low_usd | currency: 'USD' }}
+                </span>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab header="{{ item.price_usd | currency: 'EUR' }}">
+              <!-- Low of the day -->
+              <div class="highOfTheDay">
+                <span class="material-icons">
+                  arrow_upward
+                </span>
+                <span>
+                  {{ item.high_usd | currency: 'EUR' }}
+                </span>
+              </div>
+              <!-- High of the day -->
+              <div class="lowOfTheDay">
+                <span class="material-icons">
+                  arrow_downward
+                </span>
+                <span>
+                  {{ item.low_usd | currency: 'EUR' }}
+                </span>
+              </div>
+            </p-accordionTab>
+          </p-accordion>
 
           <!-- Percent Change 1h -->
           <div
