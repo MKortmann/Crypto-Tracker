@@ -11,6 +11,7 @@ import { NewsRss } from '../../models/news-rss';
 export class NewsComponent implements OnInit {
   RssData: NewsRss;
   newsBitcoin = 'https://news.bitcoin.com/feed/';
+  ambCrypto = 'https://eng.ambcrypto.com/feed/';
 
   constructor(private http: HttpClient) {}
 

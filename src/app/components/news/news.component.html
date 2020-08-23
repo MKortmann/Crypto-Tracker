@@ -1,11 +1,13 @@
 <h1>Total News: {{ (RssData?.rss.channel)[0].item.length }}</h1>
 
-<button>Get News</button>
-
-<ul>
+<div>
+  <h2>Daily Bitcoin News</h2>
   <li *ngFor="let item of (RssData?.rss.channel)[0].item">
     <a href="{{ item.link[0] }}">
+      <p>{{ item.pubDate[0] }}</p>
       {{ item.title[0] }}
     </a>
+
+    <!-- {{ item.description[0] }} -->
   </li>
-</ul>
+</div>

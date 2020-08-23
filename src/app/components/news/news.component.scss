@@ -1,23 +1,26 @@
 // import global styling
 @import '../../../styles';
 
-ul {
-  display: block;
-  list-style-type: none;
-  margin: 20px;
-  max-height: 400px;
+li {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 900px;
   overflow: hidden;
   overflow-y: scroll;
+  list-style-type: none;
 }
 
 li a {
-  background: black;
+  background: rgba($color: #2e2c2c, $alpha: 1);
   color: white;
   display: block;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: $ss-padding;
+  margin-bottom: $ss-padding;
+  cursor: pointer;
 }
 
 li a:hover {
-  background: #555;
+  background: #9bc53d;
+  cursor: pointer;
 }
