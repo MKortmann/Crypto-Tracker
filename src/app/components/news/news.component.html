@@ -1,1 +1,11 @@
-<h1>News</h1>
+<h1>Total News: {{ (RssData?.rss.channel)[0].item.length }}</h1>
+
+<button>Get News</button>
+
+<ul>
+  <li *ngFor="let item of (RssData?.rss.channel)[0].item">
+    <a href="{{ item.link[0] }}">
+      {{ item.title[0] }}
+    </a>
+  </li>
+</ul>
