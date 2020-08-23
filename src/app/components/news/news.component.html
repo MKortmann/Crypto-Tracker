@@ -2,6 +2,7 @@
 
 <div>
   <h2>Daily Bitcoin News</h2>
+  <p>Title: {{ (RssData?.rss.channel)[0].title[0] }}</p>
   <li *ngFor="let item of (RssData?.rss.channel)[0].item">
     <a href="{{ item.link[0] }}">
       <p>{{ item.pubDate[0] }}</p>

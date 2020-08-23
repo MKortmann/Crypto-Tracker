@@ -12,6 +12,7 @@ export class NewsComponent implements OnInit {
   RssData: NewsRss;
   // worked
   newsBitcoin = 'https://news.bitcoin.com/feed/';
+  ccn = 'https://www.ccn.com/feed/';
 
   // Using rss feed app free
   coinDesk = 'https://rss.app/feeds/eawQ6rZvhg7nQhpa.xml';
@@ -20,6 +21,11 @@ export class NewsComponent implements OnInit {
 
   // blocked why?
   ambCrypto = 'https://eng.ambcrypto.com/feed/';
+  bitcoinMagazine = 'https://bitcoinmagazine.com/feed';
+  newsBTC = 'https://www.newsbtc.com/feed/';
+  bitCoinist = 'https://bitcoinist.com/feed/';
+  theBlockCrypto = 'https://www.theblockcrypto.com/rss.xml';
+  deCrypt = 'https://decrypt.co/feed';
 
   constructor(private http: HttpClient) {}
 
@@ -32,7 +38,7 @@ export class NewsComponent implements OnInit {
       observe: 'body',
       responseType: 'text',
     };
-    this.http.get<any>(this.mixCoinDeskCoinTelegraph, requestOptions).subscribe(
+    this.http.get<any>(this.deCrypt, requestOptions).subscribe(
       (data) => {
         xml2js.parseString(data, (error, result: NewsRss) => {
           this.RssData = result;

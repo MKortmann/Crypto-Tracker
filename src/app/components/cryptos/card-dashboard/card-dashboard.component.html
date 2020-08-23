@@ -200,7 +200,7 @@
           </span>
         </p-header>
 
-        <p-accordion>
+        <p-accordion [multiple]="true">
           <p-accordionTab header="{{ item.price_usd | currency: 'USD' }}">
             <!-- Low of the day -->
             <div class="highOfTheDay">
