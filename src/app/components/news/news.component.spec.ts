@@ -2,15 +2,17 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewsComponent } from './news.component';
 
+import { HttpClient, HttpHandler } from '@angular/common/http';
+
 describe('NewsComponent', () => {
   let component: NewsComponent;
   let fixture: ComponentFixture<NewsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewsComponent ]
-    })
-    .compileComponents();
+      providers: [HttpClient, HttpHandler],
+      declarations: [NewsComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

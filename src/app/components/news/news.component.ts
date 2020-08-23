@@ -24,11 +24,16 @@ export class NewsComponent implements OnInit {
       observe: 'body',
       responseType: 'text',
     };
-    this.http.get<any>(this.newsBitcoin, requestOptions).subscribe((data) => {
-      xml2js.parseString(data, (error, result: NewsRss) => {
-        this.RssData = result;
-        console.log(result);
-      });
-    });
+    this.http.get<any>(this.newsBitcoin, requestOptions).subscribe(
+      (data) => {
+        xml2js.parseString(data, (error, result: NewsRss) => {
+          this.RssData = result;
+          console.log(result);
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
