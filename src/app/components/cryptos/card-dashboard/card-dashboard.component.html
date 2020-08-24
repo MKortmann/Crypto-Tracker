@@ -187,7 +187,7 @@
   <div class="p-col p-col-align-stretch" *ngFor="let item of data">
     <div [class.selected]="item.symbol === symbol">
       <p-card [style]="{ 'min-height': '160px' }">
-        <p-header style="font-size: medium; font-weight: bold;">
+        <p-header style="font-size: large; font-weight: bold;">
           <span
             style="padding-left: 10px;"
             (click)="selectedCoin(item.name, item.symbol)"
@@ -201,7 +201,10 @@
         </p-header>
 
         <p-accordion [multiple]="true">
-          <p-accordionTab header="{{ item.price_usd | currency: 'USD' }}">
+          <p-accordionTab
+            header="{{ item.price_usd | currency: 'USD' }}"
+            style="font-size: large;"
+          >
             <!-- Low of the day -->
             <div class="highOfTheDay">
               <span class="material-icons">
@@ -221,7 +224,10 @@
               </span>
             </div>
           </p-accordionTab>
-          <p-accordionTab header="{{ item.price_eur | currency: 'EUR' }}">
+          <p-accordionTab
+            header="{{ item.price_eur | currency: 'EUR' }}"
+            style="font-size: large;"
+          >
             <!-- Low of the day -->
             <div class="highOfTheDay">
               <span class="material-icons">

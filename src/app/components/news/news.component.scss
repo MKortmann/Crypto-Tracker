@@ -1,6 +1,16 @@
 // import global styling
 @import '../../../styles';
 
+.titleSideBar {
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.paragraphSideBar:hover {
+  background-color: #9bc53d;
+  cursor: pointer;
+}
+
 li {
   display: flex;
   flex-direction: column;
@@ -23,4 +33,15 @@ li a {
 li a:hover {
   background: #9bc53d;
   cursor: pointer;
+}
+
+:host ::ng-deep button {
+  margin-right: 0.25em;
+  margin-left: 0.25em;
+  background-color: rgb(56, 62, 68);
+}
+
+:host ::ng-deep p-sidebar {
+  max-width: 200px !important;
+  max-height: 70% !important;
 }

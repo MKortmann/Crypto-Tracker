@@ -49,6 +49,8 @@ import { GraphicDashboardCoinComponent } from './components/cryptos/graphic-dash
 import { CalendarModule } from 'primeng/calendar';
 import { CarouselModule } from 'primeng/carousel';
 import { GraphicDashboardTickersComponent } from './components/cryptos/graphic-dashboard-tickers/graphic-dashboard-tickers.component';
+import { SidebarModule } from 'primeng/sidebar';
+
 import { ExchangesComponent } from './components/exchanges/exchanges.component';
 import { NewsComponent } from './components/news/news.component';
 
@@ -87,6 +89,7 @@ import { TableExchangesComponent } from './components/exchanges/table-exchanges/
     TableModule,
     DropdownModule,
     ButtonModule,
+    SidebarModule,
     CommonModule,
     ChartModule,
     AccordionModule,

@@ -1,6 +1,55 @@
-<h1>Total News: {{ (RssData?.rss.channel)[0].item.length }}</h1>
+<!-- [style]="{ width: '20em', height: '84.5%', top: '100px', bottom: '50px' }" -->
+<p-sidebar
+  [(visible)]="visibleSidebar"
+  [style]="{ width: '20em', overflow: 'auto' }"
+  [baseZIndex]="10000"
+>
+  <div class="sideNav">
+    <h2>News</h2>
+    <p
+      class="paragraphSideBar"
+      *ngFor="let item of feedsUrl"
+      (click)="loadNews($event)"
+    >
+      <img src="assets/imgs/feeds/{{ item.symbol }}" alt="{{ item.symbol }}" />
+      {{ item.name }}
+    </p>
+  </div>
+</p-sidebar>
 
-<div>
+<button
+  pButton
+  type="button"
+  (click)="visibleSidebar = true"
+  icon="pi pi-arrow-right"
+></button>
+
+<h2>News from {{ this.feedData.feed.title }}</h2>
+<h1>Total News: {{ this.feedData.items.length }}</h1>
+
+<div class="p-grid" *ngFor="let item of this.feedData.items">
+  <div class="p-col-12">
+    <p>
+      {{ item.pubDate }} -
+      <span style="font-weight: bolder;">
+        {{ item.title }}
+      </span>
+    </p>
+
+    <p>Description: {{ item.description }}</p>
+    <p>
+      <a href="{{ item.link }}">{{ item.content }}</a>
+    </p>
+    <!-- <p>{{ item.link }}</p> -->
+    <p>
+      {{ item.thumbnail }}
+    </p>
+    <p>Author: {{ item.author }}</p>
+  </div>
+
+  <!-- <h1>Total News: {{ (RssData?.rss.channel)[0].item.length }}</h1> -->
+
+  <!-- <div>
   <h2>Daily Bitcoin News</h2>
   <p>Title: {{ (RssData?.rss.channel)[0].title[0] }}</p>
   <li *ngFor="let item of (RssData?.rss.channel)[0].item">
@@ -9,7 +58,7 @@
       {{ item.title[0] }}
     </a>
 
-    <!-- {{ item.description[0] }} -->
+    {{ item.description[0] }}
   </li>
 </div>
 
@@ -18,4 +67,5 @@
   src="https://widget.rss.app/v1/wall.js"
   type="text/javascript"
   async
-></script>
+></script> -->
+</div>
