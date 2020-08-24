@@ -1,42 +1,47 @@
 // import global styling
 @import '../../../styles';
 
-.titleSideBar {
-  margin-bottom: 20px;
-  font-weight: 400;
+:host {
+  // background: rgba($color: #2e2c2c, $alpha: 1);
+  // color: black;
+  padding: $s-padding;
+}
+
+.sideNav p:hover {
+  background-color: red;
+  color: white;
+  cursor: pointer;
 }
 
 .paragraphSideBar:hover {
-  background-color: #9bc53d;
   cursor: pointer;
+}
+
+.p-col-12 {
+  border: 1px solid black;
 }
 
 li {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 900px;
-  overflow: hidden;
-  overflow-y: scroll;
   list-style-type: none;
 }
 
-li a {
-  background: rgba($color: #2e2c2c, $alpha: 1);
-  color: white;
-  display: block;
-  padding: $ss-padding;
-  margin-bottom: $ss-padding;
-  cursor: pointer;
+:host ::ng-deep p-grid {
+  padding-left: $ss-padding !important;
 }
 
-li a:hover {
-  background: #9bc53d;
-  cursor: pointer;
+:host ::ng-deep .p-card-body {
+  padding: $s-padding !important;
+}
+:host ::ng-deep .p-card-content {
+  padding: 0 !important;
+  padding-top: $s-padding !important;
 }
 
 :host ::ng-deep button {
-  margin-right: 0.25em;
+  margin-right: 0.15em;
   margin-left: 0.25em;
   background-color: rgb(56, 62, 68);
 }

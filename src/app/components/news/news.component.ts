@@ -14,6 +14,7 @@ export class NewsComponent implements OnInit {
   visibleSidebar = false;
   feedsUrl = FeedsUrl;
   feedData: any = { feed: { title: '' }, items: [1, 2] };
+  feedArray = [];
 
   // worked
   newsBitcoin = 'https://news.bitcoin.com/feed/';
@@ -26,6 +27,9 @@ export class NewsComponent implements OnInit {
   // coinDesk = 'https://rss.app/feeds/eawQ6rZvhg7nQhpa.xml';
   // coinTelegraph = 'https://rss.app/feeds/C0iw2FvLIMGBk9A7.xml';
   // mixCoinDeskCoinTelegraph = 'http://www.rssmix.com/u/12026658/rss.xml';
+
+  // Unblock using feed2json.org
+  prefixRss2JSONFeed = 'https://feed2json.org/convert?url=';
 
   // Unblock using rss2json
   prefixRss2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
@@ -119,44 +123,52 @@ export class NewsComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    for (const item of this.feedsUrl) {
+      this.getNewsFeedsUrl(item);
+    }
+  }
 
   loadNews(event) {
     console.log(event.target.innerText);
     this.feedsUrl.forEach((item) => {
       if (item.name === event.target.innerText.trim()) {
-        this.getNewsFeed(item.url);
+        this.getNewsFeedsUrl(item.url);
       }
     });
     this.visibleSidebar = false;
   }
 
-  getNewsFeed(url) {
-    const requestOptions: object = {
-      observe: 'body',
-      responseType: 'text',
-    };
-    // this.http
-    //   .get<any>(
-    //     'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fbitcoinmagazine.com%2Ffeed',
-    //     requestOptions
-    //   )
-    //   .subscribe(
-    //     (data) => {
-    //       xml2js.parseString(data, (error, result: NewsRss) => {
-    //         this.RssData = result;
-    //         console.log(result);
-    //       });
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //     }
-    //   );
+  getNewsFeedsUrl(item) {
+    const url = item.url;
     this.http
       .get<any>('https://api.rss2json.com/v1/api.json?rss_url=' + url)
       .subscribe((data) => {
-        console.log(data);
-        this.feedData = data;
+        this.feedArray.push({ ...data, symbol: item.symbol });
+        console.log(this.feedArray);
       });
+  }
+
+  getNewsFeed() {
+    const requestOptions: object = {
+      observe: 'body',
+      responseType: 'text/html',
+    };
+    this.http
+      .get<any>(
+        'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fbitcoinmagazine.com%2Ffeed',
+        requestOptions
+      )
+      .subscribe(
+        (data) => {
+          xml2js.parseString(data, (error, result: NewsRss) => {
+            this.RssData = result;
+            console.log(result);
+          });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 }
