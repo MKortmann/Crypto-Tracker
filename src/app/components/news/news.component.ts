@@ -114,13 +114,6 @@ export class NewsComponent implements OnInit {
   }
 
   loadNews($event) {
-    // console.log(event.target.innerText);
-    // this.feedsUrl.forEach((item) => {
-    //   if (item.name === event.target.innerText.trim()) {
-    //     this.getNewsFeedsUrl(item.url);
-    //   }
-    // });
-    // this.location.path() + '#B0';
     this.visibleSidebar = false;
   }
 
