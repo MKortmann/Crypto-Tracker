@@ -26,7 +26,12 @@
   style="float: right;"
 ></button>
 
-<div *ngFor="let channel of this.feedArray">
+<!-- <div
+  class="p-shadow-1"
+  style="margin-top: 18px;"
+  *ngFor="let channel of this.feedArray; index as i"
+> -->
+<div *ngFor="let channel of this.feedArray; index as i">
   <h2>
     <img
       src="assets/imgs/feeds/{{ channel.symbol }}"
@@ -37,7 +42,7 @@
 
   <div class="p-grid">
     <div class="p-col p-align-stretch" *ngFor="let item of channel.items">
-      <p-card [style]="{ 'min-height': '200px' }">
+      <p-card [style]="{ 'min-height': '200px', 'min-width': '150px' }">
         <li>
           {{ item.pubDate }}
           <span style="font-weight: bolder;">
@@ -45,7 +50,6 @@
           </span>
         </li>
       </p-card>
-
       <p>Author: {{ item.author }}</p>
     </div>
   </div>

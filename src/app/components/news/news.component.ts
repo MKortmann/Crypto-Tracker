@@ -33,17 +33,17 @@ export class NewsComponent implements OnInit {
 
   // Unblock using rss2json
   prefixRss2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
+
   coinDesk = 'https%3A%2F%2Fwww.coindesk.com%2Ffeed';
   coinTelegraph = 'https%3A%2F%2Fcointelegraph.com%2Ffeed';
-  ambCrypto = 'https%3A%2F%2Feng.ambcrypto.com%2Ffeed%2F';
-  bitcoinMagazin = 'https%3A%2F%2Fbitcoinmagazine.com%2Ffeed';
-  newsBTC = 'https%3A%2F%2Fwww.newsbtc.com%2Ffeed%2F';
-  bitCoinist = 'https%3A%2F%2Fbitcoinist.com%2Ffeed%2F';
-  theBlockCrypto = 'https%3A%2F%2Fwww.theblockcrypto.com%2Frss.xml';
-  bitcoinExchangeGuide = 'https%3A%2F%2Fbitcoinexchangeguide.com%2Ffeed%2F';
-  blockOnomi = 'https%3A%2F%2Fblockonomi.com%2Ffeed%2F';
-  cryptoSlate = 'https%3A%2F%2Fcryptoslate.com%2Ffeed%2F';
-
+  ambCrypto = 'https://eng.ambcrypto.com/feed/';
+  bitcoinMagazine = 'https://bitcoinmagazine.com/feed';
+  newsBTC = 'https://www.newsbtc.com/feed/';
+  bitCoinist = 'https://bitcoinist.com/feed/';
+  theBlockCrypto = 'https://www.theblockcrypto.com/rss.xml';
+  bitcoinExchangeGuide = 'https://bitcoinexchangeguide.com/feed/';
+  blockOnomi = 'https://blockonomi.com/feed/';
+  cryptoSlate = 'https://cryptoslate.com/feed/';
   btcManager = 'https://btcmanager.com/feed';
   insideBitcoins = 'https://insidebitcoins.com/feed';
   coinSpeaker = 'https://www.coinspeaker.com/feed/';
@@ -77,56 +77,35 @@ export class NewsComponent implements OnInit {
   altCoinBuzz = 'https://www.altcoinbuzz.io/feed/';
   coinFox =
     'http://www.coinfox.info/?option=com_content&view=featured&Itemid=160&format=feed&type=rss';
-
-  // blocked why?
-  // ambCrypto = 'https://eng.ambcrypto.com/feed/';
-  // bitcoinMagazine = 'https://bitcoinmagazine.com/feed';
-  // newsBTC = 'https://www.newsbtc.com/feed/';
-  // bitCoinist = 'https://bitcoinist.com/feed/';
-  // theBlockCrypto = 'https://www.theblockcrypto.com/rss.xml';
-  // bitcoinExchangeGuide = 'https://bitcoinexchangeguide.com/feed/';
-  // blockOnomi = 'https://blockonomi.com/feed/';
-  // cryptoSlate = 'https://cryptoslate.com/feed/';
-  // btcManager = 'https://btcmanager.com/feed';
-  // insideBitcoins = 'https://insidebitcoins.com/feed';
-  // coinSpeaker = 'https://www.coinspeaker.com/feed/';
-  // cryptoNews = 'https://cryptonews.com/news/feed';
-  // cryptoBriefing = 'https://cryptobriefing.com/feed/';
-  // cryptoPotato = 'https://cryptopotato.com/feed/';
-  // dailyHodl = 'https://dailyhodl.com/feed/';
-  // coinJournal = 'https://coinjournal.net/feed/';
-  // ethereumWorldNews = 'https://en.ethereumworldnews.com/feed/';
-  // cryptoNinjas = 'http://www.cryptoninjas.net/feed/';
-  // coinCenter = 'https://www.coincenter.org/feed/';
-  // beinCrypto = 'https://beincrypto.com/feed/';
-  // theBitCoinNews = 'https://thebitcoinnews.com/feed/';
-  // coinGeek = 'https://coingeek.com/feed/';
-  // coinGape = 'https://coingape.com/feed/';
-  // liveBitCoinNews = 'https://www.livebitcoinnews.com/feed/';
-  // trustNodes = 'https://www.trustnodes.com/feed/';
-  // nullTx = 'https://nulltx.com/feed/';
-  // coinIdol = 'https://coinidol.com/rss2/';
-  // investBlockChain = 'https://www.investinblockchain.com/feed/';
-  // bitsOnline = 'https://bitsonline.com/feed/';
-  // cryptoDaily = 'https://cryptodaily.co.uk/feed';
-  // blockTribune = 'https://blocktribune.com/feed';
-  // zyCrypto = 'https://zycrypto.com/feed/';
-  // useTheBitcoin = 'https://usethebitcoin.com/feed/';
-  // smartEtereum = 'https://smartereum.com/feed/';
-  // bitcoinGarden = 'https://bitcoingarden.org/feed';
-  // blockManity = 'https://blockmanity.com/feed/';
-  // coinPedia = 'https://coinpedia.org/feed/';
-  // forkLog = 'https://forklog.media/feed/';
-  // altCoinBuzz = 'https://www.altcoinbuzz.io/feed/';
-  // coinFox =
-  //   'http://www.coinfox.info/?option=com_content&view=featured&Itemid=160&format=feed&type=rss';
+  // Maybe we do not need to use 2Ffeed
+  kryptoMoney = 'http://feeds.feedburner.com/kryptomoney';
+  bitcoinNews = 'https://bitcoinnews.com/feed/';
+  bitcoinWarrior = 'https://bitcoinwarrior.net/feed/';
+  btcWires = 'https://www.btcwires.com/feed/';
+  coinRevolution = 'https://www.coinrevolution.com/feed/';
+  bitcoinPrBuzz = 'https://bitcoinprbuzz.com/feed/';
+  coinNewsAsia = 'https://www.coinnewsasia.com/feed/';
+  news8btc = 'https://news.8btc.com/feed';
+  bitcoins7 = 'https://www.7bitcoins.com/feed/';
+  dcForecasts = 'https://www.dcforecasts.com/feed/';
+  globalCryptoPress = 'https://www.globalcryptopress.com/feeds/posts/default';
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    for (const item of this.feedsUrl) {
-      this.getNewsFeedsUrl(item);
+    const dateNow = this.returnDateNow();
+
+    if (dateNow === JSON.parse(localStorage.getItem('dateNow'))) {
+      console.log('getting from LS');
+      this.feedArray = JSON.parse(localStorage.getItem('feeds'));
+    } else {
+      this.feedArray = [];
+      for (const item of this.feedsUrl) {
+        this.getNewsFeedsUrl(item);
+      }
     }
+
+    // this.getNewsFeed();
   }
 
   loadNews(event) {
@@ -143,10 +122,31 @@ export class NewsComponent implements OnInit {
     const url = item.url;
     this.http
       .get<any>('https://api.rss2json.com/v1/api.json?rss_url=' + url)
-      .subscribe((data) => {
-        this.feedArray.push({ ...data, symbol: item.symbol });
-        console.log(this.feedArray);
-      });
+      .subscribe(
+        (data) => {
+          this.feedArray.push({ ...data, symbol: item.symbol });
+          console.log(this.feedArray.length);
+
+          if (this.feedArray.length >= 58) {
+            localStorage.setItem('feeds', JSON.stringify(this.feedArray));
+            const dateNow = this.returnDateNow();
+            localStorage.setItem('dateNow', JSON.stringify(dateNow));
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
+  returnDateNow() {
+    const dateNow =
+      new Date().getFullYear() +
+      '.' +
+      new Date().getMonth() +
+      '.' +
+      new Date().getDate();
+    return dateNow;
   }
 
   getNewsFeed() {
@@ -155,15 +155,11 @@ export class NewsComponent implements OnInit {
       responseType: 'text/html',
     };
     this.http
-      .get<any>(
-        'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fbitcoinmagazine.com%2Ffeed',
-        requestOptions
-      )
+      .get<any>('https://www.financemagnates.com/feed/', requestOptions)
       .subscribe(
         (data) => {
           xml2js.parseString(data, (error, result: NewsRss) => {
             this.RssData = result;
-            console.log(result);
           });
         },
         (error) => {
