@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import * as xml2js from 'xml2js';
 import { NewsRss } from '../../models/news-rss';
@@ -90,7 +91,7 @@ export class NewsComponent implements OnInit {
   dcForecasts = 'https://www.dcforecasts.com/feed/';
   globalCryptoPress = 'https://www.globalcryptopress.com/feeds/posts/default';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private location: Location) {}
 
   ngOnInit(): void {
     const dateNow = this.returnDateNow();
@@ -108,13 +109,18 @@ export class NewsComponent implements OnInit {
     // this.getNewsFeed();
   }
 
-  loadNews(event) {
-    console.log(event.target.innerText);
-    this.feedsUrl.forEach((item) => {
-      if (item.name === event.target.innerText.trim()) {
-        this.getNewsFeedsUrl(item.url);
-      }
-    });
+  scrollToTop() {
+    window.scroll(0, 0);
+  }
+
+  loadNews($event) {
+    // console.log(event.target.innerText);
+    // this.feedsUrl.forEach((item) => {
+    //   if (item.name === event.target.innerText.trim()) {
+    //     this.getNewsFeedsUrl(item.url);
+    //   }
+    // });
+    // this.location.path() + '#B0';
     this.visibleSidebar = false;
   }
 

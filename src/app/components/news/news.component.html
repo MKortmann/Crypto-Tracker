@@ -9,11 +9,11 @@
     <h2>News</h2>
     <p
       class="paragraphSideBar"
-      *ngFor="let item of feedsUrl"
+      *ngFor="let item of feedsUrl; index as i"
       (click)="loadNews($event)"
     >
       <img src="assets/imgs/feeds/{{ item.symbol }}" alt="{{ item.symbol }}" />
-      {{ item.name }}
+      <a pageScroll href="news/#B{{ i }}">{{ item.name }}</a>
     </p>
   </div>
 </p-sidebar>
@@ -23,7 +23,15 @@
   type="button"
   (click)="visibleSidebar = true"
   icon="pi pi-arrow-left"
-  style="float: right;"
+  style="position: fixed; right: 0px;"
+></button>
+
+<button
+  pButton
+  type="button"
+  (click)="scrollToTop()"
+  icon="pi pi-arrow-up"
+  style="position: fixed; right: 40px;"
 ></button>
 
 <!-- <div
@@ -32,7 +40,7 @@
   *ngFor="let channel of this.feedArray; index as i"
 > -->
 <div *ngFor="let channel of this.feedArray; index as i">
-  <h2>
+  <h2 id="B{{ i }}">
     <img
       src="assets/imgs/feeds/{{ channel.symbol }}"
       alt="{{ channel.symbol }}"
