@@ -130,7 +130,7 @@ export class NewsComponent implements OnInit {
       .get<any>('https://api.rss2json.com/v1/api.json?rss_url=' + url)
       .subscribe(
         (data) => {
-          this.feedArray.push({ ...data, symbol: item.symbol });
+          this.feedArray.push({ ...data, symbol: item.symbol, id: item.id });
           console.log(this.feedArray.length);
 
           if (this.feedArray.length >= 58) {

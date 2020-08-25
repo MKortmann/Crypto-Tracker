@@ -7,14 +7,21 @@
 >
   <div class="sideNav">
     <h2>News</h2>
-    <p
+    <a
+      pageScroll
+      href="news/#B{{ i + 1 }}"
       class="paragraphSideBar"
       *ngFor="let item of feedsUrl; index as i"
       (click)="loadNews($event)"
     >
-      <img src="assets/imgs/feeds/{{ item.symbol }}" alt="{{ item.symbol }}" />
-      <a pageScroll href="news/#B{{ i }}">{{ item.name }}</a>
-    </p>
+      <p>
+        <img
+          src="assets/imgs/feeds/{{ item.symbol }}"
+          alt="{{ item.symbol }}"
+        />
+        {{ item.name }}
+      </p>
+    </a>
   </div>
 </p-sidebar>
 
@@ -40,7 +47,7 @@
   *ngFor="let channel of this.feedArray; index as i"
 > -->
 <div *ngFor="let channel of this.feedArray; index as i">
-  <h2 id="B{{ i }}">
+  <h2 id="B{{ channel.id }}">
     <img
       src="assets/imgs/feeds/{{ channel.symbol }}"
       alt="{{ channel.symbol }}"
