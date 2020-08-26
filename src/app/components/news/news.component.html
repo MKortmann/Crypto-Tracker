@@ -11,7 +11,7 @@
       pageScroll
       href="news#B{{ item.id }}"
       class="paragraphSideBar"
-      *ngFor="let item of feedsUrl; index as i"
+      *ngFor="let item of feedArray; index as i"
       (click)="loadNews($event)"
     >
       <p>
@@ -56,6 +56,14 @@
       ></app-single-feed>
     </div>
   </p-tabPanel>
+  <p-tabPanel header="Magazine" rightIcon="pi pi-bookmark">
+    <div *ngFor="let channel of this.feedArray; index as i">
+      <app-single-feed
+        *ngIf="channel.bookmark"
+        (clickedBookmark)="setBookmarkMagazine($event)"
+        [channel]="channel"
+      ></app-single-feed>
+    </div>
+  </p-tabPanel>
   <p-tabPanel header="News" rightIcon="pi pi-bookmark"> </p-tabPanel>
-  <p-tabPanel header="Magazine" rightIcon="pi pi-bookmark"> </p-tabPanel>
 </p-tabView>

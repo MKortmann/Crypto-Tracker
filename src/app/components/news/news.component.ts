@@ -41,12 +41,27 @@ export class NewsComponent implements OnInit {
     if (dateNow === JSON.parse(localStorage.getItem('dateNow'))) {
       console.log('getting from LS');
       this.feedArray = JSON.parse(localStorage.getItem('feeds'));
+      this.feedArray.sort((a, b) => this.compare(a, b));
     } else {
       this.feedArray = [];
       for (const item of this.feedsUrl) {
         this.getNewsFeedsUrl(item);
       }
     }
+  }
+
+  compare(a, b) {
+    const tempA = a.name.toLowerCase().trim();
+    const tempB = b.name.toLowerCase().trim();
+
+    let comparison = 0;
+    if (tempA > tempB) {
+      comparison = 1;
+    } else {
+      comparison = -1;
+    }
+
+    return comparison;
   }
 
   scrollToTop() {
@@ -79,17 +94,9 @@ export class NewsComponent implements OnInit {
             ...data,
             ...item,
           });
-          // this.feedArray.push({
-          //   ...data,
-          //   symbol: item.symbol,
-          //   id: item.id,
-          //   name: item.name,
-          // });
-          console.log(this.feedArray.length);
-          if (item.id === 32) {
-          }
 
-          if (this.feedArray.length >= 57) {
+          if (this.feedArray.length >= this.feedsUrl.length) {
+            this.feedArray.sort((a, b) => this.compare(a, b));
             localStorage.setItem('feeds', JSON.stringify(this.feedArray));
             const dateNow = this.returnDateNow();
             localStorage.setItem('dateNow', JSON.stringify(dateNow));
