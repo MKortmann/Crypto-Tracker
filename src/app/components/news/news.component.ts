@@ -38,16 +38,26 @@ export class NewsComponent implements OnInit {
   ngOnInit(): void {
     const dateNow = this.returnDateNow();
 
-    // check local storage
-
     if (dateNow === JSON.parse(localStorage.getItem('dateNow'))) {
       console.log('getting from LS');
       this.feedArray = JSON.parse(localStorage.getItem('feeds'));
-      this.feedArray.sort((a, b) => this.compare(a, b));
+      // this.feedArray.sort((a, b) => this.compare(a, b));
     } else {
-      this.feedArray = [];
-      for (const item of this.feedsUrl) {
-        this.getNewsFeedsUrl(item);
+      if (localStorage.getItem('feeds')) {
+        this.feedArray = JSON.parse(localStorage.getItem('feeds'));
+        // getting the saved bookmarks but delete the old news!
+        this.feedArray.forEach((item) => {
+          item.feed = {};
+          item.items = [];
+        });
+
+        for (const item of this.feedsUrl) {
+          this.getNewsFeedsUrl(item, false);
+        }
+      } else {
+        for (const item of this.feedsUrl) {
+          this.getNewsFeedsUrl(item, true);
+        }
       }
     }
   }
@@ -83,19 +93,27 @@ export class NewsComponent implements OnInit {
         console.log(item.bookmark);
       }
     });
+
+    localStorage.setItem('feeds', JSON.stringify(this.feedArray));
   }
 
-  getNewsFeedsUrl(item) {
+  getNewsFeedsUrl(item, firstTime) {
     const url = item.url;
     this.http
       .get<any>('https://api.rss2json.com/v1/api.json?rss_url=' + url)
       .subscribe(
         (data) => {
           // const bookmark = localStorage(JSON.stringify(item.id));
-          this.feedArray.push({
-            ...data,
-            ...item,
-          });
+          if (firstTime) {
+            this.feedArray.push({
+              ...data,
+              ...item,
+            });
+          } else {
+            this.feedArray.push({
+              ...data,
+            });
+          }
 
           if (this.feedArray.length >= this.feedsUrl.length) {
             this.feedArray.sort((a, b) => this.compare(a, b));
