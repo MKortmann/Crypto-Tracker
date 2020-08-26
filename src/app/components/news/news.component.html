@@ -46,26 +46,13 @@
   style="margin-top: 18px;"
   *ngFor="let channel of this.feedArray; index as i"
 > -->
-<div *ngFor="let channel of this.feedArray; index as i">
-  <h2 id="B{{ channel.id }}">
-    <img
-      src="assets/imgs/feeds/{{ channel.symbol }}"
-      alt="{{ channel.symbol }}"
-    />
-    {{ channel.feed.title }}
-  </h2>
 
-  <div class="p-grid">
-    <div class="p-col p-align-stretch" *ngFor="let item of channel.items">
-      <p-card [style]="{ 'min-height': '200px', 'min-width': '150px' }">
-        <li>
-          {{ item.pubDate }}
-          <span style="font-weight: bolder;">
-            <a href="{{ item.link }}">{{ item.title }}</a>
-          </span>
-        </li>
-      </p-card>
-      <p>Author: {{ item.author }}</p>
+<p-tabView>
+  <p-tabPanel header="News" [selected]="true">
+    <div *ngFor="let channel of this.feedArray; index as i">
+      <app-single-feed [channel]="channel"></app-single-feed>
     </div>
-  </div>
-</div>
+  </p-tabPanel>
+  <p-tabPanel header="News" rightIcon="pi pi-bookmark"> </p-tabPanel>
+  <p-tabPanel header="Magazine" rightIcon="pi pi-bookmark"> </p-tabPanel>
+</p-tabView>

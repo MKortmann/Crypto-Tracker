@@ -56,6 +56,8 @@ import { NewsComponent } from './components/news/news.component';
 
 import { CardDashboardGlobalComponent } from './components/cryptos/card-dashboard-global/card-dashboard-global.component';
 import { TableExchangesComponent } from './components/exchanges/table-exchanges/table-exchanges.component';
+import { TabViewModule } from 'primeng/tabview';
+import { SingleFeedComponent } from './components/news/single-feed/single-feed.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,7 @@ import { TableExchangesComponent } from './components/exchanges/table-exchanges/
     ExchangesComponent,
     NewsComponent,
     TableExchangesComponent,
+    SingleFeedComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -94,6 +97,7 @@ import { TableExchangesComponent } from './components/exchanges/table-exchanges/
     ChartModule,
     AccordionModule,
     CardModule,
+    TabViewModule,
     BrowserAnimationsModule,
     InputTextModule,
     HttpClientModule,

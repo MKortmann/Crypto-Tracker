@@ -16,29 +16,24 @@
 .paragraphSideBar:hover {
   cursor: pointer;
 }
+// li {
+//   display: flex;
+//   flex-direction: column;
+//   flex-wrap: wrap;
+//   list-style-type: none;
+// }
 
-.p-col-12 {
-  border: 1px solid black;
-}
+// :host ::ng-deep p-grid {
+//   padding-left: $ss-padding !important;
+// }
 
-li {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  list-style-type: none;
-}
-
-:host ::ng-deep p-grid {
-  padding-left: $ss-padding !important;
-}
-
-:host ::ng-deep .p-card-body {
-  padding: $s-padding !important;
-}
-:host ::ng-deep .p-card-content {
-  padding: 0 !important;
-  padding-top: $s-padding !important;
-}
+// :host ::ng-deep .p-card-body {
+//   padding: $s-padding !important;
+// }
+// :host ::ng-deep .p-card-content {
+//   padding: 0 !important;
+//   padding-top: $s-padding !important;
+// }
 
 :host ::ng-deep button {
   margin-right: 0.15em;
@@ -49,4 +44,10 @@ li {
 :host ::ng-deep p-sidebar {
   max-width: 200px !important;
   max-height: 70% !important;
+}
+
+.changeBookmark {
+  // border: 1px solid red !important;
+  filter: invert(48%) sepia(30%) saturate(3207%) hue-rotate(130deg)
+    brightness(95%) contrast(80%);
 }

@@ -1,0 +1,27 @@
+// import global styling
+@import '../../../../styles';
+
+:host {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+// :host ::ng-deep p-grid {
+//   padding-left: $ss-padding !important;
+// }
+
+:host ::ng-deep .p-card-body {
+  padding: $s-padding !important;
+}
+:host ::ng-deep .p-card-content {
+  padding: 0 !important;
+  padding-top: $s-padding !important;
+}
