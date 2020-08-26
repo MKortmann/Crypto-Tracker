@@ -16,7 +16,7 @@
     >
       <p>
         <img
-          src="assets/imgs/feeds/{{ item.symbol }}"
+          src="assets/imgs/feeds/{{ item.symbol }}.png"
           alt="{{ item.symbol }}"
         />
         {{ item.name }}
@@ -50,7 +50,10 @@
 <p-tabView>
   <p-tabPanel header="News" [selected]="true">
     <div *ngFor="let channel of this.feedArray; index as i">
-      <app-single-feed [channel]="channel"></app-single-feed>
+      <app-single-feed
+        (clickedBookmark)="setBookmarkMagazine($event)"
+        [channel]="channel"
+      ></app-single-feed>
     </div>
   </p-tabPanel>
   <p-tabPanel header="News" rightIcon="pi pi-bookmark"> </p-tabPanel>

@@ -25,3 +25,9 @@ li {
   padding: 0 !important;
   padding-top: $s-padding !important;
 }
+
+.changeBookmark {
+  // border: 1px solid red !important;
+  filter: invert(48%) sepia(30%) saturate(3207%) hue-rotate(130deg)
+    brightness(95%) contrast(80%);
+}

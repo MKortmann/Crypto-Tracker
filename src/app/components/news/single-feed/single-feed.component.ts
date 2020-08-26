@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-single-feed',
@@ -14,7 +14,13 @@ export class SingleFeedComponent implements OnInit {
     url: 'https%3A%2F%2Fwww.globalcryptopress.com%2Ffeeds%2Fposts%2Fdefault',
     bookmark: false,
   };
+  @Output() clickedBookmark = new EventEmitter<string>();
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  sendTriggerToParent($event) {
+    this.clickedBookmark.emit($event);
+  }
 }

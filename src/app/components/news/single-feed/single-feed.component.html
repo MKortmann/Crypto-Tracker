@@ -8,6 +8,7 @@
     class="pi pi-bookmark"
     style="font-size: 2rem; cursor: pointer;"
     [class.changeBookmark]="channel.bookmark"
+    (click)="sendTriggerToParent($event)"
   ></i>
 </h2>
 
