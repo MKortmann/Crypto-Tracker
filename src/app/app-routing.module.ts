@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 // import { CommonModule } from '@angular/common';
 
 // It imports RouterModule and Routes so the app can have routing functionality
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { CryptosComponent } from './components/cryptos/cryptos.component';
 import { AboutComponent } from './components/about/about.component';
 import { ExchangesComponent } from './components/exchanges/exchanges.component';
@@ -38,9 +38,16 @@ const routes: Routes = [
  * because you configure the router at the application's root level.
  */
 
+const routerOptions: ExtraOptions = {
+  useHash: false,
+  anchorScrolling: 'enabled',
+  onSameUrlNavigation: 'reload',
+  scrollPositionRestoration: 'enabled',
+};
+
 @NgModule({
   declarations: [],
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, routerOptions)],
   /** It exports RouterModule so it will be available throughout the app. */
   exports: [RouterModule],
 })
