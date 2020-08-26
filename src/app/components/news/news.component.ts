@@ -38,6 +38,8 @@ export class NewsComponent implements OnInit {
   ngOnInit(): void {
     const dateNow = this.returnDateNow();
 
+    // check local storage
+
     if (dateNow === JSON.parse(localStorage.getItem('dateNow'))) {
       console.log('getting from LS');
       this.feedArray = JSON.parse(localStorage.getItem('feeds'));

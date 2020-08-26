@@ -152,7 +152,7 @@ export const FeedsUrl = [
     name: 'Bein Crypto',
     symbol: 'beincrypto',
     url: 'https%3A%2F%2Fbeincrypto.com%2Ffeed%2F',
-    bookmark: true,
+    bookmark: false,
   },
   {
     id: 23,
@@ -173,7 +173,7 @@ export const FeedsUrl = [
     name: 'Coin Gape',
     symbol: 'coingape',
     url: 'https%3A%2F%2Fcoingape.com%2Ffeed%2F',
-    bookmark: true,
+    bookmark: false,
   },
   {
     id: 26,
