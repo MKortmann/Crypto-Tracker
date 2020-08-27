@@ -16,6 +16,7 @@ export class NewsComponent implements OnInit, AfterViewInit {
   feedsUrl = FeedsUrl;
 
   feedArray = [];
+  feedSavedArray = [];
   loops = this.feedsUrl.length;
 
   // worked
@@ -117,8 +118,17 @@ export class NewsComponent implements OnInit, AfterViewInit {
     localStorage.setItem('feeds', JSON.stringify(this.feedArray));
   }
 
-  setBookmarkSave($event) {
-    alert($event);
+  setBookmarkSave(event) {
+    this.feedArray.forEach((item, index) => {
+      if (item.name.trim() === event.name.trim()) {
+        item.items[event.itemIndexArray].bookmark = !item.items[
+          event.itemIndexArray
+        ].bookmark;
+        console.log(item.name);
+      }
+    });
+
+    localStorage.setItem('feeds', JSON.stringify(this.feedArray));
   }
 
   returnDateNow() {

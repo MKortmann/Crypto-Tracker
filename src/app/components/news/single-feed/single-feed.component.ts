@@ -14,6 +14,9 @@ export class SingleFeedComponent implements OnInit {
     url: 'https%3A%2F%2Fwww.globalcryptopress.com%2Ffeeds%2Fposts%2Fdefault',
     bookmark: false,
   };
+  @Input()
+  saved = false;
+
   @Output() clickedBookmark = new EventEmitter<string>();
 
   @Output() clickedToSaveBookmark = new EventEmitter<string>();

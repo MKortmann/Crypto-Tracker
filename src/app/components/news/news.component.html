@@ -54,6 +54,7 @@
         (clickedBookmark)="setBookmarkMagazine($event)"
         (clickedToSaveBookmark)="setBookmarkSave($event)"
         [channel]="channel"
+        [saved]="false"
       ></app-single-feed>
     </div>
   </p-tabPanel>
@@ -64,15 +65,21 @@
         (clickedBookmark)="setBookmarkMagazine($event)"
         (clickedToSaveBookmark)="setBookmarkSave($event)"
         [channel]="channel"
+        [saved]="false"
       ></app-single-feed>
     </div>
   </p-tabPanel>
-  <p-tabPanel header="Save" rightIcon="pi pi-bookmark">
-    <!-- <div *ngFor="let channel of this.feedArray">
-      <app-single-feed
-        (clickedBookmark)="setBookmarkMagazine($event)"
-        [channel]="channel"
-      ></app-single-feed>
-    </div> -->
+  <p-tabPanel header="Saved" rightIcon="pi pi-save">
+    <div *ngFor="let channel of this.feedArray">
+      <div *ngFor="let item of channel.items">
+        <app-single-feed
+          *ngIf="item.bookmark"
+          (clickedBookmark)="setBookmarkMagazine($event)"
+          (clickedToSaveBookmark)="setBookmarkSave($event)"
+          [channel]="channel"
+          [saved]="true"
+        ></app-single-feed>
+      </div>
+    </div>
   </p-tabPanel>
 </p-tabView>

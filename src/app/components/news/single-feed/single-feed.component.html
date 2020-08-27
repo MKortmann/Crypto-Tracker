@@ -13,15 +13,28 @@
 </h2>
 
 <div class="p-grid">
-  <div class="p-col p-align-stretch" *ngFor="let item of channel.items">
-    <p-card [style]="{ 'min-height': '200px', 'min-width': '150px' }">
+  <div
+    class="p-col p-align-stretch"
+    *ngFor="let item of channel.items; let i = index"
+  >
+    <p-card
+      [style]="{ 'min-height': '200px', 'min-width': '150px' }"
+      *ngIf="!saved || (saved && item.bookmark)"
+    >
       <li>
         {{ item.pubDate | date: 'dd/MM' }} -
         {{ item.pubDate | date: 'hh:mm' }}
         <i
-          class="pi pi-bookmark"
+          class="pi pi-save"
           style="cursor: pointer;"
-          (click)="sendTriggerToSaveToParent($event)"
+          (click)="
+            sendTriggerToSaveToParent({
+              name: channel.name,
+              itemPubDate: item.pubDate,
+              itemIndexArray: i
+            })
+          "
+          [class.changeBookmark]="item.bookmark"
         ></i>
 
         <span style="font-weight: bolder;">
@@ -29,6 +42,6 @@
         </span>
       </li>
     </p-card>
-    <p>Author: {{ item.author }}</p>
+    <p *ngIf="!saved || (saved && item.bookmark)">Author: {{ item.author }}</p>
   </div>
 </div>
