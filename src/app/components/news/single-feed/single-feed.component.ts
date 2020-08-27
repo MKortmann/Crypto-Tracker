@@ -16,11 +16,17 @@ export class SingleFeedComponent implements OnInit {
   };
   @Output() clickedBookmark = new EventEmitter<string>();
 
+  @Output() clickedToSaveBookmark = new EventEmitter<string>();
+
   constructor() {}
 
   ngOnInit(): void {}
 
   sendTriggerToParent($event) {
     this.clickedBookmark.emit($event);
+  }
+
+  sendTriggerToSaveToParent($event) {
+    this.clickedToSaveBookmark.emit($event);
   }
 }

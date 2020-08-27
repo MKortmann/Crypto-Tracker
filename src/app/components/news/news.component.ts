@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import * as xml2js from 'xml2js';
@@ -10,12 +10,13 @@ import { FeedsUrl } from './feeds';
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.scss'],
 })
-export class NewsComponent implements OnInit {
+export class NewsComponent implements OnInit, AfterViewInit {
   RssData: NewsRss;
   visibleSidebar = false;
   feedsUrl = FeedsUrl;
 
   feedArray = [];
+  loops = this.feedsUrl.length;
 
   // worked
   newsBitcoin = 'https://news.bitcoin.com/feed/';
@@ -23,43 +24,62 @@ export class NewsComponent implements OnInit {
   deCrypt = 'https://decrypt.co/feed';
   blokt = 'https://blokt.com/feed';
   theBlockChain = 'https://www.the-blockchain.com/feed/';
+  dateNow: string;
 
-  // Using rss feed app free
-  // coinDesk = 'https://rss.app/feeds/eawQ6rZvhg7nQhpa.xml';
-
-  // Unblock using feed2json.org
-  prefixRss2JSONFeed = 'https://feed2json.org/convert?url=';
-
+  // to look: feed2json.org or rss2json
   // Unblock using rss2json
   prefixRss2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
 
   constructor(private http: HttpClient, private location: Location) {}
 
   ngOnInit(): void {
-    const dateNow = this.returnDateNow();
+    this.dateNow = this.returnDateNow();
 
-    if (dateNow === JSON.parse(localStorage.getItem('dateNow'))) {
+    if (this.dateNow === JSON.parse(localStorage.getItem('dateNow'))) {
       console.log('getting from LS');
       this.feedArray = JSON.parse(localStorage.getItem('feeds'));
-      // this.feedArray.sort((a, b) => this.compare(a, b));
     } else {
+      // have we already stored
       if (localStorage.getItem('feeds')) {
         this.feedArray = JSON.parse(localStorage.getItem('feeds'));
-        // getting the saved bookmarks but delete the old news!
-        this.feedArray.forEach((item) => {
-          item.feed = {};
-          item.items = [];
-        });
-
-        for (const item of this.feedsUrl) {
-          this.getNewsFeedsUrl(item, false);
-        }
       } else {
-        for (const item of this.feedsUrl) {
-          this.getNewsFeedsUrl(item, true);
-        }
+        // no! Then, store the start point
+        this.feedArray = [...this.feedsUrl];
+      }
+
+      // fetch news
+      for (const item of this.feedsUrl) {
+        this.getNewsFeedsUrl(item);
       }
     }
+  }
+
+  ngAfterViewInit() {
+    localStorage.setItem('dateNow', JSON.stringify(this.dateNow));
+    this.feedArray.sort((a, b) => this.compare(a, b));
+    localStorage.setItem('feeds', JSON.stringify(this.feedArray));
+    console.log('SAVE FEEDS');
+  }
+
+  getNewsFeedsUrl(item) {
+    const url = item.url;
+    this.http
+      .get<any>('https://api.rss2json.com/v1/api.json?rss_url=' + url)
+      .subscribe(
+        (data) => {
+          // const bookmark = localStorage(JSON.stringify(item.id));
+
+          data.items.forEach((each) => {
+            each.bookmark = localStorage.getItem('each.id') || false;
+          });
+
+          this.feedArray[item.id].feed = { ...data.feed };
+          this.feedArray[item.id].items = [...data.items];
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   compare(a, b) {
@@ -97,35 +117,8 @@ export class NewsComponent implements OnInit {
     localStorage.setItem('feeds', JSON.stringify(this.feedArray));
   }
 
-  getNewsFeedsUrl(item, firstTime) {
-    const url = item.url;
-    this.http
-      .get<any>('https://api.rss2json.com/v1/api.json?rss_url=' + url)
-      .subscribe(
-        (data) => {
-          // const bookmark = localStorage(JSON.stringify(item.id));
-          if (firstTime) {
-            this.feedArray.push({
-              ...data,
-              ...item,
-            });
-          } else {
-            this.feedArray.push({
-              ...data,
-            });
-          }
-
-          if (this.feedArray.length >= this.feedsUrl.length) {
-            this.feedArray.sort((a, b) => this.compare(a, b));
-            localStorage.setItem('feeds', JSON.stringify(this.feedArray));
-            const dateNow = this.returnDateNow();
-            localStorage.setItem('dateNow', JSON.stringify(dateNow));
-          }
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+  setBookmarkSave($event) {
+    alert($event);
   }
 
   returnDateNow() {

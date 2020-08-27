@@ -18,7 +18,11 @@
       <li>
         {{ item.pubDate | date: 'dd/MM' }} -
         {{ item.pubDate | date: 'hh:mm' }}
-        <i class="pi pi-bookmark" style="cursor: pointer;"></i>
+        <i
+          class="pi pi-bookmark"
+          style="cursor: pointer;"
+          (click)="sendTriggerToSaveToParent($event)"
+        ></i>
 
         <span style="font-weight: bolder;">
           <a href="{{ item.link }}"> {{ item.title }}</a>

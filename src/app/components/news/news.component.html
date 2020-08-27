@@ -49,21 +49,30 @@
 
 <p-tabView>
   <p-tabPanel header="News" [selected]="true">
-    <div *ngFor="let channel of this.feedArray; index as i">
+    <div *ngFor="let channel of this.feedArray">
       <app-single-feed
         (clickedBookmark)="setBookmarkMagazine($event)"
+        (clickedToSaveBookmark)="setBookmarkSave($event)"
         [channel]="channel"
       ></app-single-feed>
     </div>
   </p-tabPanel>
   <p-tabPanel header="Magazine" rightIcon="pi pi-bookmark">
-    <div *ngFor="let channel of this.feedArray; index as i">
+    <div *ngFor="let channel of this.feedArray">
       <app-single-feed
         *ngIf="channel.bookmark"
         (clickedBookmark)="setBookmarkMagazine($event)"
+        (clickedToSaveBookmark)="setBookmarkSave($event)"
         [channel]="channel"
       ></app-single-feed>
     </div>
   </p-tabPanel>
-  <p-tabPanel header="Save" rightIcon="pi pi-bookmark"> </p-tabPanel>
+  <p-tabPanel header="Save" rightIcon="pi pi-bookmark">
+    <!-- <div *ngFor="let channel of this.feedArray">
+      <app-single-feed
+        (clickedBookmark)="setBookmarkMagazine($event)"
+        [channel]="channel"
+      ></app-single-feed>
+    </div> -->
+  </p-tabPanel>
 </p-tabView>
