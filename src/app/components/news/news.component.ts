@@ -68,12 +68,6 @@ export class NewsComponent implements OnInit, AfterViewInit {
       .get<any>('https://api.rss2json.com/v1/api.json?rss_url=' + url)
       .subscribe(
         (data) => {
-          // const bookmark = localStorage(JSON.stringify(item.id));
-
-          data.items.forEach((each) => {
-            each.bookmark = localStorage.getItem('each.id') || false;
-          });
-
           this.feedArray[item.id].feed = { ...data.feed };
           this.feedArray[item.id].items = [...data.items];
         },
@@ -105,12 +99,11 @@ export class NewsComponent implements OnInit, AfterViewInit {
     this.visibleSidebar = false;
   }
 
-  setBookmarkMagazine($event) {
-    const name = $event.currentTarget.parentNode.innerText;
-
+  setBookmarkMagazine(event) {
     this.feedArray.forEach((item, index) => {
-      if (item.name.trim() === name.trim()) {
+      if (item.name.trim() === event.name.trim()) {
         item.bookmark = !item.bookmark;
+        localStorage.setItem(`${event.id}`, `${item.bookmark}`);
         console.log(item.bookmark);
       }
     });
@@ -121,16 +114,30 @@ export class NewsComponent implements OnInit, AfterViewInit {
   setBookmarkSave(event) {
     this.feedArray.forEach((item, index) => {
       if (item.name.trim() === event.name.trim()) {
-        item.items[event.itemIndexArray].bookmark = !item.items[
-          event.itemIndexArray
-        ].bookmark;
-        console.log(item.name);
-        item.saved[0] = true;
-        item.saved[1].indexes.push(event.itemIndexArray);
+        this.setUnsetBookmarkSave(item, event);
       }
     });
 
     localStorage.setItem('feeds', JSON.stringify(this.feedArray));
+  }
+
+  setUnsetBookmarkSave(item, event) {
+    if (!item.items[event.itemIndexArray].bookmark) {
+      item.items[event.itemIndexArray].bookmark = true;
+      item.saved[0] = true;
+      item.saved[1].indexes.push(event.itemIndexArray);
+    } else if (item.saved[1].indexes.length > 1) {
+      item.items[event.itemIndexArray].bookmark = false;
+      item.saved[1].indexes.forEach((inItem, index) => {
+        if (inItem === event.itemIndexArray) {
+          item.saved[1].indexes.splice(index, 1);
+        }
+      });
+    } else {
+      item.items[event.itemIndexArray].bookmark = false;
+      item.saved[0] = false;
+      item.saved[1].indexes = [];
+    }
   }
 
   returnDateNow() {
