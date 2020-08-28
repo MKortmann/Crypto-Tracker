@@ -8,6 +8,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 1,
@@ -17,6 +18,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 2,
@@ -26,6 +28,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 3,
@@ -35,6 +38,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 4,
@@ -44,6 +48,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 5,
@@ -53,6 +58,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 6,
@@ -62,6 +68,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 7,
@@ -71,6 +78,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 8,
@@ -80,6 +88,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 9,
@@ -89,6 +98,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 10,
@@ -98,6 +108,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 11,
@@ -107,6 +118,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 12,
@@ -116,6 +128,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 13,
@@ -125,6 +138,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 14,
@@ -134,6 +148,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 15,
@@ -143,6 +158,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 16,
@@ -152,6 +168,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 17,
@@ -161,6 +178,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 18,
@@ -170,6 +188,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 19,
@@ -179,6 +198,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 20,
@@ -188,6 +208,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 21,
@@ -197,6 +218,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 22,
@@ -206,6 +228,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 23,
@@ -215,6 +238,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 24,
@@ -224,6 +248,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 25,
@@ -233,6 +258,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 26,
@@ -242,6 +268,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 27,
@@ -251,6 +278,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 28,
@@ -260,6 +288,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 29,
@@ -269,6 +298,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 30,
@@ -278,6 +308,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 31,
@@ -287,6 +318,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 32,
@@ -296,6 +328,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 33,
@@ -305,6 +338,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 34,
@@ -314,6 +348,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 35,
@@ -323,6 +358,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 36,
@@ -332,6 +368,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 37,
@@ -341,6 +378,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 38,
@@ -350,6 +388,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 39,
@@ -359,6 +398,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 40,
@@ -369,6 +409,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 41,
@@ -378,6 +419,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 42,
@@ -387,6 +429,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 43,
@@ -396,6 +439,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 44,
@@ -405,6 +449,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 45,
@@ -414,6 +459,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 46,
@@ -423,6 +469,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 47,
@@ -432,6 +479,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 48,
@@ -441,6 +489,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 49,
@@ -450,6 +499,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 50,
@@ -459,6 +509,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 51,
@@ -468,6 +519,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 52,
@@ -477,6 +529,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 53,
@@ -486,6 +539,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 54,
@@ -495,6 +549,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 55,
@@ -504,6 +559,7 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
   {
     id: 56,
@@ -513,5 +569,6 @@ export const FeedsUrl = [
     bookmark: false,
     feed: {},
     items: [],
+    saved: [false, { indexes: [] }],
   },
 ];

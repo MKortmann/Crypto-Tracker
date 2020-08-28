@@ -1,4 +1,7 @@
-<h2 id="B{{ channel.id }}">
+<h2
+  id="B{{ channel.id }}"
+  *ngIf="!atSavedTab || (channel.saved[0] && atSavedTab)"
+>
   <img
     src="assets/imgs/feeds/{{ channel.symbol }}.png"
     alt="{{ channel.symbol }}"
@@ -19,7 +22,7 @@
   >
     <p-card
       [style]="{ 'min-height': '200px', 'min-width': '150px' }"
-      *ngIf="!saved || (saved && item.bookmark)"
+      *ngIf="!atSavedTab || (atSavedTab && item.bookmark)"
     >
       <li>
         {{ item.pubDate | date: 'dd/MM' }} -
@@ -42,6 +45,8 @@
         </span>
       </li>
     </p-card>
-    <p *ngIf="!saved || (saved && item.bookmark)">Author: {{ item.author }}</p>
+    <p *ngIf="!atSavedTab || (atSavedTab && item.bookmark)">
+      Author: {{ item.author }}
+    </p>
   </div>
 </div>

@@ -125,6 +125,8 @@ export class NewsComponent implements OnInit, AfterViewInit {
           event.itemIndexArray
         ].bookmark;
         console.log(item.name);
+        item.saved[0] = true;
+        item.saved[1].indexes.push(event.itemIndexArray);
       }
     });
 
