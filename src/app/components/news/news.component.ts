@@ -56,10 +56,12 @@ export class NewsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    localStorage.setItem('dateNow', JSON.stringify(this.dateNow));
-    this.feedArray.sort((a, b) => this.compare(a, b));
-    localStorage.setItem('feeds', JSON.stringify(this.feedArray));
-    console.log('SAVE FEEDS');
+    setTimeout(() => {
+      localStorage.setItem('dateNow', JSON.stringify(this.dateNow));
+      this.feedArray.sort((a, b) => this.compare(a, b));
+      localStorage.setItem('feeds', JSON.stringify(this.feedArray));
+      console.log('SAVE FEEDS');
+    }, 5000);
   }
 
   getNewsFeedsUrl(item) {
@@ -70,7 +72,15 @@ export class NewsComponent implements OnInit, AfterViewInit {
         (data) => {
           // this.feedArray[item.id].feed = { ...data.feed };
           // this.feedArray[item.id].items = [...data.items];
-          this.feedArray[item.id].items = [...data.items];
+
+          data.items.forEach((subItem, index) => {
+            this.feedArray[item.id].items.push({
+              author: subItem.author,
+              title: subItem.title,
+              pubDate: subItem.pubDate,
+              link: subItem.link,
+            });
+          });
         },
         (error) => {
           console.log(error);
