@@ -103,7 +103,7 @@ export class NewsComponent implements OnInit, AfterViewInit {
     this.feedArray.forEach((item, index) => {
       if (item.name.trim() === event.name.trim()) {
         item.bookmark = !item.bookmark;
-        localStorage.setItem(`${event.id}`, `${item.bookmark}`);
+        // localStorage.setItem(`${event.id}`, `${item.bookmark}`);
         console.log(item.bookmark);
       }
     });
