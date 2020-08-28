@@ -122,21 +122,50 @@ export class NewsComponent implements OnInit, AfterViewInit {
   }
 
   setUnsetBookmarkSave(item, event) {
-    if (!item.items[event.itemIndexArray].bookmark) {
-      item.items[event.itemIndexArray].bookmark = true;
-      item.saved[0] = true;
-      item.saved[1].indexes.push(event.itemIndexArray);
-    } else if (item.saved[1].indexes.length > 1) {
-      item.items[event.itemIndexArray].bookmark = false;
-      item.saved[1].indexes.forEach((inItem, index) => {
-        if (inItem === event.itemIndexArray) {
-          item.saved[1].indexes.splice(index, 1);
-        }
-      });
-    } else {
-      item.items[event.itemIndexArray].bookmark = false;
-      item.saved[0] = false;
-      item.saved[1].indexes = [];
+    // we have to find the itemIndexArray based on the pubData
+    let itemIndexArray = -1;
+    item.items.forEach((subItem, index) => {
+      if (subItem.pubDate === event.itemPubDate) {
+        itemIndexArray = index;
+      }
+    });
+
+    // means that the item is in both list
+    if (itemIndexArray !== -1) {
+      // was not saved
+      if (!item.items[itemIndexArray].bookmark) {
+        item.items[itemIndexArray].bookmark = true;
+        item.saved[0] = true;
+        item.saved[1].items.push(item.items[itemIndexArray]);
+        // was saved and we have more than one item
+      } else if (item.saved[1].items.length > 1) {
+        item.items[itemIndexArray].bookmark = false;
+        item.saved[1].items.forEach((inItem, index) => {
+          if (inItem.pubDate === event.itemPubDate) {
+            item.saved[1].items.splice(index, 1);
+          }
+        });
+        // was saved and we have just one item
+      } else {
+        item.items[itemIndexArray].bookmark = false;
+        item.saved[0] = false;
+        item.saved[1].items = [];
+      }
+    }
+
+    // the item is an old item
+    if (itemIndexArray === -1) {
+      if (item.saved[1].items.length > 1) {
+        item.saved[1].items.forEach((inItem, index) => {
+          if (inItem.pubDate === event.itemPubDate) {
+            item.saved[1].items.splice(index, 1);
+          }
+        });
+        // was saved and we have just one item
+      } else {
+        item.saved[0] = false;
+        item.saved[1].items = [];
+      }
     }
   }
 

@@ -15,15 +15,12 @@
   ></i>
 </h2>
 
-<div class="p-grid">
+<div class="p-grid" *ngIf="!atSavedTab; else elseAtSavedTab">
   <div
     class="p-col p-align-stretch"
     *ngFor="let item of channel.items; let i = index"
   >
-    <p-card
-      [style]="{ 'min-height': '200px', 'min-width': '150px' }"
-      *ngIf="!atSavedTab || (atSavedTab && item.bookmark)"
-    >
+    <p-card [style]="{ 'min-height': '200px', 'min-width': '150px' }">
       <li>
         {{ item.pubDate | date: 'dd/MM' }} -
         {{ item.pubDate | date: 'hh:mm' }}
@@ -33,8 +30,7 @@
           (click)="
             sendTriggerToSaveToParent({
               name: channel.name,
-              itemPubDate: item.pubDate,
-              itemIndexArray: i
+              itemPubDate: item.pubDate
             })
           "
           [class.changeBookmark]="item.bookmark"
@@ -45,8 +41,39 @@
         </span>
       </li>
     </p-card>
-    <p *ngIf="!atSavedTab || (atSavedTab && item.bookmark)">
-      Author: {{ item.author }}
-    </p>
+    <p>Author: {{ item.author }}</p>
   </div>
 </div>
+
+<ng-template #elseAtSavedTab>
+  <div class="p-grid p-dir-col p-justify-start">
+    <div
+      class="p-col"
+      *ngFor="let item of channel.saved[1].items; let i = index"
+    >
+      <p-card>
+        <p-header>
+          {{ item.pubDate | date: 'dd/MM' }} -
+          {{ item.pubDate | date: 'hh:mm' }}
+          <i
+            class="pi pi-times"
+            style="cursor: pointer; float: right;"
+            (click)="
+              sendTriggerToSaveToParent({
+                name: channel.name,
+                itemPubDate: item.pubDate
+              })
+            "
+            [class.changeBookmark]="item.bookmark"
+          ></i>
+        </p-header>
+        <li>
+          <span style="font-weight: bolder;">
+            <a href="{{ item.link }}"> {{ item.title }}</a>
+          </span>
+        </li>
+      </p-card>
+      <p>Author: {{ item.author }}</p>
+    </div>
+  </div>
+</ng-template>
