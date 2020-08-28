@@ -68,7 +68,8 @@ export class NewsComponent implements OnInit, AfterViewInit {
       .get<any>('https://api.rss2json.com/v1/api.json?rss_url=' + url)
       .subscribe(
         (data) => {
-          this.feedArray[item.id].feed = { ...data.feed };
+          // this.feedArray[item.id].feed = { ...data.feed };
+          // this.feedArray[item.id].items = [...data.items];
           this.feedArray[item.id].items = [...data.items];
         },
         (error) => {

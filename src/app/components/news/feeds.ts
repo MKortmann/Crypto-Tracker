@@ -6,7 +6,7 @@ export const FeedsUrl = [
     symbol: 'coindesk',
     url: 'https%3A%2F%2Fwww.coindesk.com%2Ffeed',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -16,7 +16,7 @@ export const FeedsUrl = [
     symbol: 'cointelegraph',
     url: 'https%3A%2F%2Fcointelegraph.com%2Ffeed',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -26,7 +26,7 @@ export const FeedsUrl = [
     symbol: 'ambcrypto',
     url: 'https%3A%2F%2Feng.ambcrypto.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -36,7 +36,7 @@ export const FeedsUrl = [
     symbol: 'bitcoinmagazine',
     url: 'https%3A%2F%2Fbitcoinmagazine.com%2Ffeed',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -46,7 +46,7 @@ export const FeedsUrl = [
     symbol: 'newsbtc',
     url: 'https%3A%2F%2Fwww.newsbtc.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -56,7 +56,7 @@ export const FeedsUrl = [
     symbol: 'bitcoinist',
     url: 'https%3A%2F%2Fbitcoinist.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -66,7 +66,7 @@ export const FeedsUrl = [
     symbol: 'theblockcrypto',
     url: 'https%3A%2F%2Fwww.theblockcrypto.com%2Frss.xml',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -76,7 +76,7 @@ export const FeedsUrl = [
     symbol: 'bitcoinexchangeguide',
     url: 'https%3A%2F%2Fbitcoinexchangeguide.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -86,7 +86,7 @@ export const FeedsUrl = [
     symbol: 'blockonomi',
     url: 'https%3A%2F%2Fblockonomi.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -96,7 +96,7 @@ export const FeedsUrl = [
     symbol: 'cryptoslate',
     url: 'https%3A%2F%2Fcryptoslate.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -106,7 +106,7 @@ export const FeedsUrl = [
     symbol: 'btcmanager',
     url: 'https%3A%2F%2Fbtcmanager.com%2Ffeed',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -116,7 +116,7 @@ export const FeedsUrl = [
     symbol: 'insidebitcoins',
     url: 'https%3A%2F%2Finsidebitcoins.com%2Ffeed',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -126,7 +126,7 @@ export const FeedsUrl = [
     symbol: 'coinspeaker',
     url: 'https%3A%2F%2Fwww.coinspeaker.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -136,7 +136,7 @@ export const FeedsUrl = [
     symbol: 'cryptonews',
     url: 'https%3A%2F%2Fcryptonews.com%2Fnews%2Ffeed',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -146,7 +146,7 @@ export const FeedsUrl = [
     symbol: 'cryptobriefing',
     url: 'https%3A%2F%2Fcryptobriefing.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -156,7 +156,7 @@ export const FeedsUrl = [
     symbol: 'cryptopotato',
     url: 'https%3A%2F%2Fcryptopotato.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -166,7 +166,7 @@ export const FeedsUrl = [
     symbol: 'dailyhodl',
     url: 'https%3A%2F%2Fdailyhodl.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -176,7 +176,7 @@ export const FeedsUrl = [
     symbol: 'coinjournal',
     url: 'https%3A%2F%2Fcoinjournal.net%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -186,7 +186,7 @@ export const FeedsUrl = [
     symbol: 'ethereumworldnews',
     url: 'https%3A%2F%2Fen.ethereumworldnews.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -196,7 +196,7 @@ export const FeedsUrl = [
     symbol: 'cryptoninjas',
     url: 'http%3A%2F%2Fwww.cryptoninjas.net%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -206,7 +206,7 @@ export const FeedsUrl = [
     symbol: 'coincenter',
     url: 'https%3A%2F%2Fwww.coincenter.org%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -216,7 +216,7 @@ export const FeedsUrl = [
     symbol: 'beincrypto',
     url: 'https%3A%2F%2Fbeincrypto.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -226,7 +226,7 @@ export const FeedsUrl = [
     symbol: 'thebitcoinnews',
     url: 'https%3A%2F%2Fthebitcoinnews.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -236,7 +236,7 @@ export const FeedsUrl = [
     symbol: 'coingeek',
     url: 'https%3A%2F%2Fcoingeek.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -246,7 +246,7 @@ export const FeedsUrl = [
     symbol: 'coingape',
     url: 'https%3A%2F%2Fcoingape.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -256,7 +256,7 @@ export const FeedsUrl = [
     symbol: 'livebitcoinnews',
     url: 'https%3A%2F%2Fwww.livebitcoinnews.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -266,7 +266,7 @@ export const FeedsUrl = [
     symbol: 'trustnodes',
     url: 'https%3A%2F%2Fwww.trustnodes.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -276,7 +276,7 @@ export const FeedsUrl = [
     symbol: 'nulltx',
     url: 'https%3A%2F%2Fnulltx.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -286,7 +286,7 @@ export const FeedsUrl = [
     symbol: 'coinidol',
     url: 'https%3A%2F%2Fcoinidol.com%2Frss2%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -296,7 +296,7 @@ export const FeedsUrl = [
     symbol: 'investblockchain',
     url: 'https%3A%2F%2Fwww.investinblockchain.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -306,7 +306,7 @@ export const FeedsUrl = [
     symbol: 'bitsonline',
     url: 'https%3A%2F%2Fbitsonline.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -316,7 +316,7 @@ export const FeedsUrl = [
     symbol: 'blocktribune',
     url: 'https%3A%2F%2Fblocktribune.com%2Ffeed',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -326,7 +326,7 @@ export const FeedsUrl = [
     symbol: 'zycrypto',
     url: 'https%3A%2F%2Fzycrypto.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -336,7 +336,7 @@ export const FeedsUrl = [
     symbol: 'usethebitcoin',
     url: 'https%3A%2F%2Fusethebitcoin.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -346,7 +346,7 @@ export const FeedsUrl = [
     symbol: 'smartereum',
     url: 'https%3A%2F%2Fsmartereum.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -356,7 +356,7 @@ export const FeedsUrl = [
     symbol: 'bitcoingarden',
     url: 'https%3A%2F%2Fbitcoingarden.org%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -366,7 +366,7 @@ export const FeedsUrl = [
     symbol: 'blockmanity',
     url: 'https%3A%2F%2Fblockmanity.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -376,7 +376,7 @@ export const FeedsUrl = [
     symbol: 'coinpedia',
     url: 'https%3A%2F%2Fcoinpedia.org%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -386,7 +386,7 @@ export const FeedsUrl = [
     symbol: 'forklog',
     url: 'https%3A%2F%2Fforklog.media%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -396,7 +396,7 @@ export const FeedsUrl = [
     symbol: 'altcoinbuzz',
     url: 'https%3A%2F%2Fwww.altcoinbuzz.io%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -407,7 +407,7 @@ export const FeedsUrl = [
     url:
       'http%3A%2F%2Fwww.coinfox.info%2F%3Foption%3Dcom_content%26view%3Dfeatured%26Itemid%3D160%26format%3Dfeed%26type%3Drss',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -417,7 +417,7 @@ export const FeedsUrl = [
     symbol: 'kryptomoney',
     url: 'http%3A%2F%2Ffeeds.feedburner.com%2Fkryptomoney',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -427,7 +427,7 @@ export const FeedsUrl = [
     symbol: 'bitcoinnews',
     url: 'https%3A%2F%2Fbitcoinnews.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -437,7 +437,7 @@ export const FeedsUrl = [
     symbol: 'bitcoinwarrior',
     url: 'https%3A%2F%2Fbitcoinwarrior.net%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -447,7 +447,7 @@ export const FeedsUrl = [
     symbol: 'btcwires',
     url: 'https%3A%2F%2Fwww.btcwires.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -457,7 +457,7 @@ export const FeedsUrl = [
     symbol: 'coinrevolution',
     url: 'https%3A%2F%2Fwww.coinrevolution.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -467,7 +467,7 @@ export const FeedsUrl = [
     symbol: 'coinstaker',
     url: 'https%3A%2F%2Fwww.coinstaker.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -477,7 +477,7 @@ export const FeedsUrl = [
     symbol: 'bitcoinprbuzz',
     url: 'https%3A%2F%2Fbitcoinprbuzz.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -487,7 +487,7 @@ export const FeedsUrl = [
     symbol: 'coinnewsasia',
     url: 'https%3A%2F%2Fwww.coinnewsasia.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -497,7 +497,7 @@ export const FeedsUrl = [
     symbol: '8btc',
     url: 'https%3A%2F%2Fnews.8btc.com%2Ffeed',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -507,7 +507,7 @@ export const FeedsUrl = [
     symbol: '7bitcoins',
     url: 'https%3A%2F%2Fwww.7bitcoins.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -517,7 +517,7 @@ export const FeedsUrl = [
     symbol: 'dcforecasts',
     url: 'https://www.dcforecasts.com/feed/',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -527,7 +527,7 @@ export const FeedsUrl = [
     symbol: 'coindelite',
     url: 'https://www.dcforecasts.com/feed/',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -537,7 +537,7 @@ export const FeedsUrl = [
     symbol: 'globalcryptopress',
     url: 'https%3A%2F%2Fwww.globalcryptopress.com%2Ffeeds%2Fposts%2Fdefault',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -547,7 +547,7 @@ export const FeedsUrl = [
     symbol: 'cryptocoremedia',
     url: 'https%3A%2F%2Fcryptocoremedia.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -557,7 +557,7 @@ export const FeedsUrl = [
     symbol: 'blockchaintoday',
     url: 'https%3A%2F%2Fblockchaintd.com%2Frss.xml',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },
@@ -567,7 +567,7 @@ export const FeedsUrl = [
     symbol: 'financemagnates',
     url: 'https%3A%2F%2Fwww.financemagnates.com%2Ffeed%2F',
     bookmark: false,
-    feed: {},
+
     items: [],
     saved: [false, { items: [] }],
   },

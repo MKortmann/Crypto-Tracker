@@ -1,19 +1,21 @@
-<h2
-  id="B{{ channel.id }}"
-  *ngIf="!atSavedTab || (channel.saved[0] && atSavedTab)"
->
-  <img
-    src="assets/imgs/feeds/{{ channel.symbol }}.png"
-    alt="{{ channel.symbol }}"
-  />
-  {{ channel.name || channel.feed.title }}
-  <i
-    class="pi pi-bookmark"
-    style="font-size: 2rem; cursor: pointer;"
-    [class.changeBookmark]="channel.bookmark"
-    (click)="sendTriggerToParent({ name: channel.name, id: channel.id })"
-  ></i>
-</h2>
+<div *ngIf="!atSavedTab">
+  <h2
+    id="B{{ channel.id }}"
+    *ngIf="!atSavedTab || (channel.saved[0] && atSavedTab)"
+  >
+    <img
+      src="assets/imgs/feeds/{{ channel.symbol }}.png"
+      alt="{{ channel.symbol }}"
+    />
+    {{ channel.name }}
+    <i
+      class="pi pi-bookmark"
+      style="font-size: 2rem; cursor: pointer;"
+      [class.changeBookmark]="channel.bookmark"
+      (click)="sendTriggerToParent({ name: channel.name, id: channel.id })"
+    ></i>
+  </h2>
+</div>
 
 <div class="p-grid" *ngIf="!atSavedTab; else elseAtSavedTab">
   <div
@@ -53,11 +55,16 @@
     >
       <p-card>
         <p-header>
+          <img
+            src="assets/imgs/feeds/{{ channel.symbol }}.png"
+            alt="{{ channel.symbol }}"
+            style="max-width: 48px;"
+          />
           {{ item.pubDate | date: 'dd/MM' }} -
           {{ item.pubDate | date: 'hh:mm' }}
           <i
             class="pi pi-times"
-            style="cursor: pointer; float: right;"
+            style="cursor: pointer; float: right; margin: 5px;"
             (click)="
               sendTriggerToSaveToParent({
                 name: channel.name,
