@@ -1,9 +1,11 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Location } from '@angular/common';
+
 import { HttpClient } from '@angular/common/http';
 import * as xml2js from 'xml2js';
 import { NewsRss } from '../../models/news-rss';
 import { FeedsUrl } from './feeds';
+
+import { FeedNewsService } from '../../services/feed-news.service';
 
 @Component({
   selector: 'app-news',
@@ -31,7 +33,10 @@ export class NewsComponent implements OnInit, AfterViewInit {
   // Unblock using rss2json
   prefixRss2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
 
-  constructor(private http: HttpClient, private location: Location) {}
+  constructor(
+    private http: HttpClient,
+    private feedNewsServices: FeedNewsService
+  ) {}
 
   ngOnInit(): void {
     this.dateNow = this.returnDateNow();
@@ -49,9 +54,23 @@ export class NewsComponent implements OnInit, AfterViewInit {
       }
 
       // fetch news
-      for (const item of this.feedsUrl) {
-        this.getNewsFeedsUrl(item);
-      }
+      this.feedNewsServices.getNewsFeedsUrl(this.feedsUrl).subscribe(
+        (response) => {
+          for (const data of response) {
+            for (const subItem of data.items) {
+              this.feedArray[data.id].items.push({
+                author: subItem.author,
+                title: subItem.title,
+                pubDate: subItem.pubDate,
+                link: subItem.link,
+              });
+            }
+          }
+        },
+        (error) => {
+          console.log('Fetching Error: getNewsFeedsUrl', error);
+        }
+      );
     }
   }
 
@@ -64,29 +83,29 @@ export class NewsComponent implements OnInit, AfterViewInit {
     }, 5000);
   }
 
-  getNewsFeedsUrl(item) {
-    const url = item.url;
-    this.http
-      .get<any>('https://api.rss2json.com/v1/api.json?rss_url=' + url)
-      .subscribe(
-        (data) => {
-          // this.feedArray[item.id].feed = { ...data.feed };
-          // this.feedArray[item.id].items = [...data.items];
+  // getNewsFeedsUrl(item) {
+  //   const url = item.url;
+  //   this.http
+  //     .get<any>('https://api.rss2json.com/v1/api.json?rss_url=' + url)
+  //     .subscribe(
+  //       (data) => {
+  //         // this.feedArray[item.id].feed = { ...data.feed };
+  //         // this.feedArray[item.id].items = [...data.items];
 
-          data.items.forEach((subItem, index) => {
-            this.feedArray[item.id].items.push({
-              author: subItem.author,
-              title: subItem.title,
-              pubDate: subItem.pubDate,
-              link: subItem.link,
-            });
-          });
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  }
+  //         data.items.forEach((subItem, index) => {
+  //           this.feedArray[item.id].items.push({
+  //             author: subItem.author,
+  //             title: subItem.title,
+  //             pubDate: subItem.pubDate,
+  //             link: subItem.link,
+  //           });
+  //         });
+  //       },
+  //       (error) => {
+  //         console.log('Fetching Error: getNewsFeedsUrl', error);
+  //       }
+  //     );
+  // }
 
   compare(a, b) {
     const tempA = a.name.toLowerCase().trim();
