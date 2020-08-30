@@ -28,6 +28,7 @@ export class SubNavComponent implements OnInit {
 
   public readonly SEC_30: number = 30000;
   public readonly MIN_1: number = 60000;
+  public readonly MIN_5: number = 300000;
   public readonly MIN_10: number = 600000;
   public readonly MIN_30: number = 1800000;
   public readonly MIN_60: number = 3600000;
@@ -72,6 +73,10 @@ export class SubNavComponent implements OnInit {
       case this.MIN_1:
         this.showSeconds = 59;
         this.showMinutes = 0;
+        break;
+      case this.MIN_5:
+        this.showSeconds = 59;
+        this.showMinutes = 4;
         break;
       case this.MIN_10:
         this.showSeconds = 59;

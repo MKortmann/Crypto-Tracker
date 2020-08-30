@@ -31,17 +31,23 @@
     </a>
 
     <div class="dropdown-menu">
-      <!-- <a
+      <a
         class="dropdown-item"
         (click)="load(SEC_30)"
         [class.selected_option]="interval === SEC_30"
         >30 sec</a
-      > -->
+      >
       <a
         class="dropdown-item"
         (click)="load(MIN_1)"
         [class.selected_option]="interval === MIN_1"
         >1 min</a
+      >
+      <a
+        class="dropdown-item"
+        (click)="load(MIN_5)"
+        [class.selected_option]="interval === MIN_5"
+        >5 min</a
       >
       <a
         class="dropdown-item"
