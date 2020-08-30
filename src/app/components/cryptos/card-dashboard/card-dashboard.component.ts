@@ -45,7 +45,7 @@ export class CardDashboardComponent implements OnInit {
           item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
         });
       });
-      this.lowHighFetch();
+      // this.lowHighFetch();
     });
 
     this.coinPaprikaService.onSelectedCoinChange.subscribe((coin) => {
