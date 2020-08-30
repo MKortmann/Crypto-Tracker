@@ -14,10 +14,6 @@ li {
   list-style-type: none;
 }
 
-// :host ::ng-deep p-grid {
-//   padding-left: $ss-padding !important;
-// }
-
 :host ::ng-deep .p-card-body {
   padding: $s-padding !important;
 }

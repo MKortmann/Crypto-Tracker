@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import * as xml2js from 'xml2js';
@@ -12,7 +12,7 @@ import { FeedNewsService } from '../../services/feed-news.service';
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.scss'],
 })
-export class NewsComponent implements OnInit, AfterViewInit {
+export class NewsComponent implements OnInit {
   RssData: NewsRss;
   visibleSidebar = false;
   feedsUrl = FeedsUrl;
@@ -45,27 +45,25 @@ export class NewsComponent implements OnInit, AfterViewInit {
       console.log('getting from LS');
       this.feedArray = JSON.parse(localStorage.getItem('feeds'));
     } else {
-      // have we already stored
-      if (localStorage.getItem('feeds')) {
-        this.feedArray = JSON.parse(localStorage.getItem('feeds'));
-      } else {
-        // no! Then, store the start point
-        this.feedArray = [...this.feedsUrl];
-      }
+      this.feedArray = JSON.parse(localStorage.getItem('feeds')) || [
+        ...this.feedsUrl,
+      ];
 
       // fetch news
       this.feedNewsServices.getNewsFeedsUrl(this.feedsUrl).subscribe(
         (response) => {
-          for (const data of response) {
+          response.forEach((data, index) => {
             for (const subItem of data.items) {
-              this.feedArray[data.id].items.push({
+              this.feedArray[index].items.push({
                 author: subItem.author,
                 title: subItem.title,
                 pubDate: subItem.pubDate,
                 link: subItem.link,
               });
             }
-          }
+          });
+
+          this.saveToLocalStorage();
         },
         (error) => {
           console.log('Fetching Error: getNewsFeedsUrl', error);
@@ -74,38 +72,12 @@ export class NewsComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      localStorage.setItem('dateNow', JSON.stringify(this.dateNow));
-      this.feedArray.sort((a, b) => this.compare(a, b));
-      localStorage.setItem('feeds', JSON.stringify(this.feedArray));
-      console.log('SAVE FEEDS');
-    }, 5000);
+  saveToLocalStorage() {
+    localStorage.setItem('dateNow', JSON.stringify(this.dateNow));
+    this.feedArray.sort((a, b) => this.compare(a, b));
+    localStorage.setItem('feeds', JSON.stringify(this.feedArray));
+    console.log('SAVE FEEDS');
   }
-
-  // getNewsFeedsUrl(item) {
-  //   const url = item.url;
-  //   this.http
-  //     .get<any>('https://api.rss2json.com/v1/api.json?rss_url=' + url)
-  //     .subscribe(
-  //       (data) => {
-  //         // this.feedArray[item.id].feed = { ...data.feed };
-  //         // this.feedArray[item.id].items = [...data.items];
-
-  //         data.items.forEach((subItem, index) => {
-  //           this.feedArray[item.id].items.push({
-  //             author: subItem.author,
-  //             title: subItem.title,
-  //             pubDate: subItem.pubDate,
-  //             link: subItem.link,
-  //           });
-  //         });
-  //       },
-  //       (error) => {
-  //         console.log('Fetching Error: getNewsFeedsUrl', error);
-  //       }
-  //     );
-  // }
 
   compare(a, b) {
     const tempA = a.name.toLowerCase().trim();
