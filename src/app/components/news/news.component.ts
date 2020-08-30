@@ -18,8 +18,6 @@ export class NewsComponent implements OnInit {
   feedsUrl = FeedsUrl;
 
   feedArray = [];
-  feedSavedArray = [];
-  loops = this.feedsUrl.length;
 
   // worked
   newsBitcoin = 'https://news.bitcoin.com/feed/';
@@ -50,26 +48,30 @@ export class NewsComponent implements OnInit {
       ];
 
       // fetch news
-      this.feedNewsServices.getNewsFeedsUrl(this.feedsUrl).subscribe(
-        (response) => {
-          response.forEach((data, index) => {
-            for (const subItem of data.items) {
-              this.feedArray[index].items.push({
-                author: subItem.author,
-                title: subItem.title,
-                pubDate: subItem.pubDate,
-                link: subItem.link,
-              });
-            }
-          });
-
-          this.saveToLocalStorage();
-        },
-        (error) => {
-          console.log('Fetching Error: getNewsFeedsUrl', error);
-        }
-      );
+      this.fetchNews();
     }
+  }
+
+  fetchNews() {
+    this.feedNewsServices.getNewsFeedsUrl(this.feedsUrl).subscribe(
+      (response) => {
+        response.forEach((data, index) => {
+          for (const subItem of data.items) {
+            this.feedArray[index].items.push({
+              author: subItem.author,
+              title: subItem.title,
+              pubDate: subItem.pubDate,
+              link: subItem.link,
+            });
+          }
+        });
+
+        this.saveToLocalStorage();
+      },
+      (error) => {
+        console.log('Fetching Error: getNewsFeedsUrl', error);
+      }
+    );
   }
 
   saveToLocalStorage() {

@@ -18,7 +18,6 @@ export class FeedNewsService {
       const url = item.url;
       response.push(this.http.get<any>(prefix + url));
     }
-
     return forkJoin(response);
   }
 }
