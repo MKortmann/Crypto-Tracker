@@ -11,7 +11,7 @@
   > -->
     <ng-template let-item pTemplate="item">
       <div [class.selected]="item.symbol === symbol">
-        <p-card [style]="{ 'min-height': '150px' }">
+        <p-card [style]="{ 'min-height': '150px', margin: '3px' }">
           <!-- <p-card (click)="selectedCoin(item.name, item.symbol)"> -->
           <!-- <p-header style="font-size: larger; font-weight: bold;"> -->
           <span
@@ -186,7 +186,7 @@
 <div class="p-grid p-align-center p-justify-around hideBelow1500">
   <div class="p-col p-col-align-stretch" *ngFor="let item of data">
     <div [class.selected]="item.symbol === symbol">
-      <p-card [style]="{ 'min-height': '160px' }">
+      <p-card [style]="{ 'min-height': '160px', margin: '3px' }">
         <p-header style="font-size: large; font-weight: bold;">
           <span
             style="padding-left: 10px;"

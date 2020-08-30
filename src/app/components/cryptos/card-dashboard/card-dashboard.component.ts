@@ -25,7 +25,7 @@ export class CardDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     // filling with values
-    this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
+    this.coinLoreService.getGlobalCryptoData(0, 10).subscribe((res) => {
       this.data = [...res.data];
       this.lowHighFetch();
     });
@@ -68,28 +68,12 @@ export class CardDashboardComponent implements OnInit {
       }
       item[`price_eur`] = item.price_usd * this.rateConvertEUR;
 
-      if (index < 10) {
-        this.coinPaprikaService
-          .getOHLCFullDayToday(fullName)
-          .subscribe((res) => {
-            item[`high_usd`] = res[0].high.toFixed(2);
-            item[`low_usd`] = res[0].low.toFixed(2);
-            item[`high_eur`] = res[0].high.toFixed(2) * this.rateConvertEUR;
-            item[`low_eur`] = res[0].low.toFixed(2) * this.rateConvertEUR;
-          });
-      } else {
-        // necessary because of API fetch limitation!!
-        setTimeout(() => {
-          this.coinPaprikaService
-            .getOHLCFullDayToday(fullName)
-            .subscribe((res) => {
-              item[`high_usd`] = res[0].high.toFixed(2);
-              item[`low_usd`] = res[0].low.toFixed(2);
-              item[`high_eur`] = res[0].high.toFixed(2) * this.rateConvertEUR;
-              item[`low_eur`] = res[0].low.toFixed(2) * this.rateConvertEUR;
-            });
-        }, 3000);
-      }
+      this.coinPaprikaService.getOHLCFullDayToday(fullName).subscribe((res) => {
+        item[`high_usd`] = res[0].high.toFixed(2);
+        item[`low_usd`] = res[0].low.toFixed(2);
+        item[`high_eur`] = res[0].high.toFixed(2) * this.rateConvertEUR;
+        item[`low_eur`] = res[0].low.toFixed(2) * this.rateConvertEUR;
+      });
     });
   }
 
