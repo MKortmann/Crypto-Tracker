@@ -45,7 +45,7 @@ export class CardDashboardComponent implements OnInit {
           item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
         });
       });
-      // this.lowHighFetch();
+      this.lowHighFetch();
     });
 
     this.coinPaprikaService.onSelectedCoinChange.subscribe((coin) => {
@@ -68,12 +68,32 @@ export class CardDashboardComponent implements OnInit {
       }
       item[`price_eur`] = item.price_usd * this.rateConvertEUR;
 
-      this.coinPaprikaService.getOHLCFullDayToday(fullName).subscribe((res) => {
-        item[`high_usd`] = res[0].high.toFixed(2);
-        item[`low_usd`] = res[0].low.toFixed(2);
-        item[`high_eur`] = res[0].high.toFixed(2) * this.rateConvertEUR;
-        item[`low_eur`] = res[0].low.toFixed(2) * this.rateConvertEUR;
-      });
+      if (index < 10) {
+        this.coinPaprikaService
+          .getOHLCFullDayToday(fullName)
+          .subscribe((res) => {
+            item[`high_usd`] = res[0].high.toFixed(2);
+            item[`low_usd`] = res[0].low.toFixed(2);
+            item[`high_eur`] = res[0].high.toFixed(2) * this.rateConvertEUR;
+            item[`low_eur`] = res[0].low.toFixed(2) * this.rateConvertEUR;
+          });
+      } else {
+        // necessary because of API fetch limitation!!
+        const timer = setTimeout(() => {
+          this.coinPaprikaService.getOHLCFullDayToday(fullName).subscribe(
+            (res) => {
+              item[`high_usd`] = res[0].high.toFixed(2);
+              item[`low_usd`] = res[0].low.toFixed(2);
+              item[`high_eur`] = res[0].high.toFixed(2) * this.rateConvertEUR;
+              item[`low_eur`] = res[0].low.toFixed(2) * this.rateConvertEUR;
+            },
+            (error) => {
+              console.log('Error at getOHLCFullDay', error);
+            }
+          );
+        }, 1100);
+        clearTimeout(timer);
+      }
     });
   }
 
