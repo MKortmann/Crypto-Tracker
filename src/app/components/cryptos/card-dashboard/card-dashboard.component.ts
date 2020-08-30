@@ -88,7 +88,7 @@ export class CardDashboardComponent implements OnInit {
               item[`high_eur`] = res[0].high.toFixed(2) * this.rateConvertEUR;
               item[`low_eur`] = res[0].low.toFixed(2) * this.rateConvertEUR;
             });
-        }, 1100);
+        }, 3000);
       }
     });
   }
