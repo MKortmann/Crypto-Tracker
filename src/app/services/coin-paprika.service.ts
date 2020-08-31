@@ -65,7 +65,6 @@ export class CoinPaprikaService {
   public getOHLCFullDayToday(coinName: string): Observable<any> {
     const url =
       'https://api.coinpaprika.com/v1/coins/' + coinName + '/ohlcv/today';
-    console.log(url);
     return this.http.get<any>(url);
   }
 

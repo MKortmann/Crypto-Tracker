@@ -92,6 +92,7 @@ export class TableComponent implements OnInit {
   }
 
   loadTable() {
+    // here we have to load the 100 data again
     this.coinLoreService.getGlobalCryptoData(0, 100).subscribe(
       (res) => {
         this.coins = res.data;

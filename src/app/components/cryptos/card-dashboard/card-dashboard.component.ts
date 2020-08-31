@@ -16,6 +16,7 @@ export class CardDashboardComponent implements OnInit {
   classes = {};
   @Input() symbol;
   rateConvertEUR = 0;
+  timer = null;
 
   constructor(
     private coinLoreService: CoinLoreService,
@@ -39,14 +40,7 @@ export class CardDashboardComponent implements OnInit {
 
     // subscribe for a service that update data
     this.coinLoreService.cast.subscribe((data) => {
-      console.log('SUBSCRIBE DATA! IT SHOULD GO ONLY 1 TIME PER REQUEST!');
       this.data = [...data];
-
-      // WE HAVE PROBLEM WITH THIS API, so we will call just in the onInit,
-      //  save the data in the LS, then at the second time, compare it with
-      // the data and if it is high or lower we update it... It is not the
-      // best way but it would work at least for show propose... not perfect...
-
       this.lowHighFetch();
     });
 
@@ -60,6 +54,10 @@ export class CardDashboardComponent implements OnInit {
   }
 
   lowHighFetch() {
+    if (this.timer !== null) {
+      clearTimeout(this.timer);
+    }
+
     this.data.forEach((item, index) => {
       let fullName = item.symbol.toLowerCase() + '-' + item.nameid;
       if (item.symbol === 'BCH') {
@@ -81,7 +79,7 @@ export class CardDashboardComponent implements OnInit {
           });
       } else {
         // necessary because of API fetch limitation!!
-        const timer = setTimeout(() => {
+        this.timer = setTimeout(() => {
           this.coinPaprikaService.getOHLCFullDayToday(fullName).subscribe(
             (res) => {
               item[`high_usd`] = res[0].high.toFixed(2);
@@ -93,8 +91,7 @@ export class CardDashboardComponent implements OnInit {
               console.log('Error at getOHLCFullDay', error);
             }
           );
-        }, 1100);
-        clearTimeout(timer);
+        }, 2000);
       }
     });
   }
