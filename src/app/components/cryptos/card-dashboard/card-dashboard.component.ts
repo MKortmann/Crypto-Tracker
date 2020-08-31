@@ -45,7 +45,12 @@ export class CardDashboardComponent implements OnInit {
           item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
         });
       });
-      // WE HAVE PROBLEM WITH THIS API, so we will call just in the onInit, save the data in the LS, then at the second time, compare it with the data and if it is high or lower we update it... It is not the best way but it would work at least for show propose... not perfect...
+
+      // WE HAVE PROBLEM WITH THIS API, so we will call just in the onInit,
+      //  save the data in the LS, then at the second time, compare it with
+      // the data and if it is high or lower we update it... It is not the
+      // best way but it would work at least for show propose... not perfect...
+
       this.lowHighFetch();
     });
 
