@@ -37,6 +37,7 @@ export class NewsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    debugger;
     this.dateNow = this.returnDateNow();
 
     if (this.dateNow === JSON.parse(localStorage.getItem('dateNow'))) {

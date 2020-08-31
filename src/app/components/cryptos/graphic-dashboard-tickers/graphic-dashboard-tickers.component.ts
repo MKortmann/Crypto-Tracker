@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { CoinPaprikaService } from '../../../services/coin-paprika.service';
-import { ChartModule } from 'primeng/chart';
 
 import { ExchangeService } from '../../../services/exchange.service';
 
