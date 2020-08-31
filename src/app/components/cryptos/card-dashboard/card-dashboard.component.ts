@@ -39,12 +39,8 @@ export class CardDashboardComponent implements OnInit {
 
     // subscribe for a service that update data
     this.coinLoreService.cast.subscribe((data) => {
+      console.log('SUBSCRIBE DATA! IT SHOULD GO ONLY 1 TIME PER REQUEST!');
       this.data = [...data];
-      this.exchangeService.getMoney('USD').subscribe((res2) => {
-        this.data.forEach((item) => {
-          item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
-        });
-      });
 
       // WE HAVE PROBLEM WITH THIS API, so we will call just in the onInit,
       //  save the data in the LS, then at the second time, compare it with

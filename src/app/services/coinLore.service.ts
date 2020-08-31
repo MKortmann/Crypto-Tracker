@@ -26,6 +26,7 @@ export class CoinLoreService {
   // }
 
   newData(newData) {
+    console.log('SENDING NEXT!!!');
     this.data.next(newData);
   }
 

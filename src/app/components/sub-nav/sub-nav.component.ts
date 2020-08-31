@@ -110,11 +110,10 @@ export class SubNavComponent implements OnInit {
         this.exchangeService.getMoney('USD').subscribe((res2) => {
           this.data.forEach((item) => {
             item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
-
-            this.coinLoreService.newData(this.data);
-            this.reset();
           });
         });
+        this.coinLoreService.newData(this.data);
+        this.reset();
       });
     }, interval);
   }
