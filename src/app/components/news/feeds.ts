@@ -30,16 +30,16 @@ export const FeedsUrl = [
     items: [],
     saved: [false, { items: [] }],
   },
-  {
-    id: 3,
-    name: 'Bitcoin Magazine',
-    symbol: 'bitcoinmagazine',
-    url: 'https%3A%2F%2Fbitcoinmagazine.com%2Ffeed',
-    bookmark: false,
+  // {
+  //   id: 3,
+  //   name: 'Bitcoin Magazine',
+  //   symbol: 'bitcoinmagazine',
+  //   url: 'https%3A%2F%2Fbitcoinmagazine.com%2Ffeed',
+  //   bookmark: false,
 
-    items: [],
-    saved: [false, { items: [] }],
-  },
+  //   items: [],
+  //   saved: [false, { items: [] }],
+  // },
   // {
   //   id: 4,
   //   name: 'News BTC',

@@ -14,8 +14,8 @@ language: node_js
 node_js:
   - '10'
 script:
-  # - 'ng lint'
-  # - 'ng test --watch=false'
+  - 'ng lint'
+  - 'ng test --watch=false'
   - 'ng build --prod --base-href="https://mkortmann.github.io/Crypto-Tracker/"'
   - 'echo $TRAVIS_COMMIT'
   - 'echo $CI_COMMIT_SHORT_SHA'
