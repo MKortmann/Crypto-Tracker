@@ -36,6 +36,7 @@ import { TableComponent } from './components/cryptos/table/table.component';
 import { CardDashboardComponent } from './components/cryptos/card-dashboard/card-dashboard.component';
 import { FormatCurrencyPipe } from './tools/format-currency.pipe';
 import { FormatUrlPipe } from './tools/format-url.pipe';
+import { FormatDatePipe } from './tools/format-date.pipe';
 
 import { ButtonModule } from 'primeng/button';
 
@@ -74,6 +75,7 @@ import { SingleFeedComponent } from './components/news/single-feed/single-feed.c
     CardDashboardComponent,
     FormatCurrencyPipe,
     FormatUrlPipe,
+    FormatDatePipe,
     SubNavComponent,
     GraphicDashboardCoinComponent,
     GraphicDashboardTickersComponent,
