@@ -26,7 +26,8 @@
       <li>
         <!-- {{ item.pubDate | date: 'dd/MM' }} - -->
         <!-- {{ item.pubDate | date: 'hh:mm' }} -->
-        {{ item.pubDate }}
+        {{ item.pubDate | date: 'medium' }}
+
         <i
           class="pi pi-save"
           style="cursor: pointer;"
@@ -63,7 +64,7 @@
           />
           <!-- {{ item.pubDate | date: 'dd/MM' }} - -->
           <!-- {{ item.pubDate | date: 'hh:mm' }} -->
-          {{ item.pubDate }}
+          {{ item.pubDate | date: 'medium' }}
           <i
             class="pi pi-times"
             style="cursor: pointer; float: right; margin: 5px;"
