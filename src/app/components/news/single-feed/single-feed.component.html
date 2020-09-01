@@ -24,8 +24,9 @@
   >
     <p-card [style]="{ 'min-height': '200px', 'min-width': '150px' }">
       <li>
-        {{ item.pubDate | date: 'dd/MM' }} -
-        {{ item.pubDate | date: 'hh:mm' }}
+        <!-- {{ item.pubDate | date: 'dd/MM' }} - -->
+        <!-- {{ item.pubDate | date: 'hh:mm' }} -->
+        {{ item.pubDate }}
         <i
           class="pi pi-save"
           style="cursor: pointer;"
@@ -60,8 +61,9 @@
             alt="{{ channel.symbol }}"
             style="max-width: 48px; margin-top: 16px;"
           />
-          {{ item.pubDate | date: 'dd/MM' }} -
-          {{ item.pubDate | date: 'hh:mm' }}
+          <!-- {{ item.pubDate | date: 'dd/MM' }} - -->
+          <!-- {{ item.pubDate | date: 'hh:mm' }} -->
+          {{ item.pubDate }}
           <i
             class="pi pi-times"
             style="cursor: pointer; float: right; margin: 5px;"
