@@ -56,16 +56,20 @@ export class NewsComponent implements OnInit {
     this.feedNewsServices.getNewsFeedsUrl(this.feedsUrl).subscribe(
       (response) => {
         response.forEach((data, index) => {
-          // we can delete the old news in case the array is too big. In this case we delete the old 10 news, letting the array with a size fixed at 30 after two days...
+          // we can delete the old news in case the array is too
+          // big. In this case we delete the old 10 news, letting
+          // the array with a size fixed at 30 after two days...
           if (this.feedArray[index].items.length > 30) {
-            this.feedArray[index].items = this.feedArray[index].items.slice(9);
+            this.feedArray[index].items = this.feedArray[index].items.slice();
           }
-          for (const subItem of data.items) {
+
+          // inverting the order - ascending news
+          for (let i = data.items.length - 1; i >= 0; i--) {
             this.feedArray[index].items.unshift({
-              author: subItem.author,
-              title: subItem.title,
-              pubDate: subItem.pubDate,
-              link: subItem.link,
+              author: data.items[i].author,
+              title: data.items[i].title,
+              pubDate: data.items[i].pubDate,
+              link: data.items[i].link,
             });
           }
         });
