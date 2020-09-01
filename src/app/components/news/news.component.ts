@@ -61,7 +61,7 @@ export class NewsComponent implements OnInit {
             this.feedArray[index].items = this.feedArray[index].items.slice(9);
           }
           for (const subItem of data.items) {
-            this.feedArray[index].items.push({
+            this.feedArray[index].items.unshift({
               author: subItem.author,
               title: subItem.title,
               pubDate: subItem.pubDate,
