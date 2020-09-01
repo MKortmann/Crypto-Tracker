@@ -240,16 +240,16 @@ export const FeedsUrl = [
     items: [],
     saved: [false, { items: [] }],
   },
-  // {
-  //   id: 24,
-  //   name: 'Coin Gape',
-  //   symbol: 'coingape',
-  //   url: 'https%3A%2F%2Fcoingape.com%2Ffeed%2F',
-  //   bookmark: false,
+  {
+    id: 24,
+    name: 'Coin Gape',
+    symbol: 'coingape',
+    url: 'https%3A%2F%2Fcoingape.com%2Ffeed%2F',
+    bookmark: false,
 
-  //   items: [],
-  //   saved: [false, { items: [] }],
-  // },
+    items: [],
+    saved: [false, { items: [] }],
+  },
   // {
   //   id: 25,
   //   name: 'Live Bitcoin News',

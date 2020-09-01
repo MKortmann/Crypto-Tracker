@@ -56,6 +56,10 @@ export class NewsComponent implements OnInit {
     this.feedNewsServices.getNewsFeedsUrl(this.feedsUrl).subscribe(
       (response) => {
         response.forEach((data, index) => {
+          // we can delete the old news in case the array is too big. In this case we delete the old 10 news, letting the array with a size fixed at 30 after two days...
+          if (this.feedArray[index].items.length > 30) {
+            this.feedArray[index].items = this.feedArray[index].items.slice(9);
+          }
           for (const subItem of data.items) {
             this.feedArray[index].items.push({
               author: subItem.author,
