@@ -16,6 +16,8 @@ export class SingleFeedComponent implements OnInit {
   };
   @Input()
   atSavedTab = false;
+  @Input()
+  atFullTab = true;
 
   @Output() clickedBookmark = new EventEmitter<string>();
 

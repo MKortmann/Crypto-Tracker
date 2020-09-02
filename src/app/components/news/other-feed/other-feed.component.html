@@ -1,0 +1,15 @@
+<h2>{{ description }}</h2>
+<h2>{{ title }}</h2>
+
+<div id="toAppend">
+  <p *ngFor="let item of items" [innerHTML]="item.description[0]">
+    <!-- {{ item.title }}
+    {{ item.category }} -->
+    <!-- {{ this.items[0]['content:encoded'][0].slice(1, -1) }} -->
+    <!-- {{ item.link }}
+    {{ item.pubDate }} -->
+  </p>
+</div>
+
+<p>Date: {{ lastBuildDate }}</p>
+<p>Link: {{ link }}</p>

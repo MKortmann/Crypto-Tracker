@@ -14,12 +14,22 @@ li {
   list-style-type: none;
 }
 
+div {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+::ng-deep .p-panel-header {
+  padding: $es-padding !important;
+  padding-left: 0 !important;
+}
+
 :host ::ng-deep .p-card-body {
-  padding: $s-padding !important;
+  padding: 0 !important;
 }
 :host ::ng-deep .p-card-content {
   padding: 0 !important;
-  padding-top: $s-padding !important;
+  // padding-top: $s-padding !important;
 }
 
 .changeBookmark {

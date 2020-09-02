@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
-import * as xml2js from 'xml2js';
-import { NewsRss } from '../../models/news-rss';
 import { FeedsUrl } from './feeds';
-
 import { FeedNewsService } from '../../services/feed-news.service';
 
 @Component({
@@ -13,28 +9,17 @@ import { FeedNewsService } from '../../services/feed-news.service';
   styleUrls: ['./news.component.scss'],
 })
 export class NewsComponent implements OnInit {
-  RssData: NewsRss;
   visibleSidebar = false;
   feedsUrl = FeedsUrl;
 
   feedArray = [];
 
-  // worked
-  newsBitcoin = 'https://news.bitcoin.com/feed/';
-  ccn = 'https://www.ccn.com/feed/';
-  deCrypt = 'https://decrypt.co/feed';
-  blokt = 'https://blokt.com/feed';
-  theBlockChain = 'https://www.the-blockchain.com/feed/';
   dateNow: string;
 
-  // to look: feed2json.org or rss2json
-  // Unblock using rss2json
+  // Unblock using rss2json, to look: feed2json.org
   prefixRss2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
 
-  constructor(
-    private http: HttpClient,
-    private feedNewsServices: FeedNewsService
-  ) {}
+  constructor(private feedNewsServices: FeedNewsService) {}
 
   ngOnInit(): void {
     this.dateNow = this.returnDateNow();
@@ -68,6 +53,7 @@ export class NewsComponent implements OnInit {
             this.feedArray[index].items.unshift({
               author: data.items[i].author,
               title: data.items[i].title,
+              content: data.items[i].content,
               pubDate: data.items[i].pubDate,
               link: data.items[i].link,
             });
@@ -189,24 +175,5 @@ export class NewsComponent implements OnInit {
       '.' +
       new Date().getDate();
     return dateNow;
-  }
-
-  getNewsFeed() {
-    const requestOptions: object = {
-      observe: 'body',
-      responseType: 'text/html',
-    };
-    this.http
-      .get<any>('https://www.financemagnates.com/feed/', requestOptions)
-      .subscribe(
-        (data) => {
-          xml2js.parseString(data, (error, result: NewsRss) => {
-            this.RssData = result;
-          });
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
   }
 }
