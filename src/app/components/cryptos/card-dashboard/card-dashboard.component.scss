@@ -15,7 +15,7 @@ img {
 }
 
 ::ng-deep p-accordion {
-  background-color: white !important;
+  background-color: var(--color) !important;
   border: 0;
 }
 

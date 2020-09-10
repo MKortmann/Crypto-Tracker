@@ -8,13 +8,6 @@
 // The _ (underscore) is a partial for scss. That means the stylesheet its going to be imported (@import) to a main stylesheet i.e. styles.scss
 // The advantage on using partials is that you can use many files to organize your code and everything will be compiled on a single file.
 
-/* body {
-  font-size: 0rem;
-} */
-html {
-  overflow-x: hidden;
-}
-
 //spacing
 $es-padding: 2px;
 $s-padding: 5px;
@@ -31,21 +24,6 @@ $ss-fontSize: 15px;
 $ms-fontSize: 18px;
 $m-fontSize: 20px;
 
-//colors for background
-$bg1: #e0d2c3;
-$bg2: #c6dbf0;
-$bg3: #ecebe4;
-$bg4: #efd2cb;
-
-//colors:
-$color1: #dbf9f0;
-$colorBlack: black;
-$colorWhite: white;
-$colorBlue: #3333a5;
-
-//box shadow
-$boxShadow1: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-
 //images width and height
 $s-imgWidth: 24px;
 $m-imgWidth: 36px;
@@ -61,8 +39,60 @@ $mm-mediaQueriesWidth: 100px;
 $b-mediaQueriesWidth: 1200px;
 $bb-mediaQueriesWidth: 1500px;
 
-.selected_option {
-  background-color: $bg4;
+html,
+body {
+  overflow-x: hidden;
+  background-color: var(--background-color);
+  color: var(--color);
+}
+
+h2 {
+  color: var(--color);
+}
+
+.ui-card {
+  min-height: 100%;
+}
+
+.nav-tabs {
+  border: 0;
+}
+
+th {
+  color: var(--colorBlack) !important;
+  font-size: $ss-fontSize;
+  background-color: var(--color1) !important;
+}
+
+tr:nth-child(odd):hover {
+  background-color: var(--colorBlue) !important;
+}
+tr:nth-child(even):hover {
+  background-color: var(--colorBlue) !important;
+}
+
+td {
+  color: var(--color);
+}
+
+tr:nth-child(odd) {
+  background-color: var(--bg2) !important;
+}
+tr:nth-child(even) {
+  background-color: var(--bg3) !important;
+}
+
+.selected {
+  border: 2px solid var(--selected);
+  border-radius: 2px 2px 2px 2px;
+}
+
+// for dashboard-cards
+.highOfTheDay {
+  color: var(--selected);
+}
+.lowOfTheDay {
+  color: var(--color);
 }
 
 @media screen and (min-width: $bb-mediaQueriesWidth) {

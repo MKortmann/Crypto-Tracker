@@ -1,0 +1,82 @@
+@import 'styles';
+
+body {
+  background-color: white;
+}
+
+//colors for background
+$bg1: #e0d2c3;
+$bg2: #c6dbf0;
+$bg3: #ecebe4;
+$bg4: #efd2cb;
+
+//colors:
+$color1: #dbf9f0;
+$colorBlack: black;
+$colorWhite: white;
+$colorBlue: #3333a5;
+
+// table hover
+// color for hover
+$bgHover1: #ffff99;
+
+@media screen and (max-width: $ss-mediaQueriesWidth) {
+  tr:nth-child(odd) {
+    background-color: $bg3 !important;
+  }
+  tr:nth-child(even) {
+    background-color: $bg4 !important;
+  }
+}
+
+.ui-card {
+  /* min-height: inherit; */
+  min-height: 100%;
+  // &:hover {
+  //   // background-color: $bg2;
+  // }
+}
+
+th {
+  color: $colorBlack !important;
+  font-size: $ss-fontSize;
+  /* background-color: #17a2b8 !important; */
+  background-color: $color1 !important;
+  /* background-color: red !important; */
+}
+
+tr:nth-child(odd) {
+  background-color: white !important;
+  color: black !important;
+}
+
+tr:nth-child(even) {
+  background-color: $color1 !important;
+  color: black !important;
+}
+
+tr:nth-child(odd):hover {
+  background-color: $bgHover1 !important;
+}
+tr:nth-child(even):hover {
+  background-color: $bgHover1 !important;
+}
+
+.selected {
+  // border: 2px solid red;
+  // border: 2px outset #4bc0c0;
+  border: 2px solid red;
+  border-radius: 2px 2px 2px 2px;
+}
+
+p-sortIcon {
+  filter: brightness(0) invert(0.3);
+}
+
+// for dashboard-cards
+.highOfTheDay {
+  color: blue;
+}
+.lowOfTheDay {
+  color: red;
+}

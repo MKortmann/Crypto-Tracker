@@ -8,13 +8,9 @@
   width: 100%;
   max-height: 64px;
   text-align: center;
-  color: white;
+  color: var(--color);
   font-size: $ss-fontSize;
-  background-color: rgb(56, 62, 68);
-  /* background-color: #536472; */
-  /* background-color: #ffa69e; */
-  /* background-color: #b3dec1; */
-  // background-color: $bg1;
+  background-color: var(--colorBackGroundFooter);
 }
 
 div {

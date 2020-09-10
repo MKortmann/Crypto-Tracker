@@ -2,7 +2,7 @@
 @import '../../../../styles';
 
 * {
-  color: black;
+  color: var(--color);
   font-size: large;
 }
 
@@ -34,7 +34,7 @@ img {
 
 .buttonStyleDiv {
   padding: 0;
-  border: 1px solid #9bc53d;
+  border: 1px solid var(--selected);
   border-radius: 4px;
   max-height: 31px;
   min-width: 42px;
