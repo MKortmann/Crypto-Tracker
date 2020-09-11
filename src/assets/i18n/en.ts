@@ -19,7 +19,7 @@ export const en = {
       AVERAGE: 'Av.',
     },
     HOME: {
-      TITLE: 'Home',
+      TITLE: 'Crypto',
       TABLE: {
         TITLE: 'Table',
         RANK: 'Rank',

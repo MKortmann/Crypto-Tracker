@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 // The Angular CommonModule exports all the basic Angular directives and pipes, such as NgIf, NgForOf, DecimalPipe, and so on.
-// import { CommonModule } from '@angular/common';
 
-// It imports RouterModule and Routes so the app can have routing functionality
 import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { CryptosComponent } from './components/cryptos/cryptos.component';
 import { AboutComponent } from './components/about/about.component';
@@ -21,7 +19,8 @@ the browser address bar*/
 the browser address bar*/
 /*component: the component that the router should crete when navigating to this route.*/
 const routes: Routes = [
-  { path: '', component: CryptosComponent },
+  { path: '', redirectTo: '/cryptos', pathMatch: 'full' },
+  { path: 'cryptos', component: CryptosComponent },
   { path: 'about', component: AboutComponent },
   { path: 'exchanges', component: ExchangesComponent },
   { path: 'news', component: NewsComponent },

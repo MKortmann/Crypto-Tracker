@@ -9,14 +9,12 @@ nav {
   padding: $es-padding;
   font-size: $m-fontSize;
   color: var(--color);
-  // background-color: var(--colorBackGroundNav);
   background-color: var(--background-color);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  // border-bottom: var(--color) 1px solid;
   box-shadow: var(--boxShadow1);
 }
 

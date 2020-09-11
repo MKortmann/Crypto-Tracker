@@ -5,7 +5,7 @@
 
   <!-- Home, About...: left position -->
   <div>
-    <a routerLink="/">
+    <a routerLink="/" [routerLinkActive]="['active']">
       <img
         class="icon"
         src="./assets/imgs/icons/ck.svg"
@@ -15,19 +15,40 @@
       />
     </a>
     <span class="hideInSmallScreens">
-      <a routerLink="/" class="title">
+      <a
+        routerLink="/"
+        class="title"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         {{ 'TRANSLATE.NAVBAR.TITLE' | translate }}
       </a>
-      <a routerLink="/" routerLinkActive="active-link">
+      <a
+        routerLink="/"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         {{ 'TRANSLATE.NAVBAR.HOME' | translate }}
       </a>
-      <a routerLink="exchanges" routerLinkActive="active-link">
+      <a
+        routerLink="exchanges"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         {{ 'TRANSLATE.NAVBAR.EXCHANGES' | translate }}
       </a>
-      <a routerLink="news" routerLinkActive="active-link">
+      <a
+        routerLink="news"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         {{ 'TRANSLATE.NAVBAR.NEWS' | translate }}
       </a>
-      <a routerLink="about" routerLinkActive="active-link">
+      <a
+        routerLink="about"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         {{ 'TRANSLATE.NAVBAR.ABOUT' | translate }}
       </a>
     </span>
@@ -35,10 +56,18 @@
 
   <!-- Right Position -->
   <div>
-    <a routerLink="/register">
+    <a
+      routerLink="/register"
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       {{ 'TRANSLATE.NAVBAR.REGISTER' | translate }}
     </a>
-    <a routerLink="/login">
+    <a
+      routerLink="/login"
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       {{ 'TRANSLATE.NAVBAR.LOGIN' | translate }}
     </a>
     <button class="showInSmallScreens">
