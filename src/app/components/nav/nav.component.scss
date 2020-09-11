@@ -9,7 +9,8 @@ nav {
   padding: $es-padding;
   font-size: $m-fontSize;
   color: var(--color);
-  background-color: var(--colorBackGroundNav);
+  // background-color: var(--colorBackGroundNav);
+  background-color: var(--background-color);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

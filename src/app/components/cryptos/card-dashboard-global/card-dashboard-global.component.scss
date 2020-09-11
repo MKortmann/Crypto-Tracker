@@ -3,10 +3,6 @@
 
 * {
   padding: 0;
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-between;
-  // align-content: stretch;
   font-size: $ss-fontSize;
 }
 
@@ -32,12 +28,12 @@ p-header {
   padding: $s-padding !important;
 }
 
+:host ::ng-deep .p-card {
+  background-color: transparent;
+}
+
 :host ::ng-deep .ui-card {
   height: 100%;
-  // &:hover {
-  //   // background-color: white;
-  //   // cursor: pointer;
-  // }
 }
 
 :host ::ng-deep .ui-card-content {

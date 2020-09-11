@@ -22,7 +22,8 @@
   --bgHover1: #ffff99;
 
   // shadow
-  --boxShadow1: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  --colorShadow1: rgba(0, 0, 0, 0.2);
+  --boxShadow1: 0 2px 4px 0 var(--colorShadow1);
 
   // footer
   --colorBackGroundFooter: white;

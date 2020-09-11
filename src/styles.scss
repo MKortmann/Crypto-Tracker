@@ -42,6 +42,7 @@ $bb-mediaQueriesWidth: 1500px;
 html,
 body {
   overflow-x: hidden;
+  // background-color: var(--background-color);
   background-color: var(--background-color);
   color: var(--color);
 }
