@@ -5,6 +5,10 @@
   padding: $es-padding;
 }
 
+.active {
+  color: var(--selected);
+}
+
 nav {
   padding: $es-padding;
   font-size: $m-fontSize;

@@ -8,7 +8,7 @@
     <a routerLink="/" [routerLinkActive]="['active']">
       <img
         class="icon"
-        src="./assets/imgs/icons/ck.svg"
+        src="./assets/imgs/icons/ct.svg"
         width="46"
         height="46"
         alt="MK-Logo"
@@ -16,7 +16,7 @@
     </a>
     <span class="hideInSmallScreens">
       <a
-        routerLink="/"
+        [routerLink]="['/cryptos']"
         class="title"
         [routerLinkActive]="['active']"
         [routerLinkActiveOptions]="{ exact: true }"
@@ -24,28 +24,28 @@
         {{ 'TRANSLATE.NAVBAR.TITLE' | translate }}
       </a>
       <a
-        routerLink="/"
+        [routerLink]="['/cryptos']"
         [routerLinkActive]="['active']"
         [routerLinkActiveOptions]="{ exact: true }"
       >
         {{ 'TRANSLATE.NAVBAR.HOME' | translate }}
       </a>
       <a
-        routerLink="exchanges"
+        [routerLink]="['/exchanges']"
         [routerLinkActive]="['active']"
         [routerLinkActiveOptions]="{ exact: true }"
       >
         {{ 'TRANSLATE.NAVBAR.EXCHANGES' | translate }}
       </a>
       <a
-        routerLink="news"
+        [routerLink]="['/news']"
         [routerLinkActive]="['active']"
         [routerLinkActiveOptions]="{ exact: true }"
       >
         {{ 'TRANSLATE.NAVBAR.NEWS' | translate }}
       </a>
       <a
-        routerLink="about"
+        [routerLink]="['/about']"
         [routerLinkActive]="['active']"
         [routerLinkActiveOptions]="{ exact: true }"
       >
@@ -57,14 +57,14 @@
   <!-- Right Position -->
   <div>
     <a
-      routerLink="/register"
+      [routerLink]="['/register']"
       [routerLinkActive]="['active']"
       [routerLinkActiveOptions]="{ exact: true }"
     >
       {{ 'TRANSLATE.NAVBAR.REGISTER' | translate }}
     </a>
     <a
-      routerLink="/login"
+      [routerLink]="['/login']"
       [routerLinkActive]="['active']"
       [routerLinkActiveOptions]="{ exact: true }"
     >
