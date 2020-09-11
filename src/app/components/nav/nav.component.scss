@@ -40,6 +40,11 @@ a {
   padding-left: 0;
 }
 
+svg {
+  fill: var(--color);
+  stroke: var(--color);
+}
+
 @media screen and (max-width: $m-mediaQueriesWidth) {
   .hideInSmallScreens {
     display: none !important;
