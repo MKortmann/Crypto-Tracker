@@ -59,20 +59,9 @@ h2 {
 }
 
 th {
-  color: var(--colorBlack) !important;
+  color: var(--color) !important;
+  background-color: var(--background-color) !important;
   font-size: $ss-fontSize;
-  background-color: var(--color1) !important;
-}
-
-tr:nth-child(odd):hover {
-  background-color: var(--colorBlue) !important;
-}
-tr:nth-child(even):hover {
-  background-color: var(--colorBlue) !important;
-}
-
-td {
-  color: var(--color);
 }
 
 tr:nth-child(odd) {
@@ -80,6 +69,11 @@ tr:nth-child(odd) {
 }
 tr:nth-child(even) {
   background-color: var(--bg3) !important;
+}
+
+tr:hover {
+  color: var(--color) !important;
+  background-color: var(--background-color) !important;
 }
 
 .selected {

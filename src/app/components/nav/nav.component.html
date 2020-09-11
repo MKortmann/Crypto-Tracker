@@ -1,124 +1,45 @@
-<nav class="navbar navbar-expand-md">
-  <a routerLink="/" class="navbar-brand">
-    <img
-      src="./assets/imgs/icons/mk.svg"
-      width="46"
-      height="46"
-      alt="MK-Logo"
-    />
-  </a>
-
-  <ul class="showInSmallScreens">
-    {{
-      'TRANSLATE.NAVBAR.TITLE' | translate
-    }}
-  </ul>
-
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarMain"
-    aria-controls="navbarMain"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav>
+  <!-- <span class="showInSmallScreens">
+    {{ 'TRANSLATE.NAVBAR.TITLE' | translate }}
+  </span> -->
 
   <!-- Home, About...: left position -->
-  <div class="collapse navbar-collapse" id="navbarMain">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/"
-          >{{ 'TRANSLATE.NAVBAR.HOME' | translate }}
-          <span class="sr-only">(current)</span></a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="exchanges">{{
-          'TRANSLATE.NAVBAR.EXCHANGES' | translate
-        }}</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="news">{{
-          'TRANSLATE.NAVBAR.NEWS' | translate
-        }}</a>
-      </li>
+  <div>
+    <a routerLink="/">
+      <img
+        src="./assets/imgs/icons/mk.svg"
+        width="46"
+        height="46"
+        alt="MK-Logo"
+      />
+    </a>
+    <a routerLink="/" class="title hideInSmallScreens">
+      {{ 'TRANSLATE.NAVBAR.TITLE' | translate }}
+    </a>
+    <a routerLink="/">
+      {{ 'TRANSLATE.NAVBAR.HOME' | translate }}
+    </a>
+    <a routerLink="exchanges">
+      {{ 'TRANSLATE.NAVBAR.EXCHANGES' | translate }}
+    </a>
+    <a routerLink="news">
+      {{ 'TRANSLATE.NAVBAR.NEWS' | translate }}
+    </a>
+    <a routerLink="about">
+      {{ 'TRANSLATE.NAVBAR.ABOUT' | translate }}
+    </a>
+  </div>
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="about">{{
-          'TRANSLATE.NAVBAR.ABOUT' | translate
-        }}</a>
-      </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link disabled">{{
-          "TRANSLATE.NAVBAR.NAV_2" | translate
-        }}</a>
-      </li> -->
-    </ul>
-
-    <ul class="title hideInSmallScreens">
-      {{
-        'TRANSLATE.NAVBAR.TITLE' | translate
-      }}
-    </ul>
-
-    <!-- Right Position -->
-    <ul class="navbar-nav ml-auto">
-      <!-- <span
-        *ngIf="darkMode; else elseBlock"
-        class="material-icons"
-        (click)="loadStyle('dark')"
-      >
-        brightness_low
-      </span>
-      <ng-template #elseBlock>
-        <span class="material-icons" (click)="loadStyle('dark')">
-          brightness_high
-        </span>
-      </ng-template> -->
-
-      <!-- <button type="button" (click)="loadStyle('dark')">Dark</button>
-      <button type="button" (click)="loadStyle('light')">Light</button> -->
-      <li class="nav-item">
-        <a routerLink="/register" class="nav-link">{{
-          'TRANSLATE.NAVBAR.REGISTER' | translate
-        }}</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/login" class="nav-link">{{
-          'TRANSLATE.NAVBAR.LOGIN' | translate
-        }}</a>
-      </li>
-      <!-- <li class="nav-item">
-        <a
-          routerLink="/home"
-          class="nav-link dropleft"
-          data-toggle="dropdown"
-          role="button"
-        >
-          <img
-            src="assets/imgs/icons/dots.svg"
-            width="32"
-            height="30"
-            alt="dots"
-          />
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
-        </a>
-      </li> -->
-    </ul>
-    <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        Search
-      </button>
-    </form> -->
+  <!-- Right Position -->
+  <div>
+    <a routerLink="/register">
+      {{ 'TRANSLATE.NAVBAR.REGISTER' | translate }}
+    </a>
+    <a routerLink="/login">
+      {{ 'TRANSLATE.NAVBAR.LOGIN' | translate }}
+    </a>
+    <button>
+      H
+    </button>
   </div>
 </nav>
