@@ -7,27 +7,30 @@
   <div>
     <a routerLink="/">
       <img
-        src="./assets/imgs/icons/mk.svg"
+        class="icon"
+        src="./assets/imgs/icons/ck.svg"
         width="46"
         height="46"
         alt="MK-Logo"
       />
     </a>
-    <a routerLink="/" class="title hideInSmallScreens">
-      {{ 'TRANSLATE.NAVBAR.TITLE' | translate }}
-    </a>
-    <a routerLink="/">
-      {{ 'TRANSLATE.NAVBAR.HOME' | translate }}
-    </a>
-    <a routerLink="exchanges">
-      {{ 'TRANSLATE.NAVBAR.EXCHANGES' | translate }}
-    </a>
-    <a routerLink="news">
-      {{ 'TRANSLATE.NAVBAR.NEWS' | translate }}
-    </a>
-    <a routerLink="about">
-      {{ 'TRANSLATE.NAVBAR.ABOUT' | translate }}
-    </a>
+    <span class="hideInSmallScreens">
+      <a routerLink="/" class="title">
+        {{ 'TRANSLATE.NAVBAR.TITLE' | translate }}
+      </a>
+      <a routerLink="/" routerLinkActive="active-link">
+        {{ 'TRANSLATE.NAVBAR.HOME' | translate }}
+      </a>
+      <a routerLink="exchanges" routerLinkActive="active-link">
+        {{ 'TRANSLATE.NAVBAR.EXCHANGES' | translate }}
+      </a>
+      <a routerLink="news" routerLinkActive="active-link">
+        {{ 'TRANSLATE.NAVBAR.NEWS' | translate }}
+      </a>
+      <a routerLink="about" routerLinkActive="active-link">
+        {{ 'TRANSLATE.NAVBAR.ABOUT' | translate }}
+      </a>
+    </span>
   </div>
 
   <!-- Right Position -->
@@ -38,7 +41,7 @@
     <a routerLink="/login">
       {{ 'TRANSLATE.NAVBAR.LOGIN' | translate }}
     </a>
-    <button>
+    <button class="showInSmallScreens">
       H
     </button>
   </div>

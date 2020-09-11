@@ -28,7 +28,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
   show = false;
   options = options;
   dataAverageArrayGraph: any;
-  expandGraph = true;
+  expandGraph = false;
   setActive = true;
   public chartCoin: Chart;
   labels = [];

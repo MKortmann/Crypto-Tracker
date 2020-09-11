@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-
 import { DOCUMENT } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -13,7 +13,8 @@ export class NavComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private routeLinkActive: ActivatedRoute
   ) {}
 
   ngOnInit(): void {}
