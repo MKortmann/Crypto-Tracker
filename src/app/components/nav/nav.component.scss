@@ -54,19 +54,15 @@ span {
   }
 }
 
-.sidenav {
-  background-color: var(--background-color);
+hr {
   color: var(--color);
-  width: 300px;
-  height: 100%;
-  position: absolute;
-  transform: translate(0, +310px);
-  transition: transform 0.3s ease;
 }
 
-.sidenav.open {
-  transform: translate(0, -310px);
-  transition: transform 0.3s ease;
+.sideNav {
+  color: var(--color);
+  display: flex;
+  flex-direction: column;
+  font-size: $mb-fontSize;
 }
 
 @media screen and (max-width: $m-mediaQueriesWidth) {

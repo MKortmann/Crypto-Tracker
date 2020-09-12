@@ -57,6 +57,7 @@
   <!-- Right Position -->
   <div>
     <a
+      class="hideInSmallScreens"
       [routerLink]="['/register']"
       [routerLinkActive]="['active']"
       [routerLinkActiveOptions]="{ exact: true }"
@@ -64,6 +65,7 @@
       {{ 'TRANSLATE.NAVBAR.REGISTER' | translate }}
     </a>
     <a
+      class="hideInSmallScreens"
       [routerLink]="['/login']"
       [routerLinkActive]="['active']"
       [routerLinkActiveOptions]="{ exact: true }"
@@ -71,9 +73,8 @@
       {{ 'TRANSLATE.NAVBAR.LOGIN' | translate }}
     </a>
 
-    <a (click)="showSideNav()">
+    <a (click)="showSideNav()" class="hamburger">
       <svg
-        class="hamburger"
         class="showInSmallScreens"
         viewBox="0 0 100 80"
         width="40"
@@ -87,6 +88,47 @@
   </div>
 </nav>
 
-<div class="sidenav">
-  Hello World
+<div @flyInOut *ngIf="isShown" class="sideNav">
+  <a
+    [routerLink]="['/register']"
+    [routerLinkActive]="['active']"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    {{ 'TRANSLATE.NAVBAR.REGISTER' | translate }}
+  </a>
+  <a
+    [routerLink]="['/login']"
+    [routerLinkActive]="['active']"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    {{ 'TRANSLATE.NAVBAR.LOGIN' | translate }}
+  </a>
+  <a
+    [routerLink]="['/cryptos']"
+    [routerLinkActive]="['active']"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    {{ 'TRANSLATE.NAVBAR.HOME' | translate }}
+  </a>
+  <a
+    [routerLink]="['/exchanges']"
+    [routerLinkActive]="['active']"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    {{ 'TRANSLATE.NAVBAR.EXCHANGES' | translate }}
+  </a>
+  <a
+    [routerLink]="['/news']"
+    [routerLinkActive]="['active']"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    {{ 'TRANSLATE.NAVBAR.NEWS' | translate }}
+  </a>
+  <a
+    [routerLink]="['/about']"
+    [routerLinkActive]="['active']"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    {{ 'TRANSLATE.NAVBAR.ABOUT' | translate }}
+  </a>
 </div>
