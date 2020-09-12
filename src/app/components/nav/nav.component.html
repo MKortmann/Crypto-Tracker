@@ -14,15 +14,15 @@
         alt="MK-Logo"
       />
     </a>
+    <a
+      [routerLink]="['/cryptos']"
+      class="title"
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      {{ 'TRANSLATE.NAVBAR.TITLE' | translate }}
+    </a>
     <span class="hideInSmallScreens">
-      <a
-        [routerLink]="['/cryptos']"
-        class="title"
-        [routerLinkActive]="['active']"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        {{ 'TRANSLATE.NAVBAR.TITLE' | translate }}
-      </a>
       <a
         [routerLink]="['/cryptos']"
         [routerLinkActive]="['active']"
@@ -71,17 +71,22 @@
       {{ 'TRANSLATE.NAVBAR.LOGIN' | translate }}
     </a>
 
-    <a style="margin-left: 10px;">
+    <a (click)="showSideNav()">
       <svg
+        class="hamburger"
         class="showInSmallScreens"
         viewBox="0 0 100 80"
         width="40"
         height="40"
       >
-        <rect width="100" height="15"></rect>
-        <rect y="30" width="100" height="15"></rect>
-        <rect y="60" width="100" height="15"></rect>
+        <rect width="100" height="12"></rect>
+        <rect y="30" width="100" height="12"></rect>
+        <rect y="60" width="100" height="12"></rect>
       </svg>
     </a>
   </div>
 </nav>
+
+<div class="sidenav">
+  Hello World
+</div>

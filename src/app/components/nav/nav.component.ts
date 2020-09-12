@@ -17,30 +17,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // this would allow us to load the theme at runtime, based on users preferences
-  loadStyle(styleName: string = 'dark') {
-    if (this.darkMode === false) {
-      this.darkMode = true;
-      styleName = 'dark';
-    } else {
-      this.darkMode = false;
-      styleName = 'light';
-    }
-    // get the head element of the page
-    const head = this.document.getElementsByTagName('head')[0];
-
-    const themeLink = this.document.getElementById(
-      'client-theme'
-    ) as HTMLLinkElement;
-
-    if (themeLink) {
-      themeLink.href = styleName + '.css';
-    } else {
-      const style = this.document.createElement('link');
-      style.id = 'client-theme';
-      style.rel = 'stylesheet';
-      style.href = `${styleName}.css`;
-      head.appendChild(style);
-    }
+  showSideNav() {
+    this.document.querySelector('.sidenav').classList.toggle('open');
   }
 }

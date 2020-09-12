@@ -40,9 +40,33 @@ a {
   padding-left: 0;
 }
 
-svg {
+.hamburger {
   fill: var(--color);
   stroke: var(--color);
+}
+
+span {
+  margin-left: $es-padding;
+  margin-right: $es-padding;
+  cursor: pointer;
+  &:hover {
+    color: var(--selected);
+  }
+}
+
+.sidenav {
+  background-color: var(--background-color);
+  color: var(--color);
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  transform: translate(0, +310px);
+  transition: transform 0.3s ease;
+}
+
+.sidenav.open {
+  transform: translate(0, -310px);
+  transition: transform 0.3s ease;
 }
 
 @media screen and (max-width: $m-mediaQueriesWidth) {
