@@ -33,7 +33,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  showSideNav() {
-    this.isShown = !this.isShown;
+  showHideSideNav(showHide: boolean) {
+    this.isShown = showHide;
   }
 }

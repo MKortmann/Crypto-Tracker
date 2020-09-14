@@ -73,16 +73,31 @@
       {{ 'TRANSLATE.NAVBAR.LOGIN' | translate }}
     </a>
 
-    <a (click)="showSideNav()" class="hamburger">
+    <a *ngIf="!isShown" (click)="showHideSideNav(true)" class="hamburger">
       <svg
         class="showInSmallScreens"
-        viewBox="0 0 100 80"
-        width="40"
+        viewBox="0 0 120 80"
+        width="48"
         height="40"
       >
-        <rect width="100" height="12"></rect>
-        <rect y="30" width="100" height="12"></rect>
-        <rect y="60" width="100" height="12"></rect>
+        <rect width="120" height="12"></rect>
+        <rect y="30" width="120" height="12"></rect>
+        <rect y="60" width="120" height="12"></rect>
+      </svg>
+    </a>
+    <a *ngIf="isShown" (click)="showHideSideNav(false)" class="hamburger">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 50 50"
+        width="50"
+        height="50"
+        overflow="visible"
+        stroke="black"
+        stroke-width="7"
+        stroke-linecap="round"
+      >
+        <line x1="0" y1="0" x2="50" y2="50" />
+        <line x1="50" y1="0" x2="0" y2="50" />
       </svg>
     </a>
   </div>
@@ -93,6 +108,7 @@
     [routerLink]="['/register']"
     [routerLinkActive]="['active']"
     [routerLinkActiveOptions]="{ exact: true }"
+    (click)="showHideSideNav(false)"
   >
     {{ 'TRANSLATE.NAVBAR.REGISTER' | translate }}
   </a>
@@ -100,6 +116,7 @@
     [routerLink]="['/login']"
     [routerLinkActive]="['active']"
     [routerLinkActiveOptions]="{ exact: true }"
+    (click)="showHideSideNav(false)"
   >
     {{ 'TRANSLATE.NAVBAR.LOGIN' | translate }}
   </a>
@@ -107,6 +124,7 @@
     [routerLink]="['/cryptos']"
     [routerLinkActive]="['active']"
     [routerLinkActiveOptions]="{ exact: true }"
+    (click)="showHideSideNav(false)"
   >
     {{ 'TRANSLATE.NAVBAR.HOME' | translate }}
   </a>
@@ -114,6 +132,7 @@
     [routerLink]="['/exchanges']"
     [routerLinkActive]="['active']"
     [routerLinkActiveOptions]="{ exact: true }"
+    (click)="showHideSideNav(false)"
   >
     {{ 'TRANSLATE.NAVBAR.EXCHANGES' | translate }}
   </a>
@@ -121,6 +140,7 @@
     [routerLink]="['/news']"
     [routerLinkActive]="['active']"
     [routerLinkActiveOptions]="{ exact: true }"
+    (click)="showHideSideNav(false)"
   >
     {{ 'TRANSLATE.NAVBAR.NEWS' | translate }}
   </a>
@@ -128,6 +148,7 @@
     [routerLink]="['/about']"
     [routerLinkActive]="['active']"
     [routerLinkActiveOptions]="{ exact: true }"
+    (click)="showHideSideNav(false)"
   >
     {{ 'TRANSLATE.NAVBAR.ABOUT' | translate }}
   </a>
