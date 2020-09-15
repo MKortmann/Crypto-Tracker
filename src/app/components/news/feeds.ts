@@ -102,9 +102,9 @@ export const FeedsUrl = [
   },
   {
     id: 10,
-    name: 'BTC Manager',
-    symbol: 'btcmanager',
-    url: 'https%3A%2F%2Fbtcmanager.com%2Ffeed',
+    name: 'Live Bitcoin News',
+    symbol: 'livebitcoinnews',
+    url: 'https%3A%2F%2Fwww.livebitcoinnews.com%2Ffeed%2F',
     bookmark: false,
 
     items: [],
@@ -120,11 +120,12 @@ export const FeedsUrl = [
     items: [],
     saved: [false, { items: [] }],
   },
+
   {
     id: 12,
-    name: 'Coin Speaker',
-    symbol: 'coinspeaker',
-    url: 'https%3A%2F%2Fwww.coinspeaker.com%2Ffeed%2F',
+    name: 'Coin Revolution',
+    symbol: 'coinrevolution',
+    url: 'https%3A%2F%2Fwww.coinrevolution.com%2Ffeed%2F',
     bookmark: false,
 
     items: [],

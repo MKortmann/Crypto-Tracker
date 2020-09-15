@@ -33,7 +33,16 @@ export class NewsComponent implements OnInit {
       ];
 
       // fetch news
+      console.log('Fetching new NEWS!');
       this.fetchNews();
+    }
+  }
+
+  refresh() {
+    const res = confirm('Do you want to reset the news?');
+    if (res) {
+      localStorage.clear();
+      window.location.reload();
     }
   }
 
