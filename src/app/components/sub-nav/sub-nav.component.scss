@@ -1,10 +1,36 @@
 @import '../../../styles.scss';
 
 * {
-  padding: $es-padding;
-  margin: $es-padding;
+  padding: 0;
+  margin: 0;
 }
 
-a {
-  cursor: pointer;
+div {
+  // padding: $es-padding;
+  // box-shadow: 0 0 0 1px var(--colorShadow1);
+}
+
+nav {
+  color: var(--color);
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: flex-end;
+}
+
+:host ::ng-deep .p-dropdown {
+  // border-radius: 3px;
+  border: 0px !important;
+  outline: 0px !important;
+  margin: 0;
+  padding: 0;
+}
+
+:host ::ng-deep .p-dropdown-label {
+  display: none;
+}
+
+:host ::ng-deep .p-dropdown-trigger {
+  padding-top: $s-padding !important;
+  // padding-right: $s-padding !important;
+  margin: 0;
 }

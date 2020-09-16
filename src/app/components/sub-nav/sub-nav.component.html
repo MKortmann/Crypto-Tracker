@@ -1,80 +1,19 @@
-<ul class="nav nav-tabs">
-  <!-- <li class="nav-item">
-    <a class="nav-link active" href="#">Overview</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Feed News</a>
-  </li> -->
+<nav>
+  <div>
+    <span *ngIf="interval !== 0; else elseBlock">
+      {{ 'TRANSLATE.SUBNAV.UPDATE' | translate }}: {{ this.showMinutes }}
+      {{ 'TRANSLATE.SUBNAV.MIN' | translate }} {{ this.showSeconds }}
+      {{ 'TRANSLATE.SUBNAV.SEC' | translate }}
+    </span>
+    <ng-template #elseBlock>Update Stopped</ng-template>
 
-  <!-- <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
-      >Disabled</a
-    >
-  </li> -->
-
-  <li class="nav-item dropdown ml-auto">
-    <a
-      class="nav-link dropdown-toggle"
-      data-toggle="dropdown"
-      href="#"
-      role="button"
-      aria-haspopup="true"
-      aria-expanded="false"
-    >
-      <span *ngIf="interval !== 0; else elseBlock">
-        {{ 'TRANSLATE.SUBNAV.UPDATE' | translate }}:
-
-        {{ this.showMinutes }} {{ 'TRANSLATE.SUBNAV.MIN' | translate }}
-        {{ this.showSeconds }} {{ 'TRANSLATE.SUBNAV.SEC' | translate }}
-      </span>
-      <ng-template #elseBlock>Update Stopped</ng-template>
-    </a>
-
-    <div class="dropdown-menu">
-      <a
-        class="dropdown-item"
-        (click)="load(SEC_30)"
-        [class.selected_option]="interval === SEC_30"
-        >30 sec</a
-      >
-      <a
-        class="dropdown-item"
-        (click)="load(MIN_1)"
-        [class.selected_option]="interval === MIN_1"
-        >1 min</a
-      >
-      <a
-        class="dropdown-item"
-        (click)="load(MIN_5)"
-        [class.selected_option]="interval === MIN_5"
-        >5 min</a
-      >
-      <a
-        class="dropdown-item"
-        (click)="load(MIN_10)"
-        [class.selected_option]="interval === MIN_10"
-        >10 min</a
-      >
-      <a
-        class="dropdown-item"
-        (click)="load(MIN_30)"
-        [class.selected_option]="interval === MIN_30"
-        >30 min</a
-      >
-      <a
-        class="dropdown-item"
-        (click)="load(MIN_60)"
-        [class.selected_option]="interval === MIN_60"
-        >1 h</a
-      >
-      <a
-        class="dropdown-item"
-        (click)="stop()"
-        [class.selected_option]="interval === 0"
-        >Stop Update</a
-      >
-      <!-- <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a> -->
-    </div>
-  </li>
-</ul>
+    <p-dropdown
+      ngDefaultControl
+      [options]="intervals"
+      [(ngModel)]="selectedInterval"
+      optionLabel="name"
+      (onChange)="load($event.value.value)"
+      #dd
+    ></p-dropdown>
+  </div>
+</nav>

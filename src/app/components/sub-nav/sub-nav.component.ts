@@ -5,6 +5,11 @@ import { ExchangeService } from '../../services/exchange.service';
 
 import { TranslateService } from '@ngx-translate/core';
 
+interface IntervalTimer {
+  name: string;
+  value: number;
+}
+
 @Component({
   selector: 'app-sub-nav',
   templateUrl: './sub-nav.component.html',
@@ -16,6 +21,9 @@ export class SubNavComponent implements OnInit {
     private exchangeService: ExchangeService,
     private translateService: TranslateService
   ) {}
+
+  intervals: IntervalTimer[];
+  selectedInterval: IntervalTimer;
 
   data: any;
   seconds: number;
@@ -33,18 +41,36 @@ export class SubNavComponent implements OnInit {
   public readonly MIN_30: number = 1800000;
   public readonly MIN_60: number = 3600000;
 
+  public readonly Intervals = {
+    SEC_30: 30000,
+    MIN_1: 60000,
+    MIN_5: 300000,
+    MIN_10: 600000,
+    MIN_30: 1800000,
+    MIN_60: 3600000,
+  };
+
   ngOnInit(): void {
-    // this.coinLoreService.cast.subscribe((data) => {
-    //   this.data = data;
-    // });
+    this.intervals = [
+      { name: '30 sec', value: 30000 },
+      { name: '1 min', value: 60000 },
+      { name: '5 min', value: 300000 },
+      { name: '10 min', value: 600000 },
+      { name: '30 min', value: 1800000 },
+      { name: '1 hour', value: 3600000 },
+      { name: 'Stop Update', value: 0 },
+    ];
+
     this.interval = JSON.parse(localStorage.getItem('interval'));
-    if (this.interval === null) {
-      this.interval = this.MIN_60;
-      this.load(this.MIN_10);
-    } else {
-      this.load(this.interval);
+    if (this.interval !== 0) {
+      if (this.interval === null) {
+        this.interval = this.MIN_60;
+        this.load(this.MIN_10);
+      } else {
+        this.load(this.interval);
+      }
+      this.decreaseTimeInterval();
     }
-    this.decreaseTimeInterval();
   }
 
   // decreate the count seconds and time in accord to interval
@@ -94,28 +120,34 @@ export class SubNavComponent implements OnInit {
   }
 
   load(interval) {
-    this.interval = interval;
-    localStorage.setItem('interval', interval);
-    this.reset();
-    this.decreaseTimeInterval();
+    if (interval !== 0) {
+      this.interval = interval;
+      localStorage.setItem('interval', interval);
+      this.reset();
+      this.decreaseTimeInterval();
 
-    if (this.timeInterval) {
-      clearInterval(this.timeInterval);
-    }
+      if (this.timeInterval) {
+        clearInterval(this.timeInterval);
+      }
 
-    this.timeInterval = setInterval(() => {
-      this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
-        this.data = [...res.data];
+      this.timeInterval = setInterval(() => {
+        this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
+          this.data = [...res.data];
 
-        this.exchangeService.getMoney('USD').subscribe((res2) => {
-          this.data.forEach((item) => {
-            item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
+          this.exchangeService.getMoney('USD').subscribe((res2) => {
+            this.data.forEach((item) => {
+              item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
+            });
           });
+          this.coinLoreService.newData(this.data);
+          this.reset();
         });
-        this.coinLoreService.newData(this.data);
-        this.reset();
-      });
-    }, interval);
+        console.log(this.interval);
+      }, this.interval);
+    } else {
+      this.interval = 0;
+      clearInterval(this.timeIntervalDecrease);
+    }
   }
 
   stop() {
