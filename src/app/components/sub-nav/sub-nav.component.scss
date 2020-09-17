@@ -5,10 +5,10 @@
   margin: 0;
 }
 
-div {
-  // padding: $es-padding;
-  // box-shadow: 0 0 0 1px var(--colorShadow1);
-}
+// div {
+//   // padding: $es-padding;
+//   // box-shadow: 0 0 0 1px var(--colorShadow1);
+// }
 
 nav {
   color: var(--color);
@@ -25,12 +25,25 @@ nav {
   padding: 0;
 }
 
-:host ::ng-deep .p-dropdown-label {
+:host ::ng-deep .p-dropdown-label,
+.ng-trigger {
   display: none;
+}
+
+:host ::ng-deep .p-dropdown.p-focus {
+  box-shadow: none !important;
 }
 
 :host ::ng-deep .p-dropdown-trigger {
   padding-top: $s-padding !important;
   // padding-right: $s-padding !important;
   margin: 0;
+  border: 0 !important;
+  outline: 0 !important;
 }
+
+// :host ::ng-deep .p-dropdown-trigger:focus {
+//   display: none;
+//   // padding-right: $s-padding !important;
+//   // margin: 0;
+// }
