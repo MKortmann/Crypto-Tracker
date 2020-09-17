@@ -26,7 +26,6 @@
             "assets": ["src/assets/imgs/icons/mk.svg", "src/assets"],
             "extractCss": true,
             "styles": [
-              "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/nova/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
@@ -53,12 +52,7 @@
                 "inject": false
               }
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.js",
-              "node_modules/popper.js/dist/umd/popper.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js",
-              "node_modules/chart.js/dist/Chart.js"
-            ]
+            "scripts": ["node_modules/chart.js/dist/Chart.js"]
           },
           "configurations": {
             "production": {

@@ -4,6 +4,7 @@
 * {
   color: var(--color);
   font-size: large;
+  margin-top: $es-padding;
 }
 
 .containerCalendar {
@@ -23,7 +24,7 @@
 }
 
 :host ::ng-deep .p-datepicker-trigger {
-  padding: $es-padding !important;
+  padding: 0 !important;
   margin: 0 !important;
 }
 
@@ -36,9 +37,10 @@ img {
   padding: 0;
   border: 1px solid var(--selected);
   border-radius: 4px;
-  max-height: 31px;
+  max-height: 28px;
   min-width: 42px;
   display: flex;
+  align-items: center;
   justify-content: center;
   cursor: pointer;
 }

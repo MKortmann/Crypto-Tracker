@@ -10,7 +10,7 @@
 }
 
 nav {
-  padding: $es-padding;
+  // padding: $es-padding;
   font-size: $m-fontSize;
   color: var(--color);
   background-color: var(--background-color);
@@ -20,6 +20,11 @@ nav {
   justify-content: space-between;
   align-items: center;
   box-shadow: var(--boxShadow1);
+  margin-bottom: $es-padding;
+  .DesktopMenuLeftSide {
+    display: flex;
+    align-items: center;
+  }
 }
 
 a {
@@ -63,6 +68,7 @@ hr {
   display: flex;
   flex-direction: column;
   font-size: $mb-fontSize;
+  align-items: flex-end;
 }
 
 @media screen and (max-width: $m-mediaQueriesWidth) {
