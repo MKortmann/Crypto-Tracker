@@ -1,8 +1,11 @@
 // import global styling
 @import '../../../styles';
 
-.footer {
+footer {
   position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: $s-padding;
   bottom: 0;
   width: 100%;
