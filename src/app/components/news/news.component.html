@@ -1,4 +1,13 @@
 <!-- [style]="{ width: '20em', height: '84.5%', top: '100px', bottom: '50px' }" -->
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>
+
+<p-messages [(value)]="msgs"></p-messages>
+
 <p-sidebar
   [(visible)]="visibleSidebar"
   [style]="{ width: '20em', overflow: 'auto' }"
@@ -44,7 +53,7 @@
 <button
   pButton
   type="button"
-  (click)="refresh()"
+  (click)="confirmRefresh()"
   icon="pi pi-refresh"
   style="position: fixed; right: 80px; bottom: 50px;"
 ></button>

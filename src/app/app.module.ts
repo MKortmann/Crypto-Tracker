@@ -62,6 +62,11 @@ import { SingleFeedComponent } from './components/news/single-feed/single-feed.c
 import { OtherFeedComponent } from './components/news/other-feed/other-feed.component';
 import { PanelModule } from 'primeng/panel';
 
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,6 +112,9 @@ import { PanelModule } from 'primeng/panel';
     InputTextModule,
     HttpClientModule,
     PanelModule,
+    ConfirmDialogModule,
+    MessageModule,
+    MessagesModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -114,7 +122,7 @@ import { PanelModule } from 'primeng/panel';
       },
     }),
   ],
-  providers: [],
+  providers: [ConfirmationService],
 
   bootstrap: [AppComponent],
 })

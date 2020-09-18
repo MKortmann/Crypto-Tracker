@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FeedsUrl } from './feeds';
 import { FeedNewsService } from '../../services/feed-news.service';
 
+import { ConfirmationService, Message } from 'primeng/api';
+
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
@@ -15,11 +17,15 @@ export class NewsComponent implements OnInit {
   feedArray = [];
 
   dateNow: string;
+  msgs: Message[] = [];
 
   // Unblock using rss2json, to look: feed2json.org
   prefixRss2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
 
-  constructor(private feedNewsServices: FeedNewsService) {}
+  constructor(
+    private feedNewsServices: FeedNewsService,
+    private confirmationService: ConfirmationService
+  ) {}
 
   ngOnInit(): void {
     this.dateNow = this.returnDateNow();
@@ -36,6 +42,38 @@ export class NewsComponent implements OnInit {
       console.log('Fetching new NEWS!');
       this.fetchNews();
     }
+  }
+
+  confirmRefresh() {
+    this.confirmationService.confirm({
+      message: 'Do you want to reset the news?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        localStorage.removeItem('dateNow');
+        localStorage.removeItem('feeds');
+        this.msgs = [
+          {
+            severity: 'success',
+            summary: 'Confirmed',
+            detail: 'You have refreshed the news! The Page will be reload!',
+          },
+        ];
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      },
+      reject: () => {
+        this.msgs = [
+          {
+            severity: 'info',
+            summary: 'Not Confirmed',
+            detail: 'News not refreshed!',
+          },
+        ];
+      },
+    });
   }
 
   refresh() {
