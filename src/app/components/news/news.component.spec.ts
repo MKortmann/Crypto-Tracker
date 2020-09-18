@@ -4,13 +4,15 @@ import { NewsComponent } from './news.component';
 
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
+import { ConfirmationService } from 'primeng/api';
+
 describe('NewsComponent', () => {
   let component: NewsComponent;
   let fixture: ComponentFixture<NewsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [HttpClient, HttpHandler],
+      providers: [HttpClient, HttpHandler, ConfirmationService],
       declarations: [NewsComponent],
     }).compileComponents();
   }));

@@ -16,9 +16,17 @@ footer {
   background-color: var(--background-color);
 }
 
-div {
-  align-items: center;
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  button {
+    margin-top: $m-padding;
+  }
+  .firstButton {
+    margin-top: $x-padding;
+  }
 }
+
 span {
   padding-right: $ss-padding;
   cursor: pointer;

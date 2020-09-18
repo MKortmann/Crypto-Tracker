@@ -17,33 +17,41 @@
           brightness_high
         </span>
       </ng-template>
-      <span class="material-icons md-48" data-toggle="dropdown">
+      <span class="material-icons md-48" (click)="display = true">
         language
       </span>
-
-      <div class="dropdown-menu">
-        <button
-          class="dropdown-item"
-          (click)="change('en')"
-          [class.selected_option]="code === 'en'"
-        >
-          EN
-        </button>
-        <button
-          class="dropdown-item"
-          (click)="change('de')"
-          [class.selected_option]="code === 'de'"
-        >
-          DE
-        </button>
-        <button
-          class="dropdown-item"
-          (click)="change('pt')"
-          [class.selected]="code === 'pt'"
-        >
-          PT
-        </button>
-      </div>
     </div>
   </div>
 </footer>
+
+<p-sidebar
+  [(visible)]="display"
+  position="right"
+  styleClass="p-sidebar-sm"
+  [style]="{ width: '15em' }"
+>
+  <div class="sideBar">
+    <button
+      class="firstButton"
+      pButton
+      type="button"
+      (click)="change('en')"
+      [class.selected_option]="code === 'en'"
+      label="EN"
+    ></button>
+    <button
+      pButton
+      type="button"
+      (click)="change('de')"
+      [class.selected_option]="code === 'de'"
+      label="DE"
+    ></button>
+    <button
+      pButton
+      type="button"
+      (click)="change('pt')"
+      [class.selected]="code === 'pt'"
+      label="PT"
+    ></button>
+  </div>
+</p-sidebar>

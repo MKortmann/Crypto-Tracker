@@ -10,6 +10,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class FooterComponent implements OnInit {
   @Input() code: string;
+  display = false;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
