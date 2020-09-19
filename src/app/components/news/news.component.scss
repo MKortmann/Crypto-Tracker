@@ -5,18 +5,16 @@
   padding: 0;
 }
 
-.sideNav p:hover {
-  background-color: red;
-  color: white;
-  cursor: pointer;
-}
-
-a {
-  text-decoration: none;
-}
-
-.paragraphSideBar:hover {
-  cursor: pointer;
+.sideNav {
+  a {
+    font-size: $mb-fontSize;
+    text-decoration: none !important;
+    color: inherit;
+    cursor: pointer;
+    &:hover {
+      color: red;
+    }
+  }
 }
 
 :host ::ng-deep button {
@@ -34,4 +32,12 @@ a {
   padding: 1px !important;
   padding-top: 2px !important;
   margin: 0 !important;
+}
+
+@media screen and (max-width: $ss-mediaQueriesWidth) {
+  .sideNav {
+    a {
+      font-size: $ms-fontSize;
+    }
+  }
 }

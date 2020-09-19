@@ -1,6 +1,5 @@
 <!-- [style]="{ width: '20em', height: '84.5%', top: '100px', bottom: '50px' }" -->
 <p-confirmDialog
-  [style]="{ width: '50vw' }"
   [baseZIndex]="10000"
   header="Confirmation"
   icon="pi pi-exclamation-triangle"
@@ -19,7 +18,6 @@
     <a
       pageScroll
       href="news#B{{ item.id }}"
-      class="paragraphSideBar"
       *ngFor="let item of feedArray; index as i"
       (click)="loadNews($event)"
     >

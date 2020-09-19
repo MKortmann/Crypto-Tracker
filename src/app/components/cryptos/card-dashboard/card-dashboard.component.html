@@ -1,23 +1,13 @@
 <!-- carousel primeng -->
 <div class="hideInBigScreens">
   <p-carousel [value]="data" [numVisible]="2" [numScroll]="2">
-    <!-- <p-carousel
-    [autoplayInterval]="3000"
-    [value]="data"
-    class="p-grid p-align-center p-col-6"
-    styleClass="custom-carousel"
-    [numVisible]="2"
-    [numScroll]="2"
-  > -->
     <ng-template let-item pTemplate="item">
       <div [class.selected]="item.symbol === symbol">
-        <p-card [style]="{ 'min-height': '150px', margin: '3px' }">
-          <!-- <p-card (click)="selectedCoin(item.name, item.symbol)"> -->
-          <!-- <p-header style="font-size: larger; font-weight: bold;"> -->
-          <span
-            style="padding-left: 10px;"
-            (click)="selectedCoin(item.name, item.symbol)"
-          >
+        <p-card
+          [style]="{ 'min-height': '150px', margin: '3px' }"
+          (click)="selectedCoin(item.name, item.symbol)"
+        >
+          <span style="padding-left: 10px;">
             <img
               src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
               alt="{{ item.symbol | lowercase }}"
@@ -186,12 +176,12 @@
 <div class="p-grid p-align-center p-justify-around hideBelow1500">
   <div class="p-col p-col-align-stretch" *ngFor="let item of data">
     <div [class.selected]="item.symbol === symbol">
-      <p-card [style]="{ 'min-height': '160px', margin: '3px' }">
+      <p-card
+        [style]="{ 'min-height': '160px', margin: '3px' }"
+        (click)="selectedCoin(item.name, item.symbol)"
+      >
         <p-header style="font-size: large; font-weight: bold;">
-          <span
-            style="padding-left: 10px;"
-            (click)="selectedCoin(item.name, item.symbol)"
-          >
+          <span style="padding-left: 10px;">
             <img
               src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
               alt="{{ item.symbol | lowercase }}"

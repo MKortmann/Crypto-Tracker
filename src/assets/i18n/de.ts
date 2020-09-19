@@ -50,7 +50,7 @@ export const de = {
     ABOUT: {
       TITLE: 'Über',
       COMMENTS:
-        'Diese Crypto-Tracker-App hat das Hauptziel, die Entwicklung verschiedener Crypto-Münzen zu verfolgen (derzeit etwa 200). Ich hoffe du genießt es!',
+        'Diese Crypto-Tracker-App hat das Hauptziel, die Entwicklung verschiedener Crypto-Münzen zu verfolgen (derzeit etwa 100). Ich hoffe du genießt es!',
     },
     REGISTER: {
       TITLE: 'Registrieren',
