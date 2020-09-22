@@ -1,0 +1,72 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/manifest.webmanifest",
+          "/*.css",
+          "/*.js"
+        ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "coinPaprika",
+      "urls": ["https://api.coinpaprika.com/**"],
+      "cacheConfig": {
+        "maxSize": 200,
+        "maxAge": "6h",
+        "timeout": "10s",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "coinLore",
+      "urls": ["https://api.coinlore.net/**"],
+      "cacheConfig": {
+        "maxSize": 200,
+        "maxAge": "6h",
+        "timeout": "10s",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "exchange",
+      "urls": ["https://api.exchangeratesapi.io/**"],
+      "cacheConfig": {
+        "maxSize": 200,
+        "maxAge": "6h",
+        "timeout": "10s",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "news",
+      "urls": ["https://api.rss2json.com/**"],
+      "cacheConfig": {
+        "maxSize": 200,
+        "maxAge": "6h",
+        "timeout": "10s",
+        "strategy": "performance"
+      }
+    }
+  ]
+}

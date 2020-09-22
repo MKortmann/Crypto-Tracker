@@ -19,7 +19,8 @@ the browser address bar*/
 the browser address bar*/
 /*component: the component that the router should crete when navigating to this route.*/
 const routes: Routes = [
-  { path: '', redirectTo: '/cryptos', pathMatch: 'full' },
+  // { path: '', redirectTo: '/cryptos', pathMatch: 'full' },
+  { path: '', component: CryptosComponent },
   { path: 'cryptos', component: CryptosComponent },
   { path: 'about', component: AboutComponent },
   { path: 'exchanges', component: ExchangesComponent },
