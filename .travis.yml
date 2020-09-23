@@ -21,5 +21,5 @@ script:
   - 'echo $TRAVIS_COMMIT'
   - 'echo $CI_COMMIT_SHORT_SHA'
   # - 'sed -i "s/%%VERSION%%/$TRAVIS_COMMIT/g" ./dist/crypto-tracker/index.html'
-  - 'echo "$TRAVIS_COMMIT" >> ./dist/crypto-tracker/index.html'
+  # - 'echo "$TRAVIS_COMMIT" >> ./dist/crypto-tracker/index.html'
   - 'ngh --dir dist/crypto-tracker --no-silent'

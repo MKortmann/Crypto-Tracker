@@ -4,7 +4,7 @@
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
-  "scope": "./",
+  "scope": "https://mkortmann.github.io/Crypto-Tracker/",
   "start_url": "https://mkortmann.github.io/Crypto-Tracker/",
   "icons": [
     {
