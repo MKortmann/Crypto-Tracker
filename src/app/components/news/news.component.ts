@@ -29,16 +29,9 @@ export class NewsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.date = Date.now();
-
-    // this.dateNow = this.returnDateNow();
-
     this.feedArray = JSON.parse(localStorage.getItem('feeds')) || [
       ...this.feedsUrl,
     ];
-
-    // fetch news
-    //   console.log('Fetching new NEWS!');
     this.fetchNews();
   }
 
@@ -86,26 +79,8 @@ export class NewsComponent implements OnInit {
     this.feedNewsServices.getNewsFeedsUrl(this.feedsUrl).subscribe(
       (response) => {
         response.forEach((data, index) => {
-          // we can delete the old news in case the array is too
-          // big. In this case we delete the old 10 news, letting
-          // the array with a size fixed at 30 after two days...
-          if (this.feedArray[index].items.length > 30) {
-            this.feedArray[index].items = this.feedArray[index].items.slice();
-          }
-
-          // inverting the order - ascending news
-          for (let i = data.items.length - 1; i >= 0; i--) {
-            this.feedArray[index].items.unshift({
-              author: data.items[i].author,
-              title: data.items[i].title,
-              content: data.items[i].content,
-              pubDate: data.items[i].pubDate,
-              link: data.items[i].link,
-            });
-          }
+          this.feedArray[index].items = [...data.items];
         });
-
-        // this.saveToLocalStorage();
       },
       (error) => {
         console.log('Fetching Error: getNewsFeedsUrl', error);
@@ -114,27 +89,9 @@ export class NewsComponent implements OnInit {
   }
 
   saveToLocalStorage() {
-    localStorage.setItem('dateNow', JSON.stringify(this.dateNow));
-    this.feedArray.sort((a, b) => this.compare(a, b));
-    localStorage.setItem('feeds', JSON.stringify(this.feedArray));
-    console.log('SAVE FEEDS');
-    const date2 = Date.now();
-    const delay = (this.date - Date.now()) / 10 ** 3;
-    console.log('delay in seconds:', delay);
-  }
-
-  compare(a, b) {
-    const tempA = a.name.toLowerCase().trim();
-    const tempB = b.name.toLowerCase().trim();
-
-    let comparison = 0;
-    if (tempA > tempB) {
-      comparison = 1;
-    } else {
-      comparison = -1;
-    }
-
-    return comparison;
+    // here we set the items to zero because it is too big and there is no need to save it!
+    const tempFeedArray = this.feedArray.map((item) => ({ ...item, items: [] }));
+    localStorage.setItem('feeds', JSON.stringify(tempFeedArray));
   }
 
   scrollToTop() {
@@ -149,12 +106,9 @@ export class NewsComponent implements OnInit {
     this.feedArray.forEach((item, index) => {
       if (item.name.trim() === event.name.trim()) {
         item.bookmark = !item.bookmark;
-        // localStorage.setItem(`${event.id}`, `${item.bookmark}`);
-        console.log(item.bookmark);
       }
     });
-
-    localStorage.setItem('feeds', JSON.stringify(this.feedArray));
+    this.saveToLocalStorage();
   }
 
   setBookmarkSave(event) {
@@ -164,7 +118,7 @@ export class NewsComponent implements OnInit {
       }
     });
 
-    localStorage.setItem('feeds', JSON.stringify(this.feedArray));
+    this.saveToLocalStorage();
   }
 
   setUnsetBookmarkSave(item, event) {
