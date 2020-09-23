@@ -32,9 +32,8 @@
       "name": "coinPaprika",
       "urls": ["https://api.coinpaprika.com/**"],
       "cacheConfig": {
-        "maxSize": 200,
+        "maxSize": 2000,
         "maxAge": "6h",
-        "timeout": "10s",
         "strategy": "performance"
       }
     },
@@ -42,9 +41,8 @@
       "name": "coinLore",
       "urls": ["https://api.coinlore.net/**"],
       "cacheConfig": {
-        "maxSize": 200,
+        "maxSize": 2000,
         "maxAge": "6h",
-        "timeout": "10s",
         "strategy": "performance"
       }
     },
@@ -52,9 +50,8 @@
       "name": "exchange",
       "urls": ["https://api.exchangeratesapi.io/**"],
       "cacheConfig": {
-        "maxSize": 200,
-        "maxAge": "6h",
-        "timeout": "10s",
+        "maxSize": 2000,
+        "maxAge": "1d",
         "strategy": "performance"
       }
     },
@@ -62,9 +59,8 @@
       "name": "news",
       "urls": ["https://api.rss2json.com/**"],
       "cacheConfig": {
-        "maxSize": 200,
-        "maxAge": "6h",
-        "timeout": "10s",
+        "maxSize": 2000,
+        "maxAge": "1d",
         "strategy": "performance"
       }
     }
