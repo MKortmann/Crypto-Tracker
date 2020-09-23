@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1600871631192,
+  "timestamp": 1600876639222,
   "index": "https://mkortmann.github.io/Crypto-Tracker/index.html",
   "assetGroups": [
     {
@@ -930,9 +930,8 @@
         "https:\\/\\/api\\.coinpaprika\\.com\\/.*"
       ],
       "strategy": "performance",
-      "maxSize": 200,
+      "maxSize": 2000,
       "maxAge": 21600000,
-      "timeoutMs": 10000,
       "cacheQueryOptions": {
         "ignoreVary": true
       },
@@ -944,9 +943,8 @@
         "https:\\/\\/api\\.coinlore\\.net\\/.*"
       ],
       "strategy": "performance",
-      "maxSize": 200,
+      "maxSize": 2000,
       "maxAge": 21600000,
-      "timeoutMs": 10000,
       "cacheQueryOptions": {
         "ignoreVary": true
       },
@@ -958,9 +956,8 @@
         "https:\\/\\/api\\.exchangeratesapi\\.io\\/.*"
       ],
       "strategy": "performance",
-      "maxSize": 200,
-      "maxAge": 21600000,
-      "timeoutMs": 10000,
+      "maxSize": 2000,
+      "maxAge": 86400000,
       "cacheQueryOptions": {
         "ignoreVary": true
       },
@@ -972,9 +969,8 @@
         "https:\\/\\/api\\.rss2json\\.com\\/.*"
       ],
       "strategy": "performance",
-      "maxSize": 200,
-      "maxAge": 21600000,
-      "timeoutMs": 10000,
+      "maxSize": 2000,
+      "maxAge": 86400000,
       "cacheQueryOptions": {
         "ignoreVary": true
       },
