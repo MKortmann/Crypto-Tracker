@@ -3,6 +3,7 @@ addons:
   chrome: stable
 'before script':
   - 'npm install -g @angular/cli'
+  - 'ng add @angular/pwa'
   - 'npm install -g angular-cli-ghpages'
 branches:
   - master
