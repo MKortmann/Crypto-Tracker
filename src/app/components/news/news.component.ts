@@ -18,6 +18,7 @@ export class NewsComponent implements OnInit {
 
   dateNow: string;
   msgs: Message[] = [];
+  date: any;
 
   // Unblock using rss2json, to look: feed2json.org
   prefixRss2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
@@ -28,20 +29,17 @@ export class NewsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.dateNow = this.returnDateNow();
+    // this.date = Date.now();
 
-    if (this.dateNow === JSON.parse(localStorage.getItem('dateNow'))) {
-      console.log('getting from LS');
-      this.feedArray = JSON.parse(localStorage.getItem('feeds'));
-    } else {
-      this.feedArray = JSON.parse(localStorage.getItem('feeds')) || [
-        ...this.feedsUrl,
-      ];
+    // this.dateNow = this.returnDateNow();
 
-      // fetch news
-      console.log('Fetching new NEWS!');
-      this.fetchNews();
-    }
+    this.feedArray = JSON.parse(localStorage.getItem('feeds')) || [
+      ...this.feedsUrl,
+    ];
+
+    // fetch news
+    //   console.log('Fetching new NEWS!');
+    this.fetchNews();
   }
 
   confirmRefresh() {
@@ -107,7 +105,7 @@ export class NewsComponent implements OnInit {
           }
         });
 
-        this.saveToLocalStorage();
+        // this.saveToLocalStorage();
       },
       (error) => {
         console.log('Fetching Error: getNewsFeedsUrl', error);
@@ -120,6 +118,9 @@ export class NewsComponent implements OnInit {
     this.feedArray.sort((a, b) => this.compare(a, b));
     localStorage.setItem('feeds', JSON.stringify(this.feedArray));
     console.log('SAVE FEEDS');
+    const date2 = Date.now();
+    const delay = (this.date - Date.now()) / 10 ** 3;
+    console.log('delay in seconds:', delay);
   }
 
   compare(a, b) {
