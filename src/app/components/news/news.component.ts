@@ -158,18 +158,20 @@ export class NewsComponent implements OnInit {
       }
     });
 
-    // means that the item is in both list
+    // means that the item is in both list (news and saved)
     if (itemIndexArray !== -1) {
-      // was not saved
+      // was not saved: we use the bookmark of the item to check it
       if (!item.items[itemIndexArray].bookmark) {
         item.items[itemIndexArray].bookmark = true;
         item.saved[0] = true;
         item.saved[1].items.push(item.items[itemIndexArray]);
         this.sendMessage('success', 'News Saved!');
 
-        // was saved and we have more than one item
+        // was saved and we have more than one item saved
       } else if (item.saved[1].items.length > 1) {
+        // register that the news is not save anymore
         item.items[itemIndexArray].bookmark = false;
+        // remove the saved index news
         item.saved[1].items.forEach((inItem, index) => {
           if (inItem.pubDate === event.itemPubDate) {
             item.saved[1].items.splice(index, 1);
@@ -182,22 +184,7 @@ export class NewsComponent implements OnInit {
         item.items[itemIndexArray].bookmark = false;
         item.saved[0] = false;
         item.saved[1].items = [];
-        this.sendMessage('success', 'News Saved!');
-      }
-    }
-
-    // the item is an old item
-    if (itemIndexArray === -1) {
-      if (item.saved[1].items.length > 1) {
-        item.saved[1].items.forEach((inItem, index) => {
-          if (inItem.pubDate === event.itemPubDate) {
-            item.saved[1].items.splice(index, 1);
-          }
-        });
-        // was saved and we have just one item
-      } else {
-        item.saved[0] = false;
-        item.saved[1].items = [];
+        this.sendMessage('info', 'News Deleted!');
       }
     }
   }

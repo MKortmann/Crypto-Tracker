@@ -47,32 +47,39 @@
 </div>
 
 <div class="p-grid" *ngIf="atSavedTab" class="p-shadow">
-  <div class="p-col" *ngFor="let item of channel.saved[1].items; let i = index">
-    <img
-      src="assets/imgs/feeds/{{ channel.symbol }}.png"
-      alt="{{ channel.symbol }}"
-      style="max-width: 48px; margin-top: 16px;"
-    />
-    <!-- {{ item.pubDate | date: 'dd/MM' }} - -->
-    <!-- {{ item.pubDate | date: 'hh:mm' }} -->
-    {{ item.pubDate | formatDatePipe }}
-    <i
-      class="pi pi-times"
-      style="cursor: pointer; float: right; margin: 5px;"
-      (click)="
-        sendTriggerToSaveToParent({
-          name: channel.name,
-          itemPubDate: item.pubDate
-        })
-      "
-      [class.changeBookmark]="item.bookmark"
-    ></i>
+  <div
+    class="p-col-12 p-shadow-1"
+    *ngFor="let item of channel.saved[1].items; let i = index"
+  >
+    <div class="cardBox">
+      <img
+        src="assets/imgs/feeds/{{ channel.symbol }}.png"
+        alt="{{ channel.symbol }}"
+        style="max-width: 48px; margin-top: 16px;"
+      />
 
-    <li>
-      <span style="font-weight: bolder;">
-        <a href="{{ item.link }}"> {{ item.title }}</a>
-      </span>
-    </li>
+      <h2>
+        {{ channel.name }}
+      </h2>
+
+      <i
+        class="pi pi-times"
+        style="cursor: pointer; float: right; margin: 5px;"
+        (click)="
+          sendTriggerToSaveToParent({
+            name: channel.name,
+            itemPubDate: item.pubDate
+          })
+        "
+        [class.changeBookmark]="item.bookmark"
+      ></i>
+    </div>
+    {{ item.pubDate | formatDatePipe }}
+
+    <p-panel header="{{ item.title }}" [toggleable]="true" [collapsed]="true">
+      <div [innerHTML]="item.content"></div>
+      <a href="{{ item.link }}"> {{ item.title }}</a>
+    </p-panel>
 
     <p>Author: {{ item.author }}</p>
   </div>
