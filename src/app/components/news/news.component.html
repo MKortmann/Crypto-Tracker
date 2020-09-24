@@ -10,16 +10,14 @@
 <p-sidebar
   [(visible)]="visibleSidebar"
   [style]="{ width: '20em', overflow: 'auto' }"
-  [baseZIndex]="10000"
+  [baseZIndex]="10001"
   position="right"
 >
   <div class="sideNav">
     <h2>News</h2>
     <a
-      pageScroll
-      href="news#B{{ item.id }}"
       *ngFor="let item of feedArray; index as i"
-      (click)="loadNews($event)"
+      (click)="loadNews($event, item.id)"
     >
       <p>
         <img
@@ -33,27 +31,30 @@
 </p-sidebar>
 
 <button
+  class="p-button-lg"
   pButton
   type="button"
   (click)="visibleSidebar = true"
   icon="pi pi-arrow-left"
-  style="position: fixed; right: 0px; bottom: 50px;"
+  style="position: fixed; right: 0px; bottom: 50px; z-index: 1000;"
 ></button>
 
 <button
+  class="p-button-lg"
   pButton
   type="button"
   (click)="scrollToTop()"
   icon="pi pi-arrow-up"
-  style="position: fixed; right: 40px; bottom: 50px;"
+  style="position: fixed; right: 45px; bottom: 50px; z-index: 1000;"
 ></button>
 
 <button
+  class="p-button-lg"
   pButton
   type="button"
   (click)="confirmRefresh()"
   icon="pi pi-refresh"
-  style="position: fixed; right: 80px; bottom: 50px;"
+  style="position: fixed; right: 90px; bottom: 50px; z-index: 1000;"
 ></button>
 
 <!-- <div
@@ -64,11 +65,11 @@
 
 <p-tabView>
   <p-tabPanel header="News" [selected]="true">
-    <div *ngFor="let channel of this.feedArray">
+    <div>
       <app-single-feed
         (clickedBookmark)="setBookmarkMagazine($event)"
-        (clickedToSaveBookmark)="setBookmarkSave($event)"
-        [channel]="channel"
+        (clickedToSaveFeed)="setSaveFeed($event)"
+        [channel]="this.feedArray[channel]"
         [atSavedTab]="false"
       ></app-single-feed>
     </div>
@@ -78,7 +79,7 @@
       <app-single-feed
         *ngIf="channel.bookmark"
         (clickedBookmark)="setBookmarkMagazine($event)"
-        (clickedToSaveBookmark)="setBookmarkSave($event)"
+        (clickedToSaveFeed)="setSaveFeed($event)"
         [channel]="channel"
         [atSavedTab]="false"
       ></app-single-feed>
@@ -88,10 +89,14 @@
     <div *ngFor="let channel of this.feedArray">
       <app-single-feed
         (clickedBookmark)="setBookmarkMagazine($event)"
-        (clickedToSaveBookmark)="setBookmarkSave($event)"
+        (clickedToSaveFeed)="setSaveFeed($event)"
         [channel]="channel"
         [atSavedTab]="true"
       ></app-single-feed>
     </div>
   </p-tabPanel>
 </p-tabView>
+
+<br />
+<br />
+<br />

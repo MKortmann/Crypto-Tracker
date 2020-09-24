@@ -21,7 +21,7 @@ export class SingleFeedComponent implements OnInit {
 
   @Output() clickedBookmark = new EventEmitter<string>();
 
-  @Output() clickedToSaveBookmark = new EventEmitter<string>();
+  @Output() clickedToSaveFeed = new EventEmitter<string>();
 
   constructor() {}
 
@@ -32,6 +32,6 @@ export class SingleFeedComponent implements OnInit {
   }
 
   sendTriggerToSaveToParent($event) {
-    this.clickedToSaveBookmark.emit($event);
+    this.clickedToSaveFeed.emit($event);
   }
 }

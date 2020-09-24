@@ -15,6 +15,9 @@ export class NewsComponent implements OnInit {
   feedsUrl = FeedsUrl;
 
   feedArray = [];
+  channel = 0;
+  bookmarks = 0;
+  bookmarkLimit = 5;
 
   dateNow: string;
   msgs: Message[] = [];
@@ -29,9 +32,11 @@ export class NewsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.bookmarks = JSON.parse(localStorage.getItem('bookmarksLimit')) || 0;
     this.feedArray = JSON.parse(localStorage.getItem('feeds')) || [
       ...this.feedsUrl,
     ];
+    this.channel = JSON.parse(localStorage.getItem('channel')) || 0;
     this.fetchNews();
   }
 
@@ -43,26 +48,17 @@ export class NewsComponent implements OnInit {
       accept: () => {
         localStorage.removeItem('dateNow');
         localStorage.removeItem('feeds');
-        this.msgs = [
-          {
-            severity: 'success',
-            summary: 'Confirmed',
-            detail: 'You have refreshed the news! The Page will be reload!',
-          },
-        ];
-
+        this.sendMessage(
+          'success',
+          'Confirmed',
+          'You have refreshed the news! The Page will be reload!'
+        );
         setTimeout(() => {
           window.location.reload();
         }, 2000);
       },
       reject: () => {
-        this.msgs = [
-          {
-            severity: 'info',
-            summary: 'Not Confirmed',
-            detail: 'News not refreshed!',
-          },
-        ];
+        this.sendMessage('info', 'Not Confirmed', 'News not refreshed');
       },
     });
   }
@@ -71,6 +67,8 @@ export class NewsComponent implements OnInit {
     const res = confirm('Do you want to reset the news?');
     if (res) {
       localStorage.clear();
+      localStorage.setItem('feeds', undefined);
+      localStorage.setItem('bookmarksLimit', JSON.stringify(0));
       window.location.reload();
     }
   }
@@ -90,38 +88,68 @@ export class NewsComponent implements OnInit {
 
   saveToLocalStorage() {
     // here we set the items to zero because it is too big and there is no need to save it!
-    const tempFeedArray = this.feedArray.map((item) => ({ ...item, items: [] }));
+    const tempFeedArray = this.feedArray.map((item) => ({
+      ...item,
+      items: [],
+    }));
     localStorage.setItem('feeds', JSON.stringify(tempFeedArray));
+    localStorage.setItem('bookmarksLimit', JSON.stringify(this.bookmarks));
   }
 
   scrollToTop() {
     window.scroll(0, 0);
   }
 
-  loadNews($event) {
+  loadNews($event, id) {
     this.visibleSidebar = false;
+    this.channel = id;
+    localStorage.setItem('channel', JSON.stringify(this.channel));
   }
 
   setBookmarkMagazine(event) {
     this.feedArray.forEach((item, index) => {
       if (item.name.trim() === event.name.trim()) {
-        item.bookmark = !item.bookmark;
+        if (this.bookmarks < this.bookmarkLimit && !item.bookmark) {
+          item.bookmark = !item.bookmark;
+          this.bookmarks++;
+          this.sendMessage('success', 'Bookmark successfully added');
+        } else if (item.bookmark) {
+          this.bookmarks--;
+          item.bookmark = !item.bookmark;
+          this.sendMessage('info', 'Bookmark successfully removed');
+        } else {
+          this.sendMessage(
+            'error',
+            'You reached the maximum of 5 bookmarks!',
+            'Please, remove one bookmark to be able to add another one.'
+          );
+        }
       }
     });
     this.saveToLocalStorage();
   }
 
-  setBookmarkSave(event) {
+  sendMessage(severity, summary, detail = '') {
+    this.msgs = [
+      {
+        severity,
+        summary,
+        detail,
+      },
+    ];
+  }
+
+  setSaveFeed(event) {
     this.feedArray.forEach((item, index) => {
       if (item.name.trim() === event.name.trim()) {
-        this.setUnsetBookmarkSave(item, event);
+        this.setUnsetSaveFeed(item, event);
       }
     });
 
     this.saveToLocalStorage();
   }
 
-  setUnsetBookmarkSave(item, event) {
+  setUnsetSaveFeed(item, event) {
     // we have to find the itemIndexArray based on the pubData
     let itemIndexArray = -1;
     item.items.forEach((subItem, index) => {
@@ -137,6 +165,8 @@ export class NewsComponent implements OnInit {
         item.items[itemIndexArray].bookmark = true;
         item.saved[0] = true;
         item.saved[1].items.push(item.items[itemIndexArray]);
+        this.sendMessage('success', 'News Saved!');
+
         // was saved and we have more than one item
       } else if (item.saved[1].items.length > 1) {
         item.items[itemIndexArray].bookmark = false;
@@ -145,11 +175,14 @@ export class NewsComponent implements OnInit {
             item.saved[1].items.splice(index, 1);
           }
         });
+        this.sendMessage('info', 'News Deleted!');
+
         // was saved and we have just one item
       } else {
         item.items[itemIndexArray].bookmark = false;
         item.saved[0] = false;
         item.saved[1].items = [];
+        this.sendMessage('success', 'News Saved!');
       }
     }
 
