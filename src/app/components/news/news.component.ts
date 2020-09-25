@@ -32,7 +32,6 @@ export class NewsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    debugger;
     this.bookmarks = JSON.parse(localStorage.getItem('bookmarksLimit')) || 0;
     this.feedArray = JSON.parse(localStorage.getItem('feeds')) || [
       ...this.feedsUrl,
