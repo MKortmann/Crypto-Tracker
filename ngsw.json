@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1601004700910,
+  "timestamp": 1601037107581,
   "index": "https://mkortmann.github.io/Crypto-Tracker/index.html",
   "assetGroups": [
     {
@@ -14,8 +14,8 @@
         "https://mkortmann.github.io/Crypto-Tracker/dark.css",
         "https://mkortmann.github.io/Crypto-Tracker/index.html",
         "https://mkortmann.github.io/Crypto-Tracker/light.css",
-        "https://mkortmann.github.io/Crypto-Tracker/main-es2015.835c98d0f72533f6d521.js",
-        "https://mkortmann.github.io/Crypto-Tracker/main-es5.835c98d0f72533f6d521.js",
+        "https://mkortmann.github.io/Crypto-Tracker/main-es2015.18902fe21ede69b9ca01.js",
+        "https://mkortmann.github.io/Crypto-Tracker/main-es5.18902fe21ede69b9ca01.js",
         "https://mkortmann.github.io/Crypto-Tracker/manifest.webmanifest",
         "https://mkortmann.github.io/Crypto-Tracker/polyfills-es2015.8b8bcabb393a9756515a.js",
         "https://mkortmann.github.io/Crypto-Tracker/polyfills-es5.d88998853ee88f7b5288.js",
@@ -1859,10 +1859,10 @@
     "https://mkortmann.github.io/Crypto-Tracker/color.6441e63a57ccc5105bad.png": "ff4c4bcb2207891b292f544edb4da9d2df5d45cf",
     "https://mkortmann.github.io/Crypto-Tracker/dark.css": "7fc41c7fa336b931df088e6105b709bbe2ac552a",
     "https://mkortmann.github.io/Crypto-Tracker/hue.f8505bd4d6f3e3aa435b.png": "f81ae627637a684614aa726e206c73ce099a01fd",
-    "https://mkortmann.github.io/Crypto-Tracker/index.html": "70d62c206e3ab9849201d751e049a912427cdb42",
+    "https://mkortmann.github.io/Crypto-Tracker/index.html": "e907e794918e321882d4fefe308f959388572fd2",
     "https://mkortmann.github.io/Crypto-Tracker/light.css": "0366a070adfd080fd52af155fa4e476381bb6007",
-    "https://mkortmann.github.io/Crypto-Tracker/main-es2015.835c98d0f72533f6d521.js": "62f7ddec2ef0520b12d7e087a680d083c900b5e3",
-    "https://mkortmann.github.io/Crypto-Tracker/main-es5.835c98d0f72533f6d521.js": "5cbd6d474f99d056d14977db8c32c6e56884b8d7",
+    "https://mkortmann.github.io/Crypto-Tracker/main-es2015.18902fe21ede69b9ca01.js": "6a9d5bf94346452721c161cabf2bb0514e01bc78",
+    "https://mkortmann.github.io/Crypto-Tracker/main-es5.18902fe21ede69b9ca01.js": "800b303f5a80b6778b77efcd0369d280065b7a0a",
     "https://mkortmann.github.io/Crypto-Tracker/manifest.webmanifest": "cbe7f0bfcf084af4fe09b6dea369d18698f60cf4",
     "https://mkortmann.github.io/Crypto-Tracker/password-meter.eea288d50533d7995ec1.png": "e0e101bd2a1cbda41398b48a4ab1792d89cb7334",
     "https://mkortmann.github.io/Crypto-Tracker/polyfills-es2015.8b8bcabb393a9756515a.js": "c6df5256b53226df1d997d0b146fad0da7c48be3",
