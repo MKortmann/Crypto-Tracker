@@ -68,7 +68,7 @@
     <div>
       <app-single-feed
         (clickedBookmark)="setBookmarkMagazine($event)"
-        (clickedToSaveFeed)="setSaveFeed($event)"
+        (clickedToSaveFeed)="selectFeedToSaveItem($event)"
         [channel]="this.feedArray[channel]"
         [atSavedTab]="false"
       ></app-single-feed>
@@ -79,7 +79,7 @@
       <app-single-feed
         *ngIf="channel.bookmark"
         (clickedBookmark)="setBookmarkMagazine($event)"
-        (clickedToSaveFeed)="setSaveFeed($event)"
+        (clickedToSaveFeed)="selectFeedToSaveItem($event)"
         [channel]="channel"
         [atSavedTab]="false"
       ></app-single-feed>
@@ -89,7 +89,7 @@
     <div *ngFor="let channel of this.feedArray">
       <app-single-feed
         (clickedBookmark)="setBookmarkMagazine($event)"
-        (clickedToSaveFeed)="setSaveFeed($event)"
+        (clickedToSaveFeed)="selectFeedToSaveItem($event)"
         [channel]="channel"
         [atSavedTab]="true"
       ></app-single-feed>

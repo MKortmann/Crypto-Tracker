@@ -31,7 +31,8 @@
         (click)="
           sendTriggerToSaveToParent({
             name: channel.name,
-            itemPubDate: item.pubDate
+            pubDate: item.pubDate,
+            index: i
           })
         "
         [class.changeBookmark]="item.bookmark"
@@ -68,7 +69,8 @@
         (click)="
           sendTriggerToSaveToParent({
             name: channel.name,
-            itemPubDate: item.pubDate
+            pubDate: item.pubDate,
+            index: undefined
           })
         "
         [class.changeBookmark]="item.bookmark"

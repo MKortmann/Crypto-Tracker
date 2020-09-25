@@ -130,53 +130,52 @@ export class NewsComponent implements OnInit {
     ];
   }
 
-  setSaveFeed(event) {
+  // here we select the correct feed item of the list of feeds
+  selectFeedToSaveItem(event) {
     this.feedArray.forEach((item, index) => {
       if (item.name.trim() === event.name.trim()) {
-        this.setUnsetSaveFeed(item, event);
+        this.saveOrDeleteItemOfSelectedFeed(item, event);
       }
     });
 
     this.saveToLocalStorage();
   }
 
-  setUnsetSaveFeed(item, event) {
-    // we have to find the itemIndexArray based on the pubData
-    let itemIndexArray = -1;
-    item.items.forEach((subItem, index) => {
-      if (subItem.pubDate === event.itemPubDate) {
-        itemIndexArray = index;
-      }
-    });
-
-    // means that the item is in both list (news and saved)
-    if (itemIndexArray !== -1) {
-      // was not saved: we use the bookmark of the item to check it
-      if (!item.items[itemIndexArray].bookmark) {
-        item.items[itemIndexArray].bookmark = true;
-        item.saved[0] = true;
-        item.saved[1].items.push(item.items[itemIndexArray]);
-        this.sendMessage('success', 'News Saved!');
-
-        // was saved and we have more than one item saved
-      } else if (item.saved[1].items.length > 1) {
-        // register that the news is not save anymore
-        item.items[itemIndexArray].bookmark = false;
-        // remove the saved index news
-        item.saved[1].items.forEach((inItem, index) => {
-          if (inItem.pubDate === event.itemPubDate) {
+  saveOrDeleteItemOfSelectedFeed(item, event) {
+    // if you clicked to delete then event.index = undefined
+    if (event.index !== undefined) {
+      // item is in the actual list, check if it is also in the save list
+      if (item.items[event.index].bookmark) {
+        item.saved[1].items.forEach((subItem, index) => {
+          // if the item was saved before, delete it
+          if (subItem.pubDate === event.pubDate) {
             item.saved[1].items.splice(index, 1);
+            this.sendMessage('info', 'News Deleted!');
+            item.items[event.index].bookmark = false;
           }
         });
-        this.sendMessage('info', 'News Deleted!');
-
-        // was saved and we have just one item
       } else {
-        item.items[itemIndexArray].bookmark = false;
-        item.saved[0] = false;
-        item.saved[1].items = [];
-        this.sendMessage('info', 'News Deleted!');
+        // saved array empty, so we add the first news
+        // add item
+        item.saved[1].items.push(item.items[event.index]);
+        this.sendMessage('success', 'News Saved!');
+        item.items[event.index].bookmark = true;
       }
+      // OLD ITEM, SO MUST BE DELETED
+    } else {
+      // the item is not in the actual list, means that we clicked at close button
+      item.saved[1].items.forEach((subItem, index) => {
+        if (subItem.pubDate === event.pubDate) {
+          item.saved[1].items.splice(index, 1);
+          this.sendMessage('info', 'News Deleted!');
+        }
+      });
+      // here check if the item is in the actual list, so remove bookmark
+      item.items.forEach((subItem, index) => {
+        if (subItem.pubDate === event.pubDate) {
+          item.items[index].bookmark = false;
+        }
+      });
     }
   }
 
