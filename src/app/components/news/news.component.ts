@@ -32,6 +32,7 @@ export class NewsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    debugger;
     this.bookmarks = JSON.parse(localStorage.getItem('bookmarksLimit')) || 0;
     this.feedArray = JSON.parse(localStorage.getItem('feeds')) || [
       ...this.feedsUrl,
@@ -48,6 +49,7 @@ export class NewsComponent implements OnInit {
       accept: () => {
         localStorage.removeItem('dateNow');
         localStorage.removeItem('feeds');
+        localStorage.removeItem('bookmarksLimit');
         this.sendMessage(
           'success',
           'Confirmed',
@@ -61,16 +63,6 @@ export class NewsComponent implements OnInit {
         this.sendMessage('info', 'Not Confirmed', 'News not refreshed');
       },
     });
-  }
-
-  refresh() {
-    const res = confirm('Do you want to reset the news?');
-    if (res) {
-      localStorage.clear();
-      localStorage.setItem('feeds', undefined);
-      localStorage.setItem('bookmarksLimit', JSON.stringify(0));
-      window.location.reload();
-    }
   }
 
   fetchNews() {
