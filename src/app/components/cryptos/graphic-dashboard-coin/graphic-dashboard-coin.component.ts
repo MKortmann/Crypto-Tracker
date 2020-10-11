@@ -289,7 +289,11 @@ export class GraphicDashboardCoinComponent implements OnInit {
       return `${label}: ${tooltipItem.yLabel} ${this.selectedExchange}`;
     }),
       (this.options.scales.yAxes[0].ticks.callback = (value) => {
-        if (value >= 10 ** 5 && value <= 10 ** 8) {
+        if (value >= 10 ** 1 && value < 10 ** 5) {
+          return `${hash[this.selectedExchange]}${Math.round(
+            value
+          )}`;
+        } else if (value >= 10 ** 5 && value <= 10 ** 8) {
           return `${hash[this.selectedExchange]}${Math.round(
             value / 10 ** 3
           )} K`;
@@ -306,7 +310,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
             value / 10 ** 9
           )} T`;
         } else {
-          return `${hash[this.selectedExchange]}${value}`;
+          return `${hash[this.selectedExchange]}${value.toFixed(2)}`;
         }
       });
   }

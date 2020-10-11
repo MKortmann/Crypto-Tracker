@@ -70,6 +70,7 @@ export const options = {
           borderDash: [10, 5],
         },
         ticks: {
+
           fontColor: '#4bc0c0',
           // Include a dollar sign in the ticks
           callback: (value) => {
@@ -81,8 +82,10 @@ export const options = {
               return `${Math.round(value / 10 ** 9)} B`;
             } else if (value >= 10 ** 12 && value <= 10 ** 15) {
               return `${Math.round(value / 10 ** 9)} T`;
+            } else {
+
+              return Math.floor(value);
             }
-            return value;
           },
         },
       },
@@ -113,11 +116,12 @@ export const options = {
 
     // Zooming directions. Remove the appropriate direction to disable
     // Eg. 'y' would only allow zooming in the y direction
-    mode: 'xy',
+    mode: 'y',
   },
   pan: {
     enabled: true,
     mode: 'xy',
     speed: 10,
+
   }
 };
