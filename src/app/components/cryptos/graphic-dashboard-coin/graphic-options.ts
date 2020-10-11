@@ -116,7 +116,7 @@ export const options = {
 
     // Zooming directions. Remove the appropriate direction to disable
     // Eg. 'y' would only allow zooming in the y direction
-    mode: 'y',
+    mode: 'xy',
   },
   pan: {
     enabled: true,
