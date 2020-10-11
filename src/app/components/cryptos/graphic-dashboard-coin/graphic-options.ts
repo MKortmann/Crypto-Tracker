@@ -106,4 +106,18 @@ export const options = {
       },
     ],
   },
+    // Container for zoom options
+  zoom: {
+    // Boolean to enable zooming
+    enabled: true,
+
+    // Zooming directions. Remove the appropriate direction to disable
+    // Eg. 'y' would only allow zooming in the y direction
+    mode: 'xy',
+  },
+  pan: {
+    enabled: true,
+    mode: 'xy',
+    speed: 10,
+  }
 };

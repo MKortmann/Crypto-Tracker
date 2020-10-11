@@ -15,6 +15,9 @@ import { Calendar } from 'primeng/calendar';
 import { Chart } from 'chart.js';
 import 'chartjs-plugin-annotation';
 
+import 'chartjs-plugin-zoom';
+// import 'hammerjs';
+
 import { ChartModule } from 'primeng/chart';
 
 @Component({
