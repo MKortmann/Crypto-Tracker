@@ -1,6 +1,7 @@
 <p-table
   [value]="exchanges"
   [paginator]="true"
+  [pageLinks]="3"
   [rows]="15"
   [rowHover]="true"
   [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
@@ -10,6 +11,7 @@
   [sortOrder]="1"
   #dt
 >
+
   <ng-template pTemplate="header">
     <tr>
       <th [style]="{ width: '90px' }" pSortableColumn="adjusted_rank">
