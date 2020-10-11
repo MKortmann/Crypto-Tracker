@@ -1,0 +1,39 @@
+variables:
+  ARTIFACT_NAME: cars-api-v$CI_PIPELINE_IID.jar
+  APP_NAME: cars-api
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  image: openjdk:12-alpine
+  script:
+    - ./gradlew build
+    - mv ./build/libs/cars-api.jar ./build/libs/$ARTIFACT_NAME
+  artifacts:
+    paths:
+      - ./build/libs/
+
+smoke test:
+  stage: test
+  image: openjdk:12-alpine
+  before_script:
+    - apk --no-cache add curl
+  script:
+    - java -jar ./build/libs/$ARTIFACT_NAME &
+    - sleep 30
+    - curl http://localhost:5000/actuator/health | grep "UP"
+
+deploy:
+  stage: deploy
+  image:
+    name: banst/awscli
+    entrypoint: [""]
+  script:
+    - aws configure set region us-east-1
+    - aws s3 cp ./build/libs/$ARTIFACT_NAME s3://$S3_BUCKET/$ARTIFACT_NAME
+    - aws elasticbeanstalk create-application-version --application-name $APP_NAME --version-label $CI_PIPELINE_IID --source-bundle S3Bucket=$S3_BUCKET,S3Key=$ARTIFACT_NAME
+    - aws elasticbeanstalk update-environment --application-name $APP_NAME --environment-name "production" --version-label=$CI_PIPELINE_IID

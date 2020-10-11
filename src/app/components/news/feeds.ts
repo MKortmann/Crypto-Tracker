@@ -201,16 +201,26 @@ export const FeedsUrl = [
     items: [],
     saved: [false, { items: [] }],
   },
-  {
+    {
     id: 19,
-    name: 'Crypto Ninjas',
-    symbol: 'cryptoninjas',
-    url: 'http%3A%2F%2Fwww.cryptoninjas.net%2Ffeed%2F',
+    name: 'Coin Pedia',
+    symbol: 'coinpedia',
+    url: 'https%3A%2F%2Fcoinpedia.org%2Ffeed%2F',
     bookmark: false,
 
     items: [],
     saved: [false, { items: [] }],
   },
+  // {
+  //   id: 19,
+  //   name: 'Crypto Ninjas',
+  //   symbol: 'cryptoninjas',
+  //   url: 'http%3A%2F%2Fwww.cryptoninjas.net%2Ffeed%2F',
+  //   bookmark: false,
+
+  //   items: [],
+  //   saved: [false, { items: [] }],
+  // },
   {
     id: 20,
     name: 'Coin Center',
