@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TableExchangesComponent } from './table-exchanges.component';
 import { HttpClient, HttpHandler } from '@angular/common/http';
@@ -7,7 +7,7 @@ describe('TableExchangesComponent', () => {
   let component: TableExchangesComponent;
   let fixture: ComponentFixture<TableExchangesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TableExchangesComponent],
       providers: [HttpClient, HttpHandler],

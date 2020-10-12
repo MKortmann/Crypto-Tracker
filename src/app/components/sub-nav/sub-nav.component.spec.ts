@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SubNavComponent } from './sub-nav.component';
 
@@ -15,7 +15,7 @@ describe('SubNavComponent', () => {
   let component: SubNavComponent;
   let fixture: ComponentFixture<SubNavComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SubNavComponent],
       imports: [TranslateModule.forRoot()],

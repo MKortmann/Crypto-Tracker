@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OtherFeedComponent } from './other-feed.component';
 import { HttpClient, HttpHandler } from '@angular/common/http';
@@ -7,7 +7,7 @@ describe('OtherFeedComponent', () => {
   let component: OtherFeedComponent;
   let fixture: ComponentFixture<OtherFeedComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       providers: [HttpClient, HttpHandler],
       declarations: [OtherFeedComponent],

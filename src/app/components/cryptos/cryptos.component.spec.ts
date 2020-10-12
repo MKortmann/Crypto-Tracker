@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CryptosComponent } from './cryptos.component';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
@@ -10,7 +10,7 @@ describe('CryptosComponent', () => {
   let component: CryptosComponent;
   let fixture: ComponentFixture<CryptosComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot()],
       providers: [TranslateService, HttpClient, HttpHandler],

@@ -16,9 +16,6 @@ import { Chart } from 'chart.js';
 import 'chartjs-plugin-annotation';
 
 import 'chartjs-plugin-zoom';
-// import 'hammerjs';
-
-import { ChartModule } from 'primeng/chart';
 
 @Component({
   selector: 'app-graphic-dashboard-coin',
@@ -30,7 +27,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
   symbol = 'btc';
   show = false;
   options = options;
-  dataAverageArrayGraph: any;
+  arrayAverageCurrentYearGraph: any;
   expandGraph = false;
   setActive = true;
   public chartCoin: Chart;
@@ -72,7 +69,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
     if (this.counter === 2) {
       this.idToClose.hideOverlay();
       this.counter = 0;
-      this.fetchDataToPlot(this.url);
+      this.fetchDataToPlotGraph(this.url);
     }
   }
 
@@ -81,37 +78,36 @@ export class GraphicDashboardCoinComponent implements OnInit {
       this.showInSmallScreens = true;
     }
 
+    this.adjustPlaceholderCalendar();
+    this.url = `https://api.coinpaprika.com/v1/coins/${this.coinName}/ohlcv/historical?start=`;
+
     this.expandGraph = JSON.parse(localStorage.getItem('expandGraph'));
     if (localStorage.getItem('coinName') !== null) {
       this.coinName = localStorage.getItem('coinName');
       this.symbol = this.coinName.split('-')[0];
     }
 
+
     this.exchangeService.onSelectedMoneyChange.subscribe((res) => {
       this.selectedExchange = res[0];
       this.selectRate = res[1];
-      this.fetchDataToPlot(this.url);
+      this.fetchDataToPlotGraph(this.url);
     });
-
-    this.url = `https://api.coinpaprika.com/v1/coins/${this.coinName}/ohlcv/historical?start=`;
-
-    this.adjustPlaceholderCalendar();
 
     this.coinPaprikaService.onSelectedCoinChange.subscribe(
       (name) => {
-        this.setName(name);
-
-        this.fetchDataToPlot(this.url);
+        this.saveCoinName(name);
+        this.fetchDataToPlotGraph(this.url);
       },
       (error) => {
         console.log(error);
       }
     );
 
-    this.fetchDataToPlot(this.url);
+    this.fetchDataToPlotGraph(this.url);
   }
 
-  setName(name) {
+  saveCoinName(name) {
     const nameTemp = name.split('-');
     // update url in accord to the selected coin
     this.url = `https://api.coinpaprika.com/v1/coins/${name}/ohlcv/historical?start=`;
@@ -147,10 +143,20 @@ export class GraphicDashboardCoinComponent implements OnInit {
       this.chartCoin.data.labels = this.labelsGraphX;
     }
     this.chartCoin.update();
-    // this.fetchDataToPlot(this.url);
   }
 
-  fetchDataToPlot(url) {
+  private calcAverage(res, arrayToPush) {
+    const arrayAverage = [];
+    for (const item of res) {
+      const average = (((item.high + item.low) / 2) *  this.selectRate).toFixed(2);
+      arrayToPush.push(item.time_open);
+      arrayAverage.push(average);
+    }
+    return arrayAverage;
+  }
+
+
+  fetchDataToPlotGraph(url) {
     const urlRange = this.setURL();
 
     this.coinPaprikaService.getDataFromMultipleYears(urlRange).subscribe(
@@ -158,45 +164,21 @@ export class GraphicDashboardCoinComponent implements OnInit {
         // adjusting the input data
         this.labelsGraphX = [];
         this.labelsFullYearGraphX = [];
-        let dataAverageArrayLastYearGraph = [];
+        let arrayAverageLastYearGraph = [];
         let dataAverageArrayLastTwoYearsGraph = [];
-        this.dataAverageArrayGraph = [];
-
-        // calc the average with FIAT rate
-        this.dataAverageArrayGraph = res[0].map((obj, index) => {
-          const average = (
-            ((obj.high + obj.low) / 2) *
-            this.selectRate
-          ).toFixed(2);
-          this.labelsGraphX.push(obj.time_open);
-          return average;
-        });
-        // calc the average with FIAT rate
-        dataAverageArrayLastYearGraph = res[1].map((obj, index) => {
-          const averageLastYear = (
-            ((obj.high + obj.low) / 2) *
-            this.selectRate
-          ).toFixed(2);
-          this.labelsFullYearGraphX.push(obj.time_open);
-          return averageLastYear;
-        });
-        // calc the average with FIAT rate
-        dataAverageArrayLastTwoYearsGraph = res[2].map((obj, index) => {
-          const averageLastTwoYears = (
-            ((obj.high + obj.low) / 2) *
-            this.selectRate
-          ).toFixed(2);
-          return averageLastTwoYears;
-        });
-
+        this.arrayAverageCurrentYearGraph = [];
         this.show = true;
 
+        this.arrayAverageCurrentYearGraph = this.calcAverage(res[0], this.labelsGraphX);
+        arrayAverageLastYearGraph = this.calcAverage(res[1], this.labelsFullYearGraphX);
+        dataAverageArrayLastTwoYearsGraph = this.calcAverage(res[2], dataAverageArrayLastTwoYearsGraph);
+
+
         this.plotGraph(
-          this.dataAverageArrayGraph,
-          dataAverageArrayLastYearGraph,
+          this.arrayAverageCurrentYearGraph,
+          arrayAverageLastYearGraph,
           dataAverageArrayLastTwoYearsGraph,
-          this.labelsGraphX,
-          this.labelsFullYearGraphX
+          this.labelsGraphX
         );
       },
       (error) => {
@@ -217,16 +199,15 @@ export class GraphicDashboardCoinComponent implements OnInit {
   }
 
   plotGraph(
-    data,
+    arrayAverageCurrentYearGraph,
     dataLastYear,
     dataLastTwoYears,
-    labels,
-    labelsFullYearGraphX
+    labels
   ) {
     if (this.chartCoin) {
       this.chartCoin.destroy();
     }
-    this.updateOptions(data);
+    this.updateOptions(arrayAverageCurrentYearGraph);
 
     this.chartCoin = new Chart('canvasDashboardCoin', {
       type: 'line',
@@ -257,7 +238,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
           },
           {
             label: `${this.symbol}'20`,
-            data,
+            data: arrayAverageCurrentYearGraph,
             fill: false,
             borderColor: '#9BC53D',
             pointRadius: 3,

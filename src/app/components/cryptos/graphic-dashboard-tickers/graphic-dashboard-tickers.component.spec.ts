@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GraphicDashboardTickersComponent } from './graphic-dashboard-tickers.component';
 
@@ -13,7 +13,7 @@ describe('GraphicDashboardTickersComponent', () => {
   let component: GraphicDashboardTickersComponent;
   let fixture: ComponentFixture<GraphicDashboardTickersComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [GraphicDashboardTickersComponent],
       imports: [TranslateModule.forRoot()],

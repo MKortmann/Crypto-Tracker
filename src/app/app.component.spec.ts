@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
@@ -8,7 +8,7 @@ import { SwUpdate } from '@angular/service-worker';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         TranslateModule.forRoot(),

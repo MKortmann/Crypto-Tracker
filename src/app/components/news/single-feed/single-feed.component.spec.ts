@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SingleFeedComponent } from './single-feed.component';
 
@@ -8,7 +8,7 @@ describe('SingleFeedComponent', () => {
   let component: SingleFeedComponent;
   let fixture: ComponentFixture<SingleFeedComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       providers: [HttpClient, HttpHandler],
       declarations: [SingleFeedComponent],

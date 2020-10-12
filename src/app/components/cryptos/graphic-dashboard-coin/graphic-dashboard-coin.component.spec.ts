@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GraphicDashboardCoinComponent } from './graphic-dashboard-coin.component';
 
@@ -17,7 +17,7 @@ describe('GraphicDashboardCoinComponent', () => {
   let component: GraphicDashboardCoinComponent;
   let fixture: ComponentFixture<GraphicDashboardCoinComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [GraphicDashboardCoinComponent],
       imports: [TranslateModule.forRoot()],

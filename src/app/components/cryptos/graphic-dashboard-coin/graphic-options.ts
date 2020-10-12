@@ -25,7 +25,6 @@ export const options = {
   tooltips: {
     titleFontSize: 18,
     bodyFontSize: 16,
-    // backgroundColor: '#4bc0c0',
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
     callbacks: {
       title: (tooltipItems, data) => {
@@ -109,13 +108,9 @@ export const options = {
       },
     ],
   },
-    // Container for zoom options
   zoom: {
-    // Boolean to enable zooming
     enabled: true,
-
-    // Zooming directions. Remove the appropriate direction to disable
-    // Eg. 'y' would only allow zooming in the y direction
+    // directions.
     mode: 'xy',
   },
   pan: {
