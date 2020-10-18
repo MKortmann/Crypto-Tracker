@@ -107,4 +107,16 @@ export const options = {
       },
     ],
   },
+  zoom: {
+    enabled: true,
+    // directions.
+    mode: 'xy',
+  },
+  pan: {
+    enabled: true,
+    mode: 'xy',
+    speed: 10,
+
+  }
+
 };

@@ -13,6 +13,7 @@ import { hash } from '../../../tools/currency-hash';
 
 import { Chart } from 'chart.js';
 import 'chartjs-plugin-annotation';
+import 'chartjs-plugin-zoom';
 
 @Component({
   selector: 'app-graphic-dashboard-tickers',
@@ -202,7 +203,7 @@ export class GraphicDashboardTickersComponent implements OnInit {
             value / 10 ** 9
           )} T`;
         } else {
-          return `${hash[this.selectedExchange]}${value}`;
+          return `${hash[this.selectedExchange]}${value.toFixed(2)}`;
         }
       });
   }
