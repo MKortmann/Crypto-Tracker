@@ -40,8 +40,6 @@ import { FormatDatePipe } from './tools/format-date.pipe';
 
 import { ButtonModule } from 'primeng/button';
 
-import { ChartModule } from 'primeng/chart';
-
 import { CardModule } from 'primeng/card';
 import { AccordionModule } from 'primeng/accordion';
 import { SubNavComponent } from './components/sub-nav/sub-nav.component';
@@ -68,6 +66,7 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { GraphicDashboardFinancialComponent } from './components/cryptos/graphic-dashboard-financial/graphic-dashboard-financial.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +92,7 @@ import { environment } from '../environments/environment';
     TableExchangesComponent,
     SingleFeedComponent,
     OtherFeedComponent,
+    GraphicDashboardFinancialComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -106,7 +106,6 @@ import { environment } from '../environments/environment';
     ButtonModule,
     SidebarModule,
     CommonModule,
-    ChartModule,
     AccordionModule,
     CardModule,
     TabViewModule,
@@ -123,7 +122,9 @@ import { environment } from '../environments/environment';
         useClass: CustomTranslateLoader,
       },
     }),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
   ],
   providers: [ConfirmationService],
 
