@@ -50,6 +50,13 @@
       >
         {{ 'TRANSLATE.NAVBAR.ABOUT' | translate }}
       </a>
+      <a
+        [routerLink]="['/contact']"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        {{ 'TRANSLATE.NAVBAR.CONTACT' | translate }}
+      </a>
     </span>
   </div>
 

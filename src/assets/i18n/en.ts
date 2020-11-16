@@ -6,6 +6,7 @@ export const en = {
       EXCHANGES: 'Exchanges',
       NEWS: 'News',
       ABOUT: 'About',
+      CONTACT: 'Contact',
       NAV_2: 'Nav_2',
       REGISTER: 'Register',
       LOGIN: 'Login',
@@ -56,8 +57,11 @@ export const en = {
     ABOUT: {
       TITLE: 'About',
       COMMENTS:
-        'This Crypto-Tracker App has the main goal to help people track the development of top 100 crypto-coins.',
+        'The Crypto-Tracker App has the main goal to help people to track the development of the top 100 crypto-coins.',
       LAUNCH: 'It is a beta version, the main lauch will be in the end of 2021',
+    },
+    CONTACT: {
+      TITLE: 'Contact',
     },
     FOOTER: {
       LABEL_LEFT: 'Marcelo Kortmann',
