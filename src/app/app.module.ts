@@ -68,6 +68,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { GraphicDashboardFinancialComponent } from './components/cryptos/graphic-dashboard-financial/graphic-dashboard-financial.component';
 
+import { AgmCoreModule } from '@agm/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,6 +118,9 @@ import { GraphicDashboardFinancialComponent } from './components/cryptos/graphic
     ConfirmDialogModule,
     MessageModule,
     MessagesModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDYLsQ2-PsBiGy7Jkm1r2vqtfUmgEKjq5o',
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -56,7 +56,8 @@ export const en = {
     ABOUT: {
       TITLE: 'About',
       COMMENTS:
-        'This Crypto-Tracker App has the main goal to track the development of different crypto-coins (at the moment about 100). I hope you enjoy it!',
+        'This Crypto-Tracker App has the main goal to help people track the development of top 100 crypto-coins.',
+      LAUNCH: 'It is a beta version, the main lauch will be in the end of 2021',
     },
     FOOTER: {
       LABEL_LEFT: 'Marcelo Kortmann',
