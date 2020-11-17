@@ -1,42 +1,14 @@
 // import global styling
 @import '../../../styles';
 
-* {
-  padding: 0;
-  margin: 0;
-  font-size: 0;
+.graphButtons {
+  top: 362px;
+  left: 0;
+  position: absolute;
+  z-index: 1;
 }
 
-// .graphButtons {
-//   display: flex;
-//   justify-content: center;
-//   margin: $es-padding;
-//   cursor: pointer;
-//   max-height: 32px;
-
-//   p-dropdown {
-//     border-radius: 3px;
-//     margin-right: $s-padding;
-//     line-height: 1 !important;
-//   }
-// }
-.graphButtons {
-  top: 297px;
-  // top: 345px;
-  justify-content: center;
-  margin: $es-padding;
-  cursor: pointer;
-  max-height: 32px;
-
-  p-dropdown {
-    border-radius: 3px;
-    margin-right: $s-padding;
-    line-height: 1 !important;
-  }
-
-  & {
-    position: absolute;
-    z-index: 1;
-    right: 0;
-  }
+::ng-deep button {
+  min-height: 36px !important;
+  margin-left: $s-padding !important;
 }

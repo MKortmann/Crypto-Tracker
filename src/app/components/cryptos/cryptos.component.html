@@ -16,20 +16,29 @@
 </ng-template>
 
 <div class="graphButtons">
-  <p-dropdown
-    ngDefaultControl
-    [options]="exchanges"
-    (onChange)="selection($event, dd)"
-    [(ngModel)]="selectRate"
-    name="selectRate"
-    #dd
-  ></p-dropdown>
-  <button
-    pButton
-    type="button"
-    label="{{ label }}"
-    class="p-button-secondary p-button-outlined p-button-sm"
-    (click)="switchGraphs()"
-  ></button>
+  <button pButton  icon="pi pi-angle-down" class=" p-button-outlined p-button-secondary  " (click)="op.toggle($event)"></button>
 </div>
+
+<p-overlayPanel #op >
+  <ng-template pTemplate>
+      <p-dropdown
+      ngDefaultControl
+      [options]="exchanges"
+      (onChange)="selection($event, dd)"
+      [(ngModel)]="selectRate"
+      name="selectRate"
+      #dd
+    ></p-dropdown>
+    <button
+      pButton
+      type="button"
+      label="{{ label }}"
+      class="p-button-secondary p-button-outlined p-button-sm"
+      (click)="switchGraphs()"
+    ></button>
+  </ng-template>
+</p-overlayPanel>
+
+
+
 <app-table [symbol]="symbol"></app-table>
