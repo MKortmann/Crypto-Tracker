@@ -57,8 +57,8 @@ export const en = {
     ABOUT: {
       TITLE: 'About',
       COMMENTS:
-        'The Crypto-Tracker App has the main goal to help people to track the development of the top 100 crypto-coins.',
-      LAUNCH: 'It is a beta version, the main lauch will be in the end of 2021',
+        'The Crypto-Tracker App has the main goal to help people worldwide to become better crypto investors through many different services.',
+      LAUNCH: 'Main lauch will be in the end of 2021',
     },
     CONTACT: {
       TITLE: 'Contact',

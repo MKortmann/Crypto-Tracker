@@ -1,3 +1,5 @@
+import { environment } from '../environments/environment';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -65,10 +67,7 @@ import { ConfirmationService } from 'primeng/api';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 import { GraphicDashboardFinancialComponent } from './components/cryptos/graphic-dashboard-financial/graphic-dashboard-financial.component';
-
-import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -118,9 +117,6 @@ import { AgmCoreModule } from '@agm/core';
     ConfirmDialogModule,
     MessageModule,
     MessagesModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDYLsQ2-PsBiGy7Jkm1r2vqtfUmgEKjq5o',
-    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
