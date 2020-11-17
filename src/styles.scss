@@ -1,12 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
-
-// styles.scss
 @import '_variables';
-// @import '~bootstrap/scss/bootstrap.scss';
-// @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
-// The _ (underscore) is a partial for scss. That means the stylesheet its going to be imported (@import) to a main stylesheet i.e. styles.scss
-// The advantage on using partials is that you can use many files to organize your code and everything will be compiled on a single file.
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 //spacing
 $es-padding: 2px;
