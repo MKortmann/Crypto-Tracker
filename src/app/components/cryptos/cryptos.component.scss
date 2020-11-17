@@ -7,8 +7,22 @@
   font-size: 0;
 }
 
+// .graphButtons {
+//   display: flex;
+//   justify-content: center;
+//   margin: $es-padding;
+//   cursor: pointer;
+//   max-height: 32px;
+
+//   p-dropdown {
+//     border-radius: 3px;
+//     margin-right: $s-padding;
+//     line-height: 1 !important;
+//   }
+// }
 .graphButtons {
-  display: flex;
+  top: 297px;
+  // top: 345px;
   justify-content: center;
   margin: $es-padding;
   cursor: pointer;
@@ -18,5 +32,11 @@
     border-radius: 3px;
     margin-right: $s-padding;
     line-height: 1 !important;
+  }
+
+  & {
+    position: absolute;
+    z-index: 1;
+    right: 0;
   }
 }

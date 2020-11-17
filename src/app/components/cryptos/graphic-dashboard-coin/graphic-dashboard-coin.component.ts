@@ -10,7 +10,6 @@ import { options } from './graphic-options';
 import { hash } from '../../../tools/currency-hash';
 
 import { SelectItem } from 'primeng/api';
-import { Calendar } from 'primeng/calendar';
 
 import { Chart } from 'chart.js';
 import 'chartjs-plugin-annotation';
@@ -28,7 +27,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
   show = false;
   options = options;
   arrayAverageCurrentYearGraph: any;
-  expandGraph = false;
   setActive = true;
   public chartCoin: Chart;
   labels = [];
@@ -49,11 +47,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
   url: string;
   // hash = hash;
 
-  // calendar
-  selectedDateRange = null;
-  @ViewChild('idToClose') idToClose: Calendar;
-  counter = 0;
-
   // for mobile
   showInSmallScreens = false;
 
@@ -63,30 +56,17 @@ export class GraphicDashboardCoinComponent implements OnInit {
     private translateService: TranslateService
   ) {}
 
-  // so the calendar will close automatically after select two values
-  closeCalendarDialog(event) {
-    this.counter++;
-    if (this.counter === 2) {
-      this.idToClose.hideOverlay();
-      this.counter = 0;
-      this.fetchDataToPlotGraph(this.url);
-    }
-  }
-
   ngOnInit(): void {
     if (screen.width < 1500) {
       this.showInSmallScreens = true;
     }
 
-    this.adjustPlaceholderCalendar();
     this.url = `https://api.coinpaprika.com/v1/coins/${this.coinName}/ohlcv/historical?start=`;
 
-    this.expandGraph = JSON.parse(localStorage.getItem('expandGraph'));
     if (localStorage.getItem('coinName') !== null) {
       this.coinName = localStorage.getItem('coinName');
       this.symbol = this.coinName.split('-')[0];
     }
-
 
     this.exchangeService.onSelectedMoneyChange.subscribe((res) => {
       this.selectedExchange = res[0];
@@ -121,11 +101,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
   }
 
   setURL() {
-    if (this.selectedDateRange !== null) {
-      this.start = this.selectedDateRange[0].toISOString().split('T')[0];
-      this.end = this.selectedDateRange[1].toISOString().split('T')[0];
-    }
-
     const urlRange = `${this.url}${this.start}&end=${this.end}`;
     if (this.coinName.split('-')[1] !== undefined) {
       this.coinName = this.coinName.split('-')[1];
@@ -134,27 +109,17 @@ export class GraphicDashboardCoinComponent implements OnInit {
     return urlRange;
   }
 
-  expand() {
-    this.expandGraph = !this.expandGraph;
-    localStorage.setItem('expandGraph', JSON.stringify(this.expandGraph));
-    if (this.expandGraph) {
-      this.chartCoin.data.labels = this.labelsFullYearGraphX;
-    } else {
-      this.chartCoin.data.labels = this.labelsGraphX;
-    }
-    this.chartCoin.update();
-  }
-
   private calcAverage(res, arrayToPush) {
     const arrayAverage = [];
     for (const item of res) {
-      const average = (((item.high + item.low) / 2) *  this.selectRate).toFixed(2);
+      const average = (((item.high + item.low) / 2) * this.selectRate).toFixed(
+        2
+      );
       arrayToPush.push(item.time_open);
       arrayAverage.push(average);
     }
     return arrayAverage;
   }
-
 
   fetchDataToPlotGraph(url) {
     const urlRange = this.setURL();
@@ -169,10 +134,18 @@ export class GraphicDashboardCoinComponent implements OnInit {
         this.arrayAverageCurrentYearGraph = [];
         this.show = true;
 
-        this.arrayAverageCurrentYearGraph = this.calcAverage(res[0], this.labelsGraphX);
-        arrayAverageLastYearGraph = this.calcAverage(res[1], this.labelsFullYearGraphX);
-        dataAverageArrayLastTwoYearsGraph = this.calcAverage(res[2], dataAverageArrayLastTwoYearsGraph);
-
+        this.arrayAverageCurrentYearGraph = this.calcAverage(
+          res[0],
+          this.labelsGraphX
+        );
+        arrayAverageLastYearGraph = this.calcAverage(
+          res[1],
+          this.labelsFullYearGraphX
+        );
+        dataAverageArrayLastTwoYearsGraph = this.calcAverage(
+          res[2],
+          dataAverageArrayLastTwoYearsGraph
+        );
 
         this.plotGraph(
           this.arrayAverageCurrentYearGraph,
@@ -185,17 +158,6 @@ export class GraphicDashboardCoinComponent implements OnInit {
         console.log(error);
       }
     );
-  }
-
-  // adjust the calender input to show the correct data
-  adjustPlaceholderCalendar() {
-    const placeholderStart = `${this.start.split('-')[2]}.${
-      this.start.split('-')[1]
-    }.${this.start.split('-')[0]}`;
-    const placeholderEnd = `${this.end.split('-')[2]}.${
-      this.end.split('-')[1]
-    }.${this.end.split('-')[0]}`;
-    this.placeholder = `${placeholderStart}-${placeholderEnd}`;
   }
 
   plotGraph(
@@ -271,9 +233,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
     }),
       (this.options.scales.yAxes[0].ticks.callback = (value) => {
         if (value >= 10 ** 1 && value < 10 ** 5) {
-          return `${hash[this.selectedExchange]}${Math.round(
-            value
-          )}`;
+          return `${hash[this.selectedExchange]}${Math.round(value)}`;
         } else if (value >= 10 ** 5 && value <= 10 ** 8) {
           return `${hash[this.selectedExchange]}${Math.round(
             value / 10 ** 3
