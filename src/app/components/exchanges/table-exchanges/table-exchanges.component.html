@@ -14,7 +14,7 @@
 
   <ng-template pTemplate="header">
     <tr>
-      <th [style]="{ width: '90px' }" pSortableColumn="adjusted_rank">
+      <th [style]="{ width: '100px' }" pSortableColumn="adjusted_rank">
         <!-- {{ 'TRANSLATE.HOME.TABLE.RANK' | translate}} -->
         Rank
         <p-sortIcon field="adjusted_rank"></p-sortIcon>
@@ -42,13 +42,13 @@
           [style]="{ width: '100%', 'min-width': '100%' }"
         ></p-dropdown>
       </th>
-      <th class="hideBelow768" [style]="{ width: '100px' }">
+      <th class="hideBelow768" [style]="{ width: '110px' }">
         Vol. 24h $
         <!-- {{ 'TRANSLATE.HOME.TABLE.PRICE' | translate }} -->
       </th>
       <th
         class="hideBelow640"
-        [style]="{ width: '140px' }"
+        [style]="{ width: '150px' }"
         pSortableColumn="currencies"
       >
         <!-- {{ 'TRANSLATE.HOME.TABLE.PRICE_EUR' | translate }} -->
