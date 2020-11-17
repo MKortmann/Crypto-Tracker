@@ -6,11 +6,19 @@
   cursor: pointer;
 }
 
+p-table {
+  margin-top: 10px;
+}
+
 td,
 th {
-  font-size: $ss-fontSize;
+  font-size: $ms-fontSize;
   text-align: center;
   vertical-align: middle;
+}
+
+th {
+  font-size: $m-fontSize;
 }
 
 td i {

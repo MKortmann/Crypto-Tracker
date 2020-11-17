@@ -69,6 +69,8 @@ import { MessageModule } from 'primeng/message';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { GraphicDashboardFinancialComponent } from './components/cryptos/graphic-dashboard-financial/graphic-dashboard-financial.component';
 
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -117,6 +119,7 @@ import { GraphicDashboardFinancialComponent } from './components/cryptos/graphic
     ConfirmDialogModule,
     MessageModule,
     MessagesModule,
+    OverlayPanelModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

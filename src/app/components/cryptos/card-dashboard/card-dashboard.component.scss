@@ -2,7 +2,8 @@
 @import '../../../../styles';
 
 * {
-  padding: 0;
+  margin-top: $s-padding;
+  margin-bottom: $s-padding;
 }
 
 img {
@@ -26,8 +27,8 @@ img {
 :host ::ng-deep .p-card-content {
   padding: 0 !important;
   padding-top: $s-padding !important;
-  // padding-right: $s-padding !important;
 }
+
 :host ::ng-deep .p-card {
   padding-right: $s-padding !important;
 }
@@ -56,10 +57,6 @@ td {
   margin-left: $s-padding !important;
   margin-right: $s-padding !important;
 }
-
-// :host ::ng-deep .p-carousel-indicators {
-//   display: none !important;
-// }
 
 .hideInBigScreens {
   padding-top: $ss-padding;

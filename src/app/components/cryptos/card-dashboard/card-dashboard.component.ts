@@ -26,7 +26,7 @@ export class CardDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     // filling with values
-    this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
+    this.coinLoreService.getGlobalCryptoData(0, 11).subscribe((res) => {
       this.data = [...res.data];
       this.lowHighFetch();
     });

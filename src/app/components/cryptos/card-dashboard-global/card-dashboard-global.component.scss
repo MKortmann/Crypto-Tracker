@@ -7,14 +7,16 @@
   font-size: $ss-fontSize;
 }
 
-._ngcontent-hgo-c57 {
-  padding: 0;
-}
-
 p-header {
-  font-size: $ss-fontSize;
+  font-size: $ms-fontSize;
   font-weight: bolder;
   padding-left: $ss-padding;
+}
+
+p-card {
+  span {
+    font-size: 20px;
+  }
 }
 
 :host ::ng-deep .p-card-body {
