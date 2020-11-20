@@ -40,12 +40,10 @@ export const en = {
       GRAPHIC_CARD: {
         BITCOIN: 'BTC Mkt.',
         ETHEREUM: 'ETH Mkt.',
-        OTHERS: 'Others',
-        CRYPTOS: 'Cryptos',
-        ACTIVE_MARKETS: 'Active Markets',
-        TOTAL_OF_MARKET_CAP: 'Mkt. Cap',
+        CRYPTOS: '#Cryptos',
+        ACTIVE_MARKETS: '#Markets',
+        TOTAL_OF_MARKET_CAP: 'Mkt. Cap.',
         TOTAL_OF_VOLUME: 'Vol. 24h ',
-        CRYPTO_DOMINANCE: 'Crypto Dominance (%)',
       },
     },
     REGISTER: {
@@ -64,8 +62,8 @@ export const en = {
       TITLE: 'Contact',
     },
     FOOTER: {
-      LABEL_LEFT: 'Marcelo Kortmann',
-      LABEL_MIDDLE: 'Beta Version',
+      LABEL_LEFT: 'Kortmann',
+      LABEL_MIDDLE: 'Beta',
     },
   },
 };

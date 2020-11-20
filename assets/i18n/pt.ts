@@ -38,14 +38,12 @@ export const pt = {
           'Mostrando {first} de {last} de um total de {totalRecords} cryptomoedas ',
       },
       GRAPHIC_CARD: {
-        BITCOIN: 'Bitcoin Mercado',
-        ETHEREUM: 'Ethereum Mercado',
-        OTHERS: 'Outras Moedas',
-        CRYPTOS: 'Total de Criptos',
-        ACTIVE_MARKETS: 'Mercados Ativos',
-        TOTAL_OF_MARKET_CAP: 'Valor Mercado ',
-        TOTAL_OF_VOLUME: 'Volume 24h ',
-        CRYPTO_DOMINANCE: 'Domínio de Criptomoedas (%) ',
+        BITCOIN: 'BTC Merc.',
+        ETHEREUM: 'ETH Merc.',
+        CRYPTOS: '#Criptos',
+        ACTIVE_MARKETS: '#Mercados',
+        TOTAL_OF_MARKET_CAP: 'Merc. Cap.',
+        TOTAL_OF_VOLUME: 'Vol. 24h ',
       },
     },
     REGISTER: {
@@ -60,8 +58,8 @@ export const pt = {
         'Este aplicativo Crypto-Tracker tem o objetivo principal de acompanhar o desenvolvimento de diferentes moedas criptográficas (atualmente, cerca de 100). Espero que você goste!',
     },
     FOOTER: {
-      LABEL_LEFT: 'Marcelo Kortmann',
-      LABEL_MIDDLE: 'Versão Beta',
+      LABEL_LEFT: 'Kortmann',
+      LABEL_MIDDLE: 'Beta',
     },
   },
 };
