@@ -4,3 +4,8 @@
 .button-chart-options {
   margin-bottom: $s-padding;
 }
+
+::ng-deep button {
+  min-height: 36px !important;
+  margin-left: $s-padding !important;
+}

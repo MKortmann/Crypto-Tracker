@@ -60,10 +60,21 @@ td {
 .highOfTheDay {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .lowOfTheDay {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.material-icons {
+  margin-top: $s-padding;
+  margin: 0;
+}
+
+::ng-deep .p-accordion {
+  margin-bottom: $ss-padding;
 }
 
 @media screen and (max-width: 1500px) {
