@@ -5,6 +5,8 @@
   [autoplayInterval]="3000"
 >
   <ng-template let-item pTemplate="item">
+    <div class="singleCard">
+
     <p-card [style]="{ 'max-height': '80px' }">
       <ng-container *ngIf="!item.value_usd">
         <span style="font-weight: bold;"> {{ item.name }}: </span>
@@ -12,14 +14,14 @@
       </ng-container>
 
       <ng-container *ngIf="item.value_usd">
-        <span class="smallFont">
-          <span style="font-weight: bold;"> {{ item.name }}: </span>
-          $ {{ item.value | formatCurrency }}, €
-          {{ item.value_eur | formatCurrency }}
-        </span>
-      </ng-container>
-    </p-card>
-    <!-- </ng-template> -->
+          <span class="smallFont">
+            <span style="font-weight: bold;"> {{ item.name }}: </span>
+            $ {{ item.value | formatCurrency }}, €
+            {{ item.value_eur | formatCurrency }}
+            </span>
+        </ng-container>
+      </p-card>
+    </div>
   </ng-template>
 </p-carousel>
 

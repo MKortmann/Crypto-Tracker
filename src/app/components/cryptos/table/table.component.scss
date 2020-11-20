@@ -6,10 +6,6 @@
   cursor: pointer;
 }
 
-p-table {
-  margin-top: 10px;
-}
-
 td,
 th {
   font-size: $ms-fontSize;
@@ -64,6 +60,10 @@ input {
   padding: $es-padding !important;
   padding-left: $s-padding !important;
   margin: 0 !important;
+}
+
+::ng-deep .p-paginator {
+  padding: $s-padding;
 }
 
 span {

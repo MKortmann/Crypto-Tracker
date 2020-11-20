@@ -36,3 +36,9 @@ span {
   font-size: 48px;
   z-index: 1000;
 }
+
+@media screen and (max-width: 400px) {
+  .material-icons.md-48 {
+    font-size: 32px;
+  }
+}

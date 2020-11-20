@@ -15,9 +15,8 @@
   ></app-graphic-dashboard-tickers>
 </ng-template>
 
-<div class="graphButtons">
-  <button pButton  icon="pi pi-angle-down" class=" p-button-outlined p-button-secondary  " (click)="op.toggle($event)"></button>
-</div>
+  <button pButton icon="pi pi-chart-line" class=" p-button-outlined p-button-secondary button-chart-options " (click)="op.toggle($event)"></button>
+
 
 <p-overlayPanel #op >
   <ng-template pTemplate>
@@ -38,7 +37,6 @@
     ></button>
   </ng-template>
 </p-overlayPanel>
-
 
 
 <app-table [symbol]="symbol"></app-table>
