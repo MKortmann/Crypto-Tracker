@@ -7,7 +7,7 @@
           [style]="{ 'min-height': '150px', margin: '3px' }"
           (click)="selectedCoin(item.name, item.symbol)"
         >
-          <span style="padding-left: 10px;">
+          <span style="font-size: large; font-weight: bold;">
             <img
               src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
               alt="{{ item.symbol | lowercase }}"
@@ -173,22 +173,24 @@
 
 <!-- finished carousel primeng -->
 
-<div class="p-grid p-align-center p-justify-around hideBelow1500">
-  <div class="p-col p-col-align-stretch" *ngFor="let item of data">
-    <div [class.selected]="item.symbol === symbol">
+<div class="p-grid p-ac-stretch p-align-center p-justify-around hideBelow1500">
+  <div class="p-col  singleCard" *ngFor="let item of data">
+
       <p-card
-        [style]="{ 'min-height': '160px', margin: '3px' }"
         (click)="selectedCoin(item.name, item.symbol)"
       >
+      <div [class.selected]="item.symbol === symbol">
+
         <p-header style="font-size: large; font-weight: bold;">
-          <span style="padding-left: 10px;">
+          <span style="padding: 2px; cursor: pointer;">
             <img
-              src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
-              alt="{{ item.symbol | lowercase }}"
+            src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
+            alt="{{ item.symbol | lowercase }}"
             />
             {{ item.name }}
           </span>
         </p-header>
+      </div>
 
         <p-accordion [multiple]="true">
           <p-accordionTab
@@ -238,22 +240,6 @@
             </div>
           </p-accordionTab>
         </p-accordion>
-
-        <!-- <div style="font-size: large; text-align: left;">
-          {{ item.price_usd | currency: 'USD' }}
-        </div> -->
-        <!-- Low of the day
-        <div style="font-size: medium; text-align: right;">
-          {{ item.high_usd | currency: 'USD' }}
-        </div>
-        High of the day
-        <div style="font-size: medium; text-align: right;">
-          {{ item.low_usd | currency: 'USD' }}
-        </div> -->
-
-        <!-- <div style="font-size: large; text-align: left;">
-          {{ item.price_usd | currency: 'EUR' }}
-        </div> -->
 
         <!-- Percent Change 1h -->
         <div
@@ -359,6 +345,6 @@
         </ng-template>
         <!-- </p-footer> -->
       </p-card>
-    </div>
+
   </div>
 </div>

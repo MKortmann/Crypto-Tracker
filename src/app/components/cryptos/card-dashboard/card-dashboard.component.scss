@@ -11,10 +11,6 @@ img {
   height: $s-imgHeight;
 }
 
-::ng-deep p-card {
-  cursor: pointer;
-}
-
 ::ng-deep p-accordion {
   background-color: var(--color) !important;
   border: 0;
@@ -44,23 +40,8 @@ td {
   display: flex;
 }
 
-:host ::ng-deep .p-carousel-indicators {
-  padding: 10px !important;
-}
-
-:host ::ng-deep .p-carousel-container {
-  padding-top: 5px !important;
-}
-
 :host ::ng-deep .p-ripple {
-  margin: 0 !important;
-  margin-left: $s-padding !important;
-  margin-right: $s-padding !important;
-}
-
-.hideInBigScreens {
-  padding-top: $ss-padding;
-  padding-bottom: $ss-padding;
+  display: none;
 }
 
 :host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
@@ -86,19 +67,10 @@ td {
 }
 
 @media screen and (max-width: 1500px) {
-  p-carousel {
-    padding-top: 2px !important;
-  }
   :host ::ng-deep .p-carousel-indicators {
     display: none !important;
   }
   .smallFont {
     font-size: $es-fontSize;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  ._ngcontent-ocx-c28 {
-    padding-top: 0;
   }
 }

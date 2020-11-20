@@ -1,14 +1,6 @@
 // import global styling
 @import '../../../styles';
 
-.graphButtons {
-  top: 362px;
-  left: 0;
-  position: absolute;
-  z-index: 1;
-}
-
-::ng-deep button {
-  min-height: 36px !important;
-  margin-left: $s-padding !important;
+.button-chart-options {
+  margin-bottom: $s-padding;
 }
