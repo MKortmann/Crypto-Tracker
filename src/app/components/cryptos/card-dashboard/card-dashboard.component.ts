@@ -6,17 +6,24 @@ import { ExchangeService } from '../../../services/exchange.service';
 
 import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 
+import { GLOBAL_VARIABLES } from '../../../globals/global-constants';
+
 @Component({
   selector: 'app-card-dashboard',
   templateUrl: './card-dashboard.component.html',
   styleUrls: ['./card-dashboard.component.scss'],
 })
 export class CardDashboardComponent implements OnInit {
+  private readonly PRICE_EUR = `price_eur`;
+  private readonly BSV = 'BSV';
+  private readonly BCHSV = 'BCHSV';
+
   data: any;
-  classes = {};
+
   @Input() symbol;
-  rateConvertEUR = 0;
+  rateConvertEUR: number;
   timer = null;
+  totalNumberOfCards = 12;
 
   constructor(
     private coinLoreService: CoinLoreService,
@@ -26,46 +33,48 @@ export class CardDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     // filling with values
-    this.coinLoreService.getGlobalCryptoData(0, 11).subscribe((res) => {
-      this.data = [...res.data];
-      this.lowHighFetch();
-    });
+    this.coinLoreService
+      .getGlobalCryptoData(0, this.totalNumberOfCards)
+      .subscribe((res) => {
+        this.data = [...res.data];
+        this.getTheLowHighPriceValues();
+      });
 
-    this.exchangeService.getMoney('USD').subscribe((res2) => {
-      (this.rateConvertEUR = res2.rates[`EUR`]),
+    this.exchangeService.getMoney(GLOBAL_VARIABLES.USD).subscribe((res2) => {
+      (this.rateConvertEUR = res2.rates[GLOBAL_VARIABLES.EUR]),
         this.data.forEach((item) => {
-          item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
+          item[this.PRICE_EUR] =
+            item.price_usd * res2.rates[GLOBAL_VARIABLES.EUR];
         });
     });
 
     // subscribe for a service that update data
     this.coinLoreService.cast.subscribe((data) => {
       this.data = [...data];
-      this.lowHighFetch();
+      this.getTheLowHighPriceValues();
     });
 
     this.coinPaprikaService.onSelectedCoinChange.subscribe((coin) => {
-      this.symbol = coin.split('-')[0].toUpperCase();
-      // we will have to find a better way to fix it
-      if (this.symbol === 'BSV') {
-        this.symbol = 'BCHSV';
-      }
+      this.symbol = this.extractSymbolName(coin);
     });
   }
 
-  lowHighFetch() {
+  private extractSymbolName(coin: any): string {
+    let symbol = coin.split('-')[0].toUpperCase();
+    if (symbol === this.BSV) {
+      symbol = this.BCHSV;
+    }
+    return symbol;
+  }
+
+  getTheLowHighPriceValues() {
     if (this.timer !== null) {
       clearTimeout(this.timer);
     }
 
     this.data.forEach((item, index) => {
-      let fullName = item.symbol.toLowerCase() + '-' + item.nameid;
-      if (item.symbol === 'BCH') {
-        fullName = 'bch-bitcoin-cash';
-      }
-      if (item.symbol === 'BCHSV') {
-        fullName = 'bsv-bitcoin-sv';
-      }
+      let fullName = this.extractFullName(item);
+      fullName = this.checkIfTheNameNeedToBeRenamed(item, fullName);
       item[`price_eur`] = item.price_usd * this.rateConvertEUR;
 
       if (index < 10) {
@@ -96,14 +105,32 @@ export class CardDashboardComponent implements OnInit {
     });
   }
 
+  private checkIfTheNameNeedToBeRenamed(item: any, fullName: string) {
+    if (item.symbol === 'BCH') {
+      fullName = 'bch-bitcoin-cash';
+    }
+    if (item.symbol === 'BCHSV') {
+      fullName = 'bsv-bitcoin-sv';
+    }
+    return fullName;
+  }
+
+  private extractFullName(item: any): string {
+    return item.symbol.toLowerCase() + '-' + item.nameid;
+  }
+
   selectedCoin(name, symbol) {
-    // we are passing the coin clicked id in accord to coinPaprika
+    const coinId = this.extractCoinIdName(symbol, name);
+    this.coinPaprikaService.selectedCoinById(coinId);
+    localStorage.setItem('coinName', coinId);
+  }
+
+  private extractCoinIdName(symbol: any, name: any) {
     let coinID = `${symbol}-${name}`;
     coinID = coinID.replace(' ', '-').toLowerCase();
     if (coinID === 'bchsv-bitcoin-sv') {
       coinID = 'bsv-bitcoin-sv';
     }
-    this.coinPaprikaService.selectedCoinById(coinID);
-    localStorage.setItem('coinName', coinID);
+    return coinID;
   }
 }

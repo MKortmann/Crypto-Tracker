@@ -7,8 +7,8 @@
 }
 
 img {
-  max-width: $s-imgHeight;
-  height: $s-imgHeight;
+  max-width: $e-Height;
+  height: $e-Height;
 }
 
 ::ng-deep p-accordion {
@@ -20,6 +20,7 @@ img {
   padding: 0 !important;
   padding-left: $s-padding !important;
 }
+
 :host ::ng-deep .p-card-content {
   padding: 0 !important;
   padding-top: $s-padding !important;
@@ -45,7 +46,7 @@ td {
 }
 
 :host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
-  padding: 1px !important;
+  padding: $e-padding !important;
   border: 0;
   background-color: transparent;
   display: flex;
@@ -54,7 +55,7 @@ td {
 }
 
 :host ::ng-deep .p-accordion .p-accordion-content {
-  padding: 1px !important;
+  padding: $e-padding !important;
 }
 
 .highOfTheDay {
@@ -77,7 +78,7 @@ td {
   margin-bottom: $ss-padding;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: $bb-mediaQueriesWidth) {
   :host ::ng-deep .p-carousel-indicators {
     display: none !important;
   }

@@ -4,8 +4,10 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'formatCurrency',
 })
 export class FormatCurrencyPipe implements PipeTransform {
-  transform(value: number, ...args: unknown[]): unknown {
-    if (value > 10 ** 4 && value <= 10 ** 7) {
+  transform(value: any, ...args: unknown[]): unknown {
+    if (value <= 10 ** 4) {
+      return `${value.toFixed(2)}`;
+    } else if (value > 10 ** 4 && value <= 10 ** 7) {
       return `${Math.round(value / 10 ** 3)} K`;
     } else if (value > 10 ** 7 && value <= 10 ** 10) {
       return `${Math.round(value / 10 ** 6)} M`;

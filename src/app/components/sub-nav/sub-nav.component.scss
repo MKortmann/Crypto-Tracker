@@ -5,11 +5,6 @@
   margin: 0;
 }
 
-// div {
-//   // padding: $es-padding;
-//   // box-shadow: 0 0 0 1px var(--colorShadow1);
-// }
-
 nav {
   color: var(--color);
   background-color: var(--background-color);
@@ -18,9 +13,8 @@ nav {
 }
 
 :host ::ng-deep .p-dropdown {
-  // border-radius: 3px;
-  border: 0px !important;
-  outline: 0px !important;
+  border: 0 !important;
+  outline: 0 !important;
   margin: 0;
   padding: 0;
 }
@@ -36,14 +30,7 @@ nav {
 
 :host ::ng-deep .p-dropdown-trigger {
   padding-top: $s-padding !important;
-  // padding-right: $s-padding !important;
   margin: 0;
   border: 0 !important;
   outline: 0 !important;
 }
-
-// :host ::ng-deep .p-dropdown-trigger:focus {
-//   display: none;
-//   // padding-right: $s-padding !important;
-//   // margin: 0;
-// }

@@ -14,7 +14,7 @@
             />
             {{ item.name }}
           </span>
-          <!-- </p-header> -->
+
           <p-accordion>
             <p-accordionTab header="{{ item.price_usd | currency: 'USD' }}">
               <!-- Low of the day -->
@@ -173,8 +173,9 @@
 
 <!-- finished carousel primeng -->
 
-<div class="p-grid p-ac-stretch p-align-center p-justify-around hideBelow1500">
-  <div class="p-col  singleCard" *ngFor="let item of data">
+<!-- desktop -->
+<div class="p-grid p-ac-stretch p-justify-around hideBelow1500">
+  <div class="p-col singleCard" *ngFor="let item of data">
 
       <p-card
         (click)="selectedCoin(item.name, item.symbol)"
@@ -182,7 +183,7 @@
       <div [class.selected]="item.symbol === symbol">
 
         <p-header style="font-size: large; font-weight: bold;">
-          <span style="padding: 2px; cursor: pointer;">
+          <span style="padding: 1px; cursor: pointer;" class="p-align-center">
             <img
             src="assets/imgs/coins/{{ item.symbol | lowercase }}.png"
             alt="{{ item.symbol | lowercase }}"

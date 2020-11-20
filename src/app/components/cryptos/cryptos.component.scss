@@ -6,6 +6,6 @@
 }
 
 ::ng-deep button {
-  min-height: 36px !important;
+  min-height: $m-Height !important;
   margin-left: $s-padding !important;
 }

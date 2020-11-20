@@ -5,6 +5,7 @@ body {
 }
 
 //spacing
+$e-padding: 1px;
 $es-padding: 2px;
 $s-padding: 5px;
 $ss-padding: 10px;
@@ -23,12 +24,19 @@ $m-fontSize: 20px;
 $mb-fontSize: 24px;
 
 //images width and height
-$s-imgWidth: 24px;
-$m-imgWidth: 36px;
-$s-imgHeight: 24px;
-$m-imgHeight: 36px;
-$mm-imgWidth: 48px;
-$mm-imgHeight: 48px;
+$e-Width: 24px;
+$s-Width: 28px;
+$ss-Width: 32px;
+$m-Width: 36px;
+$mm-Width: 42px;
+$l-Width: 48px;
+
+$e-Height: 24px;
+$s-Height: 28px;
+$ss-Height: 32px;
+$m-Height: 36px;
+$mm-Height: 42px;
+$l-Height: 48px;
 
 //Media Queries Screen
 $ss-mediaQueriesWidth: 640px;
