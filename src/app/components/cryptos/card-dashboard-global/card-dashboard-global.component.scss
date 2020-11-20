@@ -19,6 +19,10 @@ p-card {
   }
 }
 
+.p-card-title {
+  font-weight: bold;
+}
+
 :host ::ng-deep .p-card-body {
   padding: 0 !important;
   padding-left: $s-padding !important;

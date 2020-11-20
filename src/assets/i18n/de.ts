@@ -37,14 +37,12 @@ export const de = {
         REPORTER: 'Zeige {first} bis {last} von {totalRecords} Kryptos',
       },
       GRAPHIC_CARD: {
-        BITCOIN: 'Bitcoin Märkte',
-        ETHEREUM: 'Ethereum Märkte',
-        OTHERS: 'Andere Märkte',
-        CRYPTOS: 'Summe der Kryptos',
-        ACTIVE_MARKETS: 'Aktive Märkte',
-        TOTAL_OF_MARKET_CAP: 'Gesamtmarktkap.',
-        TOTAL_OF_VOLUME: 'Gesamtvolumen  24h',
-        CRYPTO_DOMINANCE: 'Kryptodominanz (%)',
+        BITCOIN: 'BTC Mkt.',
+        ETHEREUM: 'ETH Mkt.',
+        CRYPTOS: '#Kryptos',
+        ACTIVE_MARKETS: '#Märkte',
+        TOTAL_OF_MARKET_CAP: 'Mkt. Cap.',
+        TOTAL_OF_VOLUME: 'Vol.  24h',
       },
     },
     ABOUT: {
@@ -59,8 +57,8 @@ export const de = {
       TITLE: 'Anmeldung',
     },
     FOOTER: {
-      LABEL_LEFT: 'Marcelo Kortmann',
-      LABEL_MIDDLE: 'Beta version',
+      LABEL_LEFT: 'Kortmann',
+      LABEL_MIDDLE: 'Beta',
     },
   },
 };
