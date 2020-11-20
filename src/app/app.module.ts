@@ -67,7 +67,6 @@ import { ConfirmationService } from 'primeng/api';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { GraphicDashboardFinancialComponent } from './components/cryptos/graphic-dashboard-financial/graphic-dashboard-financial.component';
 
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 
@@ -95,7 +94,6 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     TableExchangesComponent,
     SingleFeedComponent,
     OtherFeedComponent,
-    GraphicDashboardFinancialComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
