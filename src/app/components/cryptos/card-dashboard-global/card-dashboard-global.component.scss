@@ -15,7 +15,7 @@ p-header {
 
 p-card {
   span {
-    font-size: 20px;
+    font-size: $m-fontSize;
   }
 }
 
@@ -50,37 +50,39 @@ p-card {
   display: none !important;
 }
 
-@media screen and (max-width: 1500px) {
-  :host ::ng-deep p-card {
-    max-height: 80px !important;
-  }
+@media screen and (max-width: $bb-mediaQueriesWidth) {
+  :host {
+    ::ng-deep .p-card {
+      max-height: 80px !important;
+    }
 
-  :host ::ng-deep p-carousel {
-    padding: 0 !important;
-    margin: 0 !important;
-    max-height: 80px !important;
-  }
+    ::ng-deep .p-carousel {
+      padding: 0 !important;
+      margin: 0 !important;
+      max-height: 80px !important;
+    }
 
-  :host ::ng-deep .p-carousel-indicators {
-    padding: 10px !important;
-  }
+    ::ng-deep .p-carousel-indicators {
+      padding: $ss-padding !important;
+    }
 
-  :host ::ng-deep .p-carousel-container {
-    padding-top: 5px !important;
-  }
+    ::ng-deep .p-carousel-container {
+      padding-top: $s-padding !important;
+    }
 
-  :host ::ng-deep .p-ripple {
-    margin: 0 !important;
-    // padding: 0 !important;
-    margin-left: $es-padding !important;
-    margin-right: $es-padding !important;
-    display: none !important;
-    // visibility: hidden !important;
+    ::ng-deep .p-ripple {
+      margin: 0 !important;
+      margin-left: $es-padding !important;
+      margin-right: $es-padding !important;
+      display: none !important;
+    }
   }
 }
 
-@media screen and (max-width: 640px) {
-  :host ::ng-deep .ui-card {
-    box-shadow: var(--boxShadow1);
+@media screen and (max-width: $ss-mediaQueriesWidth) {
+  :host {
+    ::ng-deep .ui-card {
+      box-shadow: var(--boxShadow1);
+    }
   }
 }

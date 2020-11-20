@@ -4,6 +4,7 @@ import { CoinLoreService } from '../../../services/coinLore.service';
 import { ExchangeService } from '../../../services/exchange.service';
 import { Coin } from '../../../models/Coin';
 import { TranslateService } from '@ngx-translate/core';
+import { GLOBAL_VARIABLES } from '../../../globals/global-constants';
 
 @Component({
   selector: 'app-card-dashboard-global',
@@ -15,9 +16,6 @@ export class CardDashboardGlobalComponent implements OnInit {
   coins: Coin[];
   selectRateEUR: number;
 
-  USD = 'USD';
-  EUR = 'EUR';
-
   constructor(
     private coinLoreService: CoinLoreService,
     private translate: TranslateService,
@@ -25,9 +23,9 @@ export class CardDashboardGlobalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.exchangeService.getMoney(this.USD).subscribe(
+    this.exchangeService.getMoney(GLOBAL_VARIABLES.USD).subscribe(
       (res) => {
-        this.selectRateEUR = res.rates[this.EUR];
+        this.selectRateEUR = res.rates[GLOBAL_VARIABLES.EUR];
         this.getGlobalCoinLore();
       },
       (error) => {

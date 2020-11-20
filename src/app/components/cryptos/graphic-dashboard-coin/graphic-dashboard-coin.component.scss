@@ -10,10 +10,10 @@
 .containerCalendar {
   display: flex;
   justify-content: flex-end;
-  padding-right: 5px;
+  padding-right: $s-padding;
   p-calendar {
-    padding-right: 5px !important;
-    padding-left: 5px !important;
+    padding-right: $s-padding !important;
+    padding-left: $s-padding !important;
   }
 }
 
@@ -29,16 +29,16 @@
 }
 
 img {
-  min-height: 32px;
-  min-width: 32px;
+  min-height: $ss-Height;
+  min-width: $ss-Width;
 }
 
 .buttonStyleDiv {
   padding: 0;
   border: 1px solid var(--selected);
   border-radius: 4px;
-  max-height: 28px;
-  min-width: 42px;
+  max-height: $s-Height;
+  min-width: $mm-Width;
   display: flex;
   align-items: center;
   justify-content: center;

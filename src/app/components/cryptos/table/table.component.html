@@ -99,7 +99,6 @@
       <th class="hideBelow1200">
         {{ 'TRANSLATE.HOME.TABLE.VOLUME_24H' | translate }}
       </th>
-      <!-- <th>{{ "TRANSLATE.HOME.TABLE.VOLUME_24HA" | translate }}</th> -->
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-coin>
@@ -121,7 +120,7 @@
         {{ coin.price_usd * selectRateEUR | currency: 'EUR' }}
       </td>
       <td>
-        {{ coin.price_usd * selectRate | currency: selectedExchange }}
+        {{ coin.price_usd * selectRate | formatCurrency }}
       </td>
       <td class="hideAbove768">
         <span *ngIf="selected === 1">
@@ -138,13 +137,11 @@
           ></div>
           <ng-template #thenBlock1h>
             <td style="color: green;">
-              <i class="material-icons">trending_up</i>
               {{ coin.percent_change_1h }} %
             </td>
           </ng-template>
           <ng-template #elseBlock1h>
             <td style="color: red;">
-              <i class="material-icons">trending_down</i>
               {{ coin.percent_change_1h }} %
             </td>
           </ng-template>
@@ -160,13 +157,11 @@
           ></div>
           <ng-template #thenBlock24h>
             <td style="color: green;">
-              <i class="material-icons">trending_up</i>
               {{ coin.percent_change_24h }} %
             </td>
           </ng-template>
           <ng-template #elseBlock24h>
             <td style="color: red;">
-              <i class="material-icons">trending_down</i>
               {{ coin.percent_change_24h }} %
             </td>
           </ng-template>
@@ -181,13 +176,11 @@
           ></div>
           <ng-template #thenBlock7d>
             <td style="color: green;">
-              <i class="material-icons">trending_up</i>
               {{ coin.percent_change_7d }} %
             </td>
           </ng-template>
           <ng-template #elseBlock7d>
             <td style="color: red;">
-              <i class="material-icons">trending_down</i>
               {{ coin.percent_change_7d }} %
             </td>
           </ng-template>

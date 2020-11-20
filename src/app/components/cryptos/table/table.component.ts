@@ -9,6 +9,8 @@ import { CoinLoreService } from '../../../services/coinLore.service';
 
 import { SelectItem } from 'primeng/api';
 
+import { GLOBAL_VARIABLES } from '../../../globals/global-constants';
+
 interface OptionDropDown {
   name: string;
   value: number;
@@ -22,7 +24,7 @@ interface OptionDropDown {
 export class TableComponent implements OnInit {
   coins: Coin[];
   exchanges: SelectItem[];
-  selectedExchange: any = 'EUR';
+  selectedExchange: any = GLOBAL_VARIABLES.EUR;
   selectRate: number;
   selectRateEUR: any;
   @Input() symbol;
@@ -82,13 +84,16 @@ export class TableComponent implements OnInit {
     });
 
     this.coinPaprikaService.onSelectedCoinChange.subscribe((coin) => {
-      this.symbol = coin.split('-')[0].toUpperCase();
-      // we will have to find a better way to fix it
-      if (this.symbol === 'BSV') {
-        this.symbol = 'BCHSV';
-      }
-      console.log(this.symbol);
+      this.symbol = this.extractSymbolName(coin);
     });
+  }
+
+  private extractSymbolName(coin: any): string {
+    let symbol = coin.split('-')[0].toUpperCase();
+    if (symbol === 'BSV') {
+      symbol = 'BCHSV';
+    }
+    return symbol;
   }
 
   loadTable() {
@@ -105,7 +110,7 @@ export class TableComponent implements OnInit {
               label: lat,
               value: lng,
             }));
-            this.selectRateEUR = res2.rates[`EUR`];
+            this.selectRateEUR = res2.rates[GLOBAL_VARIABLES.EUR];
             this.selectedExchange = localStorage.getItem(
               'selectedExchangeTable'
             );
@@ -130,26 +135,27 @@ export class TableComponent implements OnInit {
     // we are passing the coin clicked id in accord to coinPaprika
     const name = event.target.parentNode.cells[1].innerText.replace(' ', '');
     const symbol = event.target.parentElement.cells[1].firstElementChild.alt;
+    const coinId = this.extractCoinIdName(symbol, name);
+    this.coinPaprikaService.selectedCoinById(coinId);
+  }
+
+  private extractCoinIdName(symbol: any, name: any) {
     let coinID = `${symbol}-${name}`;
     coinID = coinID.replace(' ', '-').toLowerCase();
 
     if (coinID === 'bchsv-bitcoin-sv') {
       coinID = 'bsv-bitcoin-sv';
     }
-    this.coinPaprikaService.selectedCoinById(coinID);
+    return coinID;
   }
 
   selection(event, dd) {
     this.selectedExchange = dd.selectedOption.label;
-    console.log(dd.selectedOption.label);
     this.selectRate = event.value;
     localStorage.setItem('selectedExchangeTable', this.selectedExchange);
   }
 
   selectionDropDownTH(event, ff) {
     this.selected = event.value;
-    // this.selectedName = ff.selectedOption.label;
-    console.log('this.selected', this.selected);
-    // console.log('this.selectedName', this.selectedName);
   }
 }
