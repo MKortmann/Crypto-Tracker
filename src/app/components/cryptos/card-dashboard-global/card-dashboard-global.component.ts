@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CoinLoreService } from '../../../services/coinLore.service';
-import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 import { ExchangeService } from '../../../services/exchange.service';
 import { Coin } from '../../../models/Coin';
-
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -14,22 +12,22 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class CardDashboardGlobalComponent implements OnInit {
   dataCard: any;
-  dataCard2: any;
-
   coins: Coin[];
-  selectRateEUR: any;
+  selectRateEUR: number;
+
+  USD = 'USD';
+  EUR = 'EUR';
 
   constructor(
     private coinLoreService: CoinLoreService,
     private translate: TranslateService,
-    private exchangeService: ExchangeService,
-    private coinPaprikaService: CoinPaprikaService
+    private exchangeService: ExchangeService
   ) {}
 
   ngOnInit(): void {
-    this.exchangeService.getMoney('USD').subscribe(
+    this.exchangeService.getMoney(this.USD).subscribe(
       (res) => {
-        this.selectRateEUR = res.rates[`EUR`];
+        this.selectRateEUR = res.rates[this.EUR];
         this.getGlobalCoinLore();
       },
       (error) => {
@@ -80,46 +78,47 @@ export class CardDashboardGlobalComponent implements OnInit {
           },
         ];
 
-        // this is necessary to allow the translate be called again, if not, we will need to refnewGlobalDatah the page!
-        this.translate
-          .stream('TRANSLATE.HOME.GRAPHIC_CARD.BITCOIN')
-          .subscribe((res: string) => {
-            this.dataCard[0].name = res;
-          });
-        this.translate
-          .stream('TRANSLATE.HOME.GRAPHIC_CARD.ETHEREUM')
-          .subscribe((res: string) => {
-            this.dataCard[1].name = res;
-          });
-        this.translate
-          .stream('TRANSLATE.HOME.GRAPHIC_CARD.CRYPTOS')
-          .subscribe((res: string) => {
-            this.dataCard[2].name = res;
-          });
-
-        this.translate
-          .stream('TRANSLATE.HOME.GRAPHIC_CARD.ACTIVE_MARKETS')
-          .subscribe((res: string) => {
-            this.dataCard[3].name = res;
-          });
-
-        this.translate
-          .stream('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_MARKET_CAP')
-          .subscribe((res: string) => {
-            this.dataCard[4].name = res;
-          });
-
-        this.translate
-          .stream('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_VOLUME')
-          .subscribe((res: string) => {
-            this.dataCard[5].name = res;
-          });
-
-        console.log('this.dataCard', this.dataCard);
+        this.updateLanguageTranslation();
       },
       (error2) => {
         console.log(error2);
       }
     );
+  }
+
+  private updateLanguageTranslation() {
+    this.translate
+      .stream('TRANSLATE.HOME.GRAPHIC_CARD.BITCOIN')
+      .subscribe((res: string) => {
+        this.dataCard[0].name = res;
+      });
+    this.translate
+      .stream('TRANSLATE.HOME.GRAPHIC_CARD.ETHEREUM')
+      .subscribe((res: string) => {
+        this.dataCard[1].name = res;
+      });
+    this.translate
+      .stream('TRANSLATE.HOME.GRAPHIC_CARD.CRYPTOS')
+      .subscribe((res: string) => {
+        this.dataCard[2].name = res;
+      });
+
+    this.translate
+      .stream('TRANSLATE.HOME.GRAPHIC_CARD.ACTIVE_MARKETS')
+      .subscribe((res: string) => {
+        this.dataCard[3].name = res;
+      });
+
+    this.translate
+      .stream('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_MARKET_CAP')
+      .subscribe((res: string) => {
+        this.dataCard[4].name = res;
+      });
+
+    this.translate
+      .stream('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_VOLUME')
+      .subscribe((res: string) => {
+        this.dataCard[5].name = res;
+      });
   }
 }

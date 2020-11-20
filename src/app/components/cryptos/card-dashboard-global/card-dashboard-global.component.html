@@ -1,35 +1,35 @@
+<!-- for mobile -->
 <p-carousel
   class="hideInBigScreens"
   [value]="dataCard"
-  [style]="{ 'max-height': '120px' }"
   [autoplayInterval]="3000"
 >
   <ng-template let-item pTemplate="item">
-    <div class="singleCard">
 
-    <p-card [style]="{ 'max-height': '80px' }">
+    <p-card>
       <ng-container *ngIf="!item.value_usd">
-        <span style="font-weight: bold;"> {{ item.name }}: </span>
-        {{ item.value }}
+        <span class="p-card-title"> {{ item.name  }}: </span>
+        <span> {{ item.value  }} </span>
       </ng-container>
 
       <ng-container *ngIf="item.value_usd">
-          <span class="smallFont">
-            <span style="font-weight: bold;"> {{ item.name }}: </span>
+          <span>
+            <span class="p-card-title"> {{ item.name }}: </span>
             $ {{ item.value | formatCurrency }}, €
             {{ item.value_eur | formatCurrency }}
             </span>
         </ng-container>
       </p-card>
-    </div>
+
   </ng-template>
 </p-carousel>
 
+<!-- for desktop -->
 <div class="p-grid hideBelow1500">
   <div class="p-col-12 p-xl-2" *ngFor="let item of dataCard | slice: 0:4">
     <p-card>
       <span>
-        <span style="font-weight: bold;"> {{ item.name }}: </span>
+        <span class="p-card-title"> {{ item.name }}: </span>
         {{ item.value }}
       </span>
     </p-card>
@@ -38,7 +38,7 @@
   <div class="p-col-12 p-xl-2" *ngFor="let item of dataCard | slice: 4:6">
     <p-card>
       <span>
-        <span style="font-weight: bold;"> {{ item.name }}: </span>
+        <span class="p-card-title"> {{ item.name }}: </span>
         $ {{ item.value | formatCurrency }}, €
         {{ item.value_eur | formatCurrency }}
       </span>
