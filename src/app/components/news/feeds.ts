@@ -573,7 +573,7 @@ export const FeedsUrl = [
     saved: [false, { items: [] }],
   },
   {
-    id: 58,
+    id: 57,
     name: 'Block Chain Today',
     symbol: 'blockchaintoday',
     url: 'https%3A%2F%2Fblockchaintd.com%2Frss.xml',
@@ -583,7 +583,7 @@ export const FeedsUrl = [
     saved: [false, { items: [] }],
   },
   {
-    id: 59,
+    id: 58,
     name: 'Finance Magnates',
     symbol: 'financemagnates',
     url: 'https%3A%2F%2Fwww.financemagnates.com%2Ffeed%2F',

@@ -72,13 +72,10 @@ export class NewsComponent implements OnInit {
         response.forEach((data, index) => {
           if (data !== 'Error') {
             this.feedArray[index].items = [...data.items];
-            console.log(JSON.stringify(data.items));
           } else {
             this.feedArray[index].items = [
               {
                 title: 'ERROR',
-                pubDate: '2020-11-21 16:23:03',
-                author: '',
               },
             ];
           }
@@ -111,6 +108,7 @@ export class NewsComponent implements OnInit {
   }
 
   setBookmarkMagazine(event) {
+    debugger;
     this.feedArray.forEach((item, index) => {
       if (item.name.trim() === event.name.trim()) {
         if (this.bookmarks < this.bookmarkLimit && !item.bookmark) {
