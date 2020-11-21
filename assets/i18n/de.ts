@@ -18,11 +18,12 @@ export const de = {
     GRAPH_COIN: {
       AVERAGE: 'Durchschn.',
     },
-    HOME: {
+    CRYPTOS: {
       TITLE: 'Start',
       TABLE: {
         TITLE: 'Tabelle',
         RANK: 'Rang',
+        INPUT_SEARCH_FIELD: 'Krypto Suche',
         SYMBOL: 'Symbol',
         NAME: 'Name',
         PRICE: 'Preis in USD',
@@ -43,6 +44,17 @@ export const de = {
         ACTIVE_MARKETS: '#Märkte',
         TOTAL_OF_MARKET_CAP: 'Mkt. Cap.',
         TOTAL_OF_VOLUME: 'Vol.  24h',
+      },
+    },
+    EXCHANGES: {
+      TABLE: {
+        RANK: 'Rang',
+        INPUT_SEARCH_FIELD: 'Börse Suche',
+        VOLUME_24H: 'Vol. 24h',
+        CURRENCIES: 'Währungen',
+        MARKETS: 'Märkte',
+        DESCRIPTION: 'Über',
+        WEBSITE: 'Websites',
       },
     },
     ABOUT: {

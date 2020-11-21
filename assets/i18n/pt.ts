@@ -6,6 +6,7 @@ export const pt = {
       EXCHANGES: 'Bolsas',
       NEWS: 'Notícias',
       ABOUT: 'Sobre',
+      CONTACT: 'Contato',
       NAV_2: 'Nav_2',
       REGISTER: 'Cadastro',
       LOGIN: 'Conecte-se',
@@ -18,11 +19,12 @@ export const pt = {
     GRAPH_COIN: {
       AVERAGE: 'média',
     },
-    HOME: {
+    CRYPTOS: {
       TITLE: 'Início',
       TABLE: {
         TITLE: 'Tabela',
-        RANK: 'Posição',
+        RANK: 'Pos.',
+        INPUT_SEARCH_FIELD: 'Pes. por name',
         SYMBOL: 'Símbolo',
         NAME: 'Nome',
         PRICE: 'Preço em USD',
@@ -44,6 +46,17 @@ export const pt = {
         ACTIVE_MARKETS: '#Mercados',
         TOTAL_OF_MARKET_CAP: 'Merc. Cap.',
         TOTAL_OF_VOLUME: 'Vol. 24h ',
+      },
+    },
+    EXCHANGES: {
+      TABLE: {
+        RANK: 'Pos.',
+        INPUT_SEARCH_FIELD: 'Pes. por name',
+        VOLUME_24H: 'Vol. 24h',
+        CURRENCIES: 'Moedas',
+        MARKETS: 'Mercados',
+        DESCRIPTION: 'Sobre',
+        WEBSITE: 'Sites',
       },
     },
     REGISTER: {
