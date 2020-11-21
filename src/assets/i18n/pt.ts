@@ -24,6 +24,7 @@ export const pt = {
       TABLE: {
         TITLE: 'Tabela',
         RANK: 'Pos.',
+        INPUT_SEARCH_FIELD: 'Pes. por name',
         SYMBOL: 'Símbolo',
         NAME: 'Nome',
         PRICE: 'Preço em USD',
@@ -48,7 +49,15 @@ export const pt = {
       },
     },
     EXCHANGES: {
-      RANK: 'Pos.',
+      TABLE: {
+        RANK: 'Pos.',
+        INPUT_SEARCH_FIELD: 'Pes. por name',
+        VOLUME_24H: 'Vol. 24h',
+        CURRENCIES: 'Moedas',
+        MARKETS: 'Mercados',
+        DESCRIPTION: 'Sobre',
+        WEBSITE: 'Sites',
+      },
     },
     REGISTER: {
       TITLE: 'REGISTRO',

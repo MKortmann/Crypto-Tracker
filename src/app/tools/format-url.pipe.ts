@@ -5,8 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FormatUrlPipe implements PipeTransform {
   transform(value: string, ...args: unknown[]): unknown {
-    const splitted = value.split('/');
-    return splitted[2];
-    // console.log(value, args);
+    const inputString = value.split('/');
+    const linkName = inputString[2].split('.');
+
+    const linkNameWithoutWWW =
+      linkName.length === 2
+        ? `${linkName[0]}.${linkName[1]}`
+        : `${linkName[1]}.${linkName[2]}`;
+
+    return linkNameWithoutWWW;
   }
 }

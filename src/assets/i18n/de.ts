@@ -23,6 +23,7 @@ export const de = {
       TABLE: {
         TITLE: 'Tabelle',
         RANK: 'Rang',
+        INPUT_SEARCH_FIELD: 'Krypto Suche',
         SYMBOL: 'Symbol',
         NAME: 'Name',
         PRICE: 'Preis in USD',
@@ -46,7 +47,15 @@ export const de = {
       },
     },
     EXCHANGES: {
-      RANK: 'Rang',
+      TABLE: {
+        RANK: 'Rang',
+        INPUT_SEARCH_FIELD: 'Börse Suche',
+        VOLUME_24H: 'Vol. 24h',
+        CURRENCIES: 'Währungen',
+        MARKETS: 'Märkte',
+        DESCRIPTION: 'Über',
+        WEBSITE: 'Websites',
+      },
     },
     ABOUT: {
       TITLE: 'Über',

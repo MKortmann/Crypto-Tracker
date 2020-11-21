@@ -24,6 +24,7 @@ export const en = {
       TABLE: {
         TITLE: 'Table',
         RANK: 'Rank',
+        INPUT_SEARCH_FIELD: 'Search by name',
         SYMBOL: 'Symbol',
         NAME: '',
         PRICE: 'Price in USD',
@@ -47,7 +48,15 @@ export const en = {
       },
     },
     EXCHANGES: {
-      RANK: 'Rank',
+      TABLE: {
+        RANK: 'Rank',
+        INPUT_SEARCH_FIELD: 'Search by name',
+        VOLUME_24H: 'Vol. 24h',
+        CURRENCIES: 'Currencies',
+        MARKETS: 'Markets',
+        DESCRIPTION: 'Description',
+        WEBSITE: 'Sites',
+      },
     },
     REGISTER: {
       TITLE: 'REGISTER',

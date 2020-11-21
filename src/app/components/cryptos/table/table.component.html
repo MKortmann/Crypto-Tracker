@@ -24,7 +24,7 @@
             pInputText
             type="text"
             (input)="dt.filter($event.target.value, 'name', 'startsWith')"
-            placeholder="search by name"
+            placeholder="{{ 'TRANSLATE.CRYPTOS.TABLE.INPUT_SEARCH_FIELD' | translate }}"
             class="ui-column-filter"
           />
         </div>
