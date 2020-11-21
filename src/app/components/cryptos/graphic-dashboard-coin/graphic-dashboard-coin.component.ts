@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, OnChanges } from '@angular/core';
 
 import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 
@@ -22,6 +22,7 @@ import 'chartjs-plugin-zoom';
   styleUrls: ['./graphic-dashboard-coin.component.scss'],
 })
 export class GraphicDashboardCoinComponent implements OnInit {
+  @Input() zoomGraph: boolean;
   coinName = 'btc-bitcoin';
   symbol = 'btc';
   show = false;
@@ -44,8 +45,7 @@ export class GraphicDashboardCoinComponent implements OnInit {
   @Input() selectedExchange;
   @Input() selectRate;
   todayDate = new Date();
-  url: string;
-  // hash = hash;
+  url = `https://api.coinpaprika.com/v1/coins/${this.coinName}/ohlcv/historical?start=`;
 
   // for mobile
   showInSmallScreens = false;
@@ -56,12 +56,16 @@ export class GraphicDashboardCoinComponent implements OnInit {
     private translateService: TranslateService
   ) {}
 
+  ngOnChanges() {
+    this.options.zoom.enabled = this.zoomGraph;
+    this.options.pan.enabled = this.zoomGraph;
+    this.fetchDataToPlotGraph(this.url);
+  }
+
   ngOnInit(): void {
     if (screen.width < 1500) {
       this.showInSmallScreens = true;
     }
-
-    this.url = `https://api.coinpaprika.com/v1/coins/${this.coinName}/ohlcv/historical?start=`;
 
     if (localStorage.getItem('coinName') !== null) {
       this.coinName = localStorage.getItem('coinName');
@@ -83,6 +87,8 @@ export class GraphicDashboardCoinComponent implements OnInit {
         console.log(error);
       }
     );
+
+    console.log('ulr', this.url);
 
     this.fetchDataToPlotGraph(this.url);
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 
@@ -33,6 +33,7 @@ export class GraphicDashboardTickersComponent implements OnInit {
   data = [30, 60, 100];
   @Input() selectedExchange;
   @Input() selectRate;
+  @Input() zoomGraph: boolean;
 
   valueAverageAnnotation = 0;
 
@@ -44,6 +45,12 @@ export class GraphicDashboardTickersComponent implements OnInit {
   startDate: Date;
   endDateStr: string;
   startDateStr: string;
+
+  ngOnChanges() {
+    this.options.zoom.enabled = this.zoomGraph;
+    this.options.pan.enabled = this.zoomGraph;
+    this.updateUrl();
+  }
 
   ngOnInit(): void {
     if (localStorage.getItem('coinName') !== null) {
