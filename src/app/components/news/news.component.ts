@@ -24,7 +24,8 @@ export class NewsComponent implements OnInit {
   date: any;
 
   // Unblock using rss2json, to look: feed2json.org
-  prefixRss2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
+  private readonly prefixRss2JSON =
+    'https://api.rss2json.com/v1/api.json?rss_url=';
 
   constructor(
     private feedNewsServices: FeedNewsService,
@@ -33,6 +34,7 @@ export class NewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookmarks = JSON.parse(localStorage.getItem('bookmarksLimit')) || 0;
+
     this.feedArray = JSON.parse(localStorage.getItem('feeds')) || [
       ...this.feedsUrl,
     ];
@@ -68,7 +70,18 @@ export class NewsComponent implements OnInit {
     this.feedNewsServices.getNewsFeedsUrl(this.feedsUrl).subscribe(
       (response) => {
         response.forEach((data, index) => {
-          this.feedArray[index].items = [...data.items];
+          if (data !== 'Error') {
+            this.feedArray[index].items = [...data.items];
+            console.log(JSON.stringify(data.items));
+          } else {
+            this.feedArray[index].items = [
+              {
+                title: 'ERROR',
+                pubDate: '2020-11-21 16:23:03',
+                author: '',
+              },
+            ];
+          }
         });
       },
       (error) => {

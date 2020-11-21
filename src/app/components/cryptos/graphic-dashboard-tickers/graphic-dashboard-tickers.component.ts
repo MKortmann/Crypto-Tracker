@@ -20,7 +20,7 @@ import 'chartjs-plugin-zoom';
   templateUrl: './graphic-dashboard-tickers.component.html',
   styleUrls: ['./graphic-dashboard-tickers.component.scss'],
 })
-export class GraphicDashboardTickersComponent implements OnInit {
+export class GraphicDashboardTickersComponent implements OnInit, OnChanges {
   constructor(
     private coinPaprikaService: CoinPaprikaService,
     private exchangeService: ExchangeService,

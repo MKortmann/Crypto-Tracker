@@ -21,7 +21,7 @@ import 'chartjs-plugin-zoom';
   templateUrl: './graphic-dashboard-coin.component.html',
   styleUrls: ['./graphic-dashboard-coin.component.scss'],
 })
-export class GraphicDashboardCoinComponent implements OnInit {
+export class GraphicDashboardCoinComponent implements OnInit, OnChanges {
   @Input() zoomGraph: boolean;
   coinName = 'btc-bitcoin';
   symbol = 'btc';
