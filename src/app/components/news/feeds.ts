@@ -24,7 +24,7 @@ export const FeedsUrl = [
     id: 2,
     name: 'AMB Crypto',
     symbol: 'ambcrypto',
-    url: 'https%3A%2F%2Feng.ambcrypto.com%2Ffeed%2F',
+    url: 'https%3A%2F%2Feng.ambCRYPTOS.com%2Ffeed%2F',
     bookmark: false,
 
     items: [],
@@ -64,7 +64,7 @@ export const FeedsUrl = [
     id: 6,
     name: 'The Block Crypto',
     symbol: 'theblockcrypto',
-    url: 'https%3A%2F%2Fwww.theblockcrypto.com%2Frss.xml',
+    url: 'https%3A%2F%2Fwww.theblockCRYPTOS.com%2Frss.xml',
     bookmark: false,
 
     items: [],
@@ -201,7 +201,7 @@ export const FeedsUrl = [
     items: [],
     saved: [false, { items: [] }],
   },
-    {
+  {
     id: 19,
     name: 'Coin Pedia',
     symbol: 'coinpedia',
@@ -235,7 +235,7 @@ export const FeedsUrl = [
     id: 21,
     name: 'Bein Crypto',
     symbol: 'beincrypto',
-    url: 'https%3A%2F%2Fbeincrypto.com%2Ffeed%2F',
+    url: 'https%3A%2F%2FbeinCRYPTOS.com%2Ffeed%2F',
     bookmark: false,
 
     items: [],
@@ -345,7 +345,7 @@ export const FeedsUrl = [
   //   id: 32,
   //   name: 'Zycrypto',
   //   symbol: 'zycrypto',
-  //   url: 'https%3A%2F%2Fzycrypto.com%2Ffeed%2F',
+  //   url: 'https%3A%2F%2FzyCRYPTOS.com%2Ffeed%2F',
   //   bookmark: false,
 
   //   items: [],

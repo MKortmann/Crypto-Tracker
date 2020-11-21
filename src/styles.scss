@@ -4,26 +4,23 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-//spacing
 $e-padding: 1px;
 $es-padding: 2px;
 $s-padding: 5px;
 $ss-padding: 10px;
 $m-padding: 15px;
 $mm-padding: 20px;
-$b-padding: 25px;
-$bb-padding: 30px;
+$l-padding: 25px;
+$ll-padding: 30px;
 $x-padding: 45px;
-
-//font-size
 
 $es-fontSize: 10px;
 $ss-fontSize: 15px;
 $ms-fontSize: 18px;
 $m-fontSize: 20px;
-$mb-fontSize: 24px;
+$mm-fontSize: 24px;
+$l-fontSize: 28px;
 
-//images width and height
 $e-Width: 24px;
 $s-Width: 28px;
 $ss-Width: 32px;
@@ -38,7 +35,6 @@ $m-Height: 36px;
 $mm-Height: 42px;
 $l-Height: 48px;
 
-//Media Queries Screen
 $ss-mediaQueriesWidth: 640px;
 $m-mediaQueriesWidth: 768px;
 $mm-mediaQueriesWidth: 100px;
@@ -70,7 +66,7 @@ h2 {
 
 th {
   color: var(--color) !important;
-  background-color: var(--background-color) !important;
+  background-color: var(--bg3) !important;
   font-size: $ss-fontSize;
 }
 
@@ -78,12 +74,12 @@ tr:nth-child(odd) {
   background-color: var(--bg2) !important;
 }
 tr:nth-child(even) {
-  background-color: var(--bg3) !important;
+  background-color: var(--background-color) !important;
 }
 
 tr:hover {
   color: var(--color) !important;
-  background-color: var(--background-color) !important;
+  background-color: var(--bg3) !important;
 }
 
 .selected {

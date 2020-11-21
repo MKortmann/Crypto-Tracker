@@ -17,6 +17,10 @@ td {
   font-size: $ms-fontSize;
 }
 
+tr:nth-child(odd) {
+  font-weight: bold;
+}
+
 td {
   li,
   ul {
@@ -36,19 +40,19 @@ input {
   vertical-align: left;
   padding: 0 !important;
   margin: 0;
-  /* max-width: 160px; */
   max-width: 120px;
 }
 
-div.container {
-  margin: 0 !important;
-  padding: 0 !important;
+.container {
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: $m-padding;
+  padding-bottom: $m-padding;
 }
 
 :host ::ng-deep th,
 :host ::ng-deep tr,
 :host ::ng-deep td {
-  // padding: 0 !important;
   padding: $s-padding !important;
   margin: 0 !important;
 }
@@ -71,9 +75,6 @@ p-sortIcon {
 }
 
 .ui-helper-clearfix {
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
   line-height: 2;
 }
 

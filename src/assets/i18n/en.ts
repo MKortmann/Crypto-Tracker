@@ -19,7 +19,7 @@ export const en = {
     GRAPH_COIN: {
       AVERAGE: 'Av.',
     },
-    HOME: {
+    CRYPTOS: {
       TITLE: 'Crypto',
       TABLE: {
         TITLE: 'Table',
@@ -45,6 +45,9 @@ export const en = {
         TOTAL_OF_MARKET_CAP: 'Mkt. Cap.',
         TOTAL_OF_VOLUME: 'Vol. 24h ',
       },
+    },
+    EXCHANGES: {
+      RANK: 'Rank',
     },
     REGISTER: {
       TITLE: 'REGISTER',

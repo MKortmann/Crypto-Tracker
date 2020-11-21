@@ -18,7 +18,7 @@ export const de = {
     GRAPH_COIN: {
       AVERAGE: 'Durchschn.',
     },
-    HOME: {
+    CRYPTOS: {
       TITLE: 'Start',
       TABLE: {
         TITLE: 'Tabelle',
@@ -44,6 +44,9 @@ export const de = {
         TOTAL_OF_MARKET_CAP: 'Mkt. Cap.',
         TOTAL_OF_VOLUME: 'Vol.  24h',
       },
+    },
+    EXCHANGES: {
+      RANK: 'Rang',
     },
     ABOUT: {
       TITLE: 'Über',
