@@ -59,6 +59,10 @@ export const pt = {
         WEBSITE: 'Sites',
       },
     },
+    NEWS: {
+      ERRORS:
+        'Desculpe, não foi possível carregar as notícias. As notícias estão atualmente bloqueadas pela revista.',
+    },
     REGISTER: {
       TITLE: 'REGISTRO',
     },

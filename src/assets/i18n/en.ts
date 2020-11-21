@@ -58,6 +58,10 @@ export const en = {
         WEBSITE: 'Sites',
       },
     },
+    NEWS: {
+      ERRORS:
+        'Sorry, not possible to load the news. The news are at the moment blocked by the magazine.',
+    },
     REGISTER: {
       TITLE: 'REGISTER',
     },

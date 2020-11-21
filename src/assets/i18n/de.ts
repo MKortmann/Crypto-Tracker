@@ -57,6 +57,10 @@ export const de = {
         WEBSITE: 'Websites',
       },
     },
+    NEWS: {
+      ERRORS:
+        'Es ist leider nicht möglich, die Nachrichten zu laden. Die Nachrichten werden derzeit von der Zeitschrift blockiert.',
+    },
     ABOUT: {
       TITLE: 'Über',
       COMMENTS:

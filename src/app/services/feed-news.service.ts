@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, forkJoin } from 'rxjs';
+import { Observable, forkJoin, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,13 @@ export class FeedNewsService {
 
     for (const item of feedsUrl) {
       const url = item.url;
-      response.push(this.http.get<any>(prefix + url));
+
+      response.push(
+        this.http.get<any>(prefix + url).pipe(
+          map((res) => res),
+          catchError((e) => of('Error'))
+        )
+      );
     }
 
     return forkJoin(response);
