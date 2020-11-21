@@ -59,7 +59,6 @@ import { CardDashboardGlobalComponent } from './components/cryptos/card-dashboar
 import { TableExchangesComponent } from './components/exchanges/table-exchanges/table-exchanges.component';
 import { TabViewModule } from 'primeng/tabview';
 import { SingleFeedComponent } from './components/news/single-feed/single-feed.component';
-import { OtherFeedComponent } from './components/news/other-feed/other-feed.component';
 import { PanelModule } from 'primeng/panel';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -93,7 +92,6 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     NewsComponent,
     TableExchangesComponent,
     SingleFeedComponent,
-    OtherFeedComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
