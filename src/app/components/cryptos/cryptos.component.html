@@ -4,12 +4,14 @@
 <app-card-dashboard [symbol]="symbol"></app-card-dashboard>
 <!-- <app-graphic-dashboard-financial></app-graphic-dashboard-financial> -->
 <app-graphic-dashboard-coin
+  [zoomGraph]="zoomGraph"
   [selectRate]="selectRate"
   [selectedExchange]="selectedExchange"
   *ngIf="visible; else elseBlock"
 ></app-graphic-dashboard-coin>
 <ng-template #elseBlock>
   <app-graphic-dashboard-tickers
+    [zoomGraph]="zoomGraph"
     [selectRate]="selectRate"
     [selectedExchange]="selectedExchange"
   ></app-graphic-dashboard-tickers>
@@ -34,6 +36,15 @@
       label="{{ label }}"
       class="p-button-secondary p-button-outlined p-button-sm"
       (click)="switchGraphs()"
+    ></button>
+
+    <button
+      pButton
+      type="button"
+      label="Zoom&Pan"
+      icon="pi pi-search"
+      class="p-button-secondary p-button-outlined p-button-sm"
+      (click)="toggleZoomGraph()"
     ></button>
   </ng-template>
 </p-overlayPanel>

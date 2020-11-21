@@ -87,6 +87,16 @@ tr:hover {
   border-radius: 2px 2px 2px 2px;
 }
 
+// primeng tables
+::ng-deep .p-paginator .p-paginator-last,
+::ng-deep .p-paginator .p-paginator-first {
+  display: none !important;
+}
+
+::ng-deep .p-paginator {
+  padding: $s-padding;
+}
+
 // for dashboard-cards
 .highOfTheDay {
   color: var(--selected);

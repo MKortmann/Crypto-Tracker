@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { ExchangeService } from '../../services/exchange.service';
@@ -10,6 +10,7 @@ import { SelectItem } from 'primeng/api';
   styleUrls: ['./cryptos.component.scss'],
 })
 export class CryptosComponent implements OnInit {
+  @Output() zoomGraph = false;
   public visible = true;
   label = '24h';
   selectedExchange: any = 'USD';
@@ -56,6 +57,10 @@ export class CryptosComponent implements OnInit {
       },
       (error) => console.log(error)
     );
+  }
+
+  toggleZoomGraph() {
+    this.zoomGraph = !this.zoomGraph;
   }
 
   switchGraphs() {
