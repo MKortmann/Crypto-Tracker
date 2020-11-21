@@ -108,7 +108,6 @@ export class NewsComponent implements OnInit {
   }
 
   setBookmarkMagazine(event) {
-    debugger;
     this.feedArray.forEach((item, index) => {
       if (item.name.trim() === event.name.trim()) {
         if (this.bookmarks < this.bookmarkLimit && !item.bookmark) {

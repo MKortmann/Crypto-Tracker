@@ -592,4 +592,54 @@ export const FeedsUrl = [
     items: [],
     saved: [false, { items: [] }],
   },
+  {
+    id: 59,
+    name: 'News Bitcoin',
+    symbol: 'newsbitcoin',
+    url: 'https%3A%2F%2Fnews.bitcoin.com%2Ffeed%2F',
+    bookmark: false,
+
+    items: [],
+    saved: [false, { items: [] }],
+  },
+  {
+    id: 59,
+    name: 'CCN',
+    symbol: 'ccn',
+    url: 'https%3A%2F%2Fnews.bitcoin.com%2Ffeed%2F',
+    bookmark: false,
+
+    items: [],
+    saved: [false, { items: [] }],
+  },
+  {
+    id: 61,
+    name: 'Decrypt',
+    symbol: 'decrypt',
+    url: 'https%3A%2F%2Fdecrypt.co%2Ffeed',
+    bookmark: false,
+
+    items: [],
+    saved: [false, { items: [] }],
+  },
+  {
+    id: 62,
+    name: 'Blokt',
+    symbol: 'blokt',
+    url: 'https%3A%2F%2Fblokt.com%2Ffeed',
+    bookmark: false,
+
+    items: [],
+    saved: [false, { items: [] }],
+  },
+  {
+    id: 63,
+    name: 'Blockchain News',
+    symbol: 'blockchainnews',
+    url: 'https%3A%2F%2Fwww.the-blockchain.com%2Ffeed%2F',
+    bookmark: false,
+
+    items: [],
+    saved: [false, { items: [] }],
+  },
 ];
