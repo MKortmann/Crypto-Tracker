@@ -14,9 +14,8 @@
 
   <ng-template pTemplate="header">
     <tr>
-      <th [style]="{ width: '100px' }" pSortableColumn="adjusted_rank">
-        <!-- {{ 'TRANSLATE.HOME.TABLE.RANK' | translate}} -->
-        Rank
+      <th [style]="{ width: '95px' }" pSortableColumn="adjusted_rank">
+        {{ 'TRANSLATE.EXCHANGES.TABLE.RANK' | translate}}
         <p-sortIcon field="adjusted_rank"></p-sortIcon>
       </th>
 
@@ -26,7 +25,7 @@
             pInputText
             type="text"
             (input)="dt.filter($event.target.value, 'name', 'startsWith')"
-            placeholder="search by name"
+            placeholder="{{ 'TRANSLATE.EXCHANGES.TABLE.INPUT_SEARCH_FIELD' | translate}}"
             class="ui-column-filter"
           />
         </div>
@@ -43,16 +42,14 @@
         ></p-dropdown>
       </th>
       <th class="hideBelow768" [style]="{ width: '110px' }">
-        Vol. 24h $
-        <!-- {{ 'TRANSLATE.HOME.TABLE.PRICE' | translate }} -->
+        {{ 'TRANSLATE.EXCHANGES.TABLE.VOLUME_24H' | translate}}
       </th>
       <th
-        class="hideBelow640"
-        [style]="{ width: '150px' }"
-        pSortableColumn="currencies"
+      class="hideBelow640"
+      [style]="{ width: '160px' }"
+      pSortableColumn="currencies"
       >
-        <!-- {{ 'TRANSLATE.HOME.TABLE.PRICE_EUR' | translate }} -->
-        Currencies
+      {{ 'TRANSLATE.EXCHANGES.TABLE.CURRENCIES' | translate}}
         <p-sortIcon field="currencies"></p-sortIcon>
       </th>
       <th
@@ -60,19 +57,16 @@
         [style]="{ width: '140px' }"
         pSortableColumn="markets"
       >
-        <!-- {{ 'TRANSLATE.HOME.TABLE.PRICE_EUR' | translate }} -->
-        Markets
-        <p-sortIcon field="markets"></p-sortIcon>
-      </th>
-      <th class="hideBelow1200">
-        Description
-        <!-- {{ 'TRANSLATE.HOME.TABLE.PRICE' | translate }} -->
-      </th>
+      {{ 'TRANSLATE.EXCHANGES.TABLE.MARKETS' | translate}}
+      <p-sortIcon field="markets"></p-sortIcon>
+    </th>
+    <th class="hideBelow1200">
+      {{ 'TRANSLATE.EXCHANGES.TABLE.DESCRIPTION' | translate}}
+    </th>
 
-      <th class="hideBelow768" [style]="{ width: '160px' }">
-        <!-- {{ 'TRANSLATE.HOME.TABLE.PRICE_BTC' | translate }} -->
-        Website
-      </th>
+    <th class="hideBelow768" [style]="{ width: '160px' }">
+      {{ 'TRANSLATE.EXCHANGES.TABLE.WEBSITE' | translate}}
+    </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-exchange>
@@ -105,19 +99,15 @@
       </td>
       <td class="hideBelow768">
         {{ exchange.quotes.USD.adjusted_volume_24h | formatCurrency }}
-        <!-- {{ exchange.price_usd | currency: 'USD' }} -->
       </td>
       <td class="hideBelow640">
         {{ exchange.currencies }}
-        <!-- {{ exchange.price_usd | currency: 'USD' }} -->
       </td>
       <td class="hideBelow640">
         {{ exchange.markets }}
-        <!-- {{ exchange.price_usd | currency: 'USD' }} -->
       </td>
       <td class="hideBelow1200">
         {{ exchange.description }}
-        <!-- {{ exchange.price_usd | currency: 'USD' }} -->
       </td>
       <td class="hideBelow768">
         <li (click)="onNavigate($event)">

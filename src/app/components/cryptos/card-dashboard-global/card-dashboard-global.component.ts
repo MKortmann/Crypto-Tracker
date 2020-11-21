@@ -39,28 +39,32 @@ export class CardDashboardGlobalComponent implements OnInit {
       (newGlobalData) => {
         this.dataCard = [
           {
-            name: this.translate.instant('TRANSLATE.HOME.GRAPHIC_CARD.BITCOIN'),
+            name: this.translate.instant(
+              'TRANSLATE.CRYPTOS.GRAPHIC_CARD.BITCOIN'
+            ),
             value: newGlobalData[0].btc_d + '%',
           },
           {
             name: this.translate.instant(
-              'TRANSLATE.HOME.GRAPHIC_CARD.ETHEREUM'
+              'TRANSLATE.CRYPTOS.GRAPHIC_CARD.ETHEREUM'
             ),
             value: newGlobalData[0].eth_d + '%',
           },
           {
-            name: this.translate.instant('TRANSLATE.HOME.GRAPHIC_CARD.CRYPTOS'),
+            name: this.translate.instant(
+              'TRANSLATE.CRYPTOS.GRAPHIC_CARD.CRYPTOS'
+            ),
             value: newGlobalData[0].coins_count,
           },
           {
             name: this.translate.instant(
-              'TRANSLATE.HOME.GRAPHIC_CARD.ACTIVE_MARKETS'
+              'TRANSLATE.CRYPTOS.GRAPHIC_CARD.ACTIVE_MARKETS'
             ),
             value: newGlobalData[0].active_markets,
           },
           {
             name: this.translate.instant(
-              'TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_MARKET_CAP'
+              'TRANSLATE.CRYPTOS.GRAPHIC_CARD.TOTAL_OF_MARKET_CAP'
             ),
             value: newGlobalData[0].total_mcap,
             value_usd: newGlobalData[0].total_mcap,
@@ -68,7 +72,7 @@ export class CardDashboardGlobalComponent implements OnInit {
           },
           {
             name: this.translate.instant(
-              'TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_VOLUME'
+              'TRANSLATE.CRYPTOS.GRAPHIC_CARD.TOTAL_OF_VOLUME'
             ),
             value: newGlobalData[0].total_volume,
             value_usd: newGlobalData[0].total_volume,
@@ -86,35 +90,35 @@ export class CardDashboardGlobalComponent implements OnInit {
 
   private updateLanguageTranslation() {
     this.translate
-      .stream('TRANSLATE.HOME.GRAPHIC_CARD.BITCOIN')
+      .stream('TRANSLATE.CRYPTOS.GRAPHIC_CARD.BITCOIN')
       .subscribe((res: string) => {
         this.dataCard[0].name = res;
       });
     this.translate
-      .stream('TRANSLATE.HOME.GRAPHIC_CARD.ETHEREUM')
+      .stream('TRANSLATE.CRYPTOS.GRAPHIC_CARD.ETHEREUM')
       .subscribe((res: string) => {
         this.dataCard[1].name = res;
       });
     this.translate
-      .stream('TRANSLATE.HOME.GRAPHIC_CARD.CRYPTOS')
+      .stream('TRANSLATE.CRYPTOS.GRAPHIC_CARD.CRYPTOS')
       .subscribe((res: string) => {
         this.dataCard[2].name = res;
       });
 
     this.translate
-      .stream('TRANSLATE.HOME.GRAPHIC_CARD.ACTIVE_MARKETS')
+      .stream('TRANSLATE.CRYPTOS.GRAPHIC_CARD.ACTIVE_MARKETS')
       .subscribe((res: string) => {
         this.dataCard[3].name = res;
       });
 
     this.translate
-      .stream('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_MARKET_CAP')
+      .stream('TRANSLATE.CRYPTOS.GRAPHIC_CARD.TOTAL_OF_MARKET_CAP')
       .subscribe((res: string) => {
         this.dataCard[4].name = res;
       });
 
     this.translate
-      .stream('TRANSLATE.HOME.GRAPHIC_CARD.TOTAL_OF_VOLUME')
+      .stream('TRANSLATE.CRYPTOS.GRAPHIC_CARD.TOTAL_OF_VOLUME')
       .subscribe((res: string) => {
         this.dataCard[5].name = res;
       });

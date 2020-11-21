@@ -42,7 +42,8 @@ img {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: $ss-padding;
+  padding-top: $m-padding;
+  padding-bottom: $m-padding;
 }
 
 input {
