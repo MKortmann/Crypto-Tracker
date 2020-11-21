@@ -63,15 +63,6 @@ input {
   margin: 0 !important;
 }
 
-::ng-deep .p-paginator {
-  padding: $s-padding;
-}
-
-::ng-deep .p-paginator .p-paginator-last,
-::ng-deep .p-paginator .p-paginator-first {
-  display: none !important;
-}
-
 span {
   padding: 0;
   margin: 0;
