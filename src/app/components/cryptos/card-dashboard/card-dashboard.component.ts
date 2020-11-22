@@ -23,7 +23,8 @@ export class CardDashboardComponent implements OnInit {
   @Input() symbol;
   rateConvertEUR: number;
   timer = null;
-  totalNumberOfCards = 12;
+  private readonly TOTAL_NUMBER_OF_CARDS =
+    GLOBAL_VARIABLES.TOTAL_NUMBER_OF_CARDS;
 
   constructor(
     private coinLoreService: CoinLoreService,
@@ -34,7 +35,7 @@ export class CardDashboardComponent implements OnInit {
   ngOnInit(): void {
     // filling with values
     this.coinLoreService
-      .getGlobalCryptoData(0, this.totalNumberOfCards)
+      .getGlobalCryptoData(0, this.TOTAL_NUMBER_OF_CARDS)
       .subscribe((res) => {
         this.data = [...res.data];
         this.getTheLowHighPriceValues();
@@ -77,31 +78,12 @@ export class CardDashboardComponent implements OnInit {
       fullName = this.checkIfTheNameNeedToBeRenamed(item, fullName);
       item[`price_eur`] = item.price_usd * this.rateConvertEUR;
 
-      if (index < 10) {
-        this.coinPaprikaService
-          .getOHLCFullDayToday(fullName)
-          .subscribe((res) => {
-            item[`high_usd`] = res[0].high.toFixed(2);
-            item[`low_usd`] = res[0].low.toFixed(2);
-            item[`high_eur`] = res[0].high.toFixed(2) * this.rateConvertEUR;
-            item[`low_eur`] = res[0].low.toFixed(2) * this.rateConvertEUR;
-          });
-      } else {
-        // necessary because of API fetch limitation!!
-        this.timer = setTimeout(() => {
-          this.coinPaprikaService.getOHLCFullDayToday(fullName).subscribe(
-            (res) => {
-              item[`high_usd`] = res[0].high.toFixed(2);
-              item[`low_usd`] = res[0].low.toFixed(2);
-              item[`high_eur`] = res[0].high.toFixed(2) * this.rateConvertEUR;
-              item[`low_eur`] = res[0].low.toFixed(2) * this.rateConvertEUR;
-            },
-            (error) => {
-              console.log('Error at getOHLCFullDay', error);
-            }
-          );
-        }, 2000);
-      }
+      this.coinPaprikaService.getOHLCFullDayToday(fullName).subscribe((res) => {
+        item[`high_usd`] = res[0].high.toFixed(2);
+        item[`low_usd`] = res[0].low.toFixed(2);
+        item[`high_eur`] = res[0].high.toFixed(2) * this.rateConvertEUR;
+        item[`low_eur`] = res[0].low.toFixed(2) * this.rateConvertEUR;
+      });
     });
   }
 

@@ -49,7 +49,7 @@ import { GraphicDashboardCoinComponent } from './components/cryptos/graphic-dash
 
 import { CalendarModule } from 'primeng/calendar';
 import { CarouselModule } from 'primeng/carousel';
-import { GraphicDashboardTickersComponent } from './components/cryptos/graphic-dashboard-tickers/graphic-dashboard-tickers.component';
+import { Graphic24HoursComponent } from './components/cryptos/graphic-24-hours/graphic-24-hours.component';
 import { SidebarModule } from 'primeng/sidebar';
 
 import { ExchangesComponent } from './components/exchanges/exchanges.component';
@@ -87,7 +87,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     FormatDatePipe,
     SubNavComponent,
     GraphicDashboardCoinComponent,
-    GraphicDashboardTickersComponent,
+    Graphic24HoursComponent,
     ExchangesComponent,
     NewsComponent,
     TableExchangesComponent,
