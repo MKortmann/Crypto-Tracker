@@ -17,11 +17,11 @@ import 'chartjs-plugin-annotation';
 import 'chartjs-plugin-zoom';
 
 @Component({
-  selector: 'app-graphic-dashboard-coin',
-  templateUrl: './graphic-dashboard-coin.component.html',
-  styleUrls: ['./graphic-dashboard-coin.component.scss'],
+  selector: 'app-graphic-full-year',
+  templateUrl: './graphic-full-year.component.html',
+  styleUrls: ['./graphic-full-year.component.scss'],
 })
-export class GraphicDashboardCoinComponent implements OnInit, OnChanges {
+export class GraphicFullYearComponent implements OnInit, OnChanges {
   @Input() zoomGraph: boolean;
   coinName = 'btc-bitcoin';
   symbol = 'btc';

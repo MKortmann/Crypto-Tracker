@@ -7,11 +7,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { GLOBAL_VARIABLES } from '../../../globals/global-constants';
 
 @Component({
-  selector: 'app-card-dashboard-global',
-  templateUrl: './card-dashboard-global.component.html',
-  styleUrls: ['./card-dashboard-global.component.scss'],
+  selector: 'app-cards-global-data',
+  templateUrl: './cards-global-data.component.html',
+  styleUrls: ['./cards-global-data.component.scss'],
 })
-export class CardDashboardGlobalComponent implements OnInit {
+export class CardsGlobalDataComponent implements OnInit {
   dataCard: any;
   coins: Coin[];
   selectRateEUR: number;

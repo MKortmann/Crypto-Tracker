@@ -1,13 +1,13 @@
 
-<app-card-dashboard-global></app-card-dashboard-global>
-<app-card-dashboard [symbol]="symbol"></app-card-dashboard>
+<app-cards-global-data></app-cards-global-data>
+<app-cards-cryptos [symbol]="symbol"></app-cards-cryptos>
 
-<app-graphic-dashboard-coin
+<app-graphic-full-year
   [zoomGraph]="zoomGraph"
   [selectRate]="selectRate"
   [selectedExchange]="selectedExchange"
   *ngIf="visible; else elseBlock"
-></app-graphic-dashboard-coin>
+></app-graphic-full-year>
 <ng-template #elseBlock>
   <app-graphic-24-hours
     [zoomGraph]="zoomGraph"
@@ -49,4 +49,4 @@
 </p-overlayPanel>
 
 
-<app-table [symbol]="symbol"></app-table>
+<app-table-cryptos [symbol]="symbol"></app-table-cryptos>

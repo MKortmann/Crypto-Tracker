@@ -9,11 +9,11 @@ import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 import { GLOBAL_VARIABLES } from '../../../globals/global-constants';
 
 @Component({
-  selector: 'app-card-dashboard',
-  templateUrl: './card-dashboard.component.html',
-  styleUrls: ['./card-dashboard.component.scss'],
+  selector: 'app-cards-cryptos',
+  templateUrl: './cards-cryptos.component.html',
+  styleUrls: ['./cards-cryptos.component.scss'],
 })
-export class CardDashboardComponent implements OnInit {
+export class CardsCryptosComponent implements OnInit {
   private readonly PRICE_EUR = `price_eur`;
   private readonly BSV = 'BSV';
   private readonly BCHSV = 'BCHSV';
