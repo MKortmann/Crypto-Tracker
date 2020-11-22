@@ -2,7 +2,8 @@ import { Injectable, EventEmitter } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, forkJoin } from 'rxjs';
+import { Observable, forkJoin, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -96,9 +97,24 @@ export class CoinPaprikaService {
       '&end=' +
       lastTwoYearsEndDate;
 
-    const response1 = this.http.get(url);
-    const response2 = this.http.get(urlLastYear);
-    const response3 = this.http.get(urlLastTwoYears);
-    return forkJoin([response1, response2, response3]);
+    const numberOfUrls = 3;
+    const listOfUrls = [url, urlLastYear, urlLastTwoYears];
+
+    const response = this.prepareListForForkJoin(listOfUrls);
+
+    return forkJoin(response);
+  }
+
+  private prepareListForForkJoin(listOfUrls) {
+    const response = [];
+    for (const item of listOfUrls) {
+      response.push(
+        this.http.get<any>(item).pipe(
+          map((res) => res),
+          catchError((e) => of('Fetch Error'))
+        )
+      );
+    }
+    return response;
   }
 }
