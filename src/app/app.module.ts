@@ -33,9 +33,9 @@ import {
 // our config file for ngx-translate bib
 import { CustomTranslateLoader } from 'src/customTranslateLoader';
 import { NotFoundComponent } from './components/notfound/notfound.component';
-import { TableComponent } from './components/cryptos/table/table.component';
+import { TableCryptosComponent } from './components/cryptos/table-cryptos/table-cryptos.component';
 
-import { CardDashboardComponent } from './components/cryptos/card-dashboard/card-dashboard.component';
+import { CardsCryptosComponent } from './components/cryptos/cards-cryptos/cards-cryptos.component';
 import { FormatCurrencyPipe } from './tools/format-currency.pipe';
 import { FormatUrlPipe } from './tools/format-url.pipe';
 import { FormatDatePipe } from './tools/format-date.pipe';
@@ -45,17 +45,17 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { AccordionModule } from 'primeng/accordion';
 import { SubNavComponent } from './components/sub-nav/sub-nav.component';
-import { GraphicDashboardCoinComponent } from './components/cryptos/graphic-dashboard-coin/graphic-dashboard-coin.component';
+import { GraphicFullYearComponent } from './components/cryptos/graphic-full-year/graphic-full-year.component';
 
 import { CalendarModule } from 'primeng/calendar';
 import { CarouselModule } from 'primeng/carousel';
-import { GraphicDashboardTickersComponent } from './components/cryptos/graphic-dashboard-tickers/graphic-dashboard-tickers.component';
+import { Graphic24HoursComponent } from './components/cryptos/graphic-24-hours/graphic-24-hours.component';
 import { SidebarModule } from 'primeng/sidebar';
 
 import { ExchangesComponent } from './components/exchanges/exchanges.component';
 import { NewsComponent } from './components/news/news.component';
 
-import { CardDashboardGlobalComponent } from './components/cryptos/card-dashboard-global/card-dashboard-global.component';
+import { CardsGlobalDataComponent } from './components/cryptos/cards-global-data/cards-global-data.component';
 import { TableExchangesComponent } from './components/exchanges/table-exchanges/table-exchanges.component';
 import { TabViewModule } from 'primeng/tabview';
 import { SingleFeedComponent } from './components/news/single-feed/single-feed.component';
@@ -79,15 +79,15 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     RegisterComponent,
     LoginComponent,
     NotFoundComponent,
-    TableComponent,
-    CardDashboardGlobalComponent,
-    CardDashboardComponent,
+    TableCryptosComponent,
+    CardsGlobalDataComponent,
+    CardsCryptosComponent,
     FormatCurrencyPipe,
     FormatUrlPipe,
     FormatDatePipe,
     SubNavComponent,
-    GraphicDashboardCoinComponent,
-    GraphicDashboardTickersComponent,
+    GraphicFullYearComponent,
+    Graphic24HoursComponent,
     ExchangesComponent,
     NewsComponent,
     TableExchangesComponent,

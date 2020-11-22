@@ -22,6 +22,7 @@ nav {
 :host ::ng-deep .p-dropdown-label,
 .ng-trigger {
   display: none;
+  cursor: pointer;
 }
 
 :host ::ng-deep .p-dropdown.p-focus {

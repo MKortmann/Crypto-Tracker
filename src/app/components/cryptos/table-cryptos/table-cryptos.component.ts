@@ -17,11 +17,11 @@ interface OptionDropDown {
 }
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
+  selector: 'app-table-cryptos',
+  templateUrl: './table-cryptos.component.html',
+  styleUrls: ['./table-cryptos.component.scss'],
 })
-export class TableComponent implements OnInit {
+export class TableCryptosComponent implements OnInit {
   coins: Coin[];
   exchanges: SelectItem[];
   selectedExchange: any = GLOBAL_VARIABLES.EUR;

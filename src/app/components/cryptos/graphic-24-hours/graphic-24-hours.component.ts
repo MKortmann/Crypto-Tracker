@@ -16,11 +16,11 @@ import 'chartjs-plugin-annotation';
 import 'chartjs-plugin-zoom';
 
 @Component({
-  selector: 'app-graphic-dashboard-tickers',
-  templateUrl: './graphic-dashboard-tickers.component.html',
-  styleUrls: ['./graphic-dashboard-tickers.component.scss'],
+  selector: 'app-graphic-24-hours',
+  templateUrl: './graphic-24-hours.component.html',
+  styleUrls: ['./graphic-24-hours.component.scss'],
 })
-export class GraphicDashboardTickersComponent implements OnInit, OnChanges {
+export class Graphic24HoursComponent implements OnInit, OnChanges {
   constructor(
     private coinPaprikaService: CoinPaprikaService,
     private exchangeService: ExchangeService,
@@ -91,7 +91,6 @@ export class GraphicDashboardTickersComponent implements OnInit, OnChanges {
     this.endDate.setDate(this.endDate.getDate() + 1);
 
     this.startDate = new Date();
-    // startDate.setDate(startDate.getDate());
 
     this.endDateStr = this.endDate.toISOString().split('T')[0];
     this.startDateStr = this.startDate.toISOString().split('T')[0];
@@ -140,8 +139,6 @@ export class GraphicDashboardTickersComponent implements OnInit, OnChanges {
     if (this.chartTickers) {
       this.chartTickers.destroy();
     }
-
-    // let legendClick = Chart.defaults.global.legend.onClick;
 
     this.chartTickers = new Chart('canvasTickers', {
       type: 'line',

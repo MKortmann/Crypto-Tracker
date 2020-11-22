@@ -5,6 +5,8 @@ import { ExchangeService } from '../../services/exchange.service';
 
 import { TranslateService } from '@ngx-translate/core';
 
+import { GLOBAL_VARIABLES } from '../../globals/global-constants';
+
 interface IntervalTimer {
   name: string;
   value: number;
@@ -34,26 +36,26 @@ export class SubNavComponent implements OnInit {
   timeInterval;
   timeIntervalDecrease;
 
-  public readonly SEC_30: number = 30000;
-  public readonly MIN_1: number = 60000;
+  public readonly MIN_3: number = 180000;
   public readonly MIN_5: number = 300000;
   public readonly MIN_10: number = 600000;
   public readonly MIN_30: number = 1800000;
   public readonly MIN_60: number = 3600000;
 
   public readonly Intervals = {
-    SEC_30: 30000,
-    MIN_1: 60000,
+    MIN_3: 180000,
     MIN_5: 300000,
     MIN_10: 600000,
     MIN_30: 1800000,
     MIN_60: 3600000,
   };
 
+  private readonly TOTAL_NUMBER_OF_CARDS =
+    GLOBAL_VARIABLES.TOTAL_NUMBER_OF_CARDS;
+
   ngOnInit(): void {
     this.intervals = [
-      { name: '30 sec', value: 30000 },
-      { name: '1 min', value: 60000 },
+      { name: '3 min', value: 180000 },
       { name: '5 min', value: 300000 },
       { name: '10 min', value: 600000 },
       { name: '30 min', value: 1800000 },
@@ -92,13 +94,9 @@ export class SubNavComponent implements OnInit {
   // reset the show seconds and minutes in accord to interval
   private reset() {
     switch (this.interval) {
-      case this.SEC_30:
-        this.showSeconds = 30;
-        this.showMinutes = 0;
-        break;
-      case this.MIN_1:
+      case this.MIN_3:
         this.showSeconds = 59;
-        this.showMinutes = 0;
+        this.showMinutes = 2;
         break;
       case this.MIN_5:
         this.showSeconds = 59;
@@ -131,18 +129,19 @@ export class SubNavComponent implements OnInit {
       }
 
       this.timeInterval = setInterval(() => {
-        this.coinLoreService.getGlobalCryptoData(0, 12).subscribe((res) => {
-          this.data = [...res.data];
+        this.coinLoreService
+          .getGlobalCryptoData(0, this.TOTAL_NUMBER_OF_CARDS)
+          .subscribe((res) => {
+            this.data = [...res.data];
 
-          this.exchangeService.getMoney('USD').subscribe((res2) => {
-            this.data.forEach((item) => {
-              item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
+            this.exchangeService.getMoney('USD').subscribe((res2) => {
+              this.data.forEach((item) => {
+                item[`price_eur`] = item.price_usd * res2.rates[`EUR`];
+              });
             });
+            this.coinLoreService.newData(this.data);
+            this.reset();
           });
-          this.coinLoreService.newData(this.data);
-          this.reset();
-        });
-        console.log(this.interval);
       }, this.interval);
     } else {
       this.interval = 0;

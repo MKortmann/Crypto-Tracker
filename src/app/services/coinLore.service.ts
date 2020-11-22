@@ -33,11 +33,6 @@ export class CoinLoreService {
   // global market values
   getGlobal(): Observable<any> {
     return this.http.get<any>(`${this.coinLoreGlobalUrl}`);
-    // .toPromise()
-    // .then((res) => {
-    //   this.globalValuesFromCoinLore = res;
-    //   return res;
-    // });
   }
 
   getData(): Observable<any> {
