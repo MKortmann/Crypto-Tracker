@@ -19,6 +19,7 @@ export class CryptosComponent implements OnInit {
   selectRate = 1;
   exchanges: SelectItem[];
   symbol = 'BTC';
+  toggleGraph = false;
 
   constructor(
     private translate: TranslateService,
@@ -65,8 +66,8 @@ export class CryptosComponent implements OnInit {
     );
   }
 
-  toggleZoomGraph() {
-    this.zoomGraph = !this.zoomGraph;
+  toggleShowHideGraph() {
+    this.toggleGraph = !this.toggleGraph;
   }
 
   switchGraphs() {

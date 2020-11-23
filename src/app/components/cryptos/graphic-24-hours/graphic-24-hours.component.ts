@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { CoinPaprikaService } from '../../../services/coin-paprika.service';
 
@@ -20,7 +20,7 @@ import 'chartjs-plugin-zoom';
   templateUrl: './graphic-24-hours.component.html',
   styleUrls: ['./graphic-24-hours.component.scss'],
 })
-export class Graphic24HoursComponent implements OnInit, OnChanges {
+export class Graphic24HoursComponent implements OnInit {
   constructor(
     private coinPaprikaService: CoinPaprikaService,
     private exchangeService: ExchangeService,
@@ -33,7 +33,6 @@ export class Graphic24HoursComponent implements OnInit, OnChanges {
   data = [30, 60, 100];
   @Input() selectedExchange;
   @Input() selectRate;
-  @Input() zoomGraph: boolean;
 
   valueAverageAnnotation = 0;
 
@@ -45,12 +44,6 @@ export class Graphic24HoursComponent implements OnInit, OnChanges {
   startDate: Date;
   endDateStr: string;
   startDateStr: string;
-
-  ngOnChanges() {
-    this.options.zoom.enabled = this.zoomGraph;
-    this.options.pan.enabled = this.zoomGraph;
-    this.updateUrl();
-  }
 
   ngOnInit(): void {
     if (localStorage.getItem('coinName') !== null) {
