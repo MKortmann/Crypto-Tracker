@@ -4,6 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { ExchangeService } from '../../services/exchange.service';
 import { SelectItem } from 'primeng/api';
 
+import { Carousel } from 'primeng/carousel';
+
 @Component({
   selector: 'app-cryptos',
   templateUrl: './cryptos.component.html',
@@ -21,7 +23,11 @@ export class CryptosComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private exchangeService: ExchangeService
-  ) {}
+  ) {
+    // If we override the onTouchMove method, the scroll would start working.
+    // Because in the plugin implementation of this method default event is prevented.
+    Carousel.prototype.onTouchMove = () => {};
+  }
 
   ngOnInit(): void {
     if (

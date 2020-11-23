@@ -107,12 +107,12 @@ export const options = {
     ],
   },
   zoom: {
-    enabled: true,
+    enabled: false,
     // directions.
     mode: 'xy',
   },
   pan: {
-    enabled: true,
+    enabled: false,
     mode: 'xy',
     speed: 10,
   },
