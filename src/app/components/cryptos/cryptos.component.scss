@@ -5,7 +5,12 @@
   margin-bottom: $s-padding;
 }
 
-::ng-deep button {
-  min-height: $m-Height !important;
-  margin-left: $s-padding !important;
+.btn-switch-graphs {
+  min-height: $m-Height;
+  margin-left: $s-padding;
+}
+
+.container {
+  margin-top: $s-padding;
+  text-align: start;
 }

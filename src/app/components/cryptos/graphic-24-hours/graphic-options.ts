@@ -116,7 +116,5 @@ export const options = {
     enabled: true,
     mode: 'xy',
     speed: 10,
-
-  }
-
+  },
 };

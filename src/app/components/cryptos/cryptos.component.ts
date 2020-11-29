@@ -4,6 +4,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { ExchangeService } from '../../services/exchange.service';
 import { SelectItem } from 'primeng/api';
 
+import { Carousel } from 'primeng/carousel';
+
+import { catchError } from 'rxjs/operators';
+
 @Component({
   selector: 'app-cryptos',
   templateUrl: './cryptos.component.html',
@@ -17,31 +21,24 @@ export class CryptosComponent implements OnInit {
   selectRate = 1;
   exchanges: SelectItem[];
   symbol = 'BTC';
+  toggleGraph = false;
 
   constructor(
     private translate: TranslateService,
     private exchangeService: ExchangeService
-  ) {}
+  ) {
+    // If we override the onTouchMove method, the scroll would start working.
+    // Because in the plugin implementation of this method default event is prevented.
+    Carousel.prototype.onTouchMove = () => {};
+  }
 
   ngOnInit(): void {
-    if (
-      localStorage.getItem('selectedExchange') !== null &&
-      localStorage.getItem('selectedExchange') !== undefined
-    ) {
-      this.selectedExchange = localStorage.getItem('selectedExchange');
-      this.selectRate = JSON.parse(localStorage.getItem('selectRate'));
-    } else {
-      this.selectedExchange = 'USD';
-      this.selectRate = 1;
-    }
+    this.checkTheShowHideGraphStateByTheUser();
+
+    this.checkTheSelectedExchangeByTheUser();
 
     // localStorage
-    if (localStorage.getItem('coinName') !== null) {
-      this.symbol = localStorage
-        .getItem('coinName')
-        .split('-')[0]
-        .toUpperCase();
-    }
+    this.checkTheSelectedCoinByTheUser();
 
     this.exchangeService.getMoney('USD').subscribe(
       (res) => {
@@ -50,17 +47,36 @@ export class CryptosComponent implements OnInit {
           label: lat,
           value: lng,
         }));
-        // checkLocalStorage
-        // if (this.selectedExchange !== null) {
-        //   this.selectRate = JSON.parse(localStorage.getItem('selectRate'));
-        // }
       },
       (error) => console.log(error)
     );
   }
 
-  toggleZoomGraph() {
-    this.zoomGraph = !this.zoomGraph;
+  private checkTheShowHideGraphStateByTheUser() {
+    if (localStorage.getItem('toogleGraph') !== null) {
+      this.toggleGraph = JSON.parse(localStorage.getItem('toogleGraph'));
+    }
+  }
+
+  private checkTheSelectedExchangeByTheUser() {
+    if (localStorage.getItem('selectedExchange') !== null) {
+      this.selectedExchange = localStorage.getItem('selectedExchange');
+      this.selectRate = JSON.parse(localStorage.getItem('selectRate'));
+    }
+  }
+
+  private checkTheSelectedCoinByTheUser() {
+    if (localStorage.getItem('coinName') !== null) {
+      this.symbol = localStorage
+        .getItem('coinName')
+        .split('-')[0]
+        .toUpperCase();
+    }
+  }
+
+  toggleShowHideGraph() {
+    this.toggleGraph = !this.toggleGraph;
+    localStorage.setItem('toogleGraph', JSON.stringify(this.toggleGraph));
   }
 
   switchGraphs() {

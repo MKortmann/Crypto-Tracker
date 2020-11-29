@@ -15,4 +15,5 @@ export interface Coin {
   price_btc;
   tsupply;
   msupply;
+  selected;
 }

@@ -21,8 +21,7 @@ import 'chartjs-plugin-zoom';
   templateUrl: './graphic-full-year.component.html',
   styleUrls: ['./graphic-full-year.component.scss'],
 })
-export class GraphicFullYearComponent implements OnInit, OnChanges {
-  @Input() zoomGraph: boolean;
+export class GraphicFullYearComponent implements OnInit {
   coinName = 'btc-bitcoin';
   symbol = 'btc';
   show = false;
@@ -55,12 +54,6 @@ export class GraphicFullYearComponent implements OnInit, OnChanges {
     private exchangeService: ExchangeService,
     private translateService: TranslateService
   ) {}
-
-  ngOnChanges() {
-    this.options.zoom.enabled = this.zoomGraph;
-    this.options.pan.enabled = this.zoomGraph;
-    this.fetchDataToPlotGraph(this.url);
-  }
 
   ngOnInit(): void {
     if (screen.width < 1500) {
