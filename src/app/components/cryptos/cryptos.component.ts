@@ -6,8 +6,6 @@ import { SelectItem } from 'primeng/api';
 
 import { Carousel } from 'primeng/carousel';
 
-import { catchError } from 'rxjs/operators';
-
 @Component({
   selector: 'app-cryptos',
   templateUrl: './cryptos.component.html',
@@ -21,7 +19,6 @@ export class CryptosComponent implements OnInit {
   selectRate = 1;
   exchanges: SelectItem[];
   symbol = 'BTC';
-  toggleGraph = false;
   listWatchCryptos = Array.from({ length: 100 }, (x) => false);
 
   constructor(
@@ -34,8 +31,6 @@ export class CryptosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.checkTheShowHideGraphStateByTheUser();
-
     this.checkTheSelectedExchangeByTheUser();
 
     // localStorage
@@ -62,12 +57,6 @@ export class CryptosComponent implements OnInit {
     }
   }
 
-  private checkTheShowHideGraphStateByTheUser() {
-    if (localStorage.getItem('toogleGraph') !== null) {
-      this.toggleGraph = JSON.parse(localStorage.getItem('toogleGraph'));
-    }
-  }
-
   private checkTheSelectedExchangeByTheUser() {
     if (localStorage.getItem('selectedExchange') !== null) {
       this.selectedExchange = localStorage.getItem('selectedExchange');
@@ -90,11 +79,6 @@ export class CryptosComponent implements OnInit {
       'listWatchCryptos',
       JSON.stringify(this.listWatchCryptos)
     );
-  }
-
-  toggleShowHideGraph() {
-    this.toggleGraph = !this.toggleGraph;
-    localStorage.setItem('toogleGraph', JSON.stringify(this.toggleGraph));
   }
 
   switchGraphs() {

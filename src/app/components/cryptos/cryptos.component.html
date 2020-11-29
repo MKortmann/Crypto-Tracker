@@ -1,59 +1,51 @@
 
 <app-cards-global-data></app-cards-global-data>
-<!-- <div *ngIf="toggleGraph">
 
-  <app-graphic-full-year
-  [zoomGraph]="zoomGraph"
-  [selectRate]="selectRate"
-  [selectedExchange]="selectedExchange"
-  *ngIf="visible; else elseBlock"
-    ></app-graphic-full-year>
-    <ng-template #elseBlock>
-      <app-graphic-24-hours
-        [zoomGraph]="zoomGraph"
-        [selectRate]="selectRate"
-        [selectedExchange]="selectedExchange"
-      ></app-graphic-24-hours>
-    </ng-template>
-
-    <div class="container">
-      <p-dropdown
-      ngDefaultControl
-      [options]="exchanges"
-      (onChange)="selection($event, dd)"
-      [(ngModel)]="selectRate"
-      name="selectRate"
-      #dd
-    ></p-dropdown>
-    <button
-      pButton
-      type="button"
-      label="{{ label }}"
-      class="p-button-secondary p-button-outlined p-button-sm btn-switch-graphs"
-      (click)="switchGraphs()"
-    ></button>
-    </div>
-    <br>
-
-</div>
-
-  <div class="container">
-
-      <button pButton icon="pi pi-chart-line" class="p-button-outlined p-button-secondary button-chart-options"
-      (click)="toggleShowHideGraph()"></button>
-
-  </div> -->
+<app-cards-cryptos></app-cards-cryptos>
 
   <p-tabView>
     <p-tabPanel header="Cryptos">
       <app-table-cryptos [symbol]="symbol" [atWatchList]="false" [listWatchCryptos]="listWatchCryptos" (clickedWatchListStart)="setWatchListStar($event)"></app-table-cryptos>
     </p-tabPanel>
     <p-tabPanel header="Watchlist">
-      <!-- <app-cards-cryptos [symbol]="symbol"></app-cards-cryptos> -->
       <app-table-cryptos [symbol]="symbol" [atWatchList]="true" [listWatchCryptos]="listWatchCryptos" (clickedWatchListStart)="setWatchListStar($event)"></app-table-cryptos>
     </p-tabPanel>
+
     <p-tabPanel header="Graph">
-      <app-cards-cryptos [symbol]="symbol"></app-cards-cryptos>
+
+      <ng-template pTemplate="content">
+
+      <app-graphic-full-year
+      [zoomGraph]="zoomGraph"
+      [selectRate]="selectRate"
+      [selectedExchange]="selectedExchange"
+        ></app-graphic-full-year>
+
+      <app-graphic-24-hours
+        [zoomGraph]="zoomGraph"
+        [selectRate]="selectRate"
+        [selectedExchange]="selectedExchange"
+      ></app-graphic-24-hours>
+
+
+      <div class="container">
+          <p-dropdown
+          ngDefaultControl
+          [options]="exchanges"
+          (onChange)="selection($event, dd)"
+          [(ngModel)]="selectRate"
+          name="selectRate"
+          #dd
+        ></p-dropdown>
+        <button
+          pButton
+          type="button"
+          label="{{ label }}"
+          class="p-button-secondary p-button-outlined p-button-sm btn-switch-graphs"
+          (click)="switchGraphs()"
+        ></button>
+        </div>
+      </ng-template>
     </p-tabPanel>
   </p-tabView>
 
