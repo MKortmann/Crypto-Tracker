@@ -1,8 +1,6 @@
 
 <app-cards-global-data></app-cards-global-data>
-<app-cards-cryptos [symbol]="symbol"></app-cards-cryptos>
-
-<div *ngIf="toggleGraph">
+<!-- <div *ngIf="toggleGraph">
 
   <app-graphic-full-year
   [zoomGraph]="zoomGraph"
@@ -44,6 +42,19 @@
       <button pButton icon="pi pi-chart-line" class="p-button-outlined p-button-secondary button-chart-options"
       (click)="toggleShowHideGraph()"></button>
 
-  </div>
+  </div> -->
 
-<app-table-cryptos [symbol]="symbol"></app-table-cryptos>
+  <p-tabView>
+    <p-tabPanel header="Cryptos">
+      <app-table-cryptos [symbol]="symbol" [atWatchList]="false"></app-table-cryptos>
+    </p-tabPanel>
+    <p-tabPanel header="Watchlist">
+      <!-- <app-cards-cryptos [symbol]="symbol"></app-cards-cryptos> -->
+      <app-table-cryptos [symbol]="symbol" [atWatchList]="true"></app-table-cryptos>
+    </p-tabPanel>
+    <p-tabPanel header="Graph">
+      <app-cards-cryptos [symbol]="symbol"></app-cards-cryptos>
+    </p-tabPanel>
+  </p-tabView>
+
+

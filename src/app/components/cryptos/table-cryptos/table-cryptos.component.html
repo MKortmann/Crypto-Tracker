@@ -2,7 +2,7 @@
   [value]="coins"
   [paginator]="true"
   [pageLinks]="3"
-  [rows]="8"
+  [rows]="10"
   [rowHover]="true"
   [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
   [showCurrentPageReport]="false"
@@ -101,14 +101,17 @@
       </th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-coin>
+  <ng-template pTemplate="body" let-coin let-rowIndex="rowIndex">
     <tr
+      *ngIf="atWatchList && listWatchCoin[rowIndex] || !atWatchList"
       class="ui-selectable-row"
       (click)="selectedCoin($event)"
       [class.selected]="coin.symbol === symbol"
     >
       <td class="hideBelow768" [style]="{ width: '80px' }">{{ coin.rank }}</td>
-      <td>
+      <td class="p-d-flex">
+        <i *ngIf="!listWatchCoin[rowIndex]" class="pi pi-star-o" style="font-size: 1.5rem; margin-right: 5px; cursor: pointer" (click)="toggleWatchList(rowIndex)"></i>
+        <i *ngIf="listWatchCoin[rowIndex]" class="pi pi-star" style="font-size: 1.5rem; margin-right: 5px; cursor: pointer" (click)="toggleWatchList(rowIndex)"></i>
         <img
           src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png"
           alt="{{ coin.symbol | lowercase }}"

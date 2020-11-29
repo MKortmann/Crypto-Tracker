@@ -23,11 +23,13 @@ interface OptionDropDown {
 })
 export class TableCryptosComponent implements OnInit {
   coins: Coin[];
+  listWatchCoin: any;
   exchanges: SelectItem[];
   selectedExchange: any = GLOBAL_VARIABLES.EUR;
   selectRate: number;
   selectRateEUR: any;
   @Input() symbol;
+  @Input() atWatchList;
 
   optionsDropDown: SelectItem[];
   selectedDropDownOption: OptionDropDown;
@@ -88,6 +90,18 @@ export class TableCryptosComponent implements OnInit {
     });
   }
 
+  private getListWatchCryptos() {
+    if (localStorage.getItem('listWatchCoin') !== null) {
+      this.listWatchCoin = JSON.parse(localStorage.getItem('listWatchCoin'));
+    }
+  }
+
+  toggleWatchList(event) {
+    alert('clicked at:' + event);
+    this.listWatchCoin[event] = !this.listWatchCoin[event];
+    localStorage.setItem('listWatchCoin', JSON.stringify(this.listWatchCoin));
+  }
+
   private extractSymbolName(coin: any): string {
     let symbol = coin.split('-')[0].toUpperCase();
     if (symbol === 'BSV') {
@@ -101,6 +115,10 @@ export class TableCryptosComponent implements OnInit {
     this.coinLoreService.getGlobalCryptoData(0, 100).subscribe(
       (res) => {
         this.coins = res.data;
+
+        this.listWatchCoin = Array.from(res.data, (x) => false);
+
+        this.getListWatchCryptos();
 
         this.exchangeService.getMoney('USD').subscribe(
           (res2) => {
