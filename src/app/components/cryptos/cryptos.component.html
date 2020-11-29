@@ -46,11 +46,11 @@
 
   <p-tabView>
     <p-tabPanel header="Cryptos">
-      <app-table-cryptos [symbol]="symbol" [atWatchList]="false"></app-table-cryptos>
+      <app-table-cryptos [symbol]="symbol" [atWatchList]="false" [listWatchCryptos]="listWatchCryptos" (clickedWatchListStart)="setWatchListStar($event)"></app-table-cryptos>
     </p-tabPanel>
     <p-tabPanel header="Watchlist">
       <!-- <app-cards-cryptos [symbol]="symbol"></app-cards-cryptos> -->
-      <app-table-cryptos [symbol]="symbol" [atWatchList]="true"></app-table-cryptos>
+      <app-table-cryptos [symbol]="symbol" [atWatchList]="true" [listWatchCryptos]="listWatchCryptos" (clickedWatchListStart)="setWatchListStar($event)"></app-table-cryptos>
     </p-tabPanel>
     <p-tabPanel header="Graph">
       <app-cards-cryptos [symbol]="symbol"></app-cards-cryptos>

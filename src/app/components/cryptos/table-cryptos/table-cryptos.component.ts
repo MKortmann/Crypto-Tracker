@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 import { Coin } from '../../../models/Coin';
 
@@ -23,13 +23,15 @@ interface OptionDropDown {
 })
 export class TableCryptosComponent implements OnInit {
   coins: Coin[];
-  listWatchCoin: any;
   exchanges: SelectItem[];
   selectedExchange: any = GLOBAL_VARIABLES.EUR;
   selectRate: number;
   selectRateEUR: any;
   @Input() symbol;
   @Input() atWatchList;
+  @Input() listWatchCryptos;
+
+  @Output() clickedWatchListStart = new EventEmitter<number>();
 
   optionsDropDown: SelectItem[];
   selectedDropDownOption: OptionDropDown;
@@ -90,16 +92,8 @@ export class TableCryptosComponent implements OnInit {
     });
   }
 
-  private getListWatchCryptos() {
-    if (localStorage.getItem('listWatchCoin') !== null) {
-      this.listWatchCoin = JSON.parse(localStorage.getItem('listWatchCoin'));
-    }
-  }
-
   toggleWatchList(event) {
-    alert('clicked at:' + event);
-    this.listWatchCoin[event] = !this.listWatchCoin[event];
-    localStorage.setItem('listWatchCoin', JSON.stringify(this.listWatchCoin));
+    this.clickedWatchListStart.emit(event);
   }
 
   private extractSymbolName(coin: any): string {
@@ -115,11 +109,6 @@ export class TableCryptosComponent implements OnInit {
     this.coinLoreService.getGlobalCryptoData(0, 100).subscribe(
       (res) => {
         this.coins = res.data;
-
-        this.listWatchCoin = Array.from(res.data, (x) => false);
-
-        this.getListWatchCryptos();
-
         this.exchangeService.getMoney('USD').subscribe(
           (res2) => {
             const array = Object.entries(res2.rates);

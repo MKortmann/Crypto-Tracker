@@ -22,6 +22,7 @@ export class CryptosComponent implements OnInit {
   exchanges: SelectItem[];
   symbol = 'BTC';
   toggleGraph = false;
+  listWatchCryptos = Array.from({ length: 100 }, (x) => false);
 
   constructor(
     private translate: TranslateService,
@@ -40,6 +41,8 @@ export class CryptosComponent implements OnInit {
     // localStorage
     this.checkTheSelectedCoinByTheUser();
 
+    this.getTheWatchListByTheUser();
+
     this.exchangeService.getMoney('USD').subscribe(
       (res) => {
         const array = Object.entries(res.rates);
@@ -50,6 +53,13 @@ export class CryptosComponent implements OnInit {
       },
       (error) => console.log(error)
     );
+  }
+  getTheWatchListByTheUser() {
+    if (localStorage.getItem('listWatchCryptos') !== null) {
+      this.listWatchCryptos = JSON.parse(
+        localStorage.getItem('listWatchCryptos')
+      );
+    }
   }
 
   private checkTheShowHideGraphStateByTheUser() {
@@ -72,6 +82,14 @@ export class CryptosComponent implements OnInit {
         .split('-')[0]
         .toUpperCase();
     }
+  }
+
+  setWatchListStar(event) {
+    this.listWatchCryptos[event] = !this.listWatchCryptos[event];
+    localStorage.setItem(
+      'listWatchCryptos',
+      JSON.stringify(this.listWatchCryptos)
+    );
   }
 
   toggleShowHideGraph() {
