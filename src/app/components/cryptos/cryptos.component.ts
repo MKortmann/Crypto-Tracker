@@ -81,14 +81,6 @@ export class CryptosComponent implements OnInit {
     );
   }
 
-  switchGraphs() {
-    this.visible = !this.visible;
-    if (this.label === '24h') {
-      this.label = '1year';
-    } else {
-      this.label = '24h';
-    }
-  }
   // change the coin, so we fetch the data again!
   selection(event, dd) {
     this.selectedExchange = dd.selectedOption.label;

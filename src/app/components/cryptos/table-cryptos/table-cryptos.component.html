@@ -1,6 +1,6 @@
 <p-table
   [value]="coins"
-  [paginator]="true"
+  [paginator]="!atWatchList"
   [pageLinks]="3"
   [rows]="8"
   [rowHover]="true"
@@ -8,6 +8,7 @@
   [showCurrentPageReport]="false"
   #dt
 >
+
   <ng-template pTemplate="header">
     <tr>
       <th
@@ -116,7 +117,12 @@
           src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png"
           alt="{{ coin.symbol | lowercase }}"
         />
-        {{ coin.name }}
+        <span class="hideBelow1500">
+          {{ coin.name }}
+        </span>
+        <span class="hideInBigScreens">
+          {{ coin.symbol }}
+        </span>
       </td>
       <td class="hideBelow1200">{{ coin.price_usd | currency: 'USD' }}</td>
       <td class="hideBelow1200">

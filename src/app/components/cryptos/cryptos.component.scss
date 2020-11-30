@@ -14,3 +14,9 @@
   margin-top: $s-padding;
   text-align: start;
 }
+
+:host ::ng-deep div.p-tabview-panels {
+  padding: 1px !important;
+  padding-top: 2px !important;
+  margin: 0 !important;
+}
