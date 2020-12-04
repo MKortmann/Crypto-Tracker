@@ -1,27 +1,36 @@
-
 <app-cards-global-data></app-cards-global-data>
 
 <app-cards-cryptos></app-cards-cryptos>
 
-  <p-tabView>
-    <p-tabPanel header="Cryptos">
-      <app-table-cryptos [symbol]="symbol" [atWatchList]="false" [listWatchCryptos]="listWatchCryptos" (clickedWatchListStart)="setWatchListStar($event)"></app-table-cryptos>
-    </p-tabPanel>
-    <p-tabPanel header="Watchlist">
-      <app-table-cryptos [symbol]="symbol" [atWatchList]="true" [listWatchCryptos]="listWatchCryptos" (clickedWatchListStart)="setWatchListStar($event)"></app-table-cryptos>
-    </p-tabPanel>
+<p-tabView (onChange)="handleChange($event)">
+  <p-tabPanel header="Cryptos">
+    <app-table-cryptos
+      [symbol]="symbol"
+      [atWatchList]="false"
+      [listWatchCryptos]="listWatchCryptos"
+      (clickedWatchListStart)="setWatchListStar($event)"
+    ></app-table-cryptos>
+  </p-tabPanel>
 
-    <p-tabPanel>
+  <p-tabPanel header="Watchlist">
+    <app-table-cryptos
+      [symbol]="symbol"
+      [atWatchList]="true"
+      [listWatchCryptos]="listWatchCryptos"
+      (clickedWatchListStart)="setWatchListStar($event)"
+    ></app-table-cryptos>
+  </p-tabPanel>
 
-      <ng-template pTemplate="header">
-        <i class="pi pi-chart-line">&nbsp;</i>
-        <span class="hideBelow1500">Full Year</span>
-        <span class="hideInBigScreens">1y</span>
-      </ng-template>
+  <p-tabPanel>
+    <ng-template pTemplate="header">
+      <i class="pi pi-chart-line">&nbsp;</i>
+      <span class="hideBelow1500">Full Year</span>
+      <span class="hideInBigScreens">1y</span>
+    </ng-template>
 
-      <ng-template pTemplate="content">
-
-          <p-dropdown
+    <ng-template pTemplate="content">
+      <div *ngIf="activeTab === 2">
+        <p-dropdown
           ngDefaultControl
           [options]="exchanges"
           (onChange)="selection($event, dd)"
@@ -30,26 +39,25 @@
           #dd
         ></p-dropdown>
 
-      <app-graphic-full-year
-      [zoomGraph]="zoomGraph"
-      [selectRate]="selectRate"
-      [selectedExchange]="selectedExchange"
+        <app-graphic-full-year
+          [zoomGraph]="zoomGraph"
+          [selectRate]="selectRate"
+          [selectedExchange]="selectedExchange"
         ></app-graphic-full-year>
+      </div>
+    </ng-template>
+  </p-tabPanel>
 
-      </ng-template>
-    </p-tabPanel>
+  <p-tabPanel>
+    <ng-template pTemplate="header">
+      <i class="pi pi-chart-line">&nbsp;</i>
+      <span class="hideBelow1500">24 hours</span>
+      <span class="hideInBigScreens">24h</span>
+    </ng-template>
 
-    <p-tabPanel>
-
-      <ng-template pTemplate="header">
-        <i class="pi pi-chart-line">&nbsp;</i>
-        <span class="hideBelow1500">24 hours</span>
-        <span class="hideInBigScreens">24h</span>
-      </ng-template>
-
-      <ng-template pTemplate="content">
-
-          <p-dropdown
+    <ng-template pTemplate="content">
+      <div *ngIf="activeTab === 3">
+        <p-dropdown
           ngDefaultControl
           [options]="exchanges"
           (onChange)="selection($event, dd)"
@@ -58,14 +66,12 @@
           #dd
         ></p-dropdown>
 
-      <app-graphic-24-hours
-        [zoomGraph]="zoomGraph"
-        [selectRate]="selectRate"
-        [selectedExchange]="selectedExchange"
-      ></app-graphic-24-hours>
-
-      </ng-template>
-    </p-tabPanel>
-  </p-tabView>
-
-
+        <app-graphic-24-hours
+          [zoomGraph]="zoomGraph"
+          [selectRate]="selectRate"
+          [selectedExchange]="selectedExchange"
+        ></app-graphic-24-hours>
+      </div>
+    </ng-template>
+  </p-tabPanel>
+</p-tabView>

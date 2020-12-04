@@ -20,6 +20,7 @@ export class CryptosComponent implements OnInit {
   exchanges: SelectItem[];
   symbol = 'BTC';
   listWatchCryptos = Array.from({ length: 100 }, (x) => false);
+  activeTab = 0;
 
   constructor(
     private translate: TranslateService,
@@ -55,6 +56,12 @@ export class CryptosComponent implements OnInit {
         localStorage.getItem('listWatchCryptos')
       );
     }
+  }
+
+  // pTemplate ="content" is lazy load in html, but it does not solve the problem.
+  // handleChange: important because the lazy load of p-table does not work properly.
+  handleChange(e) {
+    this.activeTab = e.index;
   }
 
   private checkTheSelectedExchangeByTheUser() {
