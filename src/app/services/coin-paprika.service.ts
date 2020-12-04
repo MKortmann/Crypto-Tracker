@@ -10,6 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class CoinPaprikaService {
   public onSelectedCoinChange: EventEmitter<any> = new EventEmitter();
+  public plotGraphWithCoinValue: EventEmitter<any> = new EventEmitter();
 
   private readonly getListOfCoinsUrl = 'https://api.coinpaprika.com/v1/coins/';
 
@@ -47,7 +48,12 @@ export class CoinPaprikaService {
   }
 
   public selectedCoinById(value: string) {
+    localStorage.setItem('coinName', value);
     this.onSelectedCoinChange.emit(value);
+  }
+
+  public plotGraphWithCorrectCoinValue(value: string) {
+    this.plotGraphWithCoinValue.emit(value);
   }
 
   public getData(url): Observable<any> {
