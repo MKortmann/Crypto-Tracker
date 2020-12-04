@@ -57,7 +57,7 @@ export class Graphic24HoursComponent implements OnInit {
       this.updateUrl();
     });
 
-    this.coinPaprikaService.onSelectedCoinChange.subscribe(
+    this.coinPaprikaService.plotGraphWithCoinValue.subscribe(
       (name) => {
         const nameTemp = name.split('-');
         this.coinName = name;

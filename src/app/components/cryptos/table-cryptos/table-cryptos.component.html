@@ -8,7 +8,6 @@
   [showCurrentPageReport]="false"
   #dt
 >
-
   <ng-template pTemplate="header">
     <tr>
       <th
@@ -19,13 +18,22 @@
         {{ 'TRANSLATE.CRYPTOS.TABLE.RANK' | translate
         }}<p-sortIcon field="rank"></p-sortIcon>
       </th>
+      <th [style]="{ width: '48px' }" class="th-star">
+        <div
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <i class="pi pi-star" style="font-size: 2.4rem"></i>
+        </div>
+      </th>
       <th>
         <div class="container">
           <input
             pInputText
             type="text"
             (input)="dt.filter($event.target.value, 'name', 'startsWith')"
-            placeholder="{{ 'TRANSLATE.CRYPTOS.TABLE.INPUT_SEARCH_FIELD' | translate }}"
+            placeholder="{{
+              'TRANSLATE.CRYPTOS.TABLE.INPUT_SEARCH_FIELD' | translate
+            }}"
             class="ui-column-filter"
           />
         </div>
@@ -59,7 +67,7 @@
           <ng-template let-item pTemplate="item">
             <span
               class="ui-helper-clearfix"
-              style="position: relative; height: 25px;"
+              style="position: relative; height: 25px"
             >
               <i class="material-icons" aria-hidden="true">{{ item.icon }}</i
               >{{ item.label }}
@@ -72,25 +80,19 @@
       </th>
       <th class="hideBelow768" [style]="{ width: '125px' }">
         <span>
-          <i class="material-icons">
-            swap_vert
-          </i>
+          <i class="material-icons"> swap_vert </i>
           1h
         </span>
       </th>
       <th class="hideBelow768">
         <span>
-          <i class="material-icons">
-            swap_vert
-          </i>
+          <i class="material-icons"> swap_vert </i>
           24h
         </span>
       </th>
       <th class="hideBelow768">
         <span>
-          <i class="material-icons">
-            swap_vert
-          </i>
+          <i class="material-icons"> swap_vert </i>
           7d
         </span>
       </th>
@@ -102,17 +104,35 @@
       </th>
     </tr>
   </ng-template>
+  <!-- BODY -->
   <ng-template pTemplate="body" let-coin let-rowIndex="rowIndex">
     <tr
-      *ngIf="atWatchList && listWatchCryptos[rowIndex] || !atWatchList"
+      *ngIf="(atWatchList && listWatchCryptos[rowIndex]) || !atWatchList"
       class="ui-selectable-row"
-      (click)="selectedCoin($event)"
       [class.selected]="coin.symbol === symbol"
     >
-      <td class="hideBelow768" [style]="{ width: '80px' }">{{ coin.rank }}</td>
-      <td class="p-d-flex">
-        <i *ngIf="!listWatchCryptos[rowIndex]" class="pi pi-star-o" style="font-size: 1.5rem; margin-right: 5px; cursor: pointer" (click)="toggleWatchList(rowIndex)"></i>
-        <i *ngIf="listWatchCryptos[rowIndex]" class="pi pi-star" style="font-size: 1.5rem; margin-right: 5px; cursor: pointer" (click)="toggleWatchList(rowIndex)"></i>
+      <td class="hideBelow768" [style]="{ width: '80px' }">
+        {{ coin.rank }}
+      </td>
+      <td>
+        <div
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <i
+            *ngIf="!listWatchCryptos[rowIndex]"
+            class="pi pi-star-o"
+            style="font-size: 2.4rem; cursor: pointer"
+            (click)="toggleWatchList(rowIndex)"
+          ></i>
+          <i
+            *ngIf="listWatchCryptos[rowIndex]"
+            class="pi pi-star"
+            style="font-size: 2.4rem; cursor: pointer"
+            (click)="toggleWatchList(rowIndex)"
+          ></i>
+        </div>
+      </td>
+      <td class="p-d-flex" (click)="selectedCoin($event)">
         <img
           src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png"
           alt="{{ coin.symbol | lowercase }}"
@@ -145,14 +165,10 @@
             "
           ></div>
           <ng-template #thenBlock1h>
-            <td style="color: green;">
-              {{ coin.percent_change_1h }} %
-            </td>
+            <td style="color: green">{{ coin.percent_change_1h }} %</td>
           </ng-template>
           <ng-template #elseBlock1h>
-            <td style="color: red;">
-              {{ coin.percent_change_1h }} %
-            </td>
+            <td style="color: red">{{ coin.percent_change_1h }} %</td>
           </ng-template>
         </span>
         <span *ngIf="selected === 3">
@@ -165,14 +181,10 @@
             "
           ></div>
           <ng-template #thenBlock24h>
-            <td style="color: green;">
-              {{ coin.percent_change_24h }} %
-            </td>
+            <td style="color: green">{{ coin.percent_change_24h }} %</td>
           </ng-template>
           <ng-template #elseBlock24h>
-            <td style="color: red;">
-              {{ coin.percent_change_24h }} %
-            </td>
+            <td style="color: red">{{ coin.percent_change_24h }} %</td>
           </ng-template>
         </span>
         <span *ngIf="selected === 4">
@@ -184,14 +196,10 @@
             "
           ></div>
           <ng-template #thenBlock7d>
-            <td style="color: green;">
-              {{ coin.percent_change_7d }} %
-            </td>
+            <td style="color: green">{{ coin.percent_change_7d }} %</td>
           </ng-template>
           <ng-template #elseBlock7d>
-            <td style="color: red;">
-              {{ coin.percent_change_7d }} %
-            </td>
+            <td style="color: red">{{ coin.percent_change_7d }} %</td>
           </ng-template>
         </span>
         <span *ngIf="selected === 5">
@@ -209,13 +217,13 @@
         *ngIf="coin.percent_change_1h > 0; then thenBlock1h; else elseBlock1h"
       ></div>
       <ng-template #thenBlock1h>
-        <td style="color: green;" class="hideBelow768">
+        <td style="color: green" class="hideBelow768">
           <i class="material-icons">trending_up</i>
           {{ coin.percent_change_1h }} %
         </td>
       </ng-template>
       <ng-template #elseBlock1h>
-        <td style="color: red;" class="hideBelow768">
+        <td style="color: red" class="hideBelow768">
           <i class="material-icons">trending_down</i>
           {{ coin.percent_change_1h }} %
         </td>
@@ -229,13 +237,13 @@
         "
       ></div>
       <ng-template #thenBlock24h>
-        <td style="color: green;" class="hideBelow768">
+        <td style="color: green" class="hideBelow768">
           <i class="material-icons">trending_up</i>
           {{ coin.percent_change_24h }} %
         </td>
       </ng-template>
       <ng-template #elseBlock24h>
-        <td style="color: red;" class="hideBelow768">
+        <td style="color: red" class="hideBelow768">
           <i class="material-icons">trending_down</i>
           {{ coin.percent_change_24h }} %
         </td>
@@ -245,13 +253,13 @@
         *ngIf="coin.percent_change_7d > 0; then thenBlock7d; else elseBlock7d"
       ></div>
       <ng-template #thenBlock7d>
-        <td style="color: green;" class="hideBelow768">
+        <td style="color: green" class="hideBelow768">
           <i class="material-icons">trending_up</i>
           {{ coin.percent_change_7d }} %
         </td>
       </ng-template>
       <ng-template #elseBlock7d>
-        <td style="color: red;" class="hideBelow768">
+        <td style="color: red" class="hideBelow768">
           <i class="material-icons">trending_down</i>
           {{ coin.percent_change_7d }} %
         </td>

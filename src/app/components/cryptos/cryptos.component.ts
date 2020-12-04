@@ -6,6 +6,8 @@ import { SelectItem } from 'primeng/api';
 
 import { Carousel } from 'primeng/carousel';
 
+import { CoinPaprikaService } from '../../services/coin-paprika.service';
+
 @Component({
   selector: 'app-cryptos',
   templateUrl: './cryptos.component.html',
@@ -20,10 +22,12 @@ export class CryptosComponent implements OnInit {
   exchanges: SelectItem[];
   symbol = 'BTC';
   listWatchCryptos = Array.from({ length: 100 }, (x) => false);
+  activeTab = 0;
 
   constructor(
     private translate: TranslateService,
-    private exchangeService: ExchangeService
+    private exchangeService: ExchangeService,
+    private coinPaprikaService: CoinPaprikaService
   ) {
     // If we override the onTouchMove method, the scroll would start working.
     // Because in the plugin implementation of this method default event is prevented.
@@ -54,6 +58,17 @@ export class CryptosComponent implements OnInit {
       this.listWatchCryptos = JSON.parse(
         localStorage.getItem('listWatchCryptos')
       );
+    }
+  }
+
+  // pTemplate ="content" is lazy load in html, but it does not solve the problem.
+  // handleChange: important because the lazy load of p-table does not work properly.
+  handleChange(e) {
+    this.activeTab = e.index;
+
+    if (e === 2 || e === 3) {
+      const coinName = localStorage.getItem('coinName');
+      this.coinPaprikaService.plotGraphWithCorrectCoinValue(coinName);
     }
   }
 

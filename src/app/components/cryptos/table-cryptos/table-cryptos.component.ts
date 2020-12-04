@@ -99,7 +99,7 @@ export class TableCryptosComponent implements OnInit {
   private extractSymbolName(coin: any): string {
     let symbol = coin.split('-')[0].toUpperCase();
     if (symbol === 'BSV') {
-      symbol = 'BCHSV';
+      symbol = 'BCH';
     }
     return symbol;
   }
@@ -140,8 +140,8 @@ export class TableCryptosComponent implements OnInit {
 
   selectedCoin(event) {
     // we are passing the coin clicked id in accord to coinPaprika
-    const name = event.target.parentNode.cells[1].innerText.replace(' ', '');
-    const symbol = event.target.parentElement.cells[1].firstElementChild.alt;
+    const name = event.currentTarget.innerText.replace(' ', '');
+    const symbol = event.currentTarget.firstElementChild.alt;
     const coinId = this.extractCoinIdName(symbol, name);
     this.coinPaprikaService.selectedCoinById(coinId);
   }
@@ -150,7 +150,7 @@ export class TableCryptosComponent implements OnInit {
     let coinID = `${symbol}-${name}`;
     coinID = coinID.replace(' ', '-').toLowerCase();
 
-    if (coinID === 'bchsv-bitcoin-sv') {
+    if (coinID === 'bchsv-bitcoin-sv' || coinID === 'bch-bitcoincash') {
       coinID = 'bsv-bitcoin-sv';
     }
     return coinID;
