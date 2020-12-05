@@ -27,8 +27,8 @@ export class CryptosComponent implements OnInit {
   symbol = 'BTC';
   listWatchCryptos = Array.from({ length: 100 }, (x) => false);
   activeTab = 0;
-  coins: Coin[];
-  selectedCoin = 1;
+  listCoins: Coin[];
+  selectedCoin = 'Bitcoin';
 
   constructor(
     private translate: TranslateService,
@@ -42,6 +42,8 @@ export class CryptosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCoinSelectedNameFromLocalStorage();
+
     this.checkTheSelectedExchangeByTheUser();
 
     // localStorage
@@ -53,10 +55,16 @@ export class CryptosComponent implements OnInit {
 
     this.generateCoinDropDownList();
   }
+  private getCoinSelectedNameFromLocalStorage() {
+    if (localStorage.getItem('CoinName') !== null) {
+      this.selectedCoin = localStorage.getItem('coinName').split('-')[1];
+    }
+  }
+
   private generateCoinDropDownList() {
     this.coinLoreService.getGlobalCryptoData(0, 100).subscribe(
       (res) => {
-        this.coins = res.data;
+        this.listCoins = res.data;
       },
       (error) => {
         console.log(error);
@@ -77,10 +85,11 @@ export class CryptosComponent implements OnInit {
     );
   }
 
-  selectCoin(event, dd) {
+  selectCoin(event) {
     // we are passing the coin clicked id in accord to coinPaprika
-    const name = event.value.name;
-    const symbol = event.value.symbol;
+    const name = event.originalEvent.currentTarget.innerText.replace(' ', '');
+    this.selectedCoin = name;
+    const symbol = event.originalEvent.currentTarget.children[0].alt;
     const coinId = this.extractCoinIdName(symbol, name);
     this.coinPaprikaService.selectedCoinById(coinId);
   }

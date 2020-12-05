@@ -52,14 +52,19 @@
         ></p-dropdown>
 
         <p-dropdown
-          ngDefaultControl
-          [options]="coins"
-          (onChange)="selectCoin($event, dd)"
-          optionLabel="name"
+          [options]="listCoins"
+          (onChange)="selectCoin($event)"
           [(ngModel)]="selectedCoin"
-          name="selectCoin"
-          #dd
-        ></p-dropdown>
+          placeholder="{{ selectedCoin }}"
+        >
+          <ng-template let-object pTemplate="selectedCoin">
+            <img
+              src="assets/imgs/coins/{{ object.symbol | lowercase }}.png"
+              alt="{{ object.symbol | lowercase }}"
+            />
+            {{ object.name }}
+          </ng-template>
+        </p-dropdown>
 
         <app-graphic-full-year
           [zoomGraph]="zoomGraph"
@@ -87,16 +92,20 @@
           name="selectRate"
           #dd
         ></p-dropdown>
-
         <p-dropdown
-          ngDefaultControl
-          [options]="coins"
-          (onChange)="selectCoin($event, dd)"
-          optionLabel="name"
+          [options]="listCoins"
+          (onChange)="selectCoin($event)"
           [(ngModel)]="selectedCoin"
-          name="selectCoin"
-          #dd
-        ></p-dropdown>
+          placeholder="{{ selectedCoin }}"
+        >
+          <ng-template let-object pTemplate="selectedCoin">
+            <img
+              src="assets/imgs/coins/{{ object.symbol | lowercase }}.png"
+              alt="{{ object.symbol | lowercase }}"
+            />
+            {{ object.name }}
+          </ng-template>
+        </p-dropdown>
 
         <app-graphic-24-hours
           [zoomGraph]="zoomGraph"
