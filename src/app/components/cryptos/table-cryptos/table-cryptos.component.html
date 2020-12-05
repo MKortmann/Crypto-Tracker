@@ -2,7 +2,7 @@
   [value]="coins"
   [paginator]="!atWatchList"
   [pageLinks]="3"
-  [rows]="8"
+  [rows]="10"
   [rowHover]="true"
   [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
   [showCurrentPageReport]="false"
@@ -109,7 +109,6 @@
     <tr
       *ngIf="(atWatchList && listWatchCryptos[rowIndex]) || !atWatchList"
       class="ui-selectable-row"
-      [class.selected]="coin.symbol === symbol"
     >
       <td class="hideBelow768" [style]="{ width: '80px' }">
         {{ coin.rank }}
@@ -132,17 +131,19 @@
           ></i>
         </div>
       </td>
-      <td class="p-d-flex" (click)="selectedCoin($event)">
-        <img
-          src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png"
-          alt="{{ coin.symbol | lowercase }}"
-        />
-        <span class="hideBelow1500">
-          {{ coin.name }}
-        </span>
-        <span class="hideInBigScreens">
-          {{ coin.symbol }}
-        </span>
+      <td>
+        <div style="display: flex">
+          <img
+            src="assets/imgs/coins/{{ coin.symbol | lowercase }}.png"
+            alt="{{ coin.symbol | lowercase }}"
+          />
+          <span class="hideBelow1500">
+            {{ coin.name }}
+          </span>
+          <span class="hideInBigScreens">
+            {{ coin.symbol }}
+          </span>
+        </div>
       </td>
       <td class="hideBelow1200">{{ coin.price_usd | currency: 'USD' }}</td>
       <td class="hideBelow1200">

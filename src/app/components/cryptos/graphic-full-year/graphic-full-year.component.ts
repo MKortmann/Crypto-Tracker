@@ -71,7 +71,7 @@ export class GraphicFullYearComponent implements OnInit {
       this.fetchDataToPlotGraph(this.url);
     });
 
-    this.coinPaprikaService.plotGraphWithCoinValue.subscribe(
+    this.coinPaprikaService.onSelectedCoinChange.subscribe(
       (name) => {
         this.saveCoinName(name);
         this.fetchDataToPlotGraph(this.url);

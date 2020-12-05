@@ -1,29 +1,41 @@
 <app-cards-global-data></app-cards-global-data>
 
-<app-cards-cryptos></app-cards-cryptos>
+<!-- <app-cards-cryptos></app-cards-cryptos> -->
 
 <p-tabView (onChange)="handleChange($event)">
-  <p-tabPanel header="Cryptos">
-    <app-table-cryptos
-      [symbol]="symbol"
-      [atWatchList]="false"
-      [listWatchCryptos]="listWatchCryptos"
-      (clickedWatchListStart)="setWatchListStar($event)"
-    ></app-table-cryptos>
-  </p-tabPanel>
-
-  <p-tabPanel header="Watchlist">
-    <app-table-cryptos
-      [symbol]="symbol"
-      [atWatchList]="true"
-      [listWatchCryptos]="listWatchCryptos"
-      (clickedWatchListStart)="setWatchListStar($event)"
-    ></app-table-cryptos>
+  <p-tabPanel>
+    <ng-template pTemplate="header">
+      <img src="assets/imgs/icons/cryptos.svg" alt="bitcoin.svg" />
+      <span> Cryptos </span>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <app-table-cryptos
+        [symbol]="symbol"
+        [atWatchList]="false"
+        [listWatchCryptos]="listWatchCryptos"
+        (clickedWatchListStart)="setWatchListStar($event)"
+      ></app-table-cryptos>
+    </ng-template>
   </p-tabPanel>
 
   <p-tabPanel>
     <ng-template pTemplate="header">
-      <i class="pi pi-chart-line">&nbsp;</i>
+      <i class="pi pi-star-o"></i>
+      <span>Watchlist</span>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <app-table-cryptos
+        [symbol]="symbol"
+        [atWatchList]="true"
+        [listWatchCryptos]="listWatchCryptos"
+        (clickedWatchListStart)="setWatchListStar($event)"
+      ></app-table-cryptos>
+    </ng-template>
+  </p-tabPanel>
+
+  <p-tabPanel>
+    <ng-template pTemplate="header">
+      <i class="pi pi-chart-line"></i>
       <span class="hideBelow1500">Full Year</span>
       <span class="hideInBigScreens">1y</span>
     </ng-template>
@@ -36,6 +48,16 @@
           (onChange)="selection($event, dd)"
           [(ngModel)]="selectRate"
           name="selectRate"
+          #dd
+        ></p-dropdown>
+
+        <p-dropdown
+          ngDefaultControl
+          [options]="coins"
+          (onChange)="selectCoin($event, dd)"
+          optionLabel="name"
+          [(ngModel)]="selectedCoin"
+          name="selectCoin"
           #dd
         ></p-dropdown>
 
@@ -63,6 +85,16 @@
           (onChange)="selection($event, dd)"
           [(ngModel)]="selectRate"
           name="selectRate"
+          #dd
+        ></p-dropdown>
+
+        <p-dropdown
+          ngDefaultControl
+          [options]="coins"
+          (onChange)="selectCoin($event, dd)"
+          optionLabel="name"
+          [(ngModel)]="selectedCoin"
+          name="selectCoin"
           #dd
         ></p-dropdown>
 
