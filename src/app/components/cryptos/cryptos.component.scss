@@ -28,3 +28,10 @@ img {
 span {
   margin-left: $s-padding;
 }
+
+.graphButtonPanel {
+  display: flex;
+  p-dropdown {
+    margin-left: $s-padding;
+  }
+}

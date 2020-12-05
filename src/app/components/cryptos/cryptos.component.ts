@@ -29,6 +29,8 @@ export class CryptosComponent implements OnInit {
   activeTab = 0;
   listCoins: Coin[];
   selectedCoin = 'Bitcoin';
+  toggleGraphs = true;
+  graphLabel = '24 hours';
 
   constructor(
     private translate: TranslateService,
@@ -58,6 +60,16 @@ export class CryptosComponent implements OnInit {
   private getCoinSelectedNameFromLocalStorage() {
     if (localStorage.getItem('CoinName') !== null) {
       this.selectedCoin = localStorage.getItem('coinName').split('-')[1];
+    }
+  }
+
+  switchGraphs() {
+    this.toggleGraphs = !this.toggleGraphs;
+
+    if (this.toggleGraphs) {
+      this.graphLabel = '24 hours';
+    } else {
+      this.graphLabel = 'Full Year';
     }
   }
 
@@ -117,7 +129,7 @@ export class CryptosComponent implements OnInit {
   handleChange(e) {
     this.activeTab = e.index;
 
-    if (e === 2 || e === 3) {
+    if (e === 2) {
       const coinName = localStorage.getItem('coinName');
       this.coinPaprikaService.plotGraphWithCorrectCoinValue(coinName);
     }

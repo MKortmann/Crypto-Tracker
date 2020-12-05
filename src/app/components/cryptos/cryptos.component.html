@@ -21,7 +21,8 @@
   <p-tabPanel>
     <ng-template pTemplate="header">
       <i class="pi pi-star-o"></i>
-      <span>Watchlist</span>
+      <span class="hideBelow1500">Watchlist</span>
+      <span class="hideInBigScreens">Watch</span>
     </ng-template>
     <ng-template pTemplate="content">
       <app-table-cryptos
@@ -36,82 +37,59 @@
   <p-tabPanel>
     <ng-template pTemplate="header">
       <i class="pi pi-chart-line"></i>
-      <span class="hideBelow1500">Full Year</span>
-      <span class="hideInBigScreens">1y</span>
+      <span>Graphs</span>
     </ng-template>
 
     <ng-template pTemplate="content">
       <div *ngIf="activeTab === 2">
-        <p-dropdown
-          ngDefaultControl
-          [options]="exchanges"
-          (onChange)="selection($event, dd)"
-          [(ngModel)]="selectRate"
-          name="selectRate"
-          #dd
-        ></p-dropdown>
+        <div class="graphButtonPanel">
+          <button
+            pButton
+            type="button"
+            label="{{ graphLabel }}"
+            (click)="switchGraphs()"
+            class="p-button-outlined"
+          ></button>
 
-        <p-dropdown
-          [options]="listCoins"
-          (onChange)="selectCoin($event)"
-          [(ngModel)]="selectedCoin"
-          placeholder="{{ selectedCoin }}"
-        >
-          <ng-template let-object pTemplate="selectedCoin">
-            <img
-              src="assets/imgs/coins/{{ object.symbol | lowercase }}.png"
-              alt="{{ object.symbol | lowercase }}"
-            />
-            {{ object.name }}
-          </ng-template>
-        </p-dropdown>
+          <p-dropdown
+            ngDefaultControl
+            [options]="exchanges"
+            (onChange)="selection($event, dd)"
+            [(ngModel)]="selectRate"
+            name="selectRate"
+            #dd
+          ></p-dropdown>
+
+          <p-dropdown
+            [options]="listCoins"
+            (onChange)="selectCoin($event)"
+            [(ngModel)]="selectedCoin"
+            placeholder="{{ selectedCoin }}"
+          >
+            <ng-template let-object pTemplate="selectedCoin">
+              <img
+                src="assets/imgs/coins/{{ object.symbol | lowercase }}.png"
+                alt="{{ object.symbol | lowercase }}"
+              />
+              {{ object.name }}
+            </ng-template>
+          </p-dropdown>
+        </div>
 
         <app-graphic-full-year
           [zoomGraph]="zoomGraph"
           [selectRate]="selectRate"
           [selectedExchange]="selectedExchange"
+          *ngIf="toggleGraphs; else elseBlock"
         ></app-graphic-full-year>
-      </div>
-    </ng-template>
-  </p-tabPanel>
 
-  <p-tabPanel>
-    <ng-template pTemplate="header">
-      <i class="pi pi-chart-line">&nbsp;</i>
-      <span class="hideBelow1500">24 hours</span>
-      <span class="hideInBigScreens">24h</span>
-    </ng-template>
-
-    <ng-template pTemplate="content">
-      <div *ngIf="activeTab === 3">
-        <p-dropdown
-          ngDefaultControl
-          [options]="exchanges"
-          (onChange)="selection($event, dd)"
-          [(ngModel)]="selectRate"
-          name="selectRate"
-          #dd
-        ></p-dropdown>
-        <p-dropdown
-          [options]="listCoins"
-          (onChange)="selectCoin($event)"
-          [(ngModel)]="selectedCoin"
-          placeholder="{{ selectedCoin }}"
-        >
-          <ng-template let-object pTemplate="selectedCoin">
-            <img
-              src="assets/imgs/coins/{{ object.symbol | lowercase }}.png"
-              alt="{{ object.symbol | lowercase }}"
-            />
-            {{ object.name }}
-          </ng-template>
-        </p-dropdown>
-
-        <app-graphic-24-hours
-          [zoomGraph]="zoomGraph"
-          [selectRate]="selectRate"
-          [selectedExchange]="selectedExchange"
-        ></app-graphic-24-hours>
+        <ng-template #elseBlock>
+          <app-graphic-24-hours
+            [zoomGraph]="zoomGraph"
+            [selectRate]="selectRate"
+            [selectedExchange]="selectedExchange"
+          ></app-graphic-24-hours>
+        </ng-template>
       </div>
     </ng-template>
   </p-tabPanel>
