@@ -20,3 +20,18 @@
   padding-top: 2px !important;
   margin: 0 !important;
 }
+
+img {
+  max-width: 24px;
+}
+
+span {
+  margin-left: $s-padding;
+}
+
+.graphButtonPanel {
+  display: flex;
+  p-dropdown {
+    margin-left: $s-padding;
+  }
+}

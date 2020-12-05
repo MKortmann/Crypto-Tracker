@@ -8,6 +8,10 @@ import { Carousel } from 'primeng/carousel';
 
 import { CoinPaprikaService } from '../../services/coin-paprika.service';
 
+import { CoinLoreService } from '../../services/coinLore.service';
+
+import { Coin } from '../../models/Coin';
+
 @Component({
   selector: 'app-cryptos',
   templateUrl: './cryptos.component.html',
@@ -23,11 +27,16 @@ export class CryptosComponent implements OnInit {
   symbol = 'BTC';
   listWatchCryptos = Array.from({ length: 100 }, (x) => false);
   activeTab = 0;
+  listCoins: Coin[];
+  selectedCoin = 'Bitcoin';
+  toggleGraphs = true;
+  graphLabel = '24 hours';
 
   constructor(
     private translate: TranslateService,
     private exchangeService: ExchangeService,
-    private coinPaprikaService: CoinPaprikaService
+    private coinPaprikaService: CoinPaprikaService,
+    private coinLoreService: CoinLoreService
   ) {
     // If we override the onTouchMove method, the scroll would start working.
     // Because in the plugin implementation of this method default event is prevented.
@@ -35,6 +44,8 @@ export class CryptosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCoinSelectedNameFromLocalStorage();
+
     this.checkTheSelectedExchangeByTheUser();
 
     // localStorage
@@ -42,6 +53,38 @@ export class CryptosComponent implements OnInit {
 
     this.getTheWatchListByTheUser();
 
+    this.subscribeForMoneyChange();
+
+    this.generateCoinDropDownList();
+  }
+  private getCoinSelectedNameFromLocalStorage() {
+    if (localStorage.getItem('CoinName') !== null) {
+      this.selectedCoin = localStorage.getItem('coinName').split('-')[1];
+    }
+  }
+
+  switchGraphs() {
+    this.toggleGraphs = !this.toggleGraphs;
+
+    if (this.toggleGraphs) {
+      this.graphLabel = '24 hours';
+    } else {
+      this.graphLabel = 'Full Year';
+    }
+  }
+
+  private generateCoinDropDownList() {
+    this.coinLoreService.getGlobalCryptoData(0, 100).subscribe(
+      (res) => {
+        this.listCoins = res.data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  private subscribeForMoneyChange() {
     this.exchangeService.getMoney('USD').subscribe(
       (res) => {
         const array = Object.entries(res.rates);
@@ -53,6 +96,26 @@ export class CryptosComponent implements OnInit {
       (error) => console.log(error)
     );
   }
+
+  selectCoin(event) {
+    // we are passing the coin clicked id in accord to coinPaprika
+    const name = event.originalEvent.currentTarget.innerText.replace(' ', '');
+    this.selectedCoin = name;
+    const symbol = event.originalEvent.currentTarget.children[0].alt;
+    const coinId = this.extractCoinIdName(symbol, name);
+    this.coinPaprikaService.selectedCoinById(coinId);
+  }
+
+  private extractCoinIdName(symbol: any, name: any) {
+    let coinID = `${symbol}-${name}`;
+    coinID = coinID.replace(' ', '-').toLowerCase();
+
+    if (coinID === 'bchsv-bitcoin-sv' || coinID === 'bch-bitcoincash') {
+      coinID = 'bsv-bitcoin-sv';
+    }
+    return coinID;
+  }
+
   getTheWatchListByTheUser() {
     if (localStorage.getItem('listWatchCryptos') !== null) {
       this.listWatchCryptos = JSON.parse(
@@ -66,7 +129,7 @@ export class CryptosComponent implements OnInit {
   handleChange(e) {
     this.activeTab = e.index;
 
-    if (e === 2 || e === 3) {
+    if (e === 2) {
       const coinName = localStorage.getItem('coinName');
       this.coinPaprikaService.plotGraphWithCorrectCoinValue(coinName);
     }
