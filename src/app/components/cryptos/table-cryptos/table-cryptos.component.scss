@@ -37,23 +37,33 @@ img {
   cursor: pointer;
 }
 
+input {
+  font-size: $ms-fontSize;
+}
+
+:host ::ng-deep p-dropdown {
+  width: 100% !important;
+  cursor: pointer;
+  .ng-tns-c58-3,
+  .ng-tns-c58-4 {
+    font-size: $m-fontSize !important;
+  }
+}
+
+:host ::ng-deep th,
+:host ::ng-deep tr {
+  padding: 0 !important;
+  padding-left: $es-padding !important;
+  padding-right: $es-padding !important;
+  margin: 0 !important;
+}
+
 .container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding-top: $m-padding;
   padding-bottom: $m-padding;
-}
-
-input {
-  font-size: 14px;
-}
-
-:host ::ng-deep th,
-:host ::ng-deep tr {
-  padding: 0 !important;
-  padding-left: $s-padding !important;
-  margin: 0 !important;
 }
 
 :host ::ng-deep .th-star {
@@ -76,6 +86,10 @@ span {
   .container {
     margin: 10px 0 10px 0;
     padding: 0;
+  }
+
+  input {
+    font-size: $ss-fontSize;
   }
 
   :host ::ng-deep .ng-tns-c58-6 .p-inputtext {

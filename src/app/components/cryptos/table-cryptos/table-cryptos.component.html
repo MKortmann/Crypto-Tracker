@@ -51,9 +51,12 @@
             [options]="exchanges"
             (onChange)="selection($event, dd)"
             [(ngModel)]="selectRate"
+            autoWidth="false"
+            [style]="{ width: '100%' }"
             name="selectRate"
             #dd
-          ></p-dropdown>
+          >
+          </p-dropdown>
         </div>
       </th>
       <th class="hideAbove768">
@@ -62,7 +65,8 @@
           [options]="optionsDropDown"
           (onChange)="selectionDropDownTH($event, null)"
           [(ngModel)]="selected"
-          [style]="{ width: '100px' }"
+          autoWidth="false"
+          [style]="{ width: '100%' }"
         >
           <ng-template let-item pTemplate="item">
             <span
@@ -145,10 +149,12 @@
           </span>
         </div>
       </td>
+      <!-- PRINE IN EUR -->
       <td class="hideBelow1200">{{ coin.price_usd | currency: 'USD' }}</td>
       <td class="hideBelow1200">
         {{ coin.price_usd * selectRateEUR | currency: 'EUR' }}
       </td>
+      <!-- SELECT THE CURRENCY -->
       <td>
         {{ coin.price_usd * selectRate | formatCurrency }}
       </td>
