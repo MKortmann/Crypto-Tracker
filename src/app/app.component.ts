@@ -4,6 +4,8 @@ import { SwUpdate } from '@angular/service-worker';
 // Here we import the translate service
 import { TranslateService } from '@ngx-translate/core';
 
+import { AuthService } from '@auth0/auth0-angular';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +14,11 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent implements OnInit {
   title: 'Crypto-Tracker';
   setLanguage = 'en';
-  constructor(private translate: TranslateService, private swUpdate: SwUpdate) {
+  constructor(
+    private translate: TranslateService,
+    private swUpdate: SwUpdate,
+    public auth: AuthService
+  ) {
     if (localStorage.getItem('language') == null) {
       this.translate.setDefaultLang('en');
     } else {
