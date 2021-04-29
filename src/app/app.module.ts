@@ -15,8 +15,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CryptosComponent } from './components/cryptos/cryptos.component';
 import { AboutComponent } from './components/about/about.component';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
 
 // import the table
 import { TableModule } from 'primeng/table';
@@ -81,8 +79,6 @@ import { LandpageComponent } from './components/landpage/landpage.component';
     FooterComponent,
     CryptosComponent,
     AboutComponent,
-    RegisterComponent,
-    LoginComponent,
     NotFoundComponent,
     TableCryptosComponent,
     CardsGlobalDataComponent,
@@ -133,8 +129,9 @@ import { LandpageComponent } from './components/landpage/landpage.component';
       enabled: environment.production,
     }),
     AuthModule.forRoot({
-      domain: 'dev-oeeh6hdb.eu.auth0.com',
-      clientId: 'Ti2w3qtNUsaBZMTdz3t63QQJhSPQDOAU',
+      domain: environment.domain,
+      clientId: environment.cliendId,
+      redirectUri: environment.redirect,
     }),
   ],
   providers: [ConfirmationService],

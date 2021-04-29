@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LandpageComponent } from './landpage.component';
 
@@ -8,9 +8,8 @@ describe('LandpageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LandpageComponent ]
-    })
-    .compileComponents();
+      declarations: [LandpageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
