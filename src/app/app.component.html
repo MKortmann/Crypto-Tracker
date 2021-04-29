@@ -1,7 +1,12 @@
 <app-nav></app-nav>
 
-<ng-container *ngIf="auth.isAuthenticated$ | async">
+<ng-container *ngIf="auth.isAuthenticated$ | async; else landpage">
   <app-sub-nav></app-sub-nav>
   <router-outlet></router-outlet>
 </ng-container>
+
+<ng-template #landpage>
+  <app-landpage></app-landpage>
+</ng-template>
+
 <app-footer [code]="setLanguage"></app-footer>

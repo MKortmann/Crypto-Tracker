@@ -72,6 +72,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 // Authentication Auth0
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthComponent } from './components/auth/auth.component';
+import { LandpageComponent } from './components/landpage/landpage.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { AuthComponent } from './components/auth/auth.component';
     TableExchangesComponent,
     SingleFeedComponent,
     AuthComponent,
+    LandpageComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

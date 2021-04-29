@@ -16,7 +16,7 @@
     >
       {{ 'TRANSLATE.NAVBAR.TITLE' | translate }}
     </a>
-    <span class="hideInSmallScreens">
+    <span class="hideInSmallScreens" *ngIf="auth.isAuthenticated$ | async">
       <a
         [routerLink]="['/cryptos']"
         [routerLinkActive]="['active']"
@@ -104,23 +104,26 @@
 </nav>
 
 <div @flyInOut *ngIf="isShown" class="sideNav">
-  <a
+  <!-- <a
     [routerLink]="['/register']"
     [routerLinkActive]="['active']"
     [routerLinkActiveOptions]="{ exact: true }"
     (click)="showHideSideNav(false)"
   >
     {{ 'TRANSLATE.NAVBAR.REGISTER' | translate }}
-  </a>
-  <a
+  </a> -->
+  <!-- <a
     [routerLink]="['/login']"
     [routerLinkActive]="['active']"
     [routerLinkActiveOptions]="{ exact: true }"
     (click)="showHideSideNav(false)"
   >
     {{ 'TRANSLATE.NAVBAR.LOGIN' | translate }}
-  </a>
+  </a> -->
+  <app-auth></app-auth>
+
   <a
+    *ngIf="auth.isAuthenticated$ | async"
     [routerLink]="['/cryptos']"
     [routerLinkActive]="['active']"
     [routerLinkActiveOptions]="{ exact: true }"
@@ -129,6 +132,7 @@
     {{ 'TRANSLATE.NAVBAR.HOME' | translate }}
   </a>
   <a
+    *ngIf="auth.isAuthenticated$ | async"
     [routerLink]="['/exchanges']"
     [routerLinkActive]="['active']"
     [routerLinkActiveOptions]="{ exact: true }"
@@ -137,6 +141,7 @@
     {{ 'TRANSLATE.NAVBAR.EXCHANGES' | translate }}
   </a>
   <a
+    *ngIf="auth.isAuthenticated$ | async"
     [routerLink]="['/news']"
     [routerLinkActive]="['active']"
     [routerLinkActiveOptions]="{ exact: true }"
@@ -145,6 +150,7 @@
     {{ 'TRANSLATE.NAVBAR.NEWS' | translate }}
   </a>
   <a
+    *ngIf="auth.isAuthenticated$ | async"
     [routerLink]="['/about']"
     [routerLinkActive]="['active']"
     [routerLinkActiveOptions]="{ exact: true }"

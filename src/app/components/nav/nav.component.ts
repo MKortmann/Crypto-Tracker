@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 // // import the AuthService type from the SDK
-// import { AuthService } from '@auth0/auth0-angular';
+import { AuthService } from '@auth0/auth0-angular';
 
 import {
   trigger,
@@ -32,7 +32,7 @@ import {
 export class NavComponent implements OnInit {
   public isShown = false;
 
-  constructor(private translate: TranslateService) {}
+  constructor(private translate: TranslateService, public auth: AuthService) {}
 
   ngOnInit(): void {}
 

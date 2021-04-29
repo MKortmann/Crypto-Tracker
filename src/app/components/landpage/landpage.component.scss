@@ -1,0 +1,26 @@
+// import global styling
+@import '../../../styles';
+* {
+  // background: rgba(0,0,0,0.8);
+  color: white;
+}
+
+.background {
+  background-image: url('../../../assets/imgs/background/background.jpg');
+  height: 100vh;
+  width: 100%;
+}
+
+.content {
+  padding-top: $l-padding;
+  position: relative;
+  text-align: center;
+}
+
+.title {
+  font-size: $l-fontSize;
+}
+
+.sub-title {
+  padding-bottom: $m-padding;
+}
