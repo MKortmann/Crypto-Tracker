@@ -1,5 +1,9 @@
 <app-nav></app-nav>
 
+<div class="container" *ngIf="auth.isLoading$ | async">
+  <app-loading></app-loading>
+</div>
+
 <ng-container *ngIf="auth.isAuthenticated$ | async; else landpage">
   <app-sub-nav></app-sub-nav>
   <router-outlet></router-outlet>
