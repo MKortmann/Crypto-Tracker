@@ -73,6 +73,8 @@
     >
       {{ 'TRANSLATE.NAVBAR.LOGIN' | translate }}
     </a>
+    <!-- <button (click)="auth.loginWithRedirect()">Log in</button> -->
+    <app-auth></app-auth>
 
     <a *ngIf="!isShown" (click)="showHideSideNav(true)" class="hamburger">
       <svg
@@ -147,7 +149,7 @@
     [routerLinkActive]="['active']"
     [routerLinkActiveOptions]="{ exact: true }"
     (click)="showHideSideNav(false)"
-    style="margin-bottom: '10px';"
+    style="margin-bottom: '10px'"
   >
     {{ 'TRANSLATE.NAVBAR.ABOUT' | translate }}
   </a>

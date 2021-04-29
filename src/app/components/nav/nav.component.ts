@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
+// // import the AuthService type from the SDK
+// import { AuthService } from '@auth0/auth0-angular';
+
 import {
   trigger,
   state,

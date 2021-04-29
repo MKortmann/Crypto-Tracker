@@ -69,6 +69,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 
+// Authentication Auth0
+import { AuthModule } from '@auth0/auth0-angular';
+import { AuthComponent } from './components/auth/auth.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,6 +96,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     NewsComponent,
     TableExchangesComponent,
     SingleFeedComponent,
+    AuthComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -124,6 +129,10 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
+    }),
+    AuthModule.forRoot({
+      domain: 'dev-oeeh6hdb.eu.auth0.com',
+      clientId: 'Ti2w3qtNUsaBZMTdz3t63QQJhSPQDOAU',
     }),
   ],
   providers: [ConfirmationService],
