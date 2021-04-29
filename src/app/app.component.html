@@ -1,4 +1,7 @@
 <app-nav></app-nav>
-<app-sub-nav></app-sub-nav>
-<router-outlet></router-outlet>
+
+<ng-container *ngIf="auth.isAuthenticated$ | async">
+  <app-sub-nav></app-sub-nav>
+  <router-outlet></router-outlet>
+</ng-container>
 <app-footer [code]="setLanguage"></app-footer>
