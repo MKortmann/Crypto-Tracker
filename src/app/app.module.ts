@@ -15,8 +15,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CryptosComponent } from './components/cryptos/cryptos.component';
 import { AboutComponent } from './components/about/about.component';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
 
 // import the table
 import { TableModule } from 'primeng/table';
@@ -69,6 +67,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 
+// Authentication Auth0
+import { AuthModule } from '@auth0/auth0-angular';
+import { AuthComponent } from './components/auth/auth.component';
+import { LandpageComponent } from './components/landpage/landpage.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,8 +79,6 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     FooterComponent,
     CryptosComponent,
     AboutComponent,
-    RegisterComponent,
-    LoginComponent,
     NotFoundComponent,
     TableCryptosComponent,
     CardsGlobalDataComponent,
@@ -92,6 +93,8 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     NewsComponent,
     TableExchangesComponent,
     SingleFeedComponent,
+    AuthComponent,
+    LandpageComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -125,6 +128,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
+    AuthModule.forRoot({ ...environment.auth }),
   ],
   providers: [ConfirmationService],
 

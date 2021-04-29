@@ -1,0 +1,14 @@
+// import global styling
+@import '../../../styles';
+
+a {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  color: var(--color);
+  &:hover {
+    color: var(--selected);
+    cursor: pointer
+  }
+  margin-left: $es-padding;
+}
