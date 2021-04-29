@@ -128,11 +128,7 @@ import { LandpageComponent } from './components/landpage/landpage.component';
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
-    AuthModule.forRoot({
-      domain: environment.domain,
-      clientId: environment.cliendId,
-      redirectUri: environment.redirect,
-    }),
+    AuthModule.forRoot({ ...environment.auth }),
   ],
   providers: [ConfirmationService],
 

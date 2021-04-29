@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-import { DOCUMENT } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-auth',
@@ -8,10 +8,9 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent implements OnInit {
-  constructor(
-    @Inject(DOCUMENT) public document: Document,
-    public auth: AuthService
-  ) {}
+  env = environment.auth.redirect;
+
+  constructor(public auth: AuthService) {}
 
   ngOnInit(): void {}
 }

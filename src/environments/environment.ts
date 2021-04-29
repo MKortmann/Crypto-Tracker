@@ -4,9 +4,11 @@
 
 export const environment = {
   production: false,
-  domain: 'dev-oeeh6hdb.eu.auth0.com',
-  cliendId: 'Ti2w3qtNUsaBZMTdz3t63QQJhSPQDOAU',
-  redirect: 'http://localhost:4200',
+  auth: {
+    domain: 'dev-oeeh6hdb.eu.auth0.com',
+    clientId: 'Ti2w3qtNUsaBZMTdz3t63QQJhSPQDOAU',
+    redirect: 'http://localhost:4200',
+  },
 };
 
 /*

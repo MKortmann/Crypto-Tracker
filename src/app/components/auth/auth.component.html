@@ -2,7 +2,7 @@
   <span *ngIf="auth.user$ | async as user">
     {{ user.name }}
   </span>
-  <a (click)="auth.logout({ returnTo: document.location.origin })"> Log out </a>
+  <a (click)="auth.logout({ returnTo: env })"> Log out </a>
 </ng-container>
 
 <ng-template #loggedOut>
