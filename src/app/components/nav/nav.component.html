@@ -57,24 +57,24 @@
 
   <!-- Right Position -->
   <div>
-    <a
+    <!-- <a
       class="hideInSmallScreens"
       [routerLink]="['/register']"
       [routerLinkActive]="['active']"
       [routerLinkActiveOptions]="{ exact: true }"
     >
       {{ 'TRANSLATE.NAVBAR.REGISTER' | translate }}
-    </a>
-    <a
+    </a> -->
+    <!-- <a
       class="hideInSmallScreens"
       [routerLink]="['/login']"
       [routerLinkActive]="['active']"
       [routerLinkActiveOptions]="{ exact: true }"
     >
       {{ 'TRANSLATE.NAVBAR.LOGIN' | translate }}
-    </a>
-    <!-- <button (click)="auth.loginWithRedirect()">Log in</button> -->
-    <app-auth></app-auth>
+    </a> -->
+
+    <app-auth class="hideInSmallScreens"></app-auth>
 
     <a *ngIf="!isShown" (click)="showHideSideNav(true)" class="hamburger">
       <svg
