@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent implements OnInit {
-  env = environment.auth.redirect;
+  env = environment.auth.redirectUri;
 
   constructor(public auth: AuthService) {}
 
