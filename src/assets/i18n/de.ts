@@ -4,6 +4,7 @@ export const de = {
       TITLE: 'Crypto-Tracker',
       HOME: 'Kryptos',
       EXCHANGES: 'Börsen',
+      TRADES: 'Handel',
       NEWS: 'Nachrichten',
       ABOUT: 'Über',
       NAV_2: 'Nav_2',

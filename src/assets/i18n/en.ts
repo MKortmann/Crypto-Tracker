@@ -5,6 +5,7 @@ export const en = {
       HOME: 'Cryptos',
       EXCHANGES: 'Exchanges',
       NEWS: 'News',
+      TRADES: 'Trades',
       ABOUT: 'About',
       CONTACT: 'Contact',
       NAV_2: 'Nav_2',

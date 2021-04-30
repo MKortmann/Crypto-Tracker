@@ -6,6 +6,7 @@ import { CryptosComponent } from './components/cryptos/cryptos.component';
 import { AboutComponent } from './components/about/about.component';
 import { ExchangesComponent } from './components/exchanges/exchanges.component';
 import { NewsComponent } from './components/news/news.component';
+import { TradesComponent } from './components/trades/trades.component';
 import { NotFoundComponent } from './components/notfound/notfound.component';
 
 /* here we configure the routes. Routes
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'exchanges', component: ExchangesComponent },
   { path: 'news', component: NewsComponent },
+  { path: 'trades', component: TradesComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
