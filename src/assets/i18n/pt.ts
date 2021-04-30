@@ -5,6 +5,7 @@ export const pt = {
       HOME: 'Criptos',
       EXCHANGES: 'Bolsas',
       NEWS: 'Notícias',
+      TRADES: 'Transações',
       ABOUT: 'Sobre',
       CONTACT: 'Contato',
       NAV_2: 'Nav_2',

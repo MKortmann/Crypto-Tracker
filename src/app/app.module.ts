@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -68,10 +68,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 // Authentication Auth0
-import { AuthModule } from '@auth0/auth0-angular';
+import { AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
 import { AuthComponent } from './components/auth/auth.component';
 import { LandpageComponent } from './components/landpage/landpage.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { TradesComponent } from './components/trades/trades.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     AuthComponent,
     LandpageComponent,
     LoadingComponent,
+    TradesComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -130,9 +132,21 @@ import { LoadingComponent } from './components/loading/loading.component';
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
-    AuthModule.forRoot({ ...environment.auth }),
+    AuthModule.forRoot({
+      ...environment.auth,
+      httpInterceptor: {
+        allowedList: [`${environment.ctBackend.url}`],
+      },
+    }),
   ],
-  providers: [ConfirmationService],
+  providers: [
+    ConfirmationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true,
+    },
+  ],
 
   bootstrap: [AppComponent],
 })

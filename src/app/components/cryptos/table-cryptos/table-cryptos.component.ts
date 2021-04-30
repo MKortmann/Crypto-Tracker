@@ -48,7 +48,6 @@ export class TableCryptosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    debugger;
     this.optionsDropDown = [
       {
         label: 'Pr. BTC',
@@ -109,11 +108,9 @@ export class TableCryptosComponent implements OnInit {
     // here we have to load the 100 data again
     this.coinLoreService.getGlobalCryptoData(0, 100).subscribe(
       (res) => {
-        debugger;
         this.coins = res.data;
         this.exchangeService.getMoney('USD').subscribe(
           (res2) => {
-            debugger;
             const array = Object.entries(res2.rates);
             // doing an array of objects along with the optionLabel property to specify the field name of the option.
             this.exchanges = array.map(([lat, lng]) => ({
