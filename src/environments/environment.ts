@@ -7,8 +7,9 @@ export const environment = {
   auth: {
     domain: 'dev-oeeh6hdb.eu.auth0.com',
     clientId: 'Ti2w3qtNUsaBZMTdz3t63QQJhSPQDOAU',
-    redirectUri: 'https://mkortmann.github.io/Crypto-Tracker',
+    redirectUri: 'http://localhost:4200',
   },
+  access_key: '120b00ab3099aa8686cfbdc1cecb2eae',
 };
 
 /*

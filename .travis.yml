@@ -1,4 +1,8 @@
 
+language: node_js
+node_js:
+  - '16'
+
 addons:
   chrome: stable
 'before script':
@@ -11,9 +15,7 @@ branches:
 cache:
   directories:
     - $HOME/assets
-language: node_js
-node_js:
-  - '10'
+
 script:
   # - 'ng lint'
   # - 'ng test --watch=false'
