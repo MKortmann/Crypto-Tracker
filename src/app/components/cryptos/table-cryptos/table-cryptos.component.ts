@@ -48,6 +48,7 @@ export class TableCryptosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    debugger;
     this.optionsDropDown = [
       {
         label: 'Pr. BTC',
@@ -108,16 +109,18 @@ export class TableCryptosComponent implements OnInit {
     // here we have to load the 100 data again
     this.coinLoreService.getGlobalCryptoData(0, 100).subscribe(
       (res) => {
+        debugger;
         this.coins = res.data;
         this.exchangeService.getMoney('USD').subscribe(
           (res2) => {
+            debugger;
             const array = Object.entries(res2.rates);
             // doing an array of objects along with the optionLabel property to specify the field name of the option.
             this.exchanges = array.map(([lat, lng]) => ({
               label: lat,
               value: lng,
             }));
-            this.selectRateEUR = res2.rates[GLOBAL_VARIABLES.EUR];
+            this.selectRateEUR = 1 / res2.rates[GLOBAL_VARIABLES.USD];
             this.selectedExchange = localStorage.getItem(
               'selectedExchangeTable'
             );
@@ -126,6 +129,7 @@ export class TableCryptosComponent implements OnInit {
             } else {
               this.selectRate = this.exchanges[0].value;
             }
+            this.selectRate *= this.selectRateEUR;
           },
           (error2) => {
             console.log(error2);
@@ -158,7 +162,8 @@ export class TableCryptosComponent implements OnInit {
 
   selection(event, dd) {
     this.selectedExchange = dd.selectedOption.label;
-    this.selectRate = event.value;
+    // correction, API send values in EUR now
+    this.selectRate = event.value * this.selectRateEUR;
     localStorage.setItem('selectedExchangeTable', this.selectedExchange);
   }
 

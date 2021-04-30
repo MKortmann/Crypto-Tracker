@@ -1,5 +1,7 @@
 
 language: node_js
+node_js:
+  - '10'
 
 addons:
   chrome: stable
@@ -13,9 +15,7 @@ branches:
 cache:
   directories:
     - $HOME/assets
-language: node_js
-node_js:
-  - '10'
+
 script:
   # - 'ng lint'
   # - 'ng test --watch=false'
