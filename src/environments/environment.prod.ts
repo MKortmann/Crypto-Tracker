@@ -1,3 +1,6 @@
+const apiId = 'nxwvwkfq98';
+const aws = 'execute-api.eu-central-1.amazonaws.com';
+
 export const environment = {
   production: true,
   auth: {
