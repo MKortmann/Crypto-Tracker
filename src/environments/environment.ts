@@ -9,6 +9,7 @@ export const environment = {
     clientId: 'Ti2w3qtNUsaBZMTdz3t63QQJhSPQDOAU',
     redirectUri: 'http://localhost:4200',
   },
+  access_key: '120b00ab3099aa8686cfbdc1cecb2eae',
 };
 
 /*
